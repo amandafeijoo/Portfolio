@@ -1,0 +1,11 @@
+body {
+  font-family: 'Source Code Pro', monospace;
+}
+
+@keyframes randomBorderAnimation {
+  0% { border-color: rgba(255, 255, 255, .05); }
+  25% { border-color: rgba(255, 255, 255, .1); }
+  50% { border-color: rgba(255, 255, 255, .15); }
+  75% { border-color: rgba(255, 255, 255, .1); }
+  100% { border-color: rgba(255, 255, 255, .05); }
+}
