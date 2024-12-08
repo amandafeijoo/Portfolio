@@ -85,7 +85,7 @@ const ContactSummary = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/contact/",
+        "https://portfolio-c6mj.onrender.com/contact/",
         formData,
         {
           headers: {
