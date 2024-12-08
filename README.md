@@ -24,7 +24,7 @@ Live Demo
 
 Setup Instructions
 
-Clone the repository: git clone https://github.com/yourusername/portfolio.git
+Clone the repository: git clone (https://github.com/amandafeijoo/Portfolio.git)
 Navigate to the project directory: cd portfolio
 Install dependencies: npm install (for frontend) and pip install -r requirements.txt (for backend).
 Run the development server: npm start for React frontend, python manage.py runserver for Django backend`.
