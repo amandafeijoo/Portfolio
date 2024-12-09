@@ -44,18 +44,22 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'portfolio-c6mj.onrender.com',
     'webcode-art.com',
+    "https://webcode-art-portfolio.netlify.app",
+
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://portfolio-c6mj.onrender.com",
     "https://webcode-art.com",
+    "https://webcode-art-portfolio.netlify.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://portfolio-c6mj.onrender.com",
     "https://webcode-art.com",
+    "https://webcode-art-portfolio.netlify.app",
 ]
 
 CSRF_COOKIE_HTTPONLY = False
