@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoad from 'react-lazyload';
 import {
   Card,
   CardMedia,
@@ -47,6 +48,7 @@ const ProjectCard = ({
       }}
     >
       <CardActionArea>
+      <LazyLoad height={200} offset={100}>
         <video
           style={{
             marginTop: "40px",
@@ -60,10 +62,13 @@ const ProjectCard = ({
           autoPlay
           muted
           loop
+          preload="metadata" // Solo carga los metadatos inicialmente
+          poster={posterSrc} // Imagen que se muestra mientras se carga el video
         >
           <source src={videoSrc} type="video/mp4" />
           Tu navegador no soporta el elemento de video.
         </video>
+      </LazyLoad>
         <CardContent>
           <Typography
             gutterBottom
