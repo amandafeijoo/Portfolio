@@ -1,5 +1,5 @@
 import React from "react";
-import LazyLoad from 'react-lazyload';
+import LazyLoad from "react-lazyload";
 import {
   Card,
   CardMedia,
@@ -49,27 +49,27 @@ const ProjectCard = ({
       }}
     >
       <CardActionArea>
-      <LazyLoad height={200} offset={100}>
-        <video
-          style={{
-            marginTop: "40px",
-            marginBottom: "40px",
-            boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.2)",
-            borderRadius: "10px",
-            border: "3px solid #99aaff",
-          }}
-          width="100%"
-          height="auto"
-          autoPlay
-          muted
-          loop
-          preload="metadata" // Solo carga los metadatos inicialmente
-          poster={posterSrc} // Imagen que se muestra mientras se carga el video
-        >
-          <source src={videoSrc} type="video/mp4" />
-          Tu navegador no soporta el elemento de video.
-        </video>
-      </LazyLoad>
+        <LazyLoad height={200} offset={100}>
+          <video
+            style={{
+              marginTop: "40px",
+              marginBottom: "40px",
+              boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.2)",
+              borderRadius: "10px",
+              border: "3px solid #99aaff",
+            }}
+            width="100%"
+            height="auto"
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            poster={posterSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </LazyLoad>
         <CardContent>
           <Typography
             gutterBottom
