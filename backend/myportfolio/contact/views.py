@@ -6,7 +6,6 @@ from .serializers import ContactSerializer
 from django.utils.decorators import method_decorator
 from django.views import View
 
-# Configura el logger
 logger = logging.getLogger(__name__)
 
 @method_decorator(csrf_exempt, name='dispatch')
