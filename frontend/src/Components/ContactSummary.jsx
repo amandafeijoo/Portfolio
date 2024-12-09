@@ -73,17 +73,17 @@ const ContactSummary = () => {
     }
     return cookieValue;
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const csrfToken = getCSRFToken();
-
+  
     if (emailError) {
       Swal.fire("Error", "Invalid email address", "error");
       return;
     }
-
+  
     try {
+      console.log("Form Data:", formData); // Línea de depuración
       const response = await axios.post(
         "https://portfolio-c6mj.onrender.com/contact/",
         formData,
