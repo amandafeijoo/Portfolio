@@ -23,6 +23,7 @@ const borderAnimation = keyframes`
 
 const ProjectCard = ({
   videoSrc,
+  posterSrc,
   title,
   comment,
   subtitle,
