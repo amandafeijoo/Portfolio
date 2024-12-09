@@ -38,6 +38,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'portfolio-c6mj.onrender.com',
+    'webcode-art.com',
+]
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://portfolio-c6mj.onrender.com",
