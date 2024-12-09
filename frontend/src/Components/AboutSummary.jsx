@@ -7,7 +7,7 @@ const SummaryContainer = styled.div`
   transform: scale(0.8) translateY(200px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   border: 1px solid rgba(200, 162, 200, 0.5);
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   width: 60%;
   margin-top: 100px;
@@ -86,8 +86,8 @@ const SummaryText = styled.p`
 `;
 
 const ProfileImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   margin-top: 10px;
   margin-bottom: 10px;
