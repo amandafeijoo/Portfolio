@@ -615,10 +615,10 @@ const ContactPage = () => {
               sx={{
                 fontFamily: "'Source Code Pro', monospace",
                 fontSize: {
-                  xs: "1.2rem", 
-                  sm: "1.5rem", 
-                  md: "2rem", 
-                  lg: "1.2rem", 
+                  xs: "1.2rem",
+                  sm: "1.5rem",
+                  md: "2rem",
+                  lg: "1.2rem",
                 },
                 color: "#ffc0cb",
               }}
@@ -643,7 +643,7 @@ const ContactPage = () => {
                 href="mailto:amanda_feijoo@hotmail.com"
                 style={{ color: "#d8bfd8", textDecoration: "none" }}
               >
-                amanda_feijoo@hotmail.com
+                amandaflores@webcode-art.com
               </a>
             </Typography>
           </ContactInfo>
@@ -656,10 +656,10 @@ const ContactPage = () => {
               sx={{
                 fontFamily: "'Source Code Pro', monospace",
                 fontSize: {
-                  xs: "1.2rem", 
-                  sm: "1.5rem", 
-                  md: "2rem", 
-                  lg: "1.2rem", 
+                  xs: "1.2rem",
+                  sm: "1.5rem",
+                  md: "2rem",
+                  lg: "1.2rem",
                 },
                 color: "#ffc0cb",
               }}
