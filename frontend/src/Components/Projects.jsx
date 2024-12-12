@@ -345,7 +345,7 @@ const Projects = () => {
         "DineBooker enables users to book tables, review restaurants, and earn loyalty points. Restaurant owners can manage bookings, update menus, and engage with guests, all in one platform.",
       technologies: "React, Django, PostrgeSQL, node.js",
       githubLink: "https://github.com/amandafeijoo/DineBookerTFM.git",
-      demoLink: "/demo_dinebooker_portfolio.mp4",
+      demoLink: "https://otro-proyecto-demo.com",
     },
   ];
 
