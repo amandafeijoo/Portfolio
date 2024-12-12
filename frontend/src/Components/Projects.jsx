@@ -334,7 +334,7 @@ const Projects = () => {
         "FitLife enables users to book and manage classes and view trainer profiles. Admins can oversee schedules, reservations, and view key participation stats.",
       technologies: "React, Node.js, Express, MongoDB",
       githubLink: "https://github.com/amandafeijoo/FitLife-Project.git",
-      demoLink: "https://fitlife-demo.com",
+      demoLink: "/demo_fitlife_portfolio.mp4", 
     },
     {
       videoSrc: "/images/dinebookergiphy.mp4",
@@ -345,7 +345,7 @@ const Projects = () => {
         "DineBooker enables users to book tables, review restaurants, and earn loyalty points. Restaurant owners can manage bookings, update menus, and engage with guests, all in one platform.",
       technologies: "React, Django, PostrgeSQL, node.js",
       githubLink: "https://github.com/amandafeijoo/DineBookerTFM.git",
-      demoLink: "https://otro-proyecto-demo.com",
+      demoLink: "/demo_dinebooker_portfolio.mp4",
     },
   ];
 
