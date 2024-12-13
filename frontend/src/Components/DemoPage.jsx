@@ -5,6 +5,8 @@ import { ProjectContext } from "../Context/ProjectContext";
 import styled, { keyframes } from "styled-components";
 import { Button, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import LazyLoad from "react-lazyload";
+
 
 const borderAnimation = keyframes`
   0% {
@@ -216,10 +218,12 @@ const DemoPage = () => {
         <AnimatedLetter>{project.title.charAt(0)}</AnimatedLetter>
         {project.title.slice(1)}
       </StyledText>
-      <StyledVideo controls>
-        <source src={project.demoLink} type="video/mp4" />
-        Your browser does not support the video tag.
-      </StyledVideo>
+      <LazyLoad height={200} offset={100}>
+        <StyledVideo controls>
+          <source src={project.demoLink} type="video/mp4" />
+          Your browser does not support the video tag.
+        </StyledVideo>
+      </LazyLoad>
       <DescriptionContainer
         dangerouslySetInnerHTML={{
           __html: `<p>${project.comment}</p><p>Technologies: ${

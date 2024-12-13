@@ -117,6 +117,9 @@ const StyledText = styled.span`
     margin-top: 10px;
     padding: 5px;
   }
+  @media (max-width: 390px) {
+    margin-top: 15px; /* Ajuste específico para iPhone 14 Pro */
+  }
 
   @media (min-width: 1201px) {
     padding: 25px; /* Pantallas grandes */

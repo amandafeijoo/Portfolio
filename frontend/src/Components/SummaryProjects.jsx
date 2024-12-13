@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { ProjectContext } from "../Context/ProjectContext";
+import LazyLoad from 'react-lazyload';
+import { isMobile } from 'react-device-detect';
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useInView } from "react-intersection-observer";
+import { ProjectContext } from "../Context/ProjectContext";
 import Wavify from "react-wavify";
 import Button from "@mui/material/Button";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -244,10 +246,12 @@ const SummaryProjects = () => {
                 }}
               />
             )}
-            <ProjectVideo autoPlay muted loop>
+            <LazyLoad height={200} offset={100}>
+            <ProjectVideo autoPlay={!isMobile} muted loop controls={isMobile}>
               <source src={project.videoSrc} type="video/mp4" />
               Tu navegador no soporta el elemento de video.
             </ProjectVideo>
+          </LazyLoad>
             <ProjectTitle>{project.title}</ProjectTitle>
             <ProjectComment>{project.comment}</ProjectComment>
             <ProjectTechnologies>{project.technologies}</ProjectTechnologies>
