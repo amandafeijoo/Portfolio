@@ -222,40 +222,59 @@ const ProfileImage = styled.img`
 const ButtonContainer = styled.div`
   display: flex;
   margin-top: 20px;
+  justify-content: center;
+  gap: 20px;
 `;
 
 const DownloadButton = styled.a`
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  color: #fff;
+  padding: 12px 22px;
+  font-size: 1em;
+  color: #d8bfd8;
   background-color: rgba(200, 162, 200, 0.5);
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   text-decoration: none;
   text-align: center;
-  transition: background-color 0.3s;
-  margin-right: 10px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+  box-sizing: border-box;
 
   &:hover {
-    background-color: #7799ff;
+    background-color: rgba(200, 162, 200, 0.3);
+    color: #d8bfd8;
+    margin-right: 5px; 
+  }
+
+  & svg {
+    color: white;
+    margin-right: 8px;
   }
 `;
 
 const ContactButton = styled.a`
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  color: #fff;
+  padding: 12px 22px;
+  font-size: 1em;
+  color: #d8bfd8;
   background-color: rgba(200, 162, 200, 0.5);
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   text-decoration: none;
   text-align: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+  box-sizing: border-box;
 
   &:hover {
-    background-color: #7799ff;
+    background-color: rgba(200, 162, 200, 0.3);
+    color: #d8bfd8;
+    margin-right: 5px; 
+  }
+
+  & svg {
+    color: white;
+    margin-right: 8px;
   }
 `;
 
@@ -465,7 +484,7 @@ const AboutMe = () => {
                 <DownloadIcon
                   style={{ marginRight: "8px", fontSize: "16px" }}
                 />
-                Resume
+                Access My CV
               </div>
             </DownloadButton>
             <ContactButton onClick={handleContactClick}>
@@ -473,7 +492,7 @@ const AboutMe = () => {
                 <ContactMailIcon
                   style={{ marginRight: "8px", fontSize: "16px" }}
                 />
-                Contact
+                Let’s Talk
               </div>
             </ContactButton>
           </ButtonContainer>

@@ -18,6 +18,8 @@ import AboutSummary from "./Components/AboutSummary";
 import SummaryProjects from "./Components/SummaryProjects";
 import ContactSummary from "./Components/ContactSummary";
 import Footer from "./Components/Footer";
+import { ProjectProvider } from "./Context/ProjectContext";
+import DemoPage from "./Components/DemoPage";
 
 const AppContainer = styled.div`
   display: flex;
@@ -76,29 +78,32 @@ function App() {
   return (
     <AppContainer>
       <GlobalStyle />
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/AboutMe" element={<AboutMe />} />
-          <Route path="/tech-stack" element={<TechStack />} />
-          <Route path="/profile-info-box" element={<ProfileInfoBox />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/project-card" element={<ProjectCard />} />
-          <Route path="/typing-effect" element={<TypingEffect />} />
-          <Route
-            path="/rotating-typing-effect"
-            element={<RotatingTypingEffect />}
-          />
-          <Route path="/contactform" element={<ContactForm />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/circles" element={<Circles />} />
-          <Route path="/about-summary" element={<AboutSummary />} />
-          <Route path="/summary-projects" element={<SummaryProjects />} />
-          <Route path="/contact-summary" element={<ContactSummary />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <ProjectProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/AboutMe" element={<AboutMe />} />
+            <Route path="/tech-stack" element={<TechStack />} />
+            <Route path="/profile-info-box" element={<ProfileInfoBox />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/project-card" element={<ProjectCard />} />
+            <Route path="/typing-effect" element={<TypingEffect />} />
+            <Route
+              path="/rotating-typing-effect"
+              element={<RotatingTypingEffect />}
+            />
+            <Route path="/contactform" element={<ContactForm />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/circles" element={<Circles />} />
+            <Route path="/about-summary" element={<AboutSummary />} />
+            <Route path="/summary-projects" element={<SummaryProjects />} />
+            <Route path="/contact-summary" element={<ContactSummary />} />
+            <Route path="/demopage/:projectId" element={<DemoPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ProjectProvider>
     </AppContainer>
   );
 }

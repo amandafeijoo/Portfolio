@@ -1,7 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 import ProjectCard from "./ProjectCard";
+import { ProjectContext } from "../Context/ProjectContext";
 import styled, { keyframes } from "styled-components";
 import Wavify from "react-wavify";
 import TypingEffect from "./TypingEffect";
@@ -283,6 +286,9 @@ const Circle4 = styled(Circle)`
 `;
 
 const Projects = () => {
+  const { projectList, setSelectedProject } = useContext(ProjectContext);
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -324,31 +330,6 @@ const Projects = () => {
     }
   }, [controls, inView]);
 
-  const projectList = [
-    {
-      videoSrc: "/images/fitlifegiphy.mp4",
-      title: "FitLife",
-      comment: "Preliminary project for my master's thesis, graded 8.6/10.",
-      subtitle: "Gym management platform",
-      description:
-        "FitLife enables users to book and manage classes and view trainer profiles. Admins can oversee schedules, reservations, and view key participation stats.",
-      technologies: "React, Node.js, Express, MongoDB",
-      githubLink: "https://github.com/amandafeijoo/FitLife-Project.git",
-      demoLink: "/demo_fitlife_porfolio.mp4", 
-    },
-    {
-      videoSrc: "/images/dinebookergiphy.mp4",
-      title: "DineBooker",
-      comment: "Final thesis project, graded 10/10.",
-      subtitle: "Restaurant reservation platform.",
-      description:
-        "DineBooker enables users to book tables, review restaurants, and earn loyalty points. Restaurant owners can manage bookings, update menus, and engage with guests, all in one platform.",
-      technologies: "React, Django, PostrgeSQL, node.js",
-      githubLink: "https://github.com/amandafeijoo/DineBookerTFM.git",
-      demoLink: "/demo_dinebooker_portfolio.mp4",
-    },
-  ];
-
   return (
     <>
       <Circle1 />
@@ -370,6 +351,10 @@ const Projects = () => {
                     opacity: window.innerWidth <= 768 ? 1 : 0,
                   }}
                   animate={controls}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    navigate(`/demopage/${project.title}`);
+                  }}
                 >
                   <SquareContainer>
                     <WaveBackground>

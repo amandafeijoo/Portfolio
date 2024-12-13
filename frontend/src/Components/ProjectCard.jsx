@@ -1,5 +1,6 @@
 import React from "react";
 import LazyLoad from "react-lazyload";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardMedia,
@@ -32,6 +33,12 @@ const ProjectCard = ({
   githubLink,
   demoLink,
 }) => {
+  const navigate = useNavigate();
+
+  const handleDemoClick = (event) => {
+    event.preventDefault();
+    navigate(`/demopage/${title}`);
+  };
   return (
     <Card
       sx={{
@@ -145,45 +152,57 @@ const ProjectCard = ({
           href={githubLink}
           sx={{
             fontFamily: "'Source Code Pro', monospace",
-            color: "rgba(200, 162, 200, 0.5)",
-            boxShadow: "0 0 10px rgba(192, 192, 192, 0.2)",
-            border: "2px solid rgba(200, 162, 200, 0.6)",
-            padding: "6px 16px",
-            borderRadius: "4px",
+            padding: "12px 22px",
+            backgroundColor: "rgba(200, 162, 200, 0.5)",
+            borderRadius: "12px",
+            color: "#d8bfd8",
+            display: "flex",
+            textDecoration: "none",
+            boxSizing: "border-box",
+            transition:
+              "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+
             "&:hover": {
-              backgroundColor: "rgba(30, 58, 138, 0.2)",
-              color: "#6688cc",
-              borderRadius: "10px",
-              boxShadow: "0 0 10px rgba(192, 192, 192, 0.2)",
-              border: "2px solid rgba(200, 162, 200, 0.5)",
+              backgroundColor: "rgba(200, 162, 200, 0.3)",
+              color: "#d8bfd8",
+            },
+            "& svg": {
+              color: "white",
+              marginRight: "8px",
             },
           }}
-          focusRipple
         >
-          <GitHubIcon sx={{ marginRight: "8px" }} />
-          Ver en GitHub
+          <GitHubIcon />
+          View on GitHub
         </ButtonBase>
         <ButtonBase
           component="a"
           href={demoLink}
+          onClick={handleDemoClick}
           sx={{
-            color: "rgba(200, 162, 200, 0.5)",
-            boxShadow: "0 0 10px rgba(192, 192, 192, 0.2)",
-            border: "2px solid rgba(200, 162, 200, 0.6)",
-            padding: "6px 16px",
-            borderRadius: "10px",
+            fontFamily: "'Source Code Pro', monospace",
+            padding: "12px 22px",
+            backgroundColor: "rgba(200, 162, 200, 0.5)",
+            borderRadius: "12px",
+            color: "#d8bfd8",
+            display: "flex",
+            textDecoration: "none",
+            boxSizing: "border-box",
+            transition:
+              "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+
             "&:hover": {
-              backgroundColor: "rgba(30, 58, 138, 0.2)",
-              color: "#6688cc",
-              borderRadius: "10px",
-              boxShadow: "0 0 10px rgba(192, 192, 192, 0.2)",
-              border: "2px solid rgba(200, 162, 200, 0.5)",
+              backgroundColor: "rgba(200, 162, 200, 0.3)",
+              color: "#d8bfd8",
+            },
+            "& svg": {
+              color: "white",
+              marginRight: "8px",
             },
           }}
-          focusRipple
         >
           <LinkIcon sx={{ marginRight: "8px" }} />
-          Ver Demo
+          View Demo
         </ButtonBase>
       </CardActions>
     </Card>

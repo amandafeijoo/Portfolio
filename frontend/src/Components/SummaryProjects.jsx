@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { ProjectContext } from "../Context/ProjectContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useInView } from "react-intersection-observer";
 import Wavify from "react-wavify";
-import { FaGithub } from "react-icons/fa";
+import Button from "@mui/material/Button";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkIcon from "@mui/icons-material/Link";
 
 const slideInAndGrow = keyframes`
   0% {
@@ -182,16 +187,25 @@ const WaveBackground = styled(Wavify)`
 
 const ProjectComment = styled.p`
   font-size: 0.9em;
-  color: #d8bfd8;  
+  color: #d8bfd8;
   margin-top: 10px;
   @media (max-width: 768px) {
     font-size: 0.8em;
   }
 `;
-const SummaryProjects = ({ projects }) => {
+
+const SummaryProjects = () => {
+  const { projectList } = useContext(ProjectContext);
   const [visibleCards, setVisibleCards] = useState(
-    new Array(projects.length).fill(false)
+    new Array(projectList.length).fill(false)
   );
+
+  const navigate = useNavigate();
+
+  const handleDemoClick = (event, title) => {
+    event.preventDefault();
+    navigate(`/demopage/${title}`);
+  };
 
   const handleInViewChange = (inView, index) => {
     setVisibleCards((prev) => {
@@ -209,7 +223,7 @@ const SummaryProjects = ({ projects }) => {
         solve specific problems and uses various technologies to achieve its
         goals.
       </SummaryText>
-      {projects.map((project, index) => {
+      {projectList.map((project, index) => {
         const { ref, inView } = useInView({
           triggerOnce: false,
           threshold: 0.5,
@@ -235,14 +249,72 @@ const SummaryProjects = ({ projects }) => {
               Tu navegador no soporta el elemento de video.
             </ProjectVideo>
             <ProjectTitle>{project.title}</ProjectTitle>
-            <ProjectSubtitle>{project.subtitle}</ProjectSubtitle>
             <ProjectComment>{project.comment}</ProjectComment>
-            <ProjectDescription>{project.description}</ProjectDescription>
             <ProjectTechnologies>{project.technologies}</ProjectTechnologies>
-            <ProjectLink href={project.githubLink} target="_blank">
-              <FaGithub style={{ marginRight: "5px" }} />
-              GitHub
-            </ProjectLink>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "16px",
+              }}
+            >
+              <Button
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  fontFamily: "'Source Code Pro', monospace",
+                  padding: "12px 22px",
+                  backgroundColor: "rgba(200, 162, 200, 0.3)",
+                  borderRadius: "12px",
+                  color: "#d8bfd8",
+                  display: "flex",
+                  textDecoration: "none",
+                  boxSizing: "border-box",
+                  transition:
+                    "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "rgba(200, 162, 200, 0.5)",
+                    color: "#d8bfd8",
+                  },
+                  "& svg": {
+                    color: "white",
+                    marginRight: "8px",
+                  },
+                }}
+              >
+                <GitHubIcon />
+                View on GitHub
+              </Button>
+              <Button
+                component="a"
+                onClick={(event) => handleDemoClick(event, project.title)}
+                sx={{
+                  fontFamily: "'Source Code Pro', monospace",
+                  padding: "12px 22px",
+                  backgroundColor: "rgba(200, 162, 200, 0.3)",
+                  borderRadius: "12px",
+                  color: "#d8bfd8",
+                  display: "flex",
+                  textDecoration: "none",
+                  boxSizing: "border-box",
+                  transition:
+                    "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "rgba(200, 162, 200, 0.5)",
+                    color: "#d8bfd8",
+                  },
+                  "& svg": {
+                    color: "white",
+                    marginRight: "8px",
+                  },
+                }}
+              >
+                <LinkIcon sx={{ marginRight: "8px" }} />
+                View Demo
+              </Button>
+            </div>
           </ProjectCardContainer>
         );
       })}
