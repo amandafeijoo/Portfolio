@@ -77,16 +77,16 @@ const ContactSummary = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const csrfToken = getCSRFToken();
-
+  
     if (emailError) {
       Swal.fire("Error", "Invalid email address", "error");
       return;
     }
-
+  
     try {
       console.log("Form Data:", formData);
       const response = await axios.post(
-        import.meta.env.VITE_API_URL + "/contact/",
+        "https://portfolio-c6mj.onrender.com/contact/",
         formData,
         {
           headers: {
