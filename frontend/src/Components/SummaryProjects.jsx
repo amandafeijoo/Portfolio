@@ -111,6 +111,7 @@ const ProjectVideo = styled.video`
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
   border: 3px solid #99aaff;
+  object-fit: cover;
 `;
 
 const ProjectTitle = styled.h3`
@@ -247,9 +248,9 @@ const SummaryProjects = () => {
               />
             )}
             <LazyLoad height={200} offset={100}>
-            <ProjectVideo autoPlay={!isMobile} muted loop controls={isMobile}>
+            <ProjectVideo autoPlay muted loop playsInline>
               <source src={project.videoSrc} type="video/mp4" />
-              Tu navegador no soporta el elemento de video.
+              Your browser does not support the video tag.
             </ProjectVideo>
           </LazyLoad>
             <ProjectTitle>{project.title}</ProjectTitle>
