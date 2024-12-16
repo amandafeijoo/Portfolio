@@ -3,10 +3,18 @@ import LazyLoad from "react-lazyload";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  ButtonBase,
+  CardActions,
   CardActionArea,
 } from "@mui/material";
-import styled from "styled-components";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkIcon from "@mui/icons-material/Link";
 import { keyframes } from "@mui/system";
+import styled from "styled-components";
+
 
 const borderAnimation = keyframes`
   0% { border-color: #7799ff; }
@@ -15,6 +23,7 @@ const borderAnimation = keyframes`
   75% { border-color: #ff99ff; }
   100% { border-color: #7799ff; }
 `;
+
 
 const ProjectVideo = styled.video`
   width: 100%;
@@ -41,7 +50,6 @@ const ProjectCard = ({
     event.preventDefault();
     navigate(`/demopage/${title}`);
   };
-
   return (
     <Card
       sx={{
