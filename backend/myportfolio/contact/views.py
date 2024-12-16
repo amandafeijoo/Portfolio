@@ -5,6 +5,8 @@ from rest_framework.parsers import JSONParser
 from .serializers import ContactSerializer
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.core.mail import send_mail
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +22,16 @@ class ContactView(View):
             if serializer.is_valid():
                 serializer.save()
                 logger.info('Contact form submitted successfully.')
+                
+                # Enviar correo electrónico
+                send_mail(
+                    subject=f"Nuevo mensaje de {data.get('name')}",
+                    message=data.get('message'),
+                    from_email=data.get('email'),
+                    recipient_list=[settings.DEFAULT_FROM_EMAIL],
+                    fail_silently=False,
+                )
+                
                 return JsonResponse({'message': 'Your message has been sent successfully!'}, status=201)
             
             logger.warning(f'Serializer errors: {serializer.errors}')
