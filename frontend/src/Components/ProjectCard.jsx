@@ -41,42 +41,64 @@ const ProjectCard = ({
   };
   return (
     <Card
-      sx={{
-        maxWidth: 400,
-        margin: "50px auto",
-        fontFamily: "'Source Code Pro', monospace",
-        backgroundColor: "rgba(30, 58, 138, 0.12)",
-        border: "2px solid rgba(200, 162, 200, 0.5)",
-        borderRadius: "16px",
-        boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.5)",
-        transition: "all 0.3s ease",
+    sx={{
+      maxWidth: 400,
+      margin: "50px auto",
+      fontFamily: "'Source Code Pro', monospace",
+      backgroundColor: "rgba(30, 58, 138, 0.12)",
+      border: "2px solid rgba(200, 162, 200, 0.5)",
+      borderRadius: "16px",
+      boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.5)",
+      transition: "all 0.3s ease",
+      "&:hover": {
+        transform: "scale(1.05)",
+      },
+      "@media (max-width: 480px)": {
         "&:hover": {
-          transform: "scale(1.05)",
+          transform: "none",
         },
-      }}
-    >
-      <CardActionArea>
-      <LazyLoad height={200} offset={100}>
-          <video
-            style={{
-              marginTop: "40px",
-              marginBottom: "40px",
-              boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.2)",
-              borderRadius: "10px",
-              border: "3px solid #99aaff",
-            }}
-            width="100%"
-            height="auto"
-            autoPlay
-            muted
-            loop
-            preload="metadata"
-            poster={posterSrc}
-          >
-            <source src={videoSrc} type="video/mp4" />
-            Tu navegador no soporta el elemento de video.
-          </video>
-        </LazyLoad>
+        video: {
+          width: "100%",
+          height: "auto",
+          marginTop: "20px",
+          marginBottom: "20px",
+        },
+      },
+      "@media (max-width: 390px)": {
+        "&:hover": {
+          transform: "none",
+        },
+        video: {
+          width: "100%",
+          height: "auto",
+          marginTop: "20px",
+          marginBottom: "20px",
+        },
+      },
+    }}
+  >
+    <CardActionArea>
+      <LazyLoad height={200} offset={100} once>
+        <video
+          style={{
+            marginTop: "40px",
+            marginBottom: "40px",
+            boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.2)",
+            borderRadius: "10px",
+            border: "3px solid #99aaff",
+          }}
+          width="100%"
+          height="auto"
+          autoPlay
+          muted
+          loop
+          preload="metadata"
+          poster={posterSrc}
+        >
+          <source src={videoSrc} type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </LazyLoad>
         <CardContent>
           <Typography
             gutterBottom
