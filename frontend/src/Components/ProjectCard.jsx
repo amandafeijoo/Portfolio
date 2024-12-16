@@ -3,15 +3,9 @@ import LazyLoad from "react-lazyload";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  ButtonBase,
-  CardActions,
   CardActionArea,
 } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkIcon from "@mui/icons-material/Link";
+import styled from "styled-components";
 import { keyframes } from "@mui/system";
 
 const borderAnimation = keyframes`
@@ -20,6 +14,14 @@ const borderAnimation = keyframes`
   50% { border-color: #99ff77; }
   75% { border-color: #ff99ff; }
   100% { border-color: #7799ff; }
+`;
+
+const ProjectVideo = styled.video`
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  border: 3px solid #99aaff;
+  object-fit: cover;
 `;
 
 const ProjectCard = ({
@@ -39,6 +41,7 @@ const ProjectCard = ({
     event.preventDefault();
     navigate(`/demopage/${title}`);
   };
+
   return (
     <Card
       sx={{
@@ -80,26 +83,10 @@ const ProjectCard = ({
     >
       <CardActionArea>
         <LazyLoad height={200} offset={100} once>
-          <video
-            style={{
-              marginTop: "40px",
-              marginBottom: "40px",
-              boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.2)",
-              borderRadius: "10px",
-              border: "3px solid #99aaff",
-              width: "100%",
-              height: "auto",
-            }}
-            autoPlay
-            muted
-            loop
-            preload="metadata"
-            poster={posterSrc}
-            controls={false} // Disable controls
-          >
+          <ProjectVideo autoPlay muted loop playsInline preload="metadata" poster={posterSrc}>
             <source src={videoSrc} type="video/mp4" />
             Tu navegador no soporta el elemento de video.
-          </video>
+          </ProjectVideo>
         </LazyLoad>
         <CardContent>
           <Typography
