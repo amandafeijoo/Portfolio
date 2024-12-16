@@ -373,8 +373,14 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const csrfToken = getCSRFToken();
-
+  
+    if (emailError) {
+      Swal.fire("Error", "Invalid email address", "error");
+      return;
+    }
+  
     try {
+      console.log("Form Data:", formData);
       const response = await axios.post(
         "https://portfolio-c6mj.onrender.com/contact/",
         formData,
@@ -384,8 +390,7 @@ const ContactForm = () => {
           },
         }
       );
-      Swal.fire("Success", response.data.message, "success");
-      setFormData({ name: "", email: "", message: "" });
+      Swal.fire("Success", "Thank you for reaching out! Your message has been successfully sent. I will get back to you as soon as possible.", "success");      setFormData({ name: "", email: "", message: "" });
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
@@ -640,7 +645,7 @@ const ContactPage = () => {
               }}
             >
               <a
-                href="mailto:amanda_feijoo@hotmail.com"
+                href="mailto:amandaflores@webcode-art.com"
                 style={{ color: "#d8bfd8", textDecoration: "none" }}
               >
                 amandaflores@webcode-art.com

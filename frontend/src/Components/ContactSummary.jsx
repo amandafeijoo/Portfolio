@@ -94,8 +94,7 @@ const ContactSummary = () => {
           },
         }
       );
-      Swal.fire("Success", response.data.message, "success");
-      setFormData({ name: "", email: "", message: "" });
+      Swal.fire("Success", "Thank you for reaching out! Your message has been successfully sent. I will get back to you as soon as possible.", "success");      setFormData({ name: "", email: "", message: "" });
       navigate("/");
     } catch (error) {
       console.error("Error:", error);

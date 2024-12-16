@@ -56,7 +56,7 @@ const ProjectCard = ({
       }}
     >
       <CardActionArea>
-        <LazyLoad height={200} offset={100}>
+      <LazyLoad height={200} offset={100}>
           <video
             style={{
               marginTop: "40px",
@@ -70,7 +70,7 @@ const ProjectCard = ({
             autoPlay
             muted
             loop
-            preload="auto"
+            preload="metadata"
             poster={posterSrc}
           >
             <source src={videoSrc} type="video/mp4" />
