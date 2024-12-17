@@ -89,40 +89,58 @@ const StyledText = styled.span`
     /* iPad Pro */
     font-size: 4.5em;
     padding: 15px;
-    margin-top: 260px;
+    margin-top: 200px; 
   }
 
   @media (max-width: 834px) and (min-width: 768px) {
     /* iPad Mini */
     font-size: 4.2em;
     padding: 15px;
-    margin-top: 10px;
+    margin-top: -200px;
   }
 
   @media (max-width: 820px) and (min-width: 768px) {
     /* iPad Air */
     font-size: 4.2em;
     padding: 15px;
+    margin-top: -260px; 
   }
 
   @media (max-width: 768px) {
     /* Dispositivos móviles */
     font-size: 3em;
     padding: 10px;
+    margin-top: 0px; 
   }
 
   @media (max-width: 480px) {
     /* Dispositivos móviles pequeños */
     font-size: 1.5em;
-    margin-top: 10px;
+    margin-top: -20px; 
     padding: 5px;
   }
+
+  @media (max-width: 430px) {
+    /* iPhone Pro Max */
+    margin-top: -120px; 
+    font-size: 1.7em;
+  }
+
   @media (max-width: 390px) {
-    margin-top: 100px; /* Ajuste específico para iPhone 14 Pro */
+    /* iPhone Pro */
+    margin-top: -180px; 
+    font-size: 1.2em;
   }
 
   @media (min-width: 1201px) {
     padding: 25px; /* Pantallas grandes */
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    font-size: 1.2em;
+    margin-top: 10px; 
+    padding: 5px;
   }
 `;
 
@@ -139,17 +157,17 @@ const MainContainer = styled.div`
   z-index: 1;
 
   @media (max-width: 768px) {
-    margin-top: 100px;
+    margin-top: 50px; 
     margin-bottom: 50px;
   }
 
   @media (max-width: 480px) {
-    margin-top: 80px;
+    margin-top: 40px; 
     margin-bottom: 25px;
   }
 
   @media (max-width: 1024px) {
-    margin-top: -10px;
+    margin-top: -40px; 
     padding: 15px; /* Tabletas */
   }
 
@@ -163,20 +181,21 @@ const MainContainer = styled.div`
 
   @media (min-width: 768px) and (max-width: 834px) {
     /* iPad Mini */
-    margin-top: 150px;
+    margin-top: 120px; 
     margin-bottom: 80px;
   }
 
   @media (min-width: 834px) and (max-width: 1024px) {
     /* iPad Air */
-    margin-top: 100px;
+    margin-top: 70px; 
     margin-bottom: 70px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    /* iPad Pro */
-    margin-top: 50px !important;
-    margin-bottom: 10px !important;
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    margin-top: 5px; 
+    margin-bottom: 0px;
+    padding: 10px;
   }
 `;
 
@@ -200,12 +219,24 @@ const TextContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 10px; /* Móviles */
-    margin-top: 100px;
+    margin-top: 90px;
   }
 
   @media (max-width: 480px) {
     padding: 5px; /* Móviles pequeños */
-    margin-top: 50px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    padding: 8px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 390px) {
+    /* iPhone Pro */
+    margin-top: 60px; 
+    font-size: 1.2em;
   }
 `;
 
@@ -238,6 +269,23 @@ const StyledP = styled.p`
   @media (min-width: 1201px) {
     padding: 25px; /* Pantallas grandes */
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    font-size: 13px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  @media (max-width: 390px) {
+    /* iPhone Pro */
+    font-size: 13px;
+  }
+  @media (max-width: 430px) {
+    /* iPhone Pro Max */
+    font-size: 13px;
+    margin-top: 5px;
+  }
 `;
 
 const Circle = styled.div`
@@ -265,6 +313,14 @@ const Circle1 = styled(Circle)`
     width: 100px;
     height: 100px;
     top: 50%;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    left: 50%;
   }
 
   @media (max-width: 1024px) {
@@ -295,6 +351,14 @@ const Circle2 = styled(Circle)`
     width: 80px;
     height: 80px;
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 60px;
+    height: 60px;
+    top: 90%;
+    left: 0%;
+  }
 `;
 
 const Circle3 = styled(Circle)`
@@ -314,6 +378,14 @@ const Circle3 = styled(Circle)`
     left: 80%;
     top: 38%;
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 40px;
+    height: 40px;
+    left: 80%;
+    top: 35%;
+  }
 `;
 
 const Circle4 = styled(Circle)`
@@ -330,6 +402,14 @@ const Circle4 = styled(Circle)`
   @media (max-width: 480px) {
     width: 100px;
     height: 100px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 80px;
+    height: 80px;
+    top: 72%;
+    left: 65%;
   }
 `;
 
@@ -350,6 +430,14 @@ const Circle5 = styled(Circle)`
     margin-top: -300px;
     left: 80%;
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 80px;
+    height: 80px;
+    margin-top: -250px;
+    left: 75%;
+  }
 `;
 
 const Circle6 = styled(Circle)`
@@ -366,6 +454,14 @@ const Circle6 = styled(Circle)`
   @media (max-width: 480px) {
     width: 200px;
     height: 200px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 150px;
+    height: 150px;
+    top: 210%;
+    left: 85%;
   }
 `;
 
@@ -384,6 +480,14 @@ const Circle7 = styled(Circle)`
   @media (max-width: 480px) {
     width: 100px;
     height: 100px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 80px;
+    height: 80px;
+    top: 210%;
+    left: 85%;
   }
 `;
 
@@ -404,6 +508,13 @@ const Circle8 = styled(Circle)`
     height: 100px;
     margin-top: -170px;
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 10px;
+    height: 120px;
+    margin-top: -150px;
+  }
 `;
 
 const Circle9 = styled(Circle)`
@@ -422,6 +533,13 @@ const Circle9 = styled(Circle)`
     height: 200px;
     margin-top: 50px;
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 180px;
+    height: 180px;
+    margin-top: 40px;
+  }
 `;
 
 const Circle10 = styled(Circle)`
@@ -438,6 +556,12 @@ const Circle10 = styled(Circle)`
   @media (max-width: 480px) {
     width: 100px;
     height: 100px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 90px;
+    height: 90px;
   }
 `;
 
@@ -457,6 +581,12 @@ const Circle11 = styled(Circle)`
     width: 200px;
     height: 200px;
   }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 180px;
+    height: 180px;
+  }
 `;
 
 const Circle12 = styled(Circle)`
@@ -473,6 +603,12 @@ const Circle12 = styled(Circle)`
   @media (max-width: 480px) {
     width: 200px;
     height: 200px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 180px;
+    height: 180px;
   }
 `;
 

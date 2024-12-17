@@ -7,92 +7,72 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 5px 10px;
   background-color: #ff99aa;
   position: fixed;
   top: 0;
   width: 100%;
+  height: 60px;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 480px) {
-    padding: 5px; /* Móviles pequeños */
-    flex-direction: column;
-  }
-
   @media (max-width: 768px) {
-    padding: 10px; /* Móviles */
     flex-direction: column;
-  }
-
-  @media (max-width: 1024px) {
-    padding: 15px; /* Tabletas */
-    flex-direction: column;
-  }
-
-  @media (max-width: 1200px) {
-    padding: 20px; /* Pantallas pequeñas */
-  }
-
-  @media (min-width: 1201px) {
-    padding: 25px; /* Pantallas grandes */
+    align-items: center;
+    height: auto;
   }
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #000000;
-  margin: 0 10px;
+  margin: 0 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   &:hover {
     color: #ffffff;
-  }
-
-  @media (max-width: 768px) {
-    margin: 5px 0;
-  }
-
-  @media (max-width: 1024px) {
-    margin: 10px 0; /* Ajuste para tabletas */
   }
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 10px;
-  margin-right: 30px;
+  gap: 5px;
+  margin-right: 10px;
 
   @media (max-width: 768px) {
     margin-right: 0;
-    margin-top: 10px;
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 15px; /* Ajuste para tabletas */
+    margin-top: 12px;
+    justify-content: center;
+    width: 100%;
   }
 `;
 
 const SocialLink = styled.a`
   color: #000000;
   text-decoration: none;
-  margin-left: 10px;
+  margin-left: 5px;
 
   &:hover {
     color: #ffffff;
+  }
+
+  svg {
+    @media (max-width: 768px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 10px;
+
   @media (max-width: 768px) {
     justify-content: center;
     width: 100%;
-  }
-
-  @media (max-width: 1024px) {
-    justify-content: center;
-    width: 100%; /* Ajuste para tabletas */
   }
 `;
 
@@ -102,15 +82,10 @@ const CenterSection = styled.div`
   flex-grow: 1;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
     width: 100%;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Ajuste para tabletas */
   }
 `;
 

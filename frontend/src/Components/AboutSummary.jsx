@@ -26,25 +26,25 @@ const SummaryContainer = styled.div`
   @media (max-width: 834px) and (min-width: 768px) {
     /* iPad Mini */
     max-width: 60%;
-    padding: 30px; 
-    margin-top: -100px; 
+    padding: 30px;
+    margin-top: -100px;
     margin-bottom: 140px;
   }
 
   @media (max-width: 1024px) and (min-width: 834px) {
     /* iPad Air */
-    max-width: 70% !important; 
-    padding: 20px !important; 
-    margin-top: -200px !important; 
-    margin-bottom: 300px !important; 
+    max-width: 70% !important;
+    padding: 20px !important;
+    margin-top: -200px !important;
+    margin-bottom: 300px !important;
   }
 
   @media (max-width: 1366px) and (min-width: 1024px) {
     /* iPad Pro */
     max-width: 70% !important;
-    padding: 20px !important; 
-    margin-top: -80px !important; 
-    margin-bottom: 100px !important; 
+    padding: 20px !important;
+    margin-top: -80px !important;
+    margin-bottom: 100px !important;
   }
 
   @media (max-width: 768px) {
@@ -57,8 +57,16 @@ const SummaryContainer = styled.div`
   @media (max-width: 480px) {
     width: 70% !important;
     padding: 6px !important;
-    margin-top: -280px !important; 
+    margin-top: -280px !important;
     margin-bottom: 80px !important;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    width: 80% !important;
+    padding: 10px !important;
+    margin-top: -100px !important;
+    margin-bottom: 50px !important;
   }
 `;
 
@@ -77,6 +85,11 @@ const SummaryText = styled.p`
   }
 
   @media (max-width: 480px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
     font-size: 12px;
   }
 

@@ -13,7 +13,6 @@ const float = keyframes`
   50% { transform: translateY(-20px); }
   100% { transform: translateY(0); }
 `;
-
 const AboutContainer = styled.div`
   margin-top: 100px;
   display: grid;
@@ -22,6 +21,7 @@ const AboutContainer = styled.div`
   padding: 20px;
   border: 2px solid #99aaff;
   position: relative;
+  box-sizing: border-box;
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
@@ -45,8 +45,37 @@ const AboutContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     padding: 20px;
   }
-`;
 
+  @media (max-width: 430px) {
+    /* iPhone Pro Max */
+    margin-top: 150px; 
+  }
+
+  @media (max-width: 390px) {
+    /* iPhone Pro */
+    margin-top: 140px; 
+  }
+
+  @media (max-width: 375px) {
+    /* iPhone SE */
+    margin-top: 130px; 
+  }
+
+  @media (max-width: 820px) and (min-width: 768px) {
+    /* iPad Air */
+    margin-top: 120px; 
+  }
+
+  @media (max-width: 834px) and (min-width: 768px) {
+    /* iPad Mini */
+    margin-top: 120px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    /* iPad Pro */
+    margin-top: 120px; 
+  }
+`;
 const Description = styled.p`
   text-align: justify;
   line-height: 1.6;
@@ -186,6 +215,24 @@ const TextContainer = styled.div`
     border-right: none;
     border-bottom: 2px solid #99aaff;
   }
+
+  @media (max-width: 820px) and (min-width: 768px) {
+    /* iPad Air */
+    border-right: none;
+    border-bottom: 2px solid #99aaff;
+  }
+
+  @media (max-width: 834px) and (min-width: 768px) {
+    /* iPad Mini */
+    border-right: none;
+    border-bottom: 2px solid #99aaff;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    /* iPad Pro */
+    border-right: none;
+    border-bottom: 2px solid #99aaff;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -217,6 +264,14 @@ const ProfileImage = styled.img`
     width: 250px;
     height: 250px;
   }
+
+  @media (min-width: 1025px) and (max-width: 1366px) {
+    /* iPad Pro */
+    width: 550px;
+    height: 550px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -243,7 +298,7 @@ const DownloadButton = styled.a`
   &:hover {
     background-color: rgba(200, 162, 200, 0.3);
     color: #d8bfd8;
-    margin-right: 5px; 
+    margin-right: 5px; /* Reduce margin change */
   }
 
   & svg {
@@ -269,7 +324,7 @@ const ContactButton = styled.a`
   &:hover {
     background-color: rgba(200, 162, 200, 0.3);
     color: #d8bfd8;
-    margin-right: 5px; 
+    margin-right: 5px; /* Reduce margin change */
   }
 
   & svg {
@@ -389,6 +444,14 @@ const MessageContainer = styled.div`
     height: 120px;
     font-size: 1.2em;
   }
+
+  @media (min-width: 1025px) and (max-width: 1366px) {
+    /* iPad Pro */
+    width: 500px;
+    height: 150px;
+    font-size: 1.7em;
+    margin-top: -300px;
+  }
 `;
 
 const DesktopMessageContainer = styled(MessageContainer)`
@@ -398,10 +461,10 @@ const DesktopMessageContainer = styled(MessageContainer)`
 `;
 
 const MobileMessageContainer = styled(MessageContainer)`
-  display: none; /* Oculta por defecto */
+  display: none; 
 
   @media (max-width: 480px) {
-    display: flex; /* Muestra en dispositivos móviles */
+    display: flex; 
   }
 `;
 

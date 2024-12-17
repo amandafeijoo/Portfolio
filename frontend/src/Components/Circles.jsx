@@ -165,11 +165,11 @@ const Circles = () => {
           isIPadAir
             ? 100
             : isIPadMini
-            ? -210
+            ? -330
             : isTablet
             ? -252
             : isMobile
-            ? -190
+            ? -320
             : -240
         )}
       />
@@ -201,11 +201,11 @@ const Circles = () => {
           isIPadAir
             ? 220
             : isIPadMini
-            ? -135
+            ? -245
             : isTablet
             ? -160
             : isMobile
-            ? -120
+            ? -250
             : -175
         )}
       />
@@ -237,11 +237,11 @@ const Circles = () => {
           isIPadAir
             ? 283
             : isIPadMini
-            ? -25
+            ? -150
             : isTablet
             ? -48
             : isMobile
-            ? -65
+            ? -198
             : -100
         )}
       />

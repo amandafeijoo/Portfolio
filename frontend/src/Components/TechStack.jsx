@@ -141,8 +141,8 @@ const KnowledgeBar = styled.div`
     top: 0;
     left: 0;
     height: 100%;
-    width: ${(props) => props.knowledge * 20}%;
-    background-color: ${(props) => props.color};
+    width: ${({ $knowledge }) => $knowledge * 20}%;
+    background-color: ${({ $color }) => $color};
   }
 `;
 
@@ -152,15 +152,27 @@ const GridContainer = styled.div`
   grid-template-rows: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
+  max-width: 100%;
+
+  @media (max-width: 1366px) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 15px;
+    max-width: calc(100% - 30px);
+  }
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    padding: 10px;
+    max-width: calc(100% - 20px);
   }
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
+    padding: 0px;
+    max-width: 100%;
   }
 `;
 
@@ -177,6 +189,11 @@ const GridItem = styled.div`
   grid-column: ${(props) => (props.span ? `span ${props.span}` : "auto")};
   &:hover {
     background-color: ${(props) => props.color || "transparent"};
+  }
+
+  @media (max-width: 1366px) {
+    width: ${(props) => (props.large ? "280px" : "140px")};
+    height: ${(props) => (props.large ? "130px" : "120px")};
   }
 
   @media (max-width: 1024px) {
@@ -203,6 +220,11 @@ const TechLogo = styled.img`
   border-radius: ${(props) => (props.needsBackground ? "50%" : "0")};
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media (max-width: 1366px) {
+    width: ${(props) => (props.needsBackground ? "45px" : "55px")};
+    height: ${(props) => (props.needsBackground ? "45px" : "55px")};
   }
 
   @media (max-width: 1024px) {
@@ -280,6 +302,8 @@ const TechStack = () => {
           color={tech.color}
           onMouseEnter={() => handleMouseEnter(tech.name)}
           onMouseLeave={handleMouseLeave}
+          $large={true}
+          $span={2}
         >
           <TechLogo
             src={tech.logo}
@@ -291,7 +315,7 @@ const TechStack = () => {
               tech.name
             )}
           />
-          <KnowledgeBar knowledge={tech.knowledge} color={tech.color} />
+          <KnowledgeBar $knowledge={tech.knowledge} $color={tech.color} />
         </GridItem>
       ))}
     </GridContainer>

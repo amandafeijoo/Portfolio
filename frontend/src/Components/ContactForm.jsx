@@ -124,7 +124,7 @@ const LargeSection = styled.section`
     width: 80vw;
     height: 75vh;
     padding: 18px;
-    margin-top: 120px;
+    margin-top: 20px;
   }
 
   @media (max-width: 834px) and (min-width: 768px) and (min-height: 1024px) and (max-height: 1024px) {
@@ -132,7 +132,7 @@ const LargeSection = styled.section`
     width: 75vw;
     height: 105vh;
     padding: 18px;
-    margin-top: 150px;
+    margin-top: 30px;
   }
 
   @media (max-width: 820px) and (min-width: 820px) and (min-height: 1180px) and (max-height: 1180px) {
@@ -140,23 +140,49 @@ const LargeSection = styled.section`
     width: 75vw;
     height: 100vh;
     padding: 18px;
-    margin-top: 130px;
+    margin-top: 25px;
   }
 
   @media (max-width: 768px) {
     width: 80vw;
     height: 70vh;
     padding: 15px;
+    margin-top: 30px;
   }
 
   @media (max-width: 480px) {
     width: 90vw;
     height: 70vh;
     padding: 10px;
-    margin-top: 170px;
+    margin-top: 40px;
     margin-bottom: 0;
   }
+
+  @media (max-width: 414px) and (min-width: 375px) and (min-height: 812px) and (max-height: 812px) {
+    /* iPhone X, iPhone XS, iPhone 11 Pro */
+    width: 85vw;
+    height: 65vh;
+    padding: 12px;
+    margin-top: 35px;
+  }
+
+  @media (max-width: 375px) and (min-width: 320px) and (min-height: 568px) and (max-height: 568px) {
+    /* iPhone SE */
+    width: 90vw;
+    height: 60vh;
+    padding: 8px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 414px) and (min-width: 375px) and (min-height: 896px) and (max-height: 896px) {
+    /* iPhone XR, iPhone 11, iPhone 11 Pro Max */
+    width: 85vw;
+    height: 70vh;
+    padding: 15px;
+    margin-top: 30px;
+  }
 `;
+
 const SmallSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -373,12 +399,12 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const csrfToken = getCSRFToken();
-  
+
     if (emailError) {
       Swal.fire("Error", "Invalid email address", "error");
       return;
     }
-  
+
     try {
       console.log("Form Data:", formData);
       const response = await axios.post(
@@ -390,7 +416,12 @@ const ContactForm = () => {
           },
         }
       );
-      Swal.fire("Success", "Thank you for reaching out! Your message has been successfully sent. I will get back to you as soon as possible.", "success");      setFormData({ name: "", email: "", message: "" });
+      Swal.fire(
+        "Success",
+        "Thank you for reaching out! Your message has been successfully sent. I will get back to you as soon as possible.",
+        "success"
+      );
+      setFormData({ name: "", email: "", message: "" });
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
