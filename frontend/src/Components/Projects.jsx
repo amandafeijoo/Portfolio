@@ -152,34 +152,47 @@ const StyledText = styled.span`
   font-family: "Source Code Pro", monospace;
   text-shadow: 0 0 3px #fff;
   color: #fff;
-  margin-top: 33px;
+  margin-top: 20px; /* Ajuste general */
   margin-bottom: 40px;
 
   @media (max-width: 1024px) {
     font-size: 4em;
+    margin-top: 15px; /* Ajuste para pantallas más pequeñas */
   }
 
   @media (max-width: 834px) and (min-width: 768px) {
     /* iPad Mini */
     font-size: 3.5em;
-    margin-top: 100px;
+    margin-top: 50px; /* Ajuste para iPad Mini */
   }
 
   @media (max-width: 1024px) and (min-width: 834px) {
     /* iPad Air */
     font-size: 4em;
-    margin-top: 40px;
+    margin-top: 30px; /* Ajuste para iPad Air */
   }
 
   @media (min-width: 1024px) and (max-width: 1366px) {
     /* iPad Pro */
     font-size: 4.5em;
-    margin-top: 150px;
+    margin-top: 100px; /* Ajuste para iPad Pro */
   }
 
   @media (max-width: 768px) {
     font-size: 2.5em;
-    margin-top: 220px;
+    margin-top: 100px; /* Ajuste para pantallas más pequeñas */
+  }
+
+/* iPhone SE */
+@media (max-width: 375px) and (min-height: 667px) {
+  font-size: 2.5em;
+  margin-top: 100px
+}
+
+  /* iPhone 14 Pro */
+  @media (max-width: 393px) and (min-height: 852px) {
+    font-size: 2.9em;
+    margin-top: 120px; /* Ajuste para iPhone 14 Pro */
   }
 `;
 

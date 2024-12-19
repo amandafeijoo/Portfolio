@@ -31,6 +31,7 @@ const ProjectVideo = styled.video`
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
   border: 3px solid #99aaff;
   object-fit: cover;
+  margin-bottom: 40px;
 `;
 
 const ProjectCard = ({

@@ -82,65 +82,47 @@ const StyledText = styled.span`
   font-family: "Source Code Pro", monospace;
   text-shadow: 0 0 3px #fff;
   color: #fff;
-  margin-top: 33px;
-  margin-bottom: 20px;
+  margin-top: 20px; /* Ajuste general */
+  margin-bottom: 40px;
 
-  @media (max-width: 1024px) and (min-width: 768px) {
-    /* iPad Pro */
-    font-size: 4.5em;
-    padding: 15px;
-    margin-top: 200px; 
+  @media (max-width: 1024px) {
+    font-size: 4em;
+    margin-top: 15px; /* Ajuste para pantallas más pequeñas */
   }
 
   @media (max-width: 834px) and (min-width: 768px) {
     /* iPad Mini */
-    font-size: 4.2em;
-    padding: 15px;
-    margin-top: -200px;
+    font-size: 3.5em;
+    margin-top: 50px; /* Ajuste para iPad Mini */
   }
 
-  @media (max-width: 820px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 834px) {
     /* iPad Air */
-    font-size: 4.2em;
-    padding: 15px;
-    margin-top: -260px; 
+    font-size: 4em;
+    margin-top: 30px; /* Ajuste para iPad Air */
+  }
+
+  @media (min-width: 1024px) and (max-width: 1366px) {
+    /* iPad Pro */
+    font-size: 4.5em;
+    margin-top: 100px; /* Ajuste para iPad Pro */
   }
 
   @media (max-width: 768px) {
-    /* Dispositivos móviles */
-    font-size: 3em;
-    padding: 10px;
-    margin-top: 0px; 
+    font-size: 2.5em;
+    margin-top: 100px; /* Ajuste para pantallas más pequeñas */
   }
 
-  @media (max-width: 480px) {
-    /* Dispositivos móviles pequeños */
-    font-size: 1.5em;
-    margin-top: -20px; 
-    padding: 5px;
+  /* iPhone SE */
+  @media (max-width: 375px) and (min-height: 667px) {
+    font-size: 2.5em;
+    margin-top: 140px; /* Ajuste para iPhone SE */
   }
 
-  @media (max-width: 430px) {
-    /* iPhone Pro Max */
-    margin-top: -120px; 
-    font-size: 1.7em;
-  }
-
-  @media (max-width: 390px) {
-    /* iPhone Pro */
-    margin-top: -180px; 
-    font-size: 1.2em;
-  }
-
-  @media (min-width: 1201px) {
-    padding: 25px; /* Pantallas grandes */
-  }
-
-  @media (max-width: 375px) {
-    /* iPhone SE */
-    font-size: 1.2em;
-    margin-top: 10px; 
-    padding: 5px;
+  /* iPhone 14 Pro */
+  @media (max-width: 393px) and (min-height: 852px) {
+    font-size: 2.9em;
+    margin-top: 220px; /* Ajuste para iPhone 14 Pro */
   }
 `;
 
