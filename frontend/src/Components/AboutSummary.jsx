@@ -68,6 +68,14 @@ const SummaryContainer = styled.div`
     margin-top: -100px !important;
     margin-bottom: 50px !important;
   }
+
+  @media (max-width: 430px) {
+    /* iPhone 14 Pro */
+    width: 80% !important;
+    padding: 10px !important;
+    margin-top: -20px !important; /* Más abajo */
+    margin-bottom: 50px !important;
+  }
 `;
 
 const SummaryText = styled.p`

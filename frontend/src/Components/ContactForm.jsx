@@ -292,6 +292,16 @@ const ContactSection = styled.div`
     padding: 15px;
     margin-top: 0px;
   }
+
+  @media (max-width: 430px) {
+    /* iPhone 14 Pro */
+    width: 100vw;
+    height: 90vh; /* Un poco más largo */
+    padding: 10px;
+    margin-top: 120px;
+    top: 0;
+    margin-bottom: 0;
+  }
 `;
 
 const ContactInfo = styled.div`
@@ -491,6 +501,14 @@ const ContactForm = () => {
             p: 1,
             mt: -21,
             mb: 0,
+            border: "1px solid #ff7799",
+            boxShadow: "0 0 5px rgba(192, 192, 192, 0.5)",
+          },
+          "@media (max-width: 430px)": {
+            // iPhone Pro 14
+            p: 2,
+            mt: -15,
+            mb: 2,
             border: "1px solid #ff7799",
             boxShadow: "0 0 5px rgba(192, 192, 192, 0.5)",
           },
