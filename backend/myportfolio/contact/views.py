@@ -31,10 +31,9 @@ class ContactView(View):
                 send_mail(
                     subject=email_subject,
                     message=email_message,
-                    from_email=settings.DEFAULT_FROM_EMAIL,  # Your email
+                    from_email=data.get('email'),  # User's email
                     recipient_list=[settings.DEFAULT_FROM_EMAIL],
-                    fail_silently=False,
-                    reply_to=[data.get('email')],  # User's email
+                    fail_silently=False
                 )
                 
                 return JsonResponse({'message': 'Your message has been sent successfully!'}, status=201)
