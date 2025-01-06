@@ -23,11 +23,15 @@ class ContactView(View):
                 serializer.save()
                 logger.info('Contact form submitted successfully.')
                 
+                # Construir el mensaje de correo electrónico
+                email_subject = f"New message from {data.get('name')}"
+                email_message = f"Message: {data.get('message')}\n\nFrom: {data.get('name')} <{data.get('email')}>"
+                
                 # Enviar correo electrónico
                 send_mail(
-                    subject=f"New message from {data.get('name')}",
-                    message=data.get('message'),
-                    from_email=data.get('email'),  # User's email
+                    subject=email_subject,
+                    message=email_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,  # Your email
                     recipient_list=[settings.DEFAULT_FROM_EMAIL],
                     fail_silently=False,
                     reply_to=[data.get('email')],  # User's email
