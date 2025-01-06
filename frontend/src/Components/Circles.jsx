@@ -44,17 +44,23 @@ const Circles = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const largeCircleStart = { top: 200, left: 50 };
-  const mediumCircleStart = { top: 450, left: 600 };
-  const smallCircleStart = { top: 400, left: 750 };
+  const largeCircleStart = { top: 250, left: 90 };
+  const mediumCircleStart = { top: 450, left: 520 };
+  const smallCircleStart = { top: 300, left: 700 };
 
   const targetTop = window.innerHeight * 1.18;
   const targetLeft = window.innerWidth / 2;
 
-  const isIpadPro =
-    window.innerWidth === 1024 &&
-    window.innerHeight === 1366 &&
-    window.devicePixelRatio === 2;
+  const isIPadPro =
+    (window.innerWidth === 1024 &&
+      window.innerHeight === 1366 &&
+      window.devicePixelRatio === 2) ||
+    (window.innerWidth === 834 &&
+      window.innerHeight === 1194 &&
+      window.devicePixelRatio === 2) ||
+    (window.innerWidth === 820 &&
+      window.innerHeight === 1180 &&
+      window.devicePixelRatio === 2);
 
   const isIPadMini =
     window.innerWidth === 768 &&
@@ -67,67 +73,82 @@ const Circles = () => {
     window.devicePixelRatio === 2;
 
   const isIPhone14Pro =
-    window.innerWidth === 413 &&
-    window.innerHeight === 895 &&
-    window.devicePixelRatio === 2;
+    window.innerWidth === 430 && 
+    window.innerHeight === 932 && 
+    window.devicePixelRatio === 3; 
 
   const isMobile = window.innerWidth < 768;
 
-  console.log(`window.innerWidth: ${window.innerWidth}`);
-  console.log(`window.innerHeight: ${window.innerHeight}`);
-  console.log(`window.devicePixelRatio: ${window.devicePixelRatio}`);
-  console.log(`isIpadPro: ${isIpadPro}`);
-  console.log(`isIPadMini: ${isIPadMini}`);
-  console.log(`isIPadAir: ${isIPadAir}`);
-  console.log(`isIPhone14Pro: ${isIPhone14Pro}`);
-  console.log(`isMobile: ${isMobile}`);
+  console.log("Device detection:", {
+    isIPadPro,
+    isIPadMini,
+    isIPadAir,
+    isIPhone14Pro,
+    isMobile,
+  });
 
-  if (isIpadPro) {
+  if (isIPadPro) {
     largeCircleStart.top += 150;
-    mediumCircleStart.top += 100;
+    mediumCircleStart.top += 240;
     smallCircleStart.top += 100;
-  } else if (isIPadMini) {
-    largeCircleStart.top += 140;
-    mediumCircleStart.top += 80;
-    smallCircleStart.top += 80;
 
-    largeCircleStart.left -= 50; 
-    mediumCircleStart.left -= 280; 
-    smallCircleStart.left -= 350; 
+    largeCircleStart.left -= 20;
+    mediumCircleStart.left -= 400;
+    smallCircleStart.left -= 240;
+  } else if (isIPadMini) {
+    largeCircleStart.top += 20;
+    mediumCircleStart.top += 10;
+    smallCircleStart.top += 20;
+
+    largeCircleStart.left -= 20;
+    mediumCircleStart.left -= 410;
+    smallCircleStart.left -= 355;
   } else if (isIPadAir) {
     largeCircleStart.top += 130;
-    mediumCircleStart.top += 200;
+    mediumCircleStart.top += 100;
     smallCircleStart.top += 600;
 
-    largeCircleStart.left -= 50; 
-    mediumCircleStart.left -= 280; 
-    smallCircleStart.left -= 350; 
+    largeCircleStart.left -= 50;
+    mediumCircleStart.left -= 400;
+    smallCircleStart.left -= 350;
   } else if (isIPhone14Pro) {
-    largeCircleStart.top += 120;
+    largeCircleStart.top += 110;
     mediumCircleStart.top += 90;
     smallCircleStart.top += 90;
 
-    largeCircleStart.left -= 30; 
-    mediumCircleStart.left -= 250; 
-    smallCircleStart.left -= 300; 
+    largeCircleStart.left -= 30;
+    mediumCircleStart.left -= 250;
+    smallCircleStart.left -= 300;
+
+    console.log("iPhone 14 Pro adjustments:", {
+      largeCircleStart,
+      mediumCircleStart,
+      smallCircleStart,
+    });
   } else if (isMobile) {
     largeCircleStart.top += 130;
     mediumCircleStart.top += 120;
     smallCircleStart.top += 100;
 
-    largeCircleStart.left -= 20; 
-    mediumCircleStart.left -= 350; 
-    smallCircleStart.left -= 770; 
+    largeCircleStart.left -= 20;
+    mediumCircleStart.left -= 350;
+    smallCircleStart.left -= 770;
   } else {
-    // Default case for other devices
-    largeCircleStart.top += 100;
-    mediumCircleStart.top += 100;
-    smallCircleStart.top += 100;
+    //web
+    largeCircleStart.top -= 100;
+    mediumCircleStart.top -= 100;
+    smallCircleStart.top -= 100;
 
-    largeCircleStart.left -= 50; 
-    mediumCircleStart.left -= 200; 
-    smallCircleStart.left -= 300; 
+    largeCircleStart.left -= 50;
+    mediumCircleStart.left -= 200;
+    smallCircleStart.left -= 300;
   }
+
+  console.log("Circle positions:", {
+    largeCircleStart,
+    mediumCircleStart,
+    smallCircleStart,
+  });
 
   const getCircleStyle = (
     initialTop,
@@ -158,135 +179,153 @@ const Circles = () => {
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
   return (
-  <>
-    <Circle
-      size={
-        isIPhone14Pro
-          ? 320
-          : isIPadAir
-          ? 550
-          : isIPadMini
-          ? 500
-          : isTablet
-          ? 700
-          : isMobile
-          ? 300
-          : 400
-      }
-      backgroundColor="rgba(200, 162, 200, 0.6)"
-      {...getCircleStyle(
-        largeCircleStart.top,
-        largeCircleStart.left,
-        isIPhone14Pro
-          ? -160
-          : isIPadAir
-          ? -355
-          : isIPadMini
-          ? -301
-          : isTablet
-          ? -438
-          : isMobile
-          ? -144
-          : -482,
-        isIPhone14Pro
-          ? -280
-          : isIPadAir
-          ? 150
-          : isIPadMini
-          ? -280
-          : isTablet
-          ? -202
-          : isMobile
-          ? -270
-          : -190
-      )}
-    />
-    <Circle
-      size={
-        isIPhone14Pro
-          ? 260
-          : isIPadAir
-          ? 400
-          : isIPadMini
-          ? 430
-          : isTablet
-          ? 600
-          : isMobile
-          ? 245
-          : 350
-      }
-      backgroundColor="rgba(180, 140, 180, 0.4)"
-      {...getCircleStyle(
-        mediumCircleStart.top,
-        mediumCircleStart.left,
-        isIPhone14Pro
-          ? -130
-          : isIPadAir
-          ? -280
-          : isIPadMini
-          ? -265
-          : isTablet
-          ? -386
-          : isMobile
-          ? -118
-          : -456,
-        isIPhone14Pro
-          ? -200
-          : isIPadAir
-          ? 270
-          : isIPadMini
-          ? -195
-          : isTablet
-          ? -110
-          : isMobile
-          ? -200
-          : -125
-      )}
-    />
-    <Circle
-      size={
-        isIPhone14Pro
-          ? 130
-          : isIPadAir
-          ? 250
-          : isIPadMini
-          ? 230
-          : isTablet
-          ? 370
-          : isMobile
-          ? 120
-          : 200
-      }
-      backgroundColor="rgba(160, 120, 160, 0.3)"
-      {...getCircleStyle(
-        smallCircleStart.top,
-        smallCircleStart.left,
-        isIPhone14Pro
-          ? -60
-          : isIPadAir
-          ? -201
-          : isIPadMini
-          ? -165
-          : isTablet
-          ? -267
-          : isMobile
-          ? -52
-          : -380,
-        isIPhone14Pro
-          ? -190 // Ajuste para bajar más el círculo pequeño
-          : isIPadAir
-          ? 333
-          : isIPadMini
-          ? -100
-          : isTablet
-          ? 2
-          : isMobile
-          ? -148
-          : -50
-      )}
-    />
-  </>
-);
+    <>
+      <Circle
+        size={
+          isIPhone14Pro
+            ? 320
+            : isIPadPro
+            ? 720
+            : isIPadAir
+            ? 530
+            : isIPadMini
+            ? 520
+            : isTablet
+            ? 700
+            : isMobile
+            ? 300
+            : 400
+        }
+        backgroundColor="rgba(200, 162, 200, 0.6)"
+        {...getCircleStyle(
+          largeCircleStart.top,
+          largeCircleStart.left,
+          isIPhone14Pro
+            ? -160
+            : isIPadPro
+            ? -445
+            : isIPadAir
+            ? -355
+            : isIPadMini
+            ? -317
+            : isTablet
+            ? -438
+            : isMobile
+            ? -144
+            : -482,
+          isIPhone14Pro
+            ? -330
+            : isIPadPro
+            ? -350
+            : isIPadAir
+            ? -5
+            : isIPadMini
+            ? -340
+            : isTablet
+            ? -252
+            : isMobile
+            ? -320
+            : -240
+        )}
+      />
+      <Circle
+        size={
+          isIPhone14Pro
+            ? 260
+            : isIPadPro
+            ? 520
+            : isIPadAir
+            ? 400
+            : isIPadMini
+            ? 432
+            : isTablet
+            ? 600
+            : isMobile
+            ? 245
+            : 350
+        }
+        backgroundColor="rgba(180, 140, 180, 0.4)"
+        {...getCircleStyle(
+          mediumCircleStart.top,
+          mediumCircleStart.left,
+          isIPhone14Pro
+            ? -130
+            : isIPadPro
+            ? -345
+            : isIPadAir
+            ? -290
+            : isIPadMini
+            ? -272
+            : isTablet
+            ? -386
+            : isMobile
+            ? -118
+            : -456,
+          isIPhone14Pro
+            ? -250
+            : isIPadPro
+            ? -200
+            : isIPadAir
+            ? 105
+            : isIPadMini
+            ? -250
+            : isTablet
+            ? -160
+            : isMobile
+            ? -250
+            : -175
+        )}
+      />
+      <Circle
+        size={
+          isIPhone14Pro
+            ? 130
+            : isIPadPro
+            ? 300
+            : isIPadAir
+            ? 250
+            : isIPadMini
+            ? 230
+            : isTablet
+            ? 370
+            : isMobile
+            ? 120
+            : 200
+        }
+        backgroundColor="rgba(160, 120, 160, 0.3)"
+        {...getCircleStyle(
+          smallCircleStart.top,
+          smallCircleStart.left,
+          isIPhone14Pro
+            ? -60
+            : isIPadPro
+            ? -230
+            : isIPadAir
+            ? -212
+            : isIPadMini
+            ? -165
+            : isTablet
+            ? -267
+            : isMobile
+            ? -52
+            : -380,
+          isIPhone14Pro
+            ? -240
+            : isIPadPro
+            ? -152
+            : isIPadAir
+            ? 175
+            : isIPadMini
+            ? -150
+            : isTablet
+            ? -48
+            : isMobile
+            ? -198
+            : -100
+        )}
+      />
+    </>
+  );
 };
 
 export default Circles;

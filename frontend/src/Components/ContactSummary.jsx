@@ -1,11 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { Box, Typography, Container, TextField, Button } from "@mui/material";
-import { motion, useAnimation } from "framer-motion";
+import React, { useState } from "react";
+import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Container, Box, Typography, TextField, Button } from "@mui/material";
+import { motion } from "framer-motion";
 
 const ContactSummary = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,7 @@ const ContactSummary = () => {
     message: "",
   });
   const [emailError, setEmailError] = useState("");
+  const [formError, setFormError] = useState("");
 
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -77,12 +78,17 @@ const ContactSummary = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const csrfToken = getCSRFToken();
-  
+
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormError("All fields are required");
+      return;
+    }
+
     if (emailError) {
       Swal.fire("Error", "Invalid email address", "error");
       return;
     }
-  
+
     try {
       console.log("Form Data:", formData);
       const response = await axios.post(
@@ -94,7 +100,12 @@ const ContactSummary = () => {
           },
         }
       );
-      Swal.fire("Success", "Thank you for reaching out! Your message has been successfully sent. I will get back to you as soon as possible.", "success");      setFormData({ name: "", email: "", message: "" });
+      Swal.fire(
+        "Success",
+        "Thank you for reaching out! Your message has been successfully sent. I will get back to you as soon as possible.",
+        "success"
+      );
+      setFormData({ name: "", email: "", message: "" });
       navigate("/");
     } catch (error) {
       console.error("Error:", error);

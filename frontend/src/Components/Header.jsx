@@ -80,6 +80,7 @@ const CenterSection = styled.div`
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  gap: 20px;
 
   @media (max-width: 768px) {
     flex-direction: row;
