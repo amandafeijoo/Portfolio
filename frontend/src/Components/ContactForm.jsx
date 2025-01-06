@@ -391,6 +391,15 @@ const ContactForm = () => {
       ...formData,
       [name]: value,
     });
+
+    if (name === "email") {
+      validateEmail(value);
+    }
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setEmailError(!emailRegex.test(email));
   };
 
   const getCSRFToken = () => {
@@ -561,6 +570,19 @@ const ContactForm = () => {
             fontFamily: "'Source Code Pro', monospace",
           }}
         />
+        {emailError && (
+          <Typography
+            variant="body2"
+            color="error"
+            sx={{
+              fontFamily: "'Source Code Pro', monospace",
+              mt: -1,
+              mb: 2,
+            }}
+          >
+            Invalid email address
+          </Typography>
+        )}
         <TextField
           label="Message"
           variant="outlined"
