@@ -5,7 +5,7 @@ from rest_framework.parsers import JSONParser
 from .serializers import ContactSerializer
 from django.utils.decorators import method_decorator
 from django.views import View
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
@@ -27,14 +27,17 @@ class ContactView(View):
                 email_subject = f"New message from {data.get('name')}"
                 email_message = f"Message: {data.get('message')}\n\nFrom: {data.get('name')} <{data.get('email')}>"
                 
-                # Enviar correo electrónico
-                send_mail(
+                # Crear el objeto EmailMessage
+                email = EmailMessage(
                     subject=email_subject,
-                    message=email_message,
-                    from_email=data.get('email'),  # User's email
-                    recipient_list=[settings.DEFAULT_FROM_EMAIL],
-                    fail_silently=False
+                    body=email_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,  # Your email
+                    to=[settings.DEFAULT_FROM_EMAIL],
+                    reply_to=[data.get('email')]  # User's email
                 )
+                
+                # Enviar el correo electrónico
+                email.send(fail_silently=False)
                 
                 return JsonResponse({'message': 'Your message has been sent successfully!'}, status=201)
             
