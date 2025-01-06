@@ -27,7 +27,7 @@ class ContactView(View):
                 send_mail(
                     subject=f"New message from {data.get('name')}",
                     message=data.get('message'),
-                    from_email=settings.DEFAULT_FROM_EMAIL,  # Your email
+                    from_email=data.get('email'),  # User's email
                     recipient_list=[settings.DEFAULT_FROM_EMAIL],
                     fail_silently=False,
                     reply_to=[data.get('email')],  # User's email
