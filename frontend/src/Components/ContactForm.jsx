@@ -375,6 +375,8 @@ const ContactForm = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [emailError, setEmailError] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
