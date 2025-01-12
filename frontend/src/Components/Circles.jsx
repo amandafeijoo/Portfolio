@@ -34,121 +34,120 @@ const Circle = styled(Box)`
 
 const Circles = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    devicePixelRatio: window.devicePixelRatio,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        devicePixelRatio: window.devicePixelRatio,
+      });
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  const { width, height, devicePixelRatio } = windowDimensions;
 
   const largeCircleStart = { top: 250, left: 90 };
   const mediumCircleStart = { top: 450, left: 520 };
   const smallCircleStart = { top: 300, left: 700 };
 
-  const targetTop = window.innerHeight * 1.18;
-  const targetLeft = window.innerWidth / 2;
+  const targetTop = height * 1.18;
+  const targetLeft = width / 2;
 
   const isIPadPro =
-    (window.innerWidth === 1024 &&
-      window.innerHeight === 1366 &&
-      window.devicePixelRatio === 2) ||
-    (window.innerWidth === 834 &&
-      window.innerHeight === 1194 &&
-      window.devicePixelRatio === 2) ||
-    (window.innerWidth === 820 &&
-      window.innerHeight === 1180 &&
-      window.devicePixelRatio === 2);
+    (width === 1024 && height === 1366 && devicePixelRatio === 2) ||
+    (width === 834 && height === 1194 && devicePixelRatio === 2) ||
+    (width === 820 && height === 1180 && devicePixelRatio === 2);
 
   const isIPadMini =
-    window.innerWidth === 768 &&
-    window.innerHeight === 1024 &&
-    window.devicePixelRatio === 2;
+    width === 768 &&
+    height === 1024 &&
+    devicePixelRatio === 2;
 
   const isIPadAir =
-    window.innerWidth === 820 &&
-    window.innerHeight === 1180 &&
-    window.devicePixelRatio === 2;
+    width === 820 &&
+    height === 1180 &&
+    devicePixelRatio === 2;
 
   const isIPhone14Pro =
-    window.innerWidth === 430 && 
-    window.innerHeight === 932 && 
-    window.devicePixelRatio === 3; 
+    width === 430 &&
+    height === 932 &&
+    devicePixelRatio === 3;
 
-  const isMobile = window.innerWidth < 768;
-
-  console.log("Device detection:", {
-    isIPadPro,
-    isIPadMini,
-    isIPadAir,
-    isIPhone14Pro,
-    isMobile,
-  });
+  const isMobile = width < 768;
 
   if (isIPadPro) {
     largeCircleStart.top += 150;
     mediumCircleStart.top += 240;
     smallCircleStart.top += 100;
 
-    largeCircleStart.left -= 20;
-    mediumCircleStart.left -= 400;
+    largeCircleStart.left -= 20; 
+    mediumCircleStart.left -= 400; 
     smallCircleStart.left -= 240;
+
   } else if (isIPadMini) {
     largeCircleStart.top += 20;
     mediumCircleStart.top += 10;
     smallCircleStart.top += 20;
 
-    largeCircleStart.left -= 20;
-    mediumCircleStart.left -= 410;
+    largeCircleStart.left -= 20; 
+    mediumCircleStart.left -= 410; 
     smallCircleStart.left -= 355;
+
   } else if (isIPadAir) {
     largeCircleStart.top += 130;
     mediumCircleStart.top += 100;
     smallCircleStart.top += 600;
 
-    largeCircleStart.left -= 50;
-    mediumCircleStart.left -= 400;
-    smallCircleStart.left -= 350;
+    largeCircleStart.left -= 50; 
+    mediumCircleStart.left -= 400; 
+    smallCircleStart.left -= 350; 
+
   } else if (isIPhone14Pro) {
-    largeCircleStart.top += 110;
-    mediumCircleStart.top += 90;
-    smallCircleStart.top += 90;
+    largeCircleStart.top += 200; // Ajuste para bajar más el círculo grande
+    mediumCircleStart.top += 180; // Ajuste para bajar más el círculo mediano
+    smallCircleStart.top += 180; // Ajuste para bajar más el círculo pequeño
 
-    largeCircleStart.left -= 30;
-    mediumCircleStart.left -= 250;
-    smallCircleStart.left -= 300;
+    largeCircleStart.left -= 30; 
+    mediumCircleStart.left -= 250; 
+    smallCircleStart.left -= 300; 
 
-    console.log("iPhone 14 Pro adjustments:", {
-      largeCircleStart,
-      mediumCircleStart,
-      smallCircleStart,
-    });
   } else if (isMobile) {
-    largeCircleStart.top += 130;
-    mediumCircleStart.top += 120;
-    smallCircleStart.top += 100;
+    largeCircleStart.top += -30;
+    mediumCircleStart.top += -10;
+    smallCircleStart.top += 150;
 
-    largeCircleStart.left -= 20;
-    mediumCircleStart.left -= 350;
-    smallCircleStart.left -= 770;
+    largeCircleStart.left -= 20; 
+    mediumCircleStart.left -= 380; 
+    smallCircleStart.left -= 640; 
+    
   } else {
-    //web
-    largeCircleStart.top -= 100;
-    mediumCircleStart.top -= 100;
-    smallCircleStart.top -= 100;
+    // Default case for other devices
+    largeCircleStart.top -= 100; // Decreased to move circles further up
+    mediumCircleStart.top -= 100; // Decreased to move circles further up
+    smallCircleStart.top -= 100; // Decreased to move circles further up
 
-    largeCircleStart.left -= 50;
-    mediumCircleStart.left -= 200;
-    smallCircleStart.left -= 300;
+    largeCircleStart.left -= 50; 
+    mediumCircleStart.left -= 200; 
+    smallCircleStart.left -= 300; 
   }
-
-  console.log("Circle positions:", {
-    largeCircleStart,
-    mediumCircleStart,
-    smallCircleStart,
-  });
 
   const getCircleStyle = (
     initialTop,
@@ -158,174 +157,171 @@ const Circles = () => {
   ) => {
     const progress = Math.min(scrollY / 210, 1);
     const top = initialTop - (initialTop - (targetTop + offsetY)) * progress;
-    const left =
-      initialLeft - (initialLeft - (targetLeft + offsetX)) * progress;
-    const opacity = scrollY > initialTop - window.innerHeight ? 1 : 0;
-    const transform =
-      progress < 1 ? `translateY(${scrollY * 0.5}px)` : `translateY(0)`;
+    const left = initialLeft - (initialLeft - (targetLeft + offsetX)) * progress;
+    const opacity = scrollY > initialTop - height ? 1 : 0;
+    const transform = progress < 1 ? `translateY(${scrollY * 0.5}px)` : `translateY(0)`;
 
-    const adjustedTop =
-      progress === 1 && initialTop === largeCircleStart.top ? top + 43 : top;
+    const adjustedTop = progress === 1 && initialTop === largeCircleStart.top ? top + 43 : top;
 
     return { top: adjustedTop, left, opacity, transform };
   };
 
-  const isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024;
+  const isTablet = width >= 768 && width <= 1024;
 
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
   const isIPad =
     /iPad/.test(userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
-  return (
-    <>
-      <Circle
-        size={
-          isIPhone14Pro
-            ? 320
-            : isIPadPro
-            ? 720
-            : isIPadAir
-            ? 530
-            : isIPadMini
-            ? 520
-            : isTablet
-            ? 700
-            : isMobile
-            ? 300
-            : 400
-        }
-        backgroundColor="rgba(200, 162, 200, 0.6)"
-        {...getCircleStyle(
-          largeCircleStart.top,
-          largeCircleStart.left,
-          isIPhone14Pro
-            ? -160
-            : isIPadPro
-            ? -445
-            : isIPadAir
-            ? -355
-            : isIPadMini
-            ? -317
-            : isTablet
-            ? -438
-            : isMobile
-            ? -144
-            : -482,
-          isIPhone14Pro
-            ? -330
-            : isIPadPro
-            ? -350
-            : isIPadAir
-            ? -5
-            : isIPadMini
-            ? -340
-            : isTablet
-            ? -252
-            : isMobile
-            ? -320
-            : -240
-        )}
-      />
-      <Circle
-        size={
-          isIPhone14Pro
-            ? 260
-            : isIPadPro
-            ? 520
-            : isIPadAir
-            ? 400
-            : isIPadMini
-            ? 432
-            : isTablet
-            ? 600
-            : isMobile
-            ? 245
-            : 350
-        }
-        backgroundColor="rgba(180, 140, 180, 0.4)"
-        {...getCircleStyle(
-          mediumCircleStart.top,
-          mediumCircleStart.left,
-          isIPhone14Pro
-            ? -130
-            : isIPadPro
-            ? -345
-            : isIPadAir
-            ? -290
-            : isIPadMini
-            ? -272
-            : isTablet
-            ? -386
-            : isMobile
-            ? -118
-            : -456,
-          isIPhone14Pro
-            ? -250
-            : isIPadPro
-            ? -200
-            : isIPadAir
-            ? 105
-            : isIPadMini
-            ? -250
-            : isTablet
-            ? -160
-            : isMobile
-            ? -250
-            : -175
-        )}
-      />
-      <Circle
-        size={
-          isIPhone14Pro
-            ? 130
-            : isIPadPro
-            ? 300
-            : isIPadAir
-            ? 250
-            : isIPadMini
-            ? 230
-            : isTablet
-            ? 370
-            : isMobile
-            ? 120
-            : 200
-        }
-        backgroundColor="rgba(160, 120, 160, 0.3)"
-        {...getCircleStyle(
-          smallCircleStart.top,
-          smallCircleStart.left,
-          isIPhone14Pro
-            ? -60
-            : isIPadPro
-            ? -230
-            : isIPadAir
-            ? -212
-            : isIPadMini
-            ? -165
-            : isTablet
-            ? -267
-            : isMobile
-            ? -52
-            : -380,
-          isIPhone14Pro
-            ? -240
-            : isIPadPro
-            ? -152
-            : isIPadAir
-            ? 175
-            : isIPadMini
-            ? -150
-            : isTablet
-            ? -48
-            : isMobile
-            ? -198
-            : -100
-        )}
-      />
-    </>
-  );
-};
-
-export default Circles;
+    
+    return (
+      <>
+        <Circle
+          size={
+            isIPhone14Pro
+              ? 520
+              : isIPadPro
+              ? 720
+              : isIPadAir
+              ? 530
+              : isIPadMini
+              ? 520
+              : isTablet
+              ? 700
+              : isMobile
+              ? 300
+              : 400
+          }
+          backgroundColor="rgba(200, 162, 200, 0.6)"
+          {...getCircleStyle(
+            largeCircleStart.top,
+            largeCircleStart.left,
+            isIPhone14Pro
+              ? -160
+              : isIPadPro
+              ? -445
+              : isIPadAir
+              ? -355
+              : isIPadMini
+              ? -317
+              : isTablet
+              ? -438
+              : isMobile
+              ? -144
+              : -482,
+            isIPhone14Pro
+              ? -530 
+              : isIPadPro
+              ? -350
+              : isIPadAir
+              ? -5
+              : isIPadMini
+              ? -340
+              : isTablet
+              ? -252
+              : isMobile
+              ? -250
+              : -240
+          )}
+        />
+        <Circle
+          size={
+            isIPhone14Pro
+              ? 260
+              : isIPadPro
+              ? 520
+              : isIPadAir
+              ? 400
+              : isIPadMini
+              ? 432
+              : isTablet
+              ? 600
+              : isMobile
+              ? 245
+              : 350
+          }
+          backgroundColor="rgba(180, 140, 180, 0.4)"
+          {...getCircleStyle(
+            mediumCircleStart.top,
+            mediumCircleStart.left,
+            isIPhone14Pro
+              ? -130
+              : isIPadPro
+              ? -345
+              : isIPadAir
+              ? -290
+              : isIPadMini
+              ? -272
+              : isTablet
+              ? -386
+              : isMobile
+              ? -118
+              : -456,
+            isIPhone14Pro
+              ? -250 // Ajuste para subir más el círculo mediano
+              : isIPadPro
+              ? -200
+              : isIPadAir
+              ? 105
+              : isIPadMini
+              ? -250
+              : isTablet
+              ? -160
+              : isMobile
+              ? -180
+              : -175
+          )}
+        />
+        <Circle
+          size={
+            isIPhone14Pro
+              ? 130
+              : isIPadPro
+              ? 300
+              : isIPadAir
+              ? 250
+              : isIPadMini
+              ? 230
+              : isTablet
+              ? 370
+              : isMobile
+              ? 120
+              : 200
+          }
+          backgroundColor="rgba(160, 120, 160, 0.3)"
+          {...getCircleStyle(
+            smallCircleStart.top,
+            smallCircleStart.left,
+            isIPhone14Pro
+              ? -60
+              : isIPadPro
+              ? -230
+              : isIPadAir
+              ? -212
+              : isIPadMini
+              ? -165
+              : isTablet
+              ? -267
+              : isMobile
+              ? -52
+              : -380,
+            isIPhone14Pro
+              ? -240 // Ajuste para subir más el círculo pequeño
+              : isIPadPro
+              ? -100
+              : isIPadAir
+              ? 175
+              : isIPadMini
+              ? -150
+              : isTablet
+              ? -48
+              : isMobile
+              ? -120
+              : -100
+          )}
+        />
+      </>
+    );
+    };
+    
+    export default Circles;
