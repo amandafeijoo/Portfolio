@@ -90,6 +90,7 @@ const Circles = () => {
     width === 430 &&
     height === 932 &&
     devicePixelRatio === 3;
+    
 
   const isMobile = width < 768;
 
@@ -119,6 +120,7 @@ const Circles = () => {
     largeCircleStart.left -= 50; 
     mediumCircleStart.left -= 400; 
     smallCircleStart.left -= 350; 
+    
 
   } else if (isIPhone14Pro) {
     largeCircleStart.top += 200; // Ajuste para bajar más el círculo grande
@@ -187,7 +189,7 @@ const Circles = () => {
               : isIPadMini
               ? 520
               : isTablet
-              ? 700
+              ? 500
               : isMobile
               ? 300
               : 400
@@ -205,7 +207,7 @@ const Circles = () => {
               : isIPadMini
               ? -317
               : isTablet
-              ? -438
+              ? -318
               : isMobile
               ? -144
               : -482,
@@ -218,7 +220,7 @@ const Circles = () => {
               : isIPadMini
               ? -340
               : isTablet
-              ? -252
+              ? -339
               : isMobile
               ? -250
               : -240
@@ -235,7 +237,7 @@ const Circles = () => {
               : isIPadMini
               ? 432
               : isTablet
-              ? 600
+              ? 400
               : isMobile
               ? 245
               : 350
@@ -253,7 +255,7 @@ const Circles = () => {
               : isIPadMini
               ? -272
               : isTablet
-              ? -386
+              ? -268
               : isMobile
               ? -118
               : -456,
@@ -266,7 +268,7 @@ const Circles = () => {
               : isIPadMini
               ? -250
               : isTablet
-              ? -160
+              ? -240
               : isMobile
               ? -180
               : -175
@@ -283,7 +285,7 @@ const Circles = () => {
               : isIPadMini
               ? 230
               : isTablet
-              ? 370
+              ? 270
               : isMobile
               ? 120
               : 200
@@ -301,7 +303,7 @@ const Circles = () => {
               : isIPadMini
               ? -165
               : isTablet
-              ? -267
+              ? -201
               : isMobile
               ? -52
               : -380,
@@ -314,7 +316,7 @@ const Circles = () => {
               : isIPadMini
               ? -150
               : isTablet
-              ? -48
+              ? -170
               : isMobile
               ? -120
               : -100
