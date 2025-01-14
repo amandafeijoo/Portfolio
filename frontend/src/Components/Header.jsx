@@ -121,7 +121,7 @@ const Header = () => {
         <SocialLink href="https://linkedin.com/in/amanda-flores-feijoo-93956a156">
           <FaLinkedin size={34} />
         </SocialLink>
-        <SocialLink href="https://instagram.com/mandyfeijoo">
+        <SocialLink href="https://instagram.com/webcode.art">
           <FaInstagram size={34} />
         </SocialLink>
         <SocialLink href="https://www.facebook.com/amanda.f.feijoo">
