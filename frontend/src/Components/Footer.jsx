@@ -65,7 +65,7 @@ const Footer = () => {
               <GitHubIcon />
             </Link>
             <Link
-              href="https://instagram.com/mandyfeijoo"
+              href="https://instagram.com/webcode.art"
               target="_blank"
               rel="noopener"
               sx={{ color: "#9370db" }}
