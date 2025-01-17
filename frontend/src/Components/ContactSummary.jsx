@@ -211,53 +211,108 @@ const ContactSummary = () => {
                 label="Name"
                 variant="outlined"
                 name="name"
-                value={formData.name || ""}
+                value={formData.name}
                 onChange={handleChange}
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#a3bffa", 
+                    },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#a3bffa",
+                      borderColor: "#a3bffa", 
+                    },
+                    "& input": {
+                      color: "#e6d6e6",
+                      fontFamily: "'Source Code Pro', monospace", 
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#ffc0cb", 
+                    },
+                    "&:hover input": {
+                      color: "#ffc0cb", 
                     },
                   },
-                  fontFamily: "'Source Code Pro', monospace",
+                  "& .MuiInputLabel-root": {
+                    color: "#e6d6e6", 
+                    fontFamily: "'Source Code Pro', monospace", 
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#a3bffa", 
+                  },
                 }}
               />
               <TextField
                 label="Email"
                 variant="outlined"
                 name="email"
-                value={formData.email || ""}
+                value={formData.email}
                 onChange={handleChange}
-                error={!!emailError}
-                helperText={emailError}
-                autoComplete="new-password"
                 sx={{
                   "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: emailError ? "pink" : "#a3bffa",
-                    },
                     "& fieldset": {
-                      borderColor: emailError ? "pink" : "rgba(0, 0, 0, 0.23)",
+                      borderColor: "#a3bffa", 
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#a3bffa", 
+                    },
+                    "& input": {
+                      color: "#e6d6e6", 
+                      fontFamily: "'Source Code Pro', monospace", 
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#ffc0cb", 
+                    },
+                    "&:hover input": {
+                      color: "#ffc0cb", 
                     },
                   },
-                  fontFamily: "'Source Code Pro', monospace",
+                  "& .MuiInputLabel-root": {
+                    color: "#e6d6e6", 
+                    fontFamily: "'Source Code Pro', monospace", 
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#a3bffa", 
+                  },
                 }}
               />
               <TextField
                 label="Message"
                 variant="outlined"
                 name="message"
-                value={formData.message || ""}
+                value={formData.message}
                 onChange={handleChange}
                 multiline
                 rows={4}
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#a3bffa", 
+                    },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#a3bffa",
+                      borderColor: "#a3bffa", 
+                    },
+                    "& input": {
+                      color: "#e6d6e6", 
+                      fontFamily: "'Source Code Pro', monospace", 
+                    },
+                    "& textarea": {
+                      color: "#e6d6e6", 
+                      fontFamily: "'Source Code Pro', monospace", 
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#ffc0cb", 
+                    },
+                    "&:hover input, &:hover textarea": {
+                      color: "#ffc0cb", 
                     },
                   },
-                  fontFamily: "'Source Code Pro', monospace",
+                  "& .MuiInputLabel-root": {
+                    color: "#e6d6e6",
+                    fontFamily: "'Source Code Pro', monospace", 
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#a3bffa",
+                  },
                 }}
               />
               <Typography

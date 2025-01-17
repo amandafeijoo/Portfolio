@@ -540,22 +540,28 @@ const ContactForm = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#a3bffa", // Color del borde cuando no está enfocado
+                borderColor: "#a3bffa", 
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa", // Color del borde cuando está enfocado
+                borderColor: "#a3bffa", 
               },
               "& input": {
-                color: "#e6d6e6", // Color del texto
-                fontFamily: "'Source Code Pro', monospace", // Fuente del texto
+                color: "#e6d6e6", 
+                fontFamily: "'Source Code Pro', monospace", 
+              },
+              "&:hover fieldset": {
+                borderColor: "#ffc0cb", 
+              },
+              "&:hover input": {
+                color: "#ffc0cb", 
               },
             },
             "& .MuiInputLabel-root": {
-              color: "#e6d6e6", // Color del label
-              fontFamily: "'Source Code Pro', monospace", // Fuente del label
+              color: "#e6d6e6", 
+              fontFamily: "'Source Code Pro', monospace", 
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#a3bffa", // Color del label cuando está enfocado
+              color: "#a3bffa",
             },
           }}
         />
@@ -568,22 +574,28 @@ const ContactForm = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#a3bffa", // Color del borde cuando no está enfocado
+                borderColor: "#a3bffa", 
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa", // Color del borde cuando está enfocado
+                borderColor: "#a3bffa", 
               },
               "& input": {
-                color: "#e6d6e6", // Color del texto
-                fontFamily: "'Source Code Pro', monospace", // Fuente del texto
+                color: "#e6d6e6", 
+                fontFamily: "'Source Code Pro', monospace", 
+              },
+              "&:hover fieldset": {
+                borderColor: "#ffc0cb", 
+              },
+              "&:hover input": {
+                color: "#ffc0cb", 
               },
             },
             "& .MuiInputLabel-root": {
-              color: "#e6d6e6", // Color del label
-              fontFamily: "'Source Code Pro', monospace", // Fuente del label
+              color: "#e6d6e6", 
+              fontFamily: "'Source Code Pro', monospace", 
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#a3bffa", // Color del label cuando está enfocado
+              color: "#a3bffa", 
             },
           }}
         />
@@ -598,26 +610,32 @@ const ContactForm = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#a3bffa", // Color del borde cuando no está enfocado
+                borderColor: "#a3bffa", 
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa", // Color del borde cuando está enfocado
+                borderColor: "#a3bffa", 
               },
               "& input": {
-                color: "#e6d6e6", // Color del texto
-                fontFamily: "'Source Code Pro', monospace", // Fuente del texto
+                color: "#e6d6e6", 
+                fontFamily: "'Source Code Pro', monospace", 
               },
               "& textarea": {
-                color: "#e6d6e6", // Color del texto en el textarea
-                fontFamily: "'Source Code Pro', monospace", // Fuente del texto en el textarea
+                color: "#e6d6e6", 
+                fontFamily: "'Source Code Pro', monospace", 
+              },
+              "&:hover fieldset": {
+                borderColor: "#ffc0cb", 
+              },
+              "&:hover input, &:hover textarea": {
+                color: "#ffc0cb", 
               },
             },
             "& .MuiInputLabel-root": {
-              color: "#e6d6e6", // Color del label
-              fontFamily: "'Source Code Pro', monospace", // Fuente del label
+              color: "#e6d6e6", 
+              fontFamily: "'Source Code Pro', monospace", 
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#a3bffa", // Color del label cuando está enfocado
+              color: "#a3bffa",
             },
           }}
         />
