@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import styled, { keyframes } from "styled-components";
 import TechStack from "./TechStack";
 import ProfileInfoBox from "./ProfileInfoBox";
@@ -7,6 +7,7 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import RotatingTypingEffect from "./RotatingTypingEffect";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 
 const float = keyframes`
   0% { transform: translateY(0); }
