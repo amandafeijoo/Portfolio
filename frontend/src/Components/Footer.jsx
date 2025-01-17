@@ -25,6 +25,7 @@ const Footer = () => {
               variant="body2"
               sx={{
                 fontFamily: "'Source Code Pro', monospace",
+                color: "#ffffff", // Color del texto
                 "@media (max-width: 768px)": {
                   fontSize: "12px",
                 },
@@ -37,6 +38,7 @@ const Footer = () => {
               sx={{
                 fontFamily: "'Source Code Pro', monospace",
                 fontSize: "10px",
+                color: "#ffffff", // Color del texto
                 "@media (max-width: 768px)": {
                   fontSize: "8px",
                 },
