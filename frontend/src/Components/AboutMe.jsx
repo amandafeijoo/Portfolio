@@ -476,6 +476,10 @@ const messages = [
 const AboutMe = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleContactClick = () => {
     navigate("/contactform");
   };
