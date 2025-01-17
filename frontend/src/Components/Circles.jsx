@@ -69,8 +69,7 @@ const Circles = () => {
   const smallCircleStart = { top: 300, left: 700 };
 
   const targetTop = height * 1.18;
-  const targetLeft = width / 2;
-
+  const targetLeft = width / 2 + 20; 
   const isIPadPro =
     (width === 1024 && height === 1366 && devicePixelRatio === 2) ||
     (width === 834 && height === 1194 && devicePixelRatio === 2) ||
