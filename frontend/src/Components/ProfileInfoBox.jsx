@@ -14,6 +14,7 @@ const InfoBox = styled(Box)`
   border-radius: 10px;
   margin-top: 20px;
   text-align: left;
+  color:#ffff;
   width: 90%;
   border: 2px solid rgba(200, 162, 200, 0.5);
 
