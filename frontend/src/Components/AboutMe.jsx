@@ -81,6 +81,7 @@ const Description = styled.p`
   text-align: justify;
   line-height: 1.6;
   margin: 60px 0;
+  color: #fff;
 
   @media (max-width: 768px) {
     margin: 20px 0;
