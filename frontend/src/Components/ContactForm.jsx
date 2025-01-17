@@ -525,7 +525,7 @@ const ContactForm = () => {
             fontFamily: "'Source Code Pro', monospace",
             fontSize: "1rem",
             fontWeight: "bold",
-            color: "#d8bfd8",
+            color: "#e6d6e6",
           }}
         >
           Feel free to reach out for collaborations, questions, or just to say
@@ -539,11 +539,24 @@ const ContactForm = () => {
           onChange={handleChange}
           sx={{
             "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#a3bffa", // Color del borde cuando no está enfocado
+              },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa",
+                borderColor: "#a3bffa", // Color del borde cuando está enfocado
+              },
+              "& input": {
+                color: "#e6d6e6", // Color del texto
+                fontFamily: "'Source Code Pro', monospace", // Fuente del texto
               },
             },
-            fontFamily: "'Source Code Pro', monospace",
+            "& .MuiInputLabel-root": {
+              color: "#e6d6e6", // Color del label
+              fontFamily: "'Source Code Pro', monospace", // Fuente del label
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#a3bffa", // Color del label cuando está enfocado
+            },
           }}
         />
         <TextField
@@ -554,11 +567,24 @@ const ContactForm = () => {
           onChange={handleChange}
           sx={{
             "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#a3bffa", // Color del borde cuando no está enfocado
+              },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa",
+                borderColor: "#a3bffa", // Color del borde cuando está enfocado
+              },
+              "& input": {
+                color: "#e6d6e6", // Color del texto
+                fontFamily: "'Source Code Pro', monospace", // Fuente del texto
               },
             },
-            fontFamily: "'Source Code Pro', monospace",
+            "& .MuiInputLabel-root": {
+              color: "#e6d6e6", // Color del label
+              fontFamily: "'Source Code Pro', monospace", // Fuente del label
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#a3bffa", // Color del label cuando está enfocado
+            },
           }}
         />
         <TextField
@@ -571,11 +597,28 @@ const ContactForm = () => {
           rows={4}
           sx={{
             "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#a3bffa", // Color del borde cuando no está enfocado
+              },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa",
+                borderColor: "#a3bffa", // Color del borde cuando está enfocado
+              },
+              "& input": {
+                color: "#e6d6e6", // Color del texto
+                fontFamily: "'Source Code Pro', monospace", // Fuente del texto
+              },
+              "& textarea": {
+                color: "#e6d6e6", // Color del texto en el textarea
+                fontFamily: "'Source Code Pro', monospace", // Fuente del texto en el textarea
               },
             },
-            fontFamily: "'Source Code Pro', monospace",
+            "& .MuiInputLabel-root": {
+              color: "#e6d6e6", // Color del label
+              fontFamily: "'Source Code Pro', monospace", // Fuente del label
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#a3bffa", // Color del label cuando está enfocado
+            },
           }}
         />
         <Typography
