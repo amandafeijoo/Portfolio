@@ -82,6 +82,7 @@ const SummaryText = styled.p`
   text-align: justify;
   line-height: 1.6;
   margin: 10px 0;
+  color: #ffff;
 
   @media (max-width: 834px) and (min-width: 768px) {
     /* iPad Mini */
@@ -104,6 +105,10 @@ const SummaryText = styled.p`
   @media (min-width: 1025px) {
     font-size: 16px;
   }
+`;
+
+const StyledH2 = styled.h2`
+  color: white;
 `;
 
 const ProfileImage = styled.img`
@@ -167,7 +172,7 @@ const AboutSummary = () => {
         alt="Perfil"
         className={inView ? "visible" : ""}
       />
-      <h2>About Me</h2>
+      <StyledH2>About Me</StyledH2>
       <SummaryText>
         I am Amanda Flores, a Full-Stack Developer with advanced training in web
         and application development, complemented by a solid foundation in
