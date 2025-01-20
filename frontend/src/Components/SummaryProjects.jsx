@@ -221,11 +221,11 @@ const SummaryProjects = () => {
   return (
     <SummaryContainer>
       <SummaryTitle>Projects</SummaryTitle>
-      <SummaryText>
+      {/* <SummaryText>
         This is a brief summary of the projects. Each project is designed to
         solve specific problems and uses various technologies to achieve its
         goals.
-      </SummaryText>
+      </SummaryText> */}
       {projectList.map((project, index) => {
         const { ref, inView } = useInView({
           triggerOnce: false,

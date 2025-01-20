@@ -498,34 +498,14 @@ const AboutMe = () => {
             <AnimatedLetter>A</AnimatedLetter>bout Me .
           </StyledText>
           <Description>
-            Full-Stack Web Developer | Master's Degree in Professional Web
-            (2023-2024) Development and Applications, Universidad Europea
-            Madrid. <br /> <br /> Diploma in Graphic Design, Escola Espai
-            Barcelona (2022-2023).
-            <br />
-            <br />I am Amanda Flores, a Full-Stack Developer with advanced
-            training in web and application development, complemented by a solid
-            foundation in graphic design. Originally from Honduras, I spent 14
-            years in Barcelona and now live in Norway, embracing a multicultural
-            and adaptable perspective that enriches my approach to development.{" "}
-            <br /> <br />
-            I recently completed my Master’s Degree in Web Development and
-            Applications online at Universidad Europea Madrid. During the
-            program, I gained expertise in technologies such as React, Angular,
-            Node.js, and Django, among others. My skill set extends far beyond
-            these, encompassing a broad array of tools and frameworks that
-            enable me to create scalable, user-centric solutions. My academic
-            journey culminated in a Master’s thesis, where I achieved a perfect
-            10/10, demonstrating my ability to deliver innovative and
-            high-quality results. The projects I developed throughout the
-            program, including my thesis, simulate real-world applications,
-            equipping me with practical experience. <br /> <br />
-            In addition to my technical expertise, my diploma in graphic design
-            from Escola Espai Barcelona has honed my creative abilities,
-            especially in tools like Photoshop, Adobe Illustrator, and InDesign.
-            This combination allows me to merge functionality with aesthetic
-            appeal in my work.
-          </Description>
+  I am Amanda Flores, a passionate Full-Stack Web Developer with a strong focus on frontend development. I specialize in creating engaging and functional web experiences using modern technologies such as React, Angular, Node.js, and Django, complemented by expertise in PostgreSQL, MongoDB, and MySQL for database management. My skill set also includes tools like Docker, MUI Material, and Google Cloud, allowing me to deliver scalable and user-centric solutions.
+  <br /> <br />
+  My academic background includes a Master’s in Professional Web Development and Applications from Universidad Europea Madrid, where I graduated with a GPA of 9.04/10 and achieved a perfect 10/10 in my thesis project. My training in graphic design, with a diploma from Escola Espai Barcelona, has honed my creative abilities, enabling me to merge functionality with aesthetic appeal in my projects using tools like Adobe Photoshop and Illustrator.
+  <br /> <br />
+  Originally from Honduras, I spent 14 years in Barcelona and now live in Norway, embracing a multicultural perspective that enriches my approach to development. With hands-on experience in projects like DineBooker and FitLife Gym, I have developed functional, responsive, and visually appealing platforms that solve real-world challenges.
+  <br /> <br />
+  Let’s create something amazing together! 🚀
+</Description>
         </TextContainer>
         <ImageContainer>
           <Box>
