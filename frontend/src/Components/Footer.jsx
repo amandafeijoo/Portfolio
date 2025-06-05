@@ -21,18 +21,19 @@ const Footer = () => {
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={12} sm={10}>
           <Box display="flex" flexDirection="column" alignItems="flex-start">
-            <Typography
-              variant="body2"
-              sx={{
-                fontFamily: "'Source Code Pro', monospace",
-                color: "#ffffff", // Color del texto
-                "@media (max-width: 768px)": {
-                  fontSize: "12px",
-                },
-              }}
-            >
-              © 2024 Amanda Flores. All Rights Reserved.
-            </Typography>
+          <Typography
+  variant="body2"
+  sx={{
+    fontFamily: "'Source Code Pro', monospace",
+    color: "#ffffff",
+    "@media (max-width: 768px)": {
+      fontSize: "12px",
+    },
+  }}
+>
+  © {new Date().getFullYear()} Amanda Flores. All Rights Reserved.
+</Typography>
+
             <Link
               href="/privacy-policy.html"
               sx={{

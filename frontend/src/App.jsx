@@ -81,6 +81,8 @@ function App() {
       <ProjectProvider>
         <Router>
           <Header />
+          <div style={{ height: "40px" }} />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/AboutMe" element={<AboutMe />} />

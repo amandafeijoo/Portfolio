@@ -1,10 +1,44 @@
 import React from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import AnimatedBackground from "./AnimatedBackground";
 import AboutSummary from "./AboutSummary";
 import SummaryProjects from "./SummaryProjects";
 import ContactSummary from "./ContactSummary";
+
+/* (1) Definimos el botón CTA */
+const StyledCtaButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  background-color: rgba(200, 162, 200, 0.3);
+  color:rgb(235, 210, 235);
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(200, 162, 200, 0.7);
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(200, 162, 200, 0.5);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+`;
+
+
+
 
 const rotate = keyframes`
   0% {
@@ -33,6 +67,7 @@ const AnimatedLetter = styled.span`
   animation: ${rotate} 9s infinite;
   border: 2px solid rgba(200, 162, 200, 0.5);
   margin-right: 13px;
+  margin-top:150px;
 
   &::before,
   &::after {
@@ -77,13 +112,13 @@ const AnimatedLetter = styled.span`
 `;
 
 const StyledText = styled.span`
-  font-size: 5.2em;
+  font-size: 4.8em;
   display: inline-block;
   font-family: "Source Code Pro", monospace;
   text-shadow: 0 0 3px #fff;
   color: #fff;
-  margin-top: 20px; /* Ajuste general */
-  margin-bottom: 40px;
+  margin-top: 30px; /* Ajuste general */
+  margin-bottom: 10px;
 
   @media (max-width: 1024px) {
     font-size: 4em;
@@ -126,9 +161,31 @@ const StyledText = styled.span`
   }
 `;
 
+const NameText = styled.span`
+  font-size: 3em;
+  display: inline-block;
+  font-family: "Source Code Pro", monospace;
+  text-shadow: 0 0 2px #fff;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  @media (max-width: 1024px) {
+    font-size: 2.5em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8em;
+  }
+`;
+
 const MainContainer = styled.div`
   display: flex;
-  margin-top: 220px;
+  margin-top: 150px;
   margin-bottom: 100px;
   flex-direction: column;
   align-items: center;
@@ -225,8 +282,9 @@ const TextContainer = styled.div`
 const StyledP = styled.p`
   color: #fff;
   font-size: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   text-align: center;
+  margin-top:-10px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -615,25 +673,37 @@ const Circle13 = styled(Circle)`
 
 const projects = [
   {
-    videoSrc: "/images/fitlifegiphy.mp4",
+    title: "Arrazola Psicología",
+    comment: "Professional website developed for a licensed health psychologist, with online booking and testimonials.",
+    technologies: "React, Django, PostgreSQL",
+    videoSrc: "https://res.cloudinary.com/dp6jrgvoz/video/upload/f_auto,q_auto:eco,w_800/v1748816240/danielaarrazolawebsite_sfuxjm.mp4",
+    githubLink: "https://github.com/amandafeijoo/Portfolio-Daniela-Arrazola.git",
+    web: "https://www.arrazolapsicologia.com",
+  },
+  {
+    videoSrc: "https://res.cloudinary.com/dp6jrgvoz/video/upload/f_auto,q_auto:eco,w_800/v1748814437/fitlifegiphy_njxqtl.mov",
     title: "FitLife",
     comment: "Preliminary project for my master's thesis, graded 8.6/10.",
     technologies: "React, Node.js, Express, MongoDB",
     githubLink: "https://github.com/amandafeijoo/FitLife-Project.git",
   },
   {
-    videoSrc: "/images/dinebookergiphy.mp4",
+    videoSrc: "https://res.cloudinary.com/dp6jrgvoz/video/upload/f_auto,q_auto:eco,w_800/v1748814073/dinebookergiphy_tlwmjs.mov",
     title: "DineBooker",
     comment: "Final thesis project, graded 10/10.",
-    technologies: "React, Django, PostrgeSQL",
+    technologies: "React, Django, PostgreSQL",
     githubLink: "https://github.com/amandafeijoo/DineBookerTFM.git",
   },
 ];
+
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const navigate = useNavigate();
+
   return (
     <>
       <MainContainer>
@@ -652,13 +722,18 @@ const Home = () => {
         <Circle13 />
         <TextContainer>
           <StyledText>
-            <AnimatedLetter>A</AnimatedLetter>MANDA FLORES
+            <AnimatedLetter>H</AnimatedLetter>ELLO,
           </StyledText>
-          <StyledP>
+          <NameText>I´m Amanda</NameText> 
+          <StyledCtaButton onClick={() => navigate("/projects")}>
+      View My Projects
+    </StyledCtaButton>           
+    <StyledP>
             Full-Stack Web Developer <br />
             Master’s Degree in Professional Web Development and Applications,
             Universidad Europea Madrid
           </StyledP>
+         
         </TextContainer>
         <AnimatedBackground />
       </MainContainer>

@@ -221,7 +221,7 @@ const ContactPage = () => {
             sx={{
               fontFamily: "'Source Code Pro', monospace",
               fontSize: "1.7rem",
-              marginTop: "-200px",
+              marginTop: "120px",              
               padding: "20px",
             }}
           >

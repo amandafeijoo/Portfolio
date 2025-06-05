@@ -10,7 +10,7 @@ const SummaryContainer = styled.div`
   padding: 20px;
   text-align: center;
   width: 60%;
-  margin-top: 100px;
+  margin-top: 150px;
   margin-bottom: 120px;
 
   &.visible {
@@ -112,8 +112,8 @@ const StyledH2 = styled.h2`
 `;
 
 const ProfileImage = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   margin-top: 10px;
   margin-bottom: 10px;

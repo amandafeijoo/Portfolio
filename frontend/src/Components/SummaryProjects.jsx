@@ -292,33 +292,65 @@ const SummaryProjects = () => {
                 <GitHubIcon />
                 View on GitHub
               </Button>
-              <Button
-                component="a"
-                onClick={(event) => handleDemoClick(event, project.title)}
-                sx={{
-                  fontFamily: "'Source Code Pro', monospace",
-                  padding: "12px 22px",
-                  backgroundColor: "rgba(200, 162, 200, 0.3)",
-                  borderRadius: "12px",
-                  color: "#d8bfd8",
-                  display: "flex",
-                  textDecoration: "none",
-                  boxSizing: "border-box",
-                  transition:
-                    "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
-                  "&:hover": {
-                    backgroundColor: "rgba(200, 162, 200, 0.5)",
-                    color: "#d8bfd8",
-                  },
-                  "& svg": {
-                    color: "white",
-                    marginRight: "8px",
-                  },
-                }}
-              >
-                <LinkIcon sx={{ marginRight: "8px" }} />
-                View Demo
-              </Button>
+              {project.web ? (
+  <Button
+    href={project.web}
+    target="_blank"
+    rel="noopener noreferrer"
+    sx={{
+      fontFamily: "'Source Code Pro', monospace",
+      padding: "12px 22px",
+      backgroundColor: "rgba(200, 162, 200, 0.3)",
+      borderRadius: "12px",
+      color: "#d8bfd8",
+      display: "flex",
+      textDecoration: "none",
+      boxSizing: "border-box",
+      transition:
+        "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+      "&:hover": {
+        backgroundColor: "rgba(200, 162, 200, 0.5)",
+        color: "#d8bfd8",
+      },
+      "& svg": {
+        color: "white",
+        marginRight: "8px",
+      },
+    }}
+  >
+    <LinkIcon sx={{ marginRight: "8px" }} />
+    Visit Website
+  </Button>
+) : (
+  <Button
+    component="a"
+    onClick={(event) => handleDemoClick(event, project.title)}
+    sx={{
+      fontFamily: "'Source Code Pro', monospace",
+      padding: "12px 22px",
+      backgroundColor: "rgba(200, 162, 200, 0.3)",
+      borderRadius: "12px",
+      color: "#d8bfd8",
+      display: "flex",
+      textDecoration: "none",
+      boxSizing: "border-box",
+      transition:
+        "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+      "&:hover": {
+        backgroundColor: "rgba(200, 162, 200, 0.5)",
+        color: "#d8bfd8",
+      },
+      "& svg": {
+        color: "white",
+        marginRight: "8px",
+      },
+    }}
+  >
+    <LinkIcon sx={{ marginRight: "8px" }} />
+    View Demo
+  </Button>
+)}
+
             </div>
           </ProjectCardContainer>
         );

@@ -15,48 +15,41 @@ import { useInView } from "react-intersection-observer";
 const ProjectsContainer = styled.div`
   position: relative;
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: 110px;
   margin-bottom: 100px;
-  height: 125vh;
+  min-height: 100vh;
 
   @media (max-width: 1024px) {
     margin-top: 50px;
     margin-bottom: 50px;
-    height: auto;
   }
 
   @media (max-width: 834px) and (min-width: 768px) {
-    /* iPad Mini */
     margin-top: 200px;
     margin-bottom: 40px;
-    height: auto;
   }
 
   @media (max-width: 1024px) and (min-width: 834px) {
-    /* iPad Air */
     margin-top: 180px;
     margin-bottom: 60px;
-    height: auto;
   }
 
   @media (min-width: 1024px) and (max-width: 1366px) {
-    /* iPad Pro */
     margin-top: 90px;
     margin-bottom: 70px;
-    height: auto;
   }
 
   @media (max-width: 768px) {
     margin-top: 60px;
     margin-bottom: 10px;
-    height: auto;
   }
 `;
+
 
 const SquareContainer = styled.div`
   position: relative;
   width: 600px;
-  height: 740px;
+  height: 800px;
   overflow: hidden;
   margin-top: 50px;
   border: 2px solid rgba(200, 162, 200, 0.5);
@@ -183,11 +176,11 @@ const StyledText = styled.span`
     margin-top: 100px; /* Ajuste para pantallas más pequeñas */
   }
 
-/* iPhone SE */
-@media (max-width: 375px) and (min-height: 667px) {
-  font-size: 2.5em;
-  margin-top: 100px
-}
+  /* iPhone SE */
+  @media (max-width: 375px) and (min-height: 667px) {
+    font-size: 2.5em;
+    margin-top: 100px;
+  }
 
   /* iPhone 14 Pro */
   @media (max-width: 393px) and (min-height: 852px) {
@@ -208,7 +201,7 @@ const Circle = styled.div`
 const Circle1 = styled(Circle)`
   width: 300px;
   height: 300px;
-  top: -1%;
+  top: 8%;
   left: 5%;
   background-color: rgba(200, 162, 200, 0.5);
 
@@ -353,138 +346,83 @@ const Projects = () => {
         <StyledText>
           <AnimatedLetter>P</AnimatedLetter>rojects .
         </StyledText>
-        <Grid container spacing={2} justifyContent="center">
-          {projectList.map((project, index) => (
-            <Grid item key={index}>
-              <LazyLoad>
-                <motion.div
-                  ref={ref}
-                  initial={{
-                    scale: window.innerWidth <= 768 ? 1 : 0.2,
-                    opacity: window.innerWidth <= 768 ? 1 : 0,
-                  }}
-                  animate={controls}
-                  onClick={() => {
-                    setSelectedProject(project);
-                    navigate(`/demopage/${project.title}`);
-                  }}
-                >
-                  <SquareContainer>
-                    <WaveBackground>
-                      <Wavify
-                        fill="rgba(255, 105, 180, 0.5)"
-                        paused={false}
-                        options={{
-                          height: 80,
-                          amplitude: 30,
-                          speed: 0.15,
-                          points: 3,
-                        }}
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "50%",
-                        }}
-                      />
-                      <Wavify
-                        fill="rgba(152, 224, 152, 0.5)"
-                        paused={false}
-                        options={{
-                          height: 200,
-                          amplitude: 100,
-                          speed: 0.15,
-                          points: 3,
-                        }}
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "50%",
-                        }}
-                      />
-                      <Wavify
-                        fill="rgba(153, 170, 255, 0.5)"
-                        paused={false}
-                        options={{
-                          height: 200,
-                          amplitude: 100,
-                          speed: 0.15,
-                          points: 3,
-                        }}
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "50%",
-                        }}
-                      />
-                      <Wavify
-                        fill="rgba(255, 105, 180, 0.5)"
-                        paused={false}
-                        options={{
-                          height: 200,
-                          amplitude: 30,
-                          speed: 0.15,
-                          points: 3,
-                        }}
-                        style={{
-                          position: "absolute",
-                          bottom: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "50%",
-                          transform: "rotate(180deg)",
-                        }}
-                      />
-                      <Wavify
-                        fill="rgba(152, 224, 152, 0.5)"
-                        paused={false}
-                        options={{
-                          height: 100,
-                          amplitude: 100,
-                          speed: 0.15,
-                          points: 3,
-                        }}
-                        style={{
-                          position: "absolute",
-                          bottom: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "50%",
-                          transform: "rotate(180deg)",
-                        }}
-                      />
-                      <Wavify
-                        fill="rgba(153, 170, 255, 0.5)"
-                        paused={false}
-                        options={{
-                          height: 200,
-                          amplitude: 100,
-                          speed: 0.15,
-                          points: 3,
-                        }}
-                        style={{
-                          position: "absolute",
-                          bottom: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "50%",
-                          transform: "rotate(180deg)",
-                        }}
-                      />
-                    </WaveBackground>
-                    <ProjectCardContainer>
-                      <ProjectCard {...project} />
-                    </ProjectCardContainer>
-                  </SquareContainer>
-                </motion.div>
-              </LazyLoad>
-            </Grid>
-          ))}
+        <Grid container spacing={2} justifyContent="center" alignItems="stretch">
+        {projectList.map((project, index) => {
+          
+            const [ref, inView] = useInView({
+              triggerOnce: false,
+              threshold: 0.1,
+            });
+
+            const controls = useAnimation();
+
+            useEffect(() => {
+              const isMobile = window.innerWidth <= 768;
+              const isIPad = window.innerWidth > 768 && window.innerWidth <= 1024;
+
+              if (isMobile || isIPad) {
+                controls.start({ scale: 1, opacity: 1, transition: { duration: 0 } });
+              } else if (inView) {
+                controls.start({ scale: 1, opacity: 1, transition: { duration: 1 } });
+              } else {
+                controls.start({ scale: 0.2, opacity: 0, transition: { duration: 1 } });
+              }
+            }, [inView, controls]);
+
+            return (
+              <Grid item key={index}>
+                <LazyLoad>
+                  <motion.div
+                    ref={ref}
+                    initial={{
+                      scale: window.innerWidth <= 768 ? 1 : 0.2,
+                      opacity: window.innerWidth <= 768 ? 1 : 0,
+                    }}
+                    animate={controls}
+                    onClick={() => {
+                      if (project.demoLink) {
+                        setSelectedProject(project);
+                        navigate(`/demopage/${project.title}`);
+                      } else if (project.web) {
+                        window.open(project.web, "_blank");
+                      }
+                    }}
+                  >
+                    <SquareContainer>
+                      <WaveBackground>
+                        {/* Waves */}
+                        <Wavify fill="rgba(255, 105, 180, 0.5)" paused={false} options={{ height: 80, amplitude: 30, speed: 0.15, points: 3 }}
+                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "50%" }} />
+                        <Wavify fill="rgba(152, 224, 152, 0.5)" paused={false} options={{ height: 200, amplitude: 100, speed: 0.15, points: 3 }}
+                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "50%" }} />
+                        <Wavify fill="rgba(153, 170, 255, 0.5)" paused={false} options={{ height: 200, amplitude: 100, speed: 0.15, points: 3 }}
+                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "50%" }} />
+                        <Wavify fill="rgba(255, 105, 180, 0.5)" paused={false} options={{ height: 200, amplitude: 30, speed: 0.15, points: 3 }}
+                          style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "50%", transform: "rotate(180deg)" }} />
+                        <Wavify fill="rgba(152, 224, 152, 0.5)" paused={false} options={{ height: 100, amplitude: 100, speed: 0.15, points: 3 }}
+                          style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "50%", transform: "rotate(180deg)" }} />
+                        <Wavify fill="rgba(153, 170, 255, 0.5)" paused={false} options={{ height: 200, amplitude: 100, speed: 0.15, points: 3 }}
+                          style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "50%", transform: "rotate(180deg)" }} />
+                      </WaveBackground>
+                      <ProjectCardContainer>
+                        <ProjectCard
+                          title={project.title}
+                          comment={project.comment}
+                          subtitle={project.subtitle}
+                          description={project.description}
+                          technologies={project.technologies}
+                          githubLink={project.githubLink}
+                          demoLink={project.demoLink}
+                          videoSrc={project.videoSrc}
+                          web={project.web}
+                        />
+                      </ProjectCardContainer>
+                    </SquareContainer>
+                  </motion.div>
+                </LazyLoad>
+              </Grid>
+            );
+          })}
         </Grid>
       </ProjectsContainer>
     </>

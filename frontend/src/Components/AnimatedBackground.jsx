@@ -4,7 +4,7 @@ import random from "canvas-sketch-util/random";
 import math from "canvas-sketch-util/math";
 
 const settings = {
-  dimensions: [1000, 700], // dimensions
+  dimensions: [1000, 600], // dimensions
   animate: true,
 };
 

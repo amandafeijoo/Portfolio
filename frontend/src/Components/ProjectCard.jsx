@@ -3,7 +3,6 @@ import LazyLoad from "react-lazyload";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
-  CardMedia,
   CardContent,
   Typography,
   ButtonBase,
@@ -15,7 +14,6 @@ import LinkIcon from "@mui/icons-material/Link";
 import { keyframes } from "@mui/system";
 import styled from "styled-components";
 
-
 const borderAnimation = keyframes`
   0% { border-color: #7799ff; }
   25% { border-color: #ff7799; }
@@ -23,7 +21,6 @@ const borderAnimation = keyframes`
   75% { border-color: #ff99ff; }
   100% { border-color: #7799ff; }
 `;
-
 
 const ProjectVideo = styled.video`
   width: 100%;
@@ -44,6 +41,7 @@ const ProjectCard = ({
   technologies,
   githubLink,
   demoLink,
+  web, // 👈 NUEVO PROP
 }) => {
   const navigate = useNavigate();
 
@@ -51,41 +49,26 @@ const ProjectCard = ({
     event.preventDefault();
     navigate(`/demopage/${title}`);
   };
+
   return (
     <Card
       sx={{
-        maxWidth: 400,
-        margin: "50px auto",
+        maxWidth: 450,
+        height: "100%",
+        margin: "60px auto",
         fontFamily: "'Source Code Pro', monospace",
         backgroundColor: "rgba(30, 58, 138, 0.12)",
         border: "2px solid rgba(200, 162, 200, 0.5)",
         borderRadius: "16px",
         boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.5)",
         transition: "all 0.3s ease",
-        overflow: "hidden", // Ensure content does not overflow
+        overflow: "hidden",
         "&:hover": {
           transform: "scale(1.05)",
         },
         "@media (max-width: 480px)": {
           "&:hover": {
             transform: "none",
-          },
-          video: {
-            width: "100%",
-            height: "auto",
-            marginTop: "20px",
-            marginBottom: "20px",
-          },
-        },
-        "@media (max-width: 390px)": {
-          "&:hover": {
-            transform: "none",
-          },
-          video: {
-            width: "100%",
-            height: "auto",
-            marginTop: "20px",
-            marginBottom: "20px",
           },
         },
       }}
@@ -113,17 +96,22 @@ const ProjectCard = ({
           >
             {title}
           </Typography>
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{
-              fontFamily: "'Source Code Pro', monospace",
-              color: "#333",
-              marginBottom: "10px",
-            }}
-          >
-            {subtitle}
-          </Typography>
+
+          {subtitle && (
+            <Typography
+              variant="subtitle1"
+              component="div"
+              sx={{
+                fontFamily: "'Source Code Pro', monospace",
+                color: "#333",
+                marginBottom: "10px",
+                whiteSpace: "pre-line",
+              }}
+            >
+              {subtitle}
+            </Typography>
+          )}
+
           {comment && (
             <Typography
               variant="body2"
@@ -133,18 +121,20 @@ const ProjectCard = ({
                 backgroundColor: "rgba(30, 58, 138, 0.12)",
                 marginBottom: "10px",
                 fontStyle: "italic",
+                whiteSpace: "pre-line", 
+
               }}
             >
               {comment}
             </Typography>
           )}
+
           <Typography
             variant="body2"
             color="text.secondary"
             sx={{
               fontFamily: "'Source Code Pro', monospace",
               textAlign: "justify",
-              textJustify: "inter-word",
               border: "1px solid rgba(200, 162, 200, 0.5)",
               borderRadius: "10px",
               boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
@@ -153,6 +143,7 @@ const ProjectCard = ({
           >
             {description}
           </Typography>
+
           <Typography
             variant="body2"
             color="text.secondary"
@@ -160,73 +151,105 @@ const ProjectCard = ({
               marginTop: "20px",
               fontFamily: "'Source Code Pro', monospace",
               fontWeight: "bold",
+              whiteSpace: "pre-line"
             }}
           >
             <strong>Tech Stack:</strong> {technologies}
           </Typography>
         </CardContent>
       </CardActionArea>
+
       <CardActions sx={{ justifyContent: "center" }}>
-        <ButtonBase
-          component="a"
-          href={githubLink}
-          sx={{
-            fontFamily: "'Source Code Pro', monospace",
-            padding: "12px 22px",
-            backgroundColor: "rgba(200, 162, 200, 0.5)",
-            borderRadius: "12px",
-            color: "#d8bfd8",
-            display: "flex",
-            textDecoration: "none",
-            boxSizing: "border-box",
-            transition:
-              "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
-
-            "&:hover": {
-              backgroundColor: "rgba(200, 162, 200, 0.3)",
+        {githubLink && (
+          <ButtonBase
+            component="a"
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              fontFamily: "'Source Code Pro', monospace",
+              padding: "12px 22px",
+              backgroundColor: "rgba(200, 162, 200, 0.5)",
+              borderRadius: "12px",
               color: "#d8bfd8",
-            },
-            "& svg": {
-              color: "white",
-              marginRight: "8px",
-            },
-          }}
-        >
-          <GitHubIcon />
-          View on GitHub
-        </ButtonBase>
-        <ButtonBase
-          component="a"
-          href={demoLink}
-          onClick={handleDemoClick}
-          sx={{
-            fontFamily: "'Source Code Pro', monospace",
-            padding: "12px 22px",
-            backgroundColor: "rgba(200, 162, 200, 0.5)",
-            borderRadius: "12px",
-            color: "#d8bfd8",
-            display: "flex",
-            textDecoration: "none",
-            boxSizing: "border-box",
-            transition:
-              "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              display: "flex",
+              textDecoration: "none",
+              boxSizing: "border-box",
+              transition: "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              "&:hover": {
+                backgroundColor: "rgba(200, 162, 200, 0.3)",
+              },
+              "& svg": {
+                color: "white",
+                marginRight: "8px",
+              },
+            }}
+          >
+            <GitHubIcon />
+            View on GitHub
+          </ButtonBase>
+        )}
 
-            "&:hover": {
-              backgroundColor: "rgba(200, 162, 200, 0.3)",
+        {web ? (
+          <ButtonBase
+            component="a"
+            href={web}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              fontFamily: "'Source Code Pro', monospace",
+              padding: "12px 22px",
+              backgroundColor: "rgba(200, 162, 200, 0.5)",
+              borderRadius: "12px",
               color: "#d8bfd8",
-            },
-            "& svg": {
-              color: "white",
-              marginRight: "8px",
-            },
-          }}
-        >
-          <LinkIcon sx={{ marginRight: "8px" }} />
-          View Demo
-        </ButtonBase>
+              display: "flex",
+              textDecoration: "none",
+              boxSizing: "border-box",
+              transition: "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              "&:hover": {
+                backgroundColor: "rgba(200, 162, 200, 0.3)",
+              },
+              "& svg": {
+                color: "white",
+                marginRight: "8px",
+              },
+            }}
+          >
+            <LinkIcon sx={{ marginRight: "8px" }} />
+            Visit Website
+          </ButtonBase>
+        ) : (
+          <ButtonBase
+            component="a"
+            href={demoLink}
+            onClick={handleDemoClick}
+            sx={{
+              fontFamily: "'Source Code Pro', monospace",
+              padding: "12px 22px",
+              backgroundColor: "rgba(200, 162, 200, 0.5)",
+              borderRadius: "12px",
+              color: "#d8bfd8",
+              display: "flex",
+              textDecoration: "none",
+              boxSizing: "border-box",
+              transition: "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              "&:hover": {
+                backgroundColor: "rgba(200, 162, 200, 0.3)",
+              },
+              "& svg": {
+                color: "white",
+                marginRight: "8px",
+              },
+            }}
+          >
+            <LinkIcon sx={{ marginRight: "8px" }} />
+            View Demo
+          </ButtonBase>
+        )}
       </CardActions>
     </Card>
   );
 };
 
 export default ProjectCard;
+

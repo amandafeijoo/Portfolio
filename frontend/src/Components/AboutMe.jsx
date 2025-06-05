@@ -15,7 +15,7 @@ const float = keyframes`
   100% { transform: translateY(0); }
 `;
 const AboutContainer = styled.div`
-  margin-top: 100px;
+  margin-top: 105px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -207,35 +207,29 @@ const StyledText = styled.span`
 `;
 
 const TextContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid #99aaff;
   padding: 20px;
 
+  &::after {
+    content: "";
+    position: absolute;
+    top: -20px; /* Ajusta para extender hacia arriba */
+    bottom: -20px; /* Ajusta para extender hacia abajo */
+    right: 0;
+    width: 2px;
+    background-color: #99aaff;
+  }
+
   @media (max-width: 768px) {
-    border-right: none;
-    border-bottom: 2px solid #99aaff;
-  }
-
-  @media (max-width: 820px) and (min-width: 768px) {
-    /* iPad Air */
-    border-right: none;
-    border-bottom: 2px solid #99aaff;
-  }
-
-  @media (max-width: 834px) and (min-width: 768px) {
-    /* iPad Mini */
-    border-right: none;
-    border-bottom: 2px solid #99aaff;
-  }
-
-  @media (max-width: 1024px) and (min-width: 768px) {
-    /* iPad Pro */
-    border-right: none;
-    border-bottom: 2px solid #99aaff;
+    &::after {
+      display: none;
+    }
   }
 `;
+
 
 const ImageContainer = styled.div`
   display: flex;

@@ -148,11 +148,28 @@ const Circles = () => {
     const opacity = scrollY > initialTop - height ? 1 : 0;
     const transform =
       progress < 1 ? `translateY(${scrollY * 0.5}px)` : `translateY(0)`;
-
-    const adjustedTop =
-      progress === 1 && initialTop === largeCircleStart.top ? top + 43 : top;
-
-    return { top: adjustedTop, left, opacity, transform };
+  
+    // Desplazamiento vertical personalizado
+    let offsetTop = 0;
+    let offsetLeft = 0;
+  
+    if (progress === 1) {
+      if (initialTop === largeCircleStart.top) {
+        offsetTop = 62;
+        offsetLeft = -16; // muevelo 30px a la izquierda
+      } else if (initialTop === mediumCircleStart.top) {
+        offsetTop = 20;
+        offsetLeft = -16;
+      } else if (initialTop === smallCircleStart.top) {
+        offsetTop = 20;
+        offsetLeft = -15;
+      }
+    }
+  
+    const adjustedTop = top + offsetTop;
+    const adjustedLeft = left + offsetLeft;
+  
+    return { top: adjustedTop, left: adjustedLeft, opacity, transform };
   };
 
   const isTablet = width >= 768 && width <= 1024;
