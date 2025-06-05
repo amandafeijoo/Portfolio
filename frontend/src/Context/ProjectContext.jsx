@@ -31,7 +31,7 @@ description: "Platform for a licensed psychologist with online booking and Strip
     },
     {
       id: 3,
-      videoSrc: "/images/dinebookergiphy.mp4",
+      videoSrc: "https://res.cloudinary.com/dp6jrgvoz/video/upload/f_auto,q_auto:eco,w_800/v1748814073/dinebookergiphy_tlwmjs.mov",
       title: "DineBooker",
 comment: "Final thesis project, graded 10/10.\nMaster´s  Degree at Universidad Europea de Madrid",
       subtitle: "Restaurant reservation platform.",
@@ -43,7 +43,7 @@ comment: "Final thesis project, graded 10/10.\nMaster´s  Degree at Universidad 
     },
     {
       id: 4,
-      videoSrc: "/images/fitlifegiphy.mp4",
+      videoSrc: "https://res.cloudinary.com/dp6jrgvoz/video/upload/f_auto,q_auto:eco,w_800/v1748814437/fitlifegiphy_njxqtl.mov",
       title: "FitLife",
       comment: "Preliminary project for my master's thesis, graded 8.6/10.\n Universidad Europea de Madrid",
       subtitle: "Gym management platform",
