@@ -1,7 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes, css } from "styled-components";
-import { Box, Container, TextField, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Link,
+} from "@mui/material";
 import { useState, useEffect } from "react";
 import Circles from "./Circles";
 import axios from "axios";
@@ -649,9 +656,17 @@ const ContactForm = () => {
           }}
         >
           By submitting this form, you agree to our{" "}
-          <a href="/privacy-policy" style={{ textDecoration: "underline" }}>
+          <Link
+            href="/privacy-policy"
+            underline="hover"
+            sx={{
+              color: "secondary.light", // puedes elegir primary.main, info.main, o un hex: "#f9ebea"
+              fontWeight: "bold",
+              "&:hover": { color: "secondary.main" },
+            }}
+          >
             Privacy Policy
-          </a>
+          </Link>
           , where we explain how we collect, store, and use your data.
         </Typography>
 

@@ -4,7 +4,14 @@ import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Container, Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Container,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Link,
+} from "@mui/material";
 import { motion } from "framer-motion";
 
 const ContactSummary = () => {
@@ -325,12 +332,17 @@ const ContactSummary = () => {
                 }}
               >
                 By submitting this form, you agree to our{" "}
-                <a
+                <Link
                   href="/privacy-policy"
-                  style={{ textDecoration: "underline" }}
+                  underline="hover"
+                  sx={{
+                    color: "secondary.light",
+                    fontWeight: "bold",
+                    "&:hover": { color: "secondary.main" },
+                  }}
                 >
                   Privacy Policy
-                </a>
+                </Link>
                 , where we explain how we collect, store, and use your data.
               </Typography>
 
