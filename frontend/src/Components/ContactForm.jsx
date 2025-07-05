@@ -540,25 +540,25 @@ const ContactForm = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#a3bffa", 
+                borderColor: "#a3bffa",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa", 
+                borderColor: "#a3bffa",
               },
               "& input": {
-                color: "#e6d6e6", 
-                fontFamily: "'Source Code Pro', monospace", 
+                color: "#e6d6e6",
+                fontFamily: "'Source Code Pro', monospace",
               },
               "&:hover fieldset": {
-                borderColor: "#ffc0cb", 
+                borderColor: "#ffc0cb",
               },
               "&:hover input": {
-                color: "#ffc0cb", 
+                color: "#ffc0cb",
               },
             },
             "& .MuiInputLabel-root": {
-              color: "#e6d6e6", 
-              fontFamily: "'Source Code Pro', monospace", 
+              color: "#e6d6e6",
+              fontFamily: "'Source Code Pro', monospace",
             },
             "& .MuiInputLabel-root.Mui-focused": {
               color: "#a3bffa",
@@ -574,28 +574,28 @@ const ContactForm = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#a3bffa", 
+                borderColor: "#a3bffa",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa", 
+                borderColor: "#a3bffa",
               },
               "& input": {
-                color: "#e6d6e6", 
-                fontFamily: "'Source Code Pro', monospace", 
+                color: "#e6d6e6",
+                fontFamily: "'Source Code Pro', monospace",
               },
               "&:hover fieldset": {
-                borderColor: "#ffc0cb", 
+                borderColor: "#ffc0cb",
               },
               "&:hover input": {
-                color: "#ffc0cb", 
+                color: "#ffc0cb",
               },
             },
             "& .MuiInputLabel-root": {
-              color: "#e6d6e6", 
-              fontFamily: "'Source Code Pro', monospace", 
+              color: "#e6d6e6",
+              fontFamily: "'Source Code Pro', monospace",
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#a3bffa", 
+              color: "#a3bffa",
             },
           }}
         />
@@ -610,29 +610,29 @@ const ContactForm = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#a3bffa", 
+                borderColor: "#a3bffa",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#a3bffa", 
+                borderColor: "#a3bffa",
               },
               "& input": {
-                color: "#e6d6e6", 
-                fontFamily: "'Source Code Pro', monospace", 
+                color: "#e6d6e6",
+                fontFamily: "'Source Code Pro', monospace",
               },
               "& textarea": {
-                color: "#e6d6e6", 
-                fontFamily: "'Source Code Pro', monospace", 
+                color: "#e6d6e6",
+                fontFamily: "'Source Code Pro', monospace",
               },
               "&:hover fieldset": {
-                borderColor: "#ffc0cb", 
+                borderColor: "#ffc0cb",
               },
               "&:hover input, &:hover textarea": {
-                color: "#ffc0cb", 
+                color: "#ffc0cb",
               },
             },
             "& .MuiInputLabel-root": {
-              color: "#e6d6e6", 
-              fontFamily: "'Source Code Pro', monospace", 
+              color: "#e6d6e6",
+              fontFamily: "'Source Code Pro', monospace",
             },
             "& .MuiInputLabel-root.Mui-focused": {
               color: "#a3bffa",
@@ -648,10 +648,13 @@ const ContactForm = () => {
             textAlign: "justify",
           }}
         >
-          By submitting this form, you agree that your data will be used solely
-          to respond to your inquiry.{" "}
-          <a href="/privacy-policy.html">Learn more</a>.
+          By submitting this form, you agree to our{" "}
+          <a href="/privacy-policy" style={{ textDecoration: "underline" }}>
+            Privacy Policy
+          </a>
+          , where we explain how we collect, store, and use your data.
         </Typography>
+
         <Button
           type="submit"
           variant="contained"
