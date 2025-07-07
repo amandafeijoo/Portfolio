@@ -215,7 +215,7 @@ const SmallSection = styled.section`
   box-sizing: border-box;
   position: relative;
   z-index: 10;
-  
+
   @media (max-width: 768px) {
     width: 80vw;
     height: 20vh;
@@ -647,29 +647,28 @@ const ContactForm = () => {
           }}
         />
         <Typography
-          variant="body2"
           sx={{
             fontFamily: "'Source Code Pro', monospace",
+            fontSize: "0.9rem",
+            color: "#ffffff",
+            textAlign: "center",
             mt: 2,
-            fontSize: "9px",
-            textAlign: "justify",
           }}
         >
           By submitting this form, you agree to our{" "}
-          <Link
-            href="/privacy-policy"
-            underline="hover"
-            sx={{
-              color: "secondary.light",
+          <span
+            onClick={() => navigate("/privacy-policy")}
+            style={{
+              cursor: "pointer",
+              color: "#fbb6ce",
               fontWeight: "bold",
-              transition: "color 150ms ease-in-out",
-              "&:hover": {
-                color: "secondary.dark",
-              },
+              textDecoration: "underline",
             }}
+            onMouseEnter={(e) => (e.target.style.color = "#f783ac")}
+            onMouseLeave={(e) => (e.target.style.color = "#fbb6ce")}
           >
             Privacy Policy
-          </Link>
+          </span>
           , where we explain how we collect, store, and use your data.
         </Typography>
 

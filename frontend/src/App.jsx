@@ -20,6 +20,7 @@ import ContactSummary from "./Components/ContactSummary";
 import Footer from "./Components/Footer";
 import { ProjectProvider } from "./Context/ProjectContext";
 import DemoPage from "./Components/DemoPage";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
 
 const AppContainer = styled.div`
   display: flex;
@@ -102,7 +103,8 @@ function App() {
             <Route path="/summary-projects" element={<SummaryProjects />} />
             <Route path="/contact-summary" element={<ContactSummary />} />
             <Route path="/demopage/:projectId" element={<DemoPage />} />
-          </Routes>
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            </Routes>
           <Footer />
         </Router>
       </ProjectProvider>
