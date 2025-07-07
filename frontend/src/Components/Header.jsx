@@ -5,8 +5,8 @@ import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 
 // 🔹 Barra superior con el logo centrado
 const TopBar = styled.div`
-background-color: rgb(119, 102, 119);
-height: 90px;
+  background-color: rgb(119, 102, 119);
+  height: 90px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -28,7 +28,7 @@ const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
-  background-color:rgb(241, 167, 179);
+  background-color: rgb(241, 167, 179);
   position: fixed;
   top: 89px; /* debajo de TopBar */
   width: 100%;
@@ -44,7 +44,7 @@ const HeaderContainer = styled.header`
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color:rgb(38, 31, 38);;
+  color: rgb(38, 31, 38);
   margin: 0 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -86,13 +86,26 @@ const StickySocials = styled.div`
   }
 `;
 
-const StickyIcon = styled.a`
-  color:rgb(221, 213, 221);
-  font-size: 1.8rem;
-  transition: color 0.3s ease;
+export const StickyIcon = styled.a`
+  font-size: 28px;
+  color: #fff;
+  /* background-color: #000; */
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.2s;
 
   &:hover {
-    color: #6a0dad;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    padding: 8px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 15px;
+    padding: 6px;
   }
 `;
 
@@ -119,7 +132,10 @@ const Header = () => {
           <StyledNavLink to="/projects" onClick={() => navigate("/projects")}>
             PROJECTS
           </StyledNavLink>
-          <StyledNavLink to="/contactform" onClick={() => navigate("/contactform")}>
+          <StyledNavLink
+            to="/contactform"
+            onClick={() => navigate("/contactform")}
+          >
             CONTACT
           </StyledNavLink>
         </CenterSection>
@@ -127,16 +143,32 @@ const Header = () => {
 
       {/* 🔹 Redes sociales fijas al lado derecho */}
       <StickySocials>
-        <StickyIcon href="https://github.com/amandafeijoo" target="_blank" rel="noopener noreferrer">
+        <StickyIcon
+          href="https://github.com/amandafeijoo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaGithub />
         </StickyIcon>
-        <StickyIcon href="https://linkedin.com/in/amanda-flores-feijoo-93956a156" target="_blank" rel="noopener noreferrer">
+        <StickyIcon
+          href="https://linkedin.com/in/amanda-flores-feijoo-93956a156"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaLinkedin />
         </StickyIcon>
-        <StickyIcon href="https://instagram.com/webcode.art" target="_blank" rel="noopener noreferrer">
+        <StickyIcon
+          href="https://instagram.com/webcode.art"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaInstagram />
         </StickyIcon>
-        <StickyIcon href="https://www.facebook.com/amanda.f.feijoo" target="_blank" rel="noopener noreferrer">
+        <StickyIcon
+          href="https://www.facebook.com/amanda.f.feijoo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaFacebook />
         </StickyIcon>
       </StickySocials>
@@ -145,5 +177,3 @@ const Header = () => {
 };
 
 export default Header;
-
-

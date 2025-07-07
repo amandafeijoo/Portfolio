@@ -180,10 +180,16 @@ const ContactSummary = () => {
                 mb: 3,
                 fontFamily: "'Source Code Pro', monospace",
                 fontWeight: "bold",
+                color: {
+                  xs: "#e6e6fa",
+                  sm: "#e6e6fa",
+                  md: "#fff",
+                },
               }}
             >
               Contact
             </Typography>
+
             <Box
               component="form"
               onSubmit={handleSubmit}

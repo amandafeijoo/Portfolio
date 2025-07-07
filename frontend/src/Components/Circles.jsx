@@ -148,11 +148,11 @@ const Circles = () => {
     const opacity = scrollY > initialTop - height ? 1 : 0;
     const transform =
       progress < 1 ? `translateY(${scrollY * 0.5}px)` : `translateY(0)`;
-  
+
     // Desplazamiento vertical personalizado
     let offsetTop = 0;
     let offsetLeft = 0;
-  
+
     if (progress === 1) {
       if (initialTop === largeCircleStart.top) {
         offsetTop = 62;
@@ -165,10 +165,10 @@ const Circles = () => {
         offsetLeft = -15;
       }
     }
-  
+
     const adjustedTop = top + offsetTop;
     const adjustedLeft = left + offsetLeft;
-  
+
     return { top: adjustedTop, left: adjustedLeft, opacity, transform };
   };
 
@@ -213,7 +213,7 @@ const Circles = () => {
             : isTablet
             ? -318
             : isMobile
-            ? -144
+            ? -139
             : -482,
           isIPhone14Pro
             ? -530
@@ -226,7 +226,7 @@ const Circles = () => {
             : isTablet
             ? -339
             : isMobile
-            ? -250
+            ? -238
             : -240
         )}
       />
@@ -261,7 +261,7 @@ const Circles = () => {
             : isTablet
             ? -268
             : isMobile
-            ? -118
+            ? -110 //centrar el de enmedio
             : -456,
           isIPhone14Pro
             ? -250
@@ -274,7 +274,7 @@ const Circles = () => {
             : isTablet
             ? -240
             : isMobile
-            ? -180
+            ? -167 // bajar el de enmedio
             : -175
         )}
       />
@@ -309,7 +309,7 @@ const Circles = () => {
             : isTablet
             ? -201
             : isMobile
-            ? -52
+            ? -47
             : -380,
           isIPhone14Pro
             ? -240
@@ -322,7 +322,7 @@ const Circles = () => {
             : isTablet
             ? -170
             : isMobile
-            ? -120
+            ? -106
             : -100
         )}
       />

@@ -214,8 +214,8 @@ const SmallSection = styled.section`
   margin: 0 auto;
   box-sizing: border-box;
   position: relative;
-  z-index: 1;
-
+  z-index: 10;
+  
   @media (max-width: 768px) {
     width: 80vw;
     height: 20vh;
@@ -660,9 +660,12 @@ const ContactForm = () => {
             href="/privacy-policy"
             underline="hover"
             sx={{
-              color: "secondary.light", // puedes elegir primary.main, info.main, o un hex: "#f9ebea"
+              color: "secondary.light",
               fontWeight: "bold",
-              "&:hover": { color: "secondary.main" },
+              transition: "color 150ms ease-in-out",
+              "&:hover": {
+                color: "secondary.dark",
+              },
             }}
           >
             Privacy Policy
@@ -844,6 +847,8 @@ const ContactPage = () => {
                   lg: "1.2rem",
                 },
                 color: "#ffc0cb",
+                position: "relative",
+                zIndex: 2,
               }}
             >
               <a

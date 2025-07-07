@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import LazyLoad from 'react-lazyload';
-import { isMobile } from 'react-device-detect';
+import LazyLoad from "react-lazyload";
+import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
@@ -60,7 +60,7 @@ const SummaryTitle = styled.h2`
   color: #fff;
   text-shadow: 0 0 3px #000;
   @media (max-width: 768px) {
-    font-size: 1.5em;
+    font-size: 1.9em;
   }
 `;
 
@@ -81,7 +81,8 @@ const ProjectCardContainer = styled.div`
   opacity: 0;
   border-radius: 10px;
   padding: 15px;
-  margin: 10px 0;
+  margin-bottom: 40px;
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(200, 162, 200, 0.5);
   overflow: hidden;
@@ -90,19 +91,22 @@ const ProjectCardContainer = styled.div`
     animation: none !important;
     opacity: 1;
     padding: 10px;
-    margin: 5px 0;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    margin-bottom: 25px;
   }
 
   @media (max-width: 480px) {
-    animation: none !important;
-    opacity: 1;
     padding: 5px;
-    margin: 2px 0;
+    margin-bottom: 60px;
   }
 
-  @media (min-width: 1025px) {
-    padding: 20px;
-    margin: 15px 0;
+  @media (min-width: 1440px) {
+    padding: 25px;
+    margin-bottom: 50px;
   }
 `;
 
@@ -117,8 +121,12 @@ const ProjectVideo = styled.video`
 const ProjectTitle = styled.h3`
   font-size: 1.5em;
   margin: 10px 0;
+  color: #000;
+
   @media (max-width: 768px) {
     font-size: 1.2em;
+    color: #e6e6fa;
+    font-weight: bold;
   }
 `;
 
@@ -248,11 +256,11 @@ const SummaryProjects = () => {
               />
             )}
             <LazyLoad height={200} offset={100}>
-            <ProjectVideo autoPlay muted loop playsInline>
-              <source src={project.videoSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </ProjectVideo>
-          </LazyLoad>
+              <ProjectVideo autoPlay muted loop playsInline>
+                <source src={project.videoSrc} type="video/mp4" />
+                Your browser does not support the video tag.
+              </ProjectVideo>
+            </LazyLoad>
             <ProjectTitle>{project.title}</ProjectTitle>
             <ProjectComment>{project.comment}</ProjectComment>
             <ProjectTechnologies>{project.technologies}</ProjectTechnologies>
@@ -293,64 +301,63 @@ const SummaryProjects = () => {
                 View on GitHub
               </Button>
               {project.web ? (
-  <Button
-    href={project.web}
-    target="_blank"
-    rel="noopener noreferrer"
-    sx={{
-      fontFamily: "'Source Code Pro', monospace",
-      padding: "12px 22px",
-      backgroundColor: "rgba(200, 162, 200, 0.3)",
-      borderRadius: "12px",
-      color: "#d8bfd8",
-      display: "flex",
-      textDecoration: "none",
-      boxSizing: "border-box",
-      transition:
-        "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
-      "&:hover": {
-        backgroundColor: "rgba(200, 162, 200, 0.5)",
-        color: "#d8bfd8",
-      },
-      "& svg": {
-        color: "white",
-        marginRight: "8px",
-      },
-    }}
-  >
-    <LinkIcon sx={{ marginRight: "8px" }} />
-    Visit Website
-  </Button>
-) : (
-  <Button
-    component="a"
-    onClick={(event) => handleDemoClick(event, project.title)}
-    sx={{
-      fontFamily: "'Source Code Pro', monospace",
-      padding: "12px 22px",
-      backgroundColor: "rgba(200, 162, 200, 0.3)",
-      borderRadius: "12px",
-      color: "#d8bfd8",
-      display: "flex",
-      textDecoration: "none",
-      boxSizing: "border-box",
-      transition:
-        "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
-      "&:hover": {
-        backgroundColor: "rgba(200, 162, 200, 0.5)",
-        color: "#d8bfd8",
-      },
-      "& svg": {
-        color: "white",
-        marginRight: "8px",
-      },
-    }}
-  >
-    <LinkIcon sx={{ marginRight: "8px" }} />
-    View Demo
-  </Button>
-)}
-
+                <Button
+                  href={project.web}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    fontFamily: "'Source Code Pro', monospace",
+                    padding: "12px 22px",
+                    backgroundColor: "rgba(200, 162, 200, 0.3)",
+                    borderRadius: "12px",
+                    color: "#d8bfd8",
+                    display: "flex",
+                    textDecoration: "none",
+                    boxSizing: "border-box",
+                    transition:
+                      "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+                    "&:hover": {
+                      backgroundColor: "rgba(200, 162, 200, 0.5)",
+                      color: "#d8bfd8",
+                    },
+                    "& svg": {
+                      color: "white",
+                      marginRight: "8px",
+                    },
+                  }}
+                >
+                  <LinkIcon sx={{ marginRight: "8px" }} />
+                  Visit Website
+                </Button>
+              ) : (
+                <Button
+                  component="a"
+                  onClick={(event) => handleDemoClick(event, project.title)}
+                  sx={{
+                    fontFamily: "'Source Code Pro', monospace",
+                    padding: "12px 22px",
+                    backgroundColor: "rgba(200, 162, 200, 0.3)",
+                    borderRadius: "12px",
+                    color: "#d8bfd8",
+                    display: "flex",
+                    textDecoration: "none",
+                    boxSizing: "border-box",
+                    transition:
+                      "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+                    "&:hover": {
+                      backgroundColor: "rgba(200, 162, 200, 0.5)",
+                      color: "#d8bfd8",
+                    },
+                    "& svg": {
+                      color: "white",
+                      marginRight: "8px",
+                    },
+                  }}
+                >
+                  <LinkIcon sx={{ marginRight: "8px" }} />
+                  View Demo
+                </Button>
+              )}
             </div>
           </ProjectCardContainer>
         );

@@ -204,6 +204,8 @@ const GridItem = styled.div`
   @media (max-width: 768px) {
     width: ${(props) => (props.large ? "240px" : "110px")};
     height: ${(props) => (props.large ? "100px" : "80px")};
+    margin-top: 20px;
+    color: #e6e6fa;
   }
 `;
 

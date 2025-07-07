@@ -59,7 +59,7 @@ const SummaryContainer = styled.div`
     width: 70% !important;
     padding: 6px !important;
     margin-top: -280px !important;
-    margin-bottom: 80px !important;
+    margin-bottom: 90px !important;
   }
 
   @media (max-width: 375px) {
@@ -74,8 +74,8 @@ const SummaryContainer = styled.div`
     /* iPhone 14 Pro */
     width: 80% !important;
     padding: 10px !important;
-    margin-top: -20px !important; /* Más abajo */
-    margin-bottom: 50px !important;
+    margin-top: -20px !important;
+    margin-bottom: 70px !important;
   }
 `;
 
@@ -135,8 +135,8 @@ const ProfileImage = styled.img`
   }
 
   @media (max-width: 480px) {
-    width: 60px;
-    height: 60px;
+    width: 140px;
+    height: 140px;
   }
 `;
 
@@ -146,14 +146,15 @@ const StyledButton = styled.button`
   justify-content: center;
   padding: 12px 22px;
   background-color: rgba(200, 162, 200, 0.3);
-  color:rgb(235, 210, 235);
+  color: rgb(235, 210, 235);
   font-family: "Source Code Pro", monospace;
   font-size: 1rem;
   border-radius: 12px;
   border: 2px solid rgba(200, 162, 200, 0.7);
   text-decoration: none;
   box-sizing: border-box;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
   margin-top: 1.5rem;
   margin-bottom: 4rem;
   cursor: pointer;
@@ -174,8 +175,7 @@ const AboutSummary = () => {
     threshold: 0.1,
     triggerOnce: false,
   });
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
 
   const [scale, setScale] = useState(1);
 
@@ -212,8 +212,8 @@ const AboutSummary = () => {
         Development and Applications online at Universidad Europea Madrid.
       </SummaryText>
       <StyledButton onClick={() => navigate("/AboutMe")}>
-      Explore my background
-          </StyledButton>
+        Explore my background
+      </StyledButton>
     </SummaryContainer>
   );
 };

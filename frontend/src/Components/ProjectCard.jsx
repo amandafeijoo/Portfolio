@@ -29,6 +29,17 @@ const ProjectVideo = styled.video`
   border: 3px solid #99aaff;
   object-fit: cover;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: 0 auto 20px;
+  }
+
+  @media (max-width: 480px) {
+    width: 95%;
+    margin: 0 auto 15px;
+    margin-top: 10px;
+  }
 `;
 
 const ProjectCard = ({
@@ -41,7 +52,7 @@ const ProjectCard = ({
   technologies,
   githubLink,
   demoLink,
-  web, // 👈 NUEVO PROP
+  web,
 }) => {
   const navigate = useNavigate();
 
@@ -55,7 +66,11 @@ const ProjectCard = ({
       sx={{
         maxWidth: 450,
         height: "100%",
-        margin: "60px auto",
+        margin: {
+          xs: "20px auto",
+          sm: "40px auto",
+          md: "60px auto",
+        },
         fontFamily: "'Source Code Pro', monospace",
         backgroundColor: "rgba(30, 58, 138, 0.12)",
         border: "2px solid rgba(200, 162, 200, 0.5)",
@@ -75,7 +90,14 @@ const ProjectCard = ({
     >
       <CardActionArea>
         <LazyLoad height={200} offset={100} once>
-          <ProjectVideo autoPlay muted loop playsInline preload="metadata" poster={posterSrc}>
+          <ProjectVideo
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={posterSrc}
+          >
             <source src={videoSrc} type="video/mp4" />
             Tu navegador no soporta el elemento de video.
           </ProjectVideo>
@@ -83,7 +105,7 @@ const ProjectCard = ({
         <CardContent>
           <Typography
             gutterBottom
-            variant="h5"
+            variant="h6"
             component="div"
             sx={{
               fontFamily: "'Source Code Pro', monospace",
@@ -121,8 +143,7 @@ const ProjectCard = ({
                 backgroundColor: "rgba(30, 58, 138, 0.12)",
                 marginBottom: "10px",
                 fontStyle: "italic",
-                whiteSpace: "pre-line", 
-
+                whiteSpace: "pre-line",
               }}
             >
               {comment}
@@ -151,7 +172,7 @@ const ProjectCard = ({
               marginTop: "20px",
               fontFamily: "'Source Code Pro', monospace",
               fontWeight: "bold",
-              whiteSpace: "pre-line"
+              whiteSpace: "pre-line",
             }}
           >
             <strong>Tech Stack:</strong> {technologies}
@@ -175,7 +196,8 @@ const ProjectCard = ({
               display: "flex",
               textDecoration: "none",
               boxSizing: "border-box",
-              transition: "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              transition:
+                "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
               "&:hover": {
                 backgroundColor: "rgba(200, 162, 200, 0.3)",
               },
@@ -205,7 +227,8 @@ const ProjectCard = ({
               display: "flex",
               textDecoration: "none",
               boxSizing: "border-box",
-              transition: "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              transition:
+                "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
               "&:hover": {
                 backgroundColor: "rgba(200, 162, 200, 0.3)",
               },
@@ -232,7 +255,8 @@ const ProjectCard = ({
               display: "flex",
               textDecoration: "none",
               boxSizing: "border-box",
-              transition: "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+              transition:
+                "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
               "&:hover": {
                 backgroundColor: "rgba(200, 162, 200, 0.3)",
               },
@@ -252,4 +276,3 @@ const ProjectCard = ({
 };
 
 export default ProjectCard;
-
