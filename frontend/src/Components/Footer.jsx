@@ -12,6 +12,10 @@ const Footer = () => {
     navigate("/privacy-policy");
   };
 
+  const handleLegalClick = () => {
+    navigate("/legal-notice");
+  };
+
   return (
     <Box
       sx={{
@@ -41,27 +45,63 @@ const Footer = () => {
               © {new Date().getFullYear()} Amanda Flores. All Rights Reserved.
             </Typography>
 
-            <Typography
-              onClick={handlePrivacyClick}
-              sx={{
-                fontFamily: "'Source Code Pro', monospace",
-                fontSize: "10px",
-                color: "#fbb6ce",
-                cursor: "pointer",
-                textDecoration: "underline",
-                transition: "color 0.3s ease",
-                "@media (max-width: 768px)": {
-                  fontSize: "8px",
-                },
-                "&:hover": {
-                  color: "#f783ac",
-                },
-              }}
-            >
-              Privacy Policy
-            </Typography>
+            {/* Enlaces horizontales */}
+            <Box display="flex" alignItems="center" gap={1}>
+              <Typography
+                onClick={handlePrivacyClick}
+                sx={{
+                  fontFamily: "'Source Code Pro', monospace",
+                  fontSize: "10px",
+                  color: "#fbb6ce",
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                  transition: "color 0.3s ease",
+                  "@media (max-width: 768px)": {
+                    fontSize: "8px",
+                  },
+                  "&:hover": {
+                    color: "#f783ac",
+                  },
+                }}
+              >
+                Privacy Policy
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontSize: "10px",
+                  color: "#fbb6ce",
+                  "@media (max-width: 768px)": {
+                    fontSize: "8px",
+                  },
+                }}
+              >
+                ·
+              </Typography>
+
+              <Typography
+                onClick={handleLegalClick}
+                sx={{
+                  fontFamily: "'Source Code Pro', monospace",
+                  fontSize: "10px",
+                  color: "#fbb6ce",
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                  transition: "color 0.3s ease",
+                  "@media (max-width: 768px)": {
+                    fontSize: "8px",
+                  },
+                  "&:hover": {
+                    color: "#f783ac",
+                  },
+                }}
+              >
+                Legal Notice
+              </Typography>
+            </Box>
           </Box>
         </Grid>
+
         <Grid item xs={12} sm={2}>
           <Box display="flex" justifyContent="flex-end">
             <Link

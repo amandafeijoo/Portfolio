@@ -31,7 +31,7 @@ const borderAnimation = keyframes`
 
 const AnimatedBox = styled(Box)`
   max-width: 800px;
-  margin: 150px auto;
+  margin: 150px auto 0 auto;
   padding: 40px 20px;
   border-radius: 16px;
   border: 3px solid;

@@ -21,6 +21,7 @@ import Footer from "./Components/Footer";
 import { ProjectProvider } from "./Context/ProjectContext";
 import DemoPage from "./Components/DemoPage";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
+import LegalNotice from "./Components/LegalNotice";
 
 const AppContainer = styled.div`
   display: flex;
@@ -104,6 +105,7 @@ function App() {
             <Route path="/contact-summary" element={<ContactSummary />} />
             <Route path="/demopage/:projectId" element={<DemoPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/legal-notice" element={<LegalNotice />} />
             </Routes>
           <Footer />
         </Router>
