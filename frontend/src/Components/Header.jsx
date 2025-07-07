@@ -118,6 +118,8 @@ const Header = () => {
         <img
           src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1748808205/ChatGPT_Image_1_jun_2025_22_03_11_zpymjm.png"
           alt="Webcode Art Logo"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer", height: "130px" }}
         />
       </TopBar>
 
