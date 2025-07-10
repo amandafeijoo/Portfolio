@@ -492,14 +492,20 @@ const AboutMe = () => {
             <AnimatedLetter>A</AnimatedLetter>bout Me .
           </StyledText>
           <Description>
-  I am Amanda Flores, a passionate Full-Stack Web Developer with a strong focus on frontend development. I specialize in creating engaging and functional web experiences using modern technologies such as React, Angular, Node.js, and Django, complemented by expertise in PostgreSQL, MongoDB, and MySQL for database management. My skill set also includes tools like Docker, MUI Material, and Google Cloud, allowing me to deliver scalable and user-centric solutions.
-  <br /> <br />
-  My academic background includes a Master’s in Professional Web Development and Applications from Universidad Europea Madrid, where I graduated with a GPA of 9.04/10 and achieved a perfect 10/10 in my thesis project. My training in graphic design, with a diploma from Escola Espai Barcelona, has honed my creative abilities, enabling me to merge functionality with aesthetic appeal in my projects using tools like Adobe Photoshop and Illustrator.
-  <br /> <br />
-  Originally from Honduras, I spent 14 years in Barcelona and now live in Norway, embracing a multicultural perspective that enriches my approach to development. With hands-on experience in projects like DineBooker and FitLife Gym, I have developed functional, responsive, and visually appealing platforms that solve real-world challenges.
-  <br /> <br />
-  Let’s create something amazing together! 🚀
+  I'm Amanda Flores — a Full-Stack Web Developer with a strong focus on frontend development and a passion for turning ideas into intuitive, responsive digital experiences. I work with modern technologies like React, Angular, Node.js, and Django, and I'm confident managing databases with PostgreSQL, MongoDB, and MySQL.
+  <br /><br />
+  I also use tools like Docker, MUI, Google Cloud, and deployment platforms like Railway, Render, Netlify, and Google Workspace (via Squarespace) to build scalable and maintainable applications.
+  <br /><br />
+  I hold a Master’s Degree in Web Development and Applications from Universidad Europea Madrid (GPA 9.04/10), where I earned a 10/10 on my thesis project. I also have a diploma in graphic design from Escola Espai Barcelona, which allows me to bring visual clarity and creativity into every project.
+  <br /><br />
+  Originally from Honduras, I lived in Barcelona 14 years, and I’m now based in Trondheim, Norway. My multicultural background shapes how I design, develop, and collaborate.
+  <br /><br />
+  I’ve built and deployed real-world platforms like <strong>Arrazola Psicología</strong> (a booking and payment system for a licensed therapist), and <strong>Webcode-Art</strong> (my personal portfolio and contact platform). I’ve also developed full demo versions of <strong>DineBooker</strong> and <strong>FitLife Gym</strong> — completed during my Master’s program and showcased in my portfolio.
+  <br /><br />
+  Let’s build something meaningful together! 🚀
 </Description>
+
+
         </TextContainer>
         <ImageContainer>
           <Box>

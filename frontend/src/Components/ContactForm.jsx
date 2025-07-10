@@ -337,7 +337,8 @@ const ContactFormContainer = styled.div`
   animation-fill-mode: forwards;
   width: 90%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto; 
   box-sizing: border-box;
 
   @media (max-width: 768px) {

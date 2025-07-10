@@ -206,10 +206,7 @@ const AboutSummary = () => {
       />
       <StyledH2>About Me</StyledH2>
       <SummaryText>
-        I am Amanda Flores, a Full-Stack Developer with advanced training in web
-        and application development, complemented by a solid foundation in
-        graphic design. I recently completed my Master’s Degree in Web
-        Development and Applications online at Universidad Europea Madrid.
+      Hi, I’m Amanda — a Full-Stack Developer with a creative background and a passion for building websites that not only work well, but feel good to use. I recently made the switch to tech, and I’ve been loving every step of the journey so far.
       </SummaryText>
       <StyledButton onClick={() => navigate("/AboutMe")}>
         Explore my background

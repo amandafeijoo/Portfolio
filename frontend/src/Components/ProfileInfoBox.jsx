@@ -65,7 +65,7 @@ const ProfileInfoBox = () => {
     <InfoBox>
       <InfoItem>
         <LocationOnIcon style={{ marginRight: "8px" }} />
-        <InfoText>Åfjord, Norway</InfoText>
+        <InfoText>Trondheim, Norway</InfoText>
       </InfoItem>
       {/* <InfoItem>
         <CakeIcon style={{ marginRight: "8px" }} />
@@ -78,7 +78,7 @@ const ProfileInfoBox = () => {
       <InfoItem>
         <FavoriteIcon style={{ marginRight: "8px" }} />
         <InfoText>
-          Interests: Gym, Travel, Coding, Design, Painting, Music
+          Interests: Gym, Travel, Coding, Design, Painting, Music.
         </InfoText>
       </InfoItem>
       <InfoItem>
