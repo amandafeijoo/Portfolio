@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import TechStack from "./TechStack";
 import ProfileInfoBox from "./ProfileInfoBox";
@@ -7,7 +7,6 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import RotatingTypingEffect from "./RotatingTypingEffect";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
 
 const float = keyframes`
   0% { transform: translateY(0); }
@@ -49,22 +48,22 @@ const AboutContainer = styled.div`
 
   @media (max-width: 430px) {
     /* iPhone Pro Max */
-    margin-top: 150px; 
+    margin-top: 150px;
   }
 
   @media (max-width: 390px) {
     /* iPhone Pro */
-    margin-top: 140px; 
+    margin-top: 140px;
   }
 
   @media (max-width: 375px) {
     /* iPhone SE */
-    margin-top: 130px; 
+    margin-top: 130px;
   }
 
   @media (max-width: 820px) and (min-width: 768px) {
     /* iPad Air */
-    margin-top: 120px; 
+    margin-top: 120px;
   }
 
   @media (max-width: 834px) and (min-width: 768px) {
@@ -74,7 +73,7 @@ const AboutContainer = styled.div`
 
   @media (max-width: 1024px) and (min-width: 768px) {
     /* iPad Pro */
-    margin-top: 120px; 
+    margin-top: 120px;
   }
 `;
 const Description = styled.p`
@@ -229,7 +228,6 @@ const TextContainer = styled.div`
     }
   }
 `;
-
 
 const ImageContainer = styled.div`
   display: flex;
@@ -457,10 +455,10 @@ const DesktopMessageContainer = styled(MessageContainer)`
 `;
 
 const MobileMessageContainer = styled(MessageContainer)`
-  display: none; 
+  display: none;
 
   @media (max-width: 480px) {
-    display: flex; 
+    display: flex;
   }
 `;
 
@@ -492,20 +490,41 @@ const AboutMe = () => {
             <AnimatedLetter>A</AnimatedLetter>bout Me .
           </StyledText>
           <Description>
-  I'm Amanda Flores — a Full-Stack Web Developer with a strong focus on frontend development and a passion for turning ideas into intuitive, responsive digital experiences. I work with modern technologies like React, Angular, Node.js, and Django, and I'm confident managing databases with PostgreSQL, MongoDB, and MySQL.
-  <br /><br />
-  I also use tools like Docker, MUI, Google Cloud, and deployment platforms like Railway, Render, Netlify, and Google Workspace (via Squarespace) to build scalable and maintainable applications.
-  <br /><br />
-  I hold a Master’s Degree in Web Development and Applications from Universidad Europea Madrid (GPA 9.04/10), where I earned a 10/10 on my thesis project. I also have a diploma in graphic design from Escola Espai Barcelona, which allows me to bring visual clarity and creativity into every project.
-  <br /><br />
-  Originally from Honduras, I lived in Barcelona 14 years, and I’m now based in Trondheim, Norway. My multicultural background shapes how I design, develop, and collaborate.
-  <br /><br />
-  I’ve built and deployed real-world platforms like <strong>Arrazola Psicología</strong> (a booking and payment system for a licensed therapist), and <strong>Webcode-Art</strong> (my personal portfolio and contact platform). I’ve also developed full demo versions of <strong>DineBooker</strong> and <strong>FitLife Gym</strong> — completed during my Master’s program and showcased in my portfolio.
-  <br /><br />
-  Let’s build something meaningful together! 🚀
-</Description>
-
-
+            I'm Amanda Flores — a Full-Stack Web Developer with a strong focus
+            on frontend development and a passion for turning ideas into
+            intuitive, responsive digital experiences. I work with modern
+            technologies like React, Angular, Node.js, and Django, and I'm
+            confident managing databases with PostgreSQL, MongoDB, and MySQL.
+            <br />
+            <br />
+            I also use tools like Docker, MUI, Google Cloud, and deployment
+            platforms like Railway, Render, Netlify, and Google Workspace (via
+            Squarespace) to build scalable and maintainable applications.
+            <br />
+            <br />
+            I hold a Master’s Degree in Web Development and Applications from
+            Universidad Europea Madrid (GPA 9.04/10), where I earned a 10/10 on
+            my thesis project. I also have a diploma in graphic design from
+            Escola Espai Barcelona, which allows me to bring visual clarity and
+            creativity into every project.
+            <br />
+            <br />
+            Originally from Honduras, I lived in Barcelona 14 years, and I’m now
+            based in Trondheim, Norway. My multicultural background shapes how I
+            design, develop, and collaborate.
+            <br />
+            <br />
+            I’ve built and deployed real-world platforms like{" "}
+            <strong>Arrazola Psicología</strong> (a booking and payment system
+            for a licensed therapist), and <strong>Webcode-Art</strong> (my
+            personal portfolio and contact platform). I’ve also developed full
+            demo versions of <strong>DineBooker</strong> and{" "}
+            <strong>FitLife Gym</strong> — completed during my Master’s program
+            and showcased in my portfolio.
+            <br />
+            <br />
+            Let’s build something meaningful together! 🚀
+          </Description>
         </TextContainer>
         <ImageContainer>
           <Box>
@@ -528,7 +547,7 @@ const AboutMe = () => {
 
           <ProfileInfoBox />
           <ButtonContainer>
-            <DownloadButton href="/CV.pdf" download>
+            <DownloadButton href="/CV_webdeveloper.pdf" download>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <DownloadIcon
                   style={{ marginRight: "8px", fontSize: "16px" }}
