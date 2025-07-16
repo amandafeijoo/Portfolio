@@ -7,6 +7,7 @@ import AboutSummary from "./AboutSummary";
 import SummaryProjects from "./SummaryProjects";
 import ContactSummary from "./ContactSummary";
 
+  /* (1) Definimos el botón CTA */
 const StyledCtaButton = styled.button`
   display: inline-flex;
   align-items: center;

@@ -135,8 +135,8 @@ const Header = () => {
             PROJECTS
           </StyledNavLink>
           <StyledNavLink
-            to="/contactform"
-            onClick={() => navigate("/contactform")}
+            to="/contactpage"
+            onClick={() => navigate("/contactpage")}
           >
             CONTACT
           </StyledNavLink>

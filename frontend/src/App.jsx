@@ -13,6 +13,7 @@ import TypingEffect from "./Components/TypingEffect";
 import RotatingTypingEffect from "./Components/RotatingTypingEffect";
 import ContactForm from "./Components/ContactForm";
 import ContactPage from "./Components/ContactPage";
+import ContactInfoItem from "./Components/ContactInfoItem";
 import Circles from "./Components/Circles";
 import AboutSummary from "./Components/AboutSummary";
 import SummaryProjects from "./Components/SummaryProjects";
@@ -84,7 +85,6 @@ function App() {
         <Router>
           <Header />
           <div style={{ height: "40px" }} />
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/AboutMe" element={<AboutMe />} />
@@ -93,12 +93,10 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/project-card" element={<ProjectCard />} />
             <Route path="/typing-effect" element={<TypingEffect />} />
-            <Route
-              path="/rotating-typing-effect"
-              element={<RotatingTypingEffect />}
-            />
+            <Route path="/rotating-typing-effect" element={<RotatingTypingEffect />}/>
             <Route path="/contactform" element={<ContactForm />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/contactpage" element={<ContactPage />} />
+            <Route path="/contactinfoitem " element={<ContactInfoItem />} />
             <Route path="/circles" element={<Circles />} />
             <Route path="/about-summary" element={<AboutSummary />} />
             <Route path="/summary-projects" element={<SummaryProjects />} />
