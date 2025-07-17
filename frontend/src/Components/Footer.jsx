@@ -8,25 +8,13 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = () => {
   const navigate = useNavigate();
 
-  const handlePrivacyClick = () => {
-    navigate("/privacy-policy");
-  };
-
-  const handleLegalClick = () => {
-    navigate("/legal-notice");
-  };
-
   return (
     <Box
       sx={{
         borderTop: "2px solid rgba(200, 162, 200, 0.5)",
-        p: 2,
-        mt: 5,
+        p: { xs: 1, sm: 2 },
+        mt: { xs: 3, sm: 5 },
         fontFamily: "'Source Code Pro', monospace",
-        "@media (max-width: 768px)": {
-          p: 1,
-          mt: 3,
-        },
       }}
     >
       <Grid container spacing={2} alignItems="center">
@@ -35,30 +23,24 @@ const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                fontFamily: "'Source Code Pro', monospace",
                 color: "#ffffff",
-                "@media (max-width: 768px)": {
-                  fontSize: "12px",
-                },
+                fontFamily: "'Source Code Pro', monospace",
+                fontSize: { xs: "12px", sm: "14px" },
               }}
             >
               © {new Date().getFullYear()} Amanda Flores. All Rights Reserved.
             </Typography>
 
-            {/* Enlaces horizontales */}
             <Box display="flex" alignItems="center" gap={1}>
               <Typography
-                onClick={handlePrivacyClick}
+                onClick={() => navigate("/privacy-policy")}
                 sx={{
                   fontFamily: "'Source Code Pro', monospace",
-                  fontSize: "10px",
+                  fontSize: { xs: "8px", sm: "10px" },
                   color: "#fbb6ce",
                   cursor: "pointer",
                   textDecoration: "underline",
                   transition: "color 0.3s ease",
-                  "@media (max-width: 768px)": {
-                    fontSize: "8px",
-                  },
                   "&:hover": {
                     color: "#f783ac",
                   },
@@ -69,28 +51,22 @@ const Footer = () => {
 
               <Typography
                 sx={{
-                  fontSize: "10px",
+                  fontSize: { xs: "8px", sm: "10px" },
                   color: "#fbb6ce",
-                  "@media (max-width: 768px)": {
-                    fontSize: "8px",
-                  },
                 }}
               >
                 ·
               </Typography>
 
               <Typography
-                onClick={handleLegalClick}
+                onClick={() => navigate("/legal-notice")}
                 sx={{
                   fontFamily: "'Source Code Pro', monospace",
-                  fontSize: "10px",
+                  fontSize: { xs: "8px", sm: "10px" },
                   color: "#fbb6ce",
                   cursor: "pointer",
                   textDecoration: "underline",
                   transition: "color 0.3s ease",
-                  "@media (max-width: 768px)": {
-                    fontSize: "8px",
-                  },
                   "&:hover": {
                     color: "#f783ac",
                   },
