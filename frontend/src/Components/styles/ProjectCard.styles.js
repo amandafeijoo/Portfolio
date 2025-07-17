@@ -1,4 +1,6 @@
 import { keyframes } from "@mui/system";
+import styled from "styled-components";
+
 
 export const borderAnimation = keyframes`
   0% { border-color: #7799ff; }

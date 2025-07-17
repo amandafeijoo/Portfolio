@@ -14,11 +14,11 @@ import LinkIcon from "@mui/icons-material/Link";
 import {
   cardStyles,
   buttonStyles,
-  techTypography,
-  descTypography,
-  subtitleTypography,
-  commentTypography,
-  titleTypography,
+  techStackStyles,
+  descriptionStyles,
+  subtitleStyles,
+  commentStyles,
+  titleStyles,
   ProjectVideo,
 } from "./styles/ProjectCard.styles";
 
@@ -57,28 +57,29 @@ const ProjectCard = ({
             Tu navegador no soporta el elemento de video.
           </ProjectVideo>
         </LazyLoad>
+
         <CardContent>
-          <Typography gutterBottom variant="h6" sx={titleTypography}>
+          <Typography gutterBottom variant="h6" sx={titleStyles}>
             {title}
           </Typography>
 
           {subtitle && (
-            <Typography variant="subtitle1" sx={subtitleTypography}>
+            <Typography variant="subtitle1" sx={subtitleStyles}>
               {subtitle}
             </Typography>
           )}
 
           {comment && (
-            <Typography variant="body2" sx={commentTypography}>
+            <Typography variant="body2" sx={commentStyles}>
               {comment}
             </Typography>
           )}
 
-          <Typography variant="body2" sx={descTypography}>
+          <Typography variant="body2" sx={descriptionStyles}>
             {description}
           </Typography>
 
-          <Typography variant="body2" sx={techTypography}>
+          <Typography variant="body2" sx={techStackStyles}>
             <strong>Tech Stack:</strong> {technologies}
           </Typography>
         </CardContent>
@@ -126,4 +127,3 @@ const ProjectCard = ({
 };
 
 export default ProjectCard;
-
