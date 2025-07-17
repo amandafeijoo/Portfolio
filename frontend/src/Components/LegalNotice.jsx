@@ -1,65 +1,9 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useEffect } from "react";
-import styled, { keyframes, css } from "styled-components";
-import { motion } from "framer-motion";
-import {
-  MdGavel,
-  MdPublic,
-  MdBusiness,
-  MdLock,
-  MdLanguage,
-} from "react-icons/md";
+import React, { useEffect } from "react";
+import { Typography } from "@mui/material";
+import {MdGavel,MdPublic,MdBusiness,MdLock,MdLanguage,} from "react-icons/md";
+import {AnimatedBox,StyledTitle,StyledSubtitle,FloatingCircle,
+} from "./styles/LegalNotice.styles";
 
-const floatAnimation = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-`;
-
-const borderAnimation = keyframes`
-  0% { border-color: #7799ff; }
-  25% { border-color: #ff7799; }
-  75% { border-color: #ff99ff; }
-  100% { border-color: #7799ff; }
-`;
-
-const AnimatedBox = styled(Box)`
-  max-width: 800px;
-  margin: 150px auto 0 auto;
-  padding: 40px 20px;
-  border-radius: 16px;
-  border: 3px solid;
-  ${css`
-    animation: ${borderAnimation} 8s linear infinite;
-  `}
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-  font-family: "Source Code Pro", monospace;
-  text-align: justify;
-  overflow: hidden;
-  color: #ffffff;
-  background-color: #121212;
-  position: relative;
-`;
-
-const StyledTitle = styled(Typography)`
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #fbb6ce;
-  padding: 6px 12px;
-  display: inline-block;
-  border-radius: 6px;
-  font-family: "Source Code Pro", monospace;
-`;
-
-const StyledSubtitle = styled(Typography)`
-  font-family: "Source Code Pro", monospace;
-`;
-
-const FloatingCircle = styled(motion.div)`
-  position: absolute;
-  border-radius: 50%;
-  animation: ${floatAnimation} 6s ease-in-out infinite;
-`;
 
 const ListItem = ({ icon, text }) => (
   <li style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
