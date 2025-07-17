@@ -3,207 +3,22 @@ import LazyLoad from "react-lazyload";
 import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
 import { useInView } from "react-intersection-observer";
 import { ProjectContext } from "../Context/ProjectContext";
 import Wavify from "react-wavify";
 import Button from "@mui/material/Button";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
-
-const slideInAndGrow = keyframes`
-  0% {
-    transform: translateY(20px) scale(0.95);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-`;
-
-const slideOutAndShrink = keyframes`
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(20px) scale(0.95);
-    opacity: 0;
-  }
-`;
-
-const SummaryContainer = styled.div`
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px;
-  max-width: 700px;
-  border: 2px solid rgba(200, 162, 200, 0.5);
-  @media (max-width: 768px) {
-    padding: 10px;
-    margin: 10px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 5px;
-    margin: 5px;
-  }
-
-  @media (min-width: 1025px) {
-    padding: 50px;
-    margin: 30px;
-  }
-`;
-
-const SummaryTitle = styled.h2`
-  font-size: 2em;
-  color: #fff;
-  text-shadow: 0 0 3px #000;
-  @media (max-width: 768px) {
-    font-size: 1.9em;
-  }
-`;
-
-const SummaryText = styled.p`
-  font-size: 1em;
-  color: #fff;
-  text-shadow: 0 0 3px #000;
-  text-align: justify;
-  @media (max-width: 768px) {
-    font-size: 0.9em;
-  }
-`;
-
-const ProjectCardContainer = styled.div`
-  position: relative;
-  animation: ${({ inView }) => (inView ? slideInAndGrow : slideOutAndShrink)} 1s
-    ease-out forwards;
-  opacity: 0;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 40px;
-
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(200, 162, 200, 0.5);
-  overflow: hidden;
-
-  @media (max-width: 1024px) {
-    animation: none !important;
-    opacity: 1;
-    padding: 10px;
-    margin-bottom: 30px;
-  }
-
-  @media (max-width: 768px) {
-    padding: 8px;
-    margin-bottom: 25px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 5px;
-    margin-bottom: 60px;
-  }
-
-  @media (min-width: 1440px) {
-    padding: 25px;
-    margin-bottom: 50px;
-  }
-`;
-
-const ProjectVideo = styled.video`
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-  border: 3px solid #99aaff;
-  object-fit: cover;
-`;
-
-const ProjectTitle = styled.h3`
-  font-size: 1.5em;
-  margin: 10px 0;
-  color: #000;
-
-  @media (max-width: 768px) {
-    font-size: 1.2em;
-    color: #e6e6fa;
-    font-weight: bold;
-  }
-`;
-
-const ProjectSubtitle = styled.h4`
-  font-size: 1.2em;
-  color: #666;
-  @media (max-width: 768px) {
-    font-size: 1em;
-  }
-`;
-
-const ProjectDescription = styled.p`
-  font-size: 1em;
-  color: #333;
-  @media (max-width: 768px) {
-    font-size: 0.9em;
-  }
-`;
-
-const ProjectTechnologies = styled.p`
-  font-size: 0.9em;
-  color: #999;
-  @media (max-width: 768px) {
-    font-size: 0.8em;
-  }
-`;
-
-const ProjectLinks = styled.div`
-  margin-top: 10px;
-`;
-
-const ProjectLink = styled.a`
-  margin-right: 10px;
-  color: #9370db;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const borderAnimation = keyframes`
-  0% { border-color: #7799ff; }
-  25% { border-color: #ff7799; }
-  75% { border-color: #ff99ff; }
-  100% { border-color: #7799ff; }
-`;
-
-const WaveBackground = styled(Wavify)`
-  position: absolute;
-  margin-top: 500px;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  z-index: -1;
-  transform: scaleY(3.5);
-  opacity: 0.5;
-  @media (max-width: 768px) {
-    height: 50px;
-    transform: scaleY(2.5);
-  }
-
-  @media (max-width: 480px) {
-    height: 30px;
-    transform: scaleY(1.5);
-  }
-`;
-
-const ProjectComment = styled.p`
-  font-size: 0.9em;
-  color: #d8bfd8;
-  margin-top: 10px;
-  @media (max-width: 768px) {
-    font-size: 0.8em;
-  }
-`;
+import {
+  SummaryContainer,
+  SummaryTitle,
+  ProjectCardContainer,
+  ProjectVideo,
+  ProjectTitle,
+  ProjectComment,
+  ProjectTechnologies,
+  WaveBackground,
+} from "./styles/SummaryProjects.styles";
 
 const SummaryProjects = () => {
   const { projectList } = useContext(ProjectContext);
@@ -228,12 +43,7 @@ const SummaryProjects = () => {
 
   return (
     <SummaryContainer>
-      <SummaryTitle>Projects</SummaryTitle>
-      {/* <SummaryText>
-        This is a brief summary of the projects. Each project is designed to
-        solve specific problems and uses various technologies to achieve its
-        goals.
-      </SummaryText> */}
+      <SummaryTitle>My Projects</SummaryTitle>
       {projectList.map((project, index) => {
         const { ref, inView } = useInView({
           triggerOnce: false,
@@ -243,18 +53,16 @@ const SummaryProjects = () => {
 
         return (
           <ProjectCardContainer key={index} ref={ref} inView={inView}>
-            {(index === 0 || index === 1) && (
-              <WaveBackground
-                fill="rgba(200, 162, 200, 0.5)"
-                paused={false}
-                options={{
-                  height: 10,
-                  amplitude: 10,
-                  speed: 0.15,
-                  points: 3,
-                }}
-              />
-            )}
+            <WaveBackground
+              fill="rgba(200, 162, 200, 0.5)"
+              paused={false}
+              options={{
+                height: 10,
+                amplitude: 10,
+                speed: 0.15,
+                points: 3,
+              }}
+            />
             <LazyLoad height={200} offset={100}>
               <ProjectVideo autoPlay muted loop playsInline>
                 <source src={project.videoSrc} type="video/mp4" />
