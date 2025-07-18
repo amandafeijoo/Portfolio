@@ -4,17 +4,10 @@ import ProfileInfoBox from "./ProfileInfoBox";
 import RotatingTypingEffect from "./RotatingTypingEffect";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import {
-  AboutContainer,
-  Description,
-  StyledText,
-  TextContainer,
-  ImageContainer,
-  ProfileImage,
-  AnimatedLetter,
-  DesktopMessageContainer,
-  MobileMessageContainer,
-} from "./styles/AboutMe.styles";
+import { AboutContainer, TextContainer, ImageContainer } from "./styles/AboutContainer.styles";
+import { StyledText, Description, AnimatedLetter } from "./styles/AboutText.styles";
+import { DesktopMessageContainer, MobileMessageContainer } from "./styles/AboutMessages.styles";
+import { ProfileImage } from "./styles/AboutImage.styles";
 import CirclesAboutMe from "./CirclesAboutMe";
 import AboutButtons from "./AboutButtons";
 
@@ -32,7 +25,7 @@ const AboutMe = () => {
   }, []);
 
   const handleContactClick = () => {
-    navigate("/contactform");
+    navigate("/contactpage");
   };
 
   return (

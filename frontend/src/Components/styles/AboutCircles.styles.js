@@ -1,6 +1,5 @@
-// AboutCircles.styles.js
 import styled from "styled-components";
-import { float } from "./AboutMe.styles"; // 👈 Importa la animación desde AboutMe.styles.js
+import { float } from "./animationsAbout";
 
 export const Circle = styled.div`
   position: absolute;

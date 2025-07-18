@@ -1,5 +1,9 @@
 import React from "react";
-import { ButtonContainer, DownloadButton, ContactButton } from "./styles/AboutMe.styles";
+import {
+  ButtonContainer,
+  DownloadButton,
+  ContactButton,
+} from "./styles/AboutButtons.styles";
 import DownloadIcon from "@mui/icons-material/Download";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 
