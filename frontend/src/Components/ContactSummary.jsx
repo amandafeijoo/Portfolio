@@ -4,12 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Container, Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import ContactInputs from "./ContactInputs";
 
@@ -24,12 +19,14 @@ const getCSRFToken = () => {
   return null;
 };
 
-const validateEmail = (email) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const ContactSummary = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [emailError, setEmailError] = useState("");
 
   const controls = useAnimation();
@@ -67,9 +64,13 @@ const ContactSummary = () => {
     }
 
     try {
-      await axios.post("https://portfolio-c6mj.onrender.com/contact/", formData, {
-        headers: { "X-CSRFToken": csrfToken },
-      });
+      await axios.post(
+        "https://portfolio-c6mj.onrender.com/contact/",
+        formData,
+        {
+          headers: { "X-CSRFToken": csrfToken },
+        }
+      );
 
       Swal.fire(
         "Success",
@@ -95,28 +96,42 @@ const ContactSummary = () => {
         pb: 4,
         mt: { xs: 0, sm: -30 },
         overflowY: "auto",
-        fontFamily:  "'Source Code Pro', monospace",
+        overflowX: "hidden",
+        fontFamily: "'Source Code Pro', monospace",
       }}
     >
-      <motion.div ref={ref} initial={{ scale: 0.2, opacity: 0 }} animate={controls}>
+      <motion.div
+        ref={ref}
+        initial={{ scale: 0.2, opacity: 0 }}
+        animate={controls}
+      >
         <Box
           sx={{
             border: "2px solid rgba(200, 162, 200, 0.5)",
             borderRadius: 2,
             p: { xs: 2, sm: 3 },
-            width: "100%",
+            width: {
+              xs: "90vw", // más ancho en móviles
+              sm: "600px", // fijo en pantallas medias o más grandes
+            },
             maxWidth: "600px",
             mx: "auto",
             mt: { xs: 10, sm: 40 },
-            mb: 5,
-            fontFamily:  "'Source Code Pro', monospace",
+            mb: 0,
+            fontFamily: "'Source Code Pro', monospace",
+            boxSizing: "border-box",
           }}
         >
           <Typography
             variant="h4"
             textAlign="center"
             gutterBottom
-            sx={{ mb: 3, fontWeight: "bold", color: "#fff" }}
+            sx={{
+              mb: 3,
+              fontWeight: "bold",
+              color: "#fff",
+              fontFamily: "'Source Code Pro', monospace",
+            }}
           >
             Contact
           </Typography>
@@ -137,19 +152,43 @@ const ContactSummary = () => {
               backgroundColor: "rgba(200, 162, 200, 0.5)",
             }}
           >
-            <Typography variant="body1" textAlign="center" gutterBottom  sx={{ fontFamily: "'Source Code Pro', monospace" }}
-          >
-              Feel free to reach out for collaborations, questions, or just to say hi. I’m here to help!
+            <Typography
+              variant="body1"
+              textAlign="center"
+              gutterBottom
+              sx={{
+                fontFamily: "'Source Code Pro', monospace",
+                fontSize: {
+                  xs: "0.8rem",
+                  sm: "1rem",
+                },
+                lineHeight: {
+                  xs: 1.4,
+                  sm: 1.6,
+                },
+                px: { xs: 1, sm: 0 },
+              }}
+            >
+              Feel free to reach out for collaborations, questions, or just to
+              say hi. I’m here to help!
             </Typography>
 
             <ContactInputs formData={formData} handleChange={handleChange} />
             <Typography
               sx={{
-                fontSize: "0.9rem",
+                fontSize: {
+                  xs: "0.75rem",
+                  sm: "0.8rem",
+                },
                 color: "#ffffff",
                 textAlign: "center",
                 mt: 2,
-                fontFamily:  "'Source Code Pro', monospace",
+                fontFamily: "'Source Code Pro', monospace",
+                lineHeight: {
+                  xs: 1.3,
+                  sm: 1.5,
+                },
+                px: { xs: 1, sm: 0 },
               }}
             >
               By submitting this form, you agree to our{" "}
