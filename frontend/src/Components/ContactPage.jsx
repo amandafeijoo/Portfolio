@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  LargeSection,
-  AnimatedTypography,
-  StyledText,
-  AnimatedLetter,
-  ContactSection,
-} from "./styles/ContactPage.styles";
+    LargeSection,
+    ContactSection,
+  } from "./styles/ContactSections.styles";
+import { AnimatedLetter, StyledText } from "./styles/ContactHeader.styles";
+import { AnimatedTypography } from "./styles/ContactTypography.styles";
 import ContactForm from "./ContactForm";
 import Circles from "./Circles";
 import { ContactFormContainer } from "./styles/ContactForm.styles";

@@ -1,101 +1,8 @@
-import styled, { css, keyframes } from "styled-components";
-import { Typography } from "@mui/material";
+import styled from "styled-components";
+import { fadeInUp, borderAnimation } from "./ContactAnimations.styles";
 
 
-const fadeInUp = keyframes`
-
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
-const AnimatedLetter = styled.span`
-  display: inline-block;
-  position: relative;
-  animation: ${rotate} 9s infinite;
-  border: 2px solid #99aaff;
-  margin-right: 13px;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    z-index: 2;
-  }
-
-  &::before {
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &::after {
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-`;
-
-const StyledText = styled.span`
-  font-size: 5.2em;
-  display: inline-block;
-  font-family: "Source Code Pro", monospace;
-  text-shadow: 0 0 3px #fff;
-  color: #fff;
-  margin-top: 33px;
-  margin-bottom: 20px;
-
-  @media (max-width: 1024px) and (min-width: 768px) {
-    /* iPad Pro */
-    font-size: 4.5em;
-    margin-top: 25px;
-    margin-bottom: 18px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 3.5em;
-    margin-top: 20px;
-    margin-bottom: 15px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2em;
-    margin-top: 180px;
-    margin-bottom: 10px;
-  }
-`;
-
-const borderAnimation = keyframes`
-  0% { border-color: #7799ff; }
-  25% { border-color: #ff7799; }
-  75% { border-color: #ff99ff; }
-  100% { border-color: #7799ff; }
-`;
-
-const AnimatedTypography = styled(Typography)`
-  ${({ scale }) => css`
-    transform: scale(${scale});
-    transition: transform 0.1s ease-in-out;
-  `}
-`;
-
-const LargeSection = styled.section`
+export const LargeSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,7 +85,7 @@ const LargeSection = styled.section`
   }
 `;
 
-const SmallSection = styled.section`
+export const SmallSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -235,7 +142,7 @@ const SmallSection = styled.section`
   }
 `;
 
-const ContactSection = styled.div`
+export const ContactSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -299,7 +206,7 @@ const ContactSection = styled.div`
   }
 `;
 
-const ContactInfo = styled.div`
+export const ContactInfo = styled.div`
   margin-top: 20px;
   animation: ${fadeInUp} 4s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s;
   opacity: 0;
@@ -317,14 +224,3 @@ const ContactInfo = styled.div`
     margin-top: 25px;
   }
 `;
-
-export {
-    AnimatedLetter,
-    StyledText,
-    AnimatedTypography,
-    LargeSection,
-    SmallSection,
-    ContactSection,
-    ContactInfo
-  };
-  
