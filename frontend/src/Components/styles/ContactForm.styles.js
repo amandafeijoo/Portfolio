@@ -30,11 +30,11 @@ export const ContactFormContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    width: 120%;
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
     margin-top: -80px;
     padding: 10px;
-    margin-left: -10%;
+    margin-left: 0%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;

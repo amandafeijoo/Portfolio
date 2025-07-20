@@ -118,6 +118,7 @@ const ContactForm = () => {
             sx={{
               fontFamily: "'Source Code Pro', monospace",
               fontWeight: "bold",
+              fontSize: {xs: "0.8rem",  sm: "1rem",lineHeight: {xs: 1.4,sm: 1.6,},},
               color: "#e6d6e6"
             }}
           >
