@@ -82,9 +82,10 @@ const ContactForm = () => {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "100vh",
-          px: 4,
+          px: { xs: 0, sm: 4 },
           pb: 4,
           overflowY: "auto",
+          overflowX: "hidden",
           fontFamily: "'Source Code Pro', monospace"
         }}
       >
@@ -97,7 +98,7 @@ const ContactForm = () => {
             gap: 2,
             mt: 5,
             mb: 3,
-            p: 3,
+            p: { xs: 2, sm: 3 },
             borderRadius: 2,
             color: "#fff",
             boxShadow: "0 0 10px rgba(192, 192, 192, 0.5)",
