@@ -13,7 +13,7 @@ const Footer = () => {
       sx={{
         borderTop: "2px solid rgba(200, 162, 200, 0.5)",
         p: { xs: 1, sm: 2 },
-        mt: { xs: 3, sm: 5 },
+        mt: { sm: 5 },
         fontFamily: "'Source Code Pro', monospace",
       }}
     >

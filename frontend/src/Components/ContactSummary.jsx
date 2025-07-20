@@ -90,12 +90,19 @@ const ContactSummary = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "100dvh",
         px: { xs: 2, sm: 4 },
         pb: 4,
         mt: { xs: 0, sm: -30 },
         overflowY: "auto",
         fontFamily:  "'Source Code Pro', monospace",
+
+         // ✅ Solo en móviles
+    "@media (max-width: 768px)": {
+      overflowX: "hidden",
+    
+    },
+  
       }}
     >
       <motion.div ref={ref} initial={{ scale: 0.2, opacity: 0 }} animate={controls}>
@@ -105,7 +112,7 @@ const ContactSummary = () => {
             borderRadius: 2,
             p: { xs: 2, sm: 3 },
             width: "100%",
-            maxWidth: "600px",
+            maxWidth:  { xs: "91%", sm: "600px" },
             mx: "auto",
             mt: { xs: 10, sm: 40 },
             mb: 5,
@@ -113,10 +120,10 @@ const ContactSummary = () => {
           }}
         >
           <Typography
-            variant="h4"
+            variant="body1"
             textAlign="center"
             gutterBottom
-            sx={{ mb: 3, fontWeight: "bold", color: "#fff",fontFamily:  "'Source Code Pro', monospace", }}
+            sx={{ mb: 3, fontWeight: "bold", color: "#fff",fontFamily:  "'Source Code Pro', monospace",fontSize: {xs: "1.8rem",  sm: "2.7rem"} }}
           >
             Contact
           </Typography>
@@ -141,7 +148,7 @@ const ContactSummary = () => {
             fontSize: {xs: "0.8rem",  sm: "1rem",lineHeight: {xs: 1.4,sm: 1.6,},},
              }}
           >
-              Feel free to reach out for collaborations, questions, or just to say hi. I’m here to help!
+              Feel free to reach out for collaborations, questions, or just to say hi.{"\n"} I’m here to help!
             </Typography>
 
             <ContactInputs formData={formData} handleChange={handleChange} />
@@ -177,6 +184,7 @@ const ContactSummary = () => {
               variant="contained"
               sx={{
                 backgroundColor: "#ff5577",
+                fontFamily: "'Source Code Pro', monospace",
                 color: "#fff",
                 "&:hover": {
                   backgroundColor: "#ff7799",

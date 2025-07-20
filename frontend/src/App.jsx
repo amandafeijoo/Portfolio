@@ -29,13 +29,14 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   margin: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
 
   @media (max-width: 480px) {
     padding: 5px; /* Móviles pequeños */
@@ -74,7 +75,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color-scheme: dark;
 }
+
 `;
 
 function App() {
