@@ -87,7 +87,7 @@ const ProfileInfoBox = () => {
       </InfoItem>
       <InfoItem>
         <WorkIcon style={{ marginRight: "8px" }} />
-        <InfoText>Employment: Fosen Fjord Hotell</InfoText>
+        <InfoText>Employment: Britannia Hotel</InfoText>
       </InfoItem>
     </InfoBox>
   );

@@ -161,50 +161,28 @@ export const ContactSection = styled.div`
   position: relative;
   z-index: 1;
 
+  /* Tablet hacia abajo: NO uses height fija -> evita scroll interno */
   @media (max-width: 768px) {
-    width: 80vw;
-    height: 70vh;
+    /* No 90vw: mantenlo sobre el flujo del layout para que el borde no desborde */
+    width: 100%;
+    max-width: 420px;       /* mismo look, topa ancho para que no toque bordes */
     padding: 15px;
-  }
-
-  @media (max-width: 480px) {
-    width: 100vw;
-    height: 70vh;
-    padding: 10px;
-    margin-top: 120px;
+    height: auto;           /* <— clave */
+    min-height: 85vh;       /* mantiene altura “alta” sin forzar */
+    margin: 120px auto 0;   /* conserva tu separación superior */
     top: 0;
-    margin-bottom: 0;
+    /* Evita que cualquier hijo/animación empuje lateralmente */
+    overflow-x: clip;       /* mejor que hidden para recortes de borde/blur */
   }
 
-  @media (min-width: 820px) and (max-width: 820px) and (min-height: 1180px) and (max-height: 1180px) and (-webkit-min-device-pixel-ratio: 2) {
-    width: 75vw;
-    height: 70vh;
-    padding: 18px;
-  }
-
-  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
-    width: 80vw;
-    height: 60vh;
-    padding: 20px;
-  }
-
-  @media (min-width: 768px) and (max-width: 768px) and (min-height: 1024px) and (max-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
-    width: 80vw;
-    height: 60vh;
-    padding: 15px;
-    margin-top: 0px;
-  }
-
-  @media (max-width: 430px) {
-    /* iPhone 14 Pro */
-    width: 100vw;
-    height: 90vh; /* Un poco más largo */
-    padding: 10px;
-    margin-top: 120px;
-    top: 0;
-    margin-bottom: 0;
+  /* Móvil pequeño (iPhone SE / ~375–390px) */
+  @media (max-width: 390px) {
+    max-width: 360px;
+    padding: 14px;
+    min-height: 65vh;
   }
 `;
+
 
 export const ContactInfo = styled.div`
   margin-top: 20px;

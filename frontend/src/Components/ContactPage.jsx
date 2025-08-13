@@ -37,7 +37,7 @@ const ContactPage = () => {
   }, []);
 
   return (
-    <div style={{ minHeight: "220vh" }}>
+    <div style={{ minHeight: "220vh"}}>
       <LargeSection>
         <AnimatedTypography scale={scale} variant="h1" component="h1" sx={{ fontFamily: "'Source Code Pro', monospace", fontSize: "1.7rem", marginTop: "-200px", padding: "20px" }}>
           <StyledText>

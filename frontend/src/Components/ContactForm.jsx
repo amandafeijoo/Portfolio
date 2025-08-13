@@ -83,7 +83,7 @@ const ContactForm = () => {
           justifyContent: "center",
           minHeight: "100vh",
           px: { xs: 0, sm: 4 },
-          pb: 4,
+          pb: { xs: 4, sm: 4 },            
           overflowY: "auto",
           overflowX: "hidden",
           fontFamily: "'Source Code Pro', monospace"
