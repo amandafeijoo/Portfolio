@@ -161,18 +161,15 @@ export const ContactSection = styled.div`
   position: relative;
   z-index: 1;
 
-  /* Tablet hacia abajo: NO uses height fija -> evita scroll interno */
   @media (max-width: 768px) {
-    /* No 90vw: mantenlo sobre el flujo del layout para que el borde no desborde */
     width: 100%;
-    max-width: 420px;       /* mismo look, topa ancho para que no toque bordes */
+    max-width: 420px;       
     padding: 15px;
-    height: auto;           /* <— clave */
-    min-height: 85vh;       /* mantiene altura “alta” sin forzar */
-    margin: 120px auto 0;   /* conserva tu separación superior */
+    height: auto;          
+    min-height: 85vh;      
+    margin: 120px auto 0;   
     top: 0;
-    /* Evita que cualquier hijo/animación empuje lateralmente */
-    overflow-x: clip;       /* mejor que hidden para recortes de borde/blur */
+    overflow-x: clip;   
   }
 
   /* Móvil pequeño (iPhone SE / ~375–390px) */
