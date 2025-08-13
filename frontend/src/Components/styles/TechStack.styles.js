@@ -44,6 +44,7 @@ export const GridContainer = styled.div`
     grid-template-rows: repeat(8, 1fr);
     padding: 0px;
     max-width: 100%;
+    margin-bottom: 40px;
   }
 `;
 
