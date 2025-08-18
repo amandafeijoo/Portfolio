@@ -16,14 +16,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 from myportfolio.contact.views import ContactView
-from django.http import HttpResponse
-
-def home(request):
-    return HttpResponse("Welcome to my portfolio!")
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('contact/', ContactView.as_view(), name='contact'),
-    path('', home, name='home'),  # Ruta para la URL raíz
+    path("admin/", admin.site.urls),
+    path("contact/", ContactView.as_view(), name="contact"),
+    # SPA del frontend:
+    path("", TemplateView.as_view(template_name="index.html"), name="home"),
 ]

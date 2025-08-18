@@ -1,4 +1,4 @@
-# ---- Etapa 1: build del frontend (Vite) ----
+# -------- Etapa 1: Build del frontend (Vite) --------
     FROM node:20-alpine AS frontend-build
     WORKDIR /app/frontend
     
@@ -6,12 +6,15 @@
     COPY frontend/package*.json ./
     RUN npm ci
     COPY frontend/ .
-    # Railway te pasa VITE_API_URL como variable de entorno
+    
+    # Variable para llamadas de API desde el frontend (opcional)
     ARG VITE_API_URL
     ENV VITE_API_URL=$VITE_API_URL
-    RUN npm run build   # genera /app/frontend/dist
     
-    # ---- Etapa 2: backend Django ----
+    # ¡Clave!: que Vite emita rutas bajo /static/
+    RUN npm run build -- --base=/static/
+    
+    # -------- Etapa 2: Backend Django --------
     FROM python:3.11-slim
     
     ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -24,7 +27,7 @@
     
     WORKDIR /app
     
-    # Reqs de Python (de la raíz)
+    # Reqs de Python (requirements.txt en la raíz)
     COPY requirements.txt .
     RUN pip install --no-cache-dir --upgrade pip \
      && pip install --no-cache-dir -r requirements.txt
@@ -33,8 +36,8 @@
     COPY backend/ ./backend/
     
     # Copiamos el build del frontend:
-    # - index.html a templates/
-    # - assets a static/assets/
+    # - index.html -> /app/templates/
+    # - assets     -> /app/static/assets/
     RUN mkdir -p templates static/assets
     COPY --from=frontend-build /app/frontend/dist/index.html ./templates/index.html
     COPY --from=frontend-build /app/frontend/dist/assets ./static/assets
