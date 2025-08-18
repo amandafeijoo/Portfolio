@@ -1,8 +1,4 @@
 import os
-from pathlib import Path
-
-from decouple import config
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,12 +76,22 @@ WSGI_APPLICATION = 'myportfolio.wsgi.application'
 
 
 # Database
-# Usamos únicamente DATABASE_URL con dj-database-url
+import dj_database_url
+from decouple import config
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DATABASE_URL = config(
+    "DATABASE_URL",
+    default=f"sqlite:///{(BASE_DIR / 'db.sqlite3').as_posix()}"  # fallback en build/local
+)
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL'),
+    "default": dj_database_url.parse(
+        DATABASE_URL,
         conn_max_age=600,
-        ssl_require=True,
+        ssl_require=False  # ponlo en False para build, Railway aplicará SSL si hace falta en prod
     )
 }
 
