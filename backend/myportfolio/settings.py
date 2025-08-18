@@ -1,4 +1,7 @@
 import os
+from pathlib import Path
+from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,9 +43,9 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware", 
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # <- imprescindible
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'myportfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # añade aquí si tienes carpetas de templates fuera de apps
+    "DIRS": [BASE_DIR / "templates"],   
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,22 +79,12 @@ WSGI_APPLICATION = 'myportfolio.wsgi.application'
 
 
 # Database
-import dj_database_url
-from decouple import config
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-DATABASE_URL = config(
-    "DATABASE_URL",
-    default=f"sqlite:///{(BASE_DIR / 'db.sqlite3').as_posix()}"  # fallback en build/local
-)
-
+# Usamos únicamente DATABASE_URL con dj-database-url
 DATABASES = {
-    "default": dj_database_url.parse(
-        DATABASE_URL,
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL'),
         conn_max_age=600,
-        ssl_require=False  # ponlo en False para build, Railway aplicará SSL si hace falta en prod
+        ssl_require=True,
     )
 }
 
@@ -100,6 +93,9 @@ DATABASES = {
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = False
 
+# CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # Email (contact form)
 
@@ -139,6 +135,7 @@ USE_TZ        = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_DIRS = [BASE_DIR / "static"]  
 
 
 # Default primary key field type
