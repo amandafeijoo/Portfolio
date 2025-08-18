@@ -19,7 +19,7 @@ const AboutSummary = () => {
       className={inView ? "visible" : ""}
     >
       <ProfileImage
-        src="/images/perfil.jpg"
+        src="/static/images/perfil.jpg"
         alt="Perfil"
         className={inView ? "visible" : ""}
       />
