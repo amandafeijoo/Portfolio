@@ -15,12 +15,18 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'portfolio-c6mj.onrender.com',
-    'webcode-art.com',
-    'webcode-art-portfolio.netlify.app',
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "webcode-art.com", ".up.railway.app"]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://webcode-art.com",
+    "https://*.up.railway.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "https://webcode-art.com",
+    "https://*.up.railway.app",
 ]
 
 
@@ -37,17 +43,20 @@ INSTALLED_APPS = [
     'myportfolio.contact',
     'corsheaders',
 ]
-
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", 
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 
 ROOT_URLCONF = 'myportfolio.urls'
 
@@ -81,21 +90,6 @@ DATABASES = {
 }
 
 
-# CORS & CSRF
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://portfolio-c6mj.onrender.com",
-    "https://webcode-art.com",
-    "https://webcode-art-portfolio.netlify.app",
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "https://portfolio-c6mj.onrender.com",
-    "https://webcode-art.com",
-    "https://webcode-art-portfolio.netlify.app",
-]
 
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = False
@@ -136,7 +130,9 @@ USE_TZ        = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Default primary key field type
