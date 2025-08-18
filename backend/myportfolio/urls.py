@@ -15,13 +15,18 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.views.generic import TemplateView
 from myportfolio.contact.views import ContactView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("contact/", ContactView.as_view(), name="contact"),
-    # SPA del frontend:
+
+    # raíz de la SPA
     path("", TemplateView.as_view(template_name="index.html"), name="home"),
+
+    # catch-all: cualquier ruta que NO sea de backend sirve la SPA
+    re_path(r"^(?!admin/|contact/|api/).*$", TemplateView.as_view(template_name="index.html")),
 ]
+
