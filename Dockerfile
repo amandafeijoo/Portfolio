@@ -11,7 +11,7 @@ COPY frontend/ .
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
-# ¡Clave!: que Vite emita rutas bajo /static/
+# Importante: que Vite emita rutas bajo /static/
 RUN npm run build -- --base=/static/
 
 # -------- Etapa 2: Backend Django --------
@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# Reqs de Python (requirements.txt en la raíz)
+# Dependencias de Python (requirements.txt en la raíz del repo)
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
@@ -39,16 +39,18 @@ COPY backend/ ./backend/
 # - index.html  -> /app/templates/
 # - assets      -> /app/static/assets/
 # - images      -> /app/static/images/
-RUN mkdir -p templates static static/assets static/images
+# - *.mp4 (raíz e images) -> /app/static/videos/
+RUN mkdir -p templates static static/assets static/images static/videos
 
-COPY --from=frontend-build /app/frontend/dist/index.html ./templates/index.html
-COPY --from=frontend-build /app/frontend/dist/assets      ./static/assets
-COPY --from=frontend-build /app/frontend/dist/images      ./static/images
-COPY --from=frontend-build /app/frontend/dist/*.png       ./static/
-COPY --from=frontend-build /app/frontend/dist/*.ico       ./static/
-COPY --from=frontend-build /app/frontend/dist/site.webmanifest ./static/
-COPY --from=frontend-build /app/frontend/dist/CV.pdf      ./static/
-
+COPY --from=frontend-build /app/frontend/dist/index.html                 ./templates/index.html
+COPY --from=frontend-build /app/frontend/dist/assets/                    ./static/assets
+COPY --from=frontend-build /app/frontend/dist/images/                    ./static/images
+COPY --from=frontend-build /app/frontend/dist/*.mp4                      ./static/videos
+COPY --from=frontend-build /app/frontend/dist/images/*.mp4               ./static/videos
+COPY --from=frontend-build /app/frontend/dist/*.png                      ./static/
+COPY --from=frontend-build /app/frontend/dist/*.ico                      ./static/
+COPY --from=frontend-build /app/frontend/dist/site.webmanifest           ./static/
+COPY --from=frontend-build /app/frontend/dist/CV.pdf                     ./static/
 
 # Script de arranque: migrate + collectstatic + gunicorn
 COPY backend/entrypoint.sh /entrypoint.sh

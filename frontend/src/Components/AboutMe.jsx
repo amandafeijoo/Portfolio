@@ -90,7 +90,7 @@ const AboutMe = () => {
               />
             </MobileMessageContainer>
           </Box>
-          <ProfileImage src="/static//images/perfil.jpg" alt="Perfil" />
+          <ProfileImage src="/static/images/perfil.jpg" alt="Perfil" />
           <ProfileInfoBox />
           <AboutButtons onContactClick={handleContactClick} />
         </ImageContainer>
