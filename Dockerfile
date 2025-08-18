@@ -45,8 +45,8 @@ RUN mkdir -p templates static static/assets static/images static/videos
 COPY --from=frontend-build /app/frontend/dist/index.html                 ./templates/index.html
 COPY --from=frontend-build /app/frontend/dist/assets/                    ./static/assets
 COPY --from=frontend-build /app/frontend/dist/images/                    ./static/images
-COPY --from=frontend-build /app/frontend/dist/*.mp4                      ./static/videos
-COPY --from=frontend-build /app/frontend/dist/images/*.mp4               ./static/videos
+COPY --from=frontend-build /app/frontend/dist/*.mp4                      ./static/
+COPY --from=frontend-build /app/frontend/dist/images/*.mp4               ./static/
 COPY --from=frontend-build /app/frontend/dist/*.png                      ./static/
 COPY --from=frontend-build /app/frontend/dist/*.ico                      ./static/
 COPY --from=frontend-build /app/frontend/dist/site.webmanifest           ./static/
