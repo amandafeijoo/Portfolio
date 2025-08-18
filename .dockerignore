@@ -1,0 +1,28 @@
+# Node & frontend
+frontend/node_modules
+frontend/dist
+frontend/.vite
+frontend/.cache
+
+# Python & backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Config / IDE / OS
+.env
+*.log
+.git
+.gitignore
+.vscode
+.DS_Store
+.idea
+
+# Docker
+Dockerfile
+docker-compose.yml
