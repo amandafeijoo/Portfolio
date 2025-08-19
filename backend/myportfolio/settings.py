@@ -2,10 +2,16 @@ import os
 from pathlib import Path
 from decouple import config
 import dj_database_url
+import mimetypes
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent  # /app/backend
 REPO_ROOT = BASE_DIR.parent                        # /app
+
+mimetypes.add_type("video/mp4", ".mp4", True)
+mimetypes.add_type("video/webm", ".webm", True)
+mimetypes.add_type("video/ogg", ".ogv", True)
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -137,6 +143,7 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [REPO_ROOT / "static"]   
 STATIC_ROOT = REPO_ROOT / "staticfiles"     # <-- salida de collectstatic: /app/staticfiles
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
