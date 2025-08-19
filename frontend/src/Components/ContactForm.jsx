@@ -57,7 +57,7 @@ const ContactForm = () => {
 
     try {
       await axios.post(
-        "https://portfolio-c6mj.onrender.com/contact/",
+        "/contact/",
         formData,
         { headers: { "X-CSRFToken": csrfToken } }
       );
