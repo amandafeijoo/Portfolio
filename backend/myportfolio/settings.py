@@ -21,18 +21,24 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "webcode-art.com", ".up.railway.app"]
+ALLOWED_HOSTS = [
+    "localhost", "127.0.0.1",
+    "webcode-art.com", "www.webcode-art.com",
+    "portfolio-production-8d11.up.railway.app",  
+]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://webcode-art.com",
-    "https://*.up.railway.app",
+    "https://www.webcode-art.com",
+    "https://portfolio-production-8d11.up.railway.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://webcode-art.com",
-    "https://*.up.railway.app",
+    "https://www.webcode-art.com",
+    "https://portfolio-production-8d11.up.railway.app",
 ]
 
 
