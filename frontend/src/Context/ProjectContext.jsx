@@ -39,7 +39,7 @@ comment: "Final thesis project, graded 10/10.\nMaster´s  Degree at Universidad 
         "DineBooker enables users to book tables, review restaurants, and earn loyalty points. Restaurant owners can manage bookings, update menus, and engage with guests, all in one platform.",
       technologies: "React, Django, PostrgeSQL, node.js",
       githubLink: "https://github.com/amandafeijoo/DineBookerTFM.git",
-      demoLink: "/static/demo_dinebooker_portfolio.mp4",
+      demoLink: "/static/images/demo_dinebooker_portfolio.mp4",
     },
     {
       id: 4,
@@ -51,7 +51,7 @@ comment: "Final thesis project, graded 10/10.\nMaster´s  Degree at Universidad 
         "FitLife enables users to book and manage classes and view trainer profiles. Admins can oversee schedules, reservations, and view key participation stats.",
       technologies: "React, Node.js, Express, MongoDB",
       githubLink: "https://github.com/amandafeijoo/FitLife-Project.git",
-      demoLink: "/static/demo_fitlife_portfolio.mp4",
+      demoLink: "/static/images/demo_fitlife_portfolio.mp4",
     },  
   ];
 

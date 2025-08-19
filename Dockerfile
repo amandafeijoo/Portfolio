@@ -2,13 +2,16 @@
     FROM node:20-alpine AS frontend-build
     WORKDIR /app/frontend
     
+    # Instalar dependencias y compilar
     COPY frontend/package*.json ./
     RUN npm ci
     COPY frontend/ .
     
-    # Importante: que Vite emita rutas bajo /static/
+    # (Opcional) variable para llamadas de API desde el frontend
     ARG VITE_API_URL
     ENV VITE_API_URL=$VITE_API_URL
+    
+    # MUY IMPORTANTE: que Vite emita rutas bajo /static/
     RUN npm run build -- --base=/static/
     
     # -------- Etapa 2: Backend Django --------
@@ -17,27 +20,29 @@
     ENV PYTHONDONTWRITEBYTECODE=1 \
         PYTHONUNBUFFERED=1
     
+    # Paquetes del sistema para psycopg2
     RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential libpq-dev \
      && rm -rf /var/lib/apt/lists/*
     
     WORKDIR /app
     
-    # Python deps
+    # Dependencias de Python (requirements.txt en la raíz del repo)
     COPY requirements.txt .
     RUN pip install --no-cache-dir --upgrade pip \
      && pip install --no-cache-dir -r requirements.txt
     
-    # Backend
+    # Copiamos el backend
     COPY backend/ ./backend/
     
-    # Frontend: copiamos TODO el dist a /app/static
-    # y también dejamos una copia de index.html en /app/templates
-    RUN mkdir -p static templates
-    COPY --from=frontend-build /app/frontend/dist/ ./static/
-    COPY --from=frontend-build /app/frontend/dist/index.html ./templates/index.html
+    # Copiamos el build del frontend dentro del backend
+    #   - index.html  -> backend/templates/index.html  (coincide con TEMPLATES['DIRS'])
+    #   - TODO el dist -> backend/static/              (lo recogerá collectstatic)
+    RUN mkdir -p backend/templates backend/static
+    COPY --from=frontend-build /app/frontend/dist/index.html ./backend/templates/index.html
+    COPY --from=frontend-build /app/frontend/dist/          ./backend/static/
     
-    # Entrypoint
+    # Script de arranque: migrate + collectstatic + gunicorn
     COPY backend/entrypoint.sh /entrypoint.sh
     RUN chmod +x /entrypoint.sh
     
