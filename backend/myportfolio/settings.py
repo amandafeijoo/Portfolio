@@ -142,7 +142,7 @@ USE_TZ        = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [REPO_ROOT / "static"]   
 STATIC_ROOT = REPO_ROOT / "staticfiles"     # <-- salida de collectstatic: /app/staticfiles
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 # Default primary key field type

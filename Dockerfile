@@ -36,21 +36,17 @@ RUN pip install --no-cache-dir --upgrade pip \
 COPY backend/ ./backend/
 
 # Copiamos el build del frontend:
-# - index.html  -> /app/templates/
-# - assets      -> /app/static/assets/
-# - images      -> /app/static/images/
-# - *.mp4 (raíz e images) -> /app/static/videos/
-RUN mkdir -p templates static static/assets static/images static/videos
+# Copiamos el build del frontend
+RUN mkdir -p templates static static/assets static/images
 
-COPY --from=frontend-build /app/frontend/dist/index.html                 ./templates/index.html
-COPY --from=frontend-build /app/frontend/dist/assets/                    ./static/assets
-COPY --from=frontend-build /app/frontend/dist/images/                    ./static/images
-COPY --from=frontend-build /app/frontend/dist/*.mp4                      ./static/
-COPY --from=frontend-build /app/frontend/dist/images/*.mp4               ./static/
-COPY --from=frontend-build /app/frontend/dist/*.png                      ./static/
-COPY --from=frontend-build /app/frontend/dist/*.ico                      ./static/
-COPY --from=frontend-build /app/frontend/dist/site.webmanifest           ./static/
-COPY --from=frontend-build /app/frontend/dist/CV.pdf                     ./static/
+COPY --from=frontend-build /app/frontend/dist/index.html       ./templates/index.html
+COPY --from=frontend-build /app/frontend/dist/assets/          ./static/assets
+COPY --from=frontend-build /app/frontend/dist/images/          ./static/images
+COPY --from=frontend-build /app/frontend/dist/*.png            ./static/
+COPY --from=frontend-build /app/frontend/dist/*.ico            ./static/
+COPY --from=frontend-build /app/frontend/dist/site.webmanifest ./static/
+COPY --from=frontend-build /app/frontend/dist/CV.pdf           ./static/
+
 
 # Script de arranque: migrate + collectstatic + gunicorn
 COPY backend/entrypoint.sh /entrypoint.sh
