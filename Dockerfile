@@ -12,7 +12,7 @@ ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
 # Importante: que Vite emita rutas bajo /static/
-RUN npm run build -- --base=/static/
+RUN npm run build 
 
 # -------- Etapa 2: Backend Django --------
 FROM python:3.11-slim
