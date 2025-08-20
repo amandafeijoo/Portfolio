@@ -5,19 +5,15 @@ import dj_database_url
 import mimetypes
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent  # /app/backend
-REPO_ROOT = BASE_DIR.parent                        # /app
+BASE_DIR = Path(__file__).resolve().parent.parent  
+REPO_ROOT = BASE_DIR.parent                        
 
 mimetypes.add_type("video/mp4", ".mp4", True)
 mimetypes.add_type("video/webm", ".webm", True)
 mimetypes.add_type("video/ogg", ".ogv", True)
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('DJANGO_SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
@@ -42,7 +38,6 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -75,7 +70,7 @@ ROOT_URLCONF = 'myportfolio.urls'
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [REPO_ROOT / "templates"],   # <-- /app/templates
+        "DIRS": [REPO_ROOT / "templates"],  
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -92,7 +87,6 @@ WSGI_APPLICATION = 'myportfolio.wsgi.application'
 
 
 # Database
-# Usamos únicamente DATABASE_URL con dj-database-url
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL'),
@@ -102,13 +96,18 @@ DATABASES = {
 }
 
 
-
+# Mantener esto en False mientras el  SPA lee el token con JS:
 CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SECURE = False
 
-# CSRF_COOKIE_HTTPONLY = True
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True          # fuerza HTTPS
+    # HSTS: empieza prudente (1 semana) y luego subirlo a 1 año si todo ok
+    SECURE_HSTS_SECONDS = 60 * 60 * 24 * 7   # 1 semana
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = False         # True solo cuando este segura
+
 
 # Email (contact form)
 
