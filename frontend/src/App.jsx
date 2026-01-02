@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import { HeaderContext } from "./context/HeaderContext";
 import { CursorProvider } from "./context/CursorContext";
 import AboutMe from "./Components/AboutMe";
 import Header from "./Components/Header";
