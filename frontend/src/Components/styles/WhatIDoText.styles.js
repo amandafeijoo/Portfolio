@@ -42,20 +42,11 @@ export const Section = styled.section`
   padding: 50px 40px 20px;
   color: #fff;
 
-  background: radial-gradient(
-      120% 80% at 50% 0%,
-      rgba(255, 255, 255, 0.06),
-      transparent 60%
-    ),
+  background:
     radial-gradient(
-      60% 80% at 0% 50%,
-      rgba(201, 169, 106, 0.08),
-      transparent 70%
-    ),
-    radial-gradient(
-      60% 80% at 100% 50%,
-      rgba(201, 169, 106, 0.08),
-      transparent 70%
+      120% 80% at 50% 18%,
+      rgba(255, 255, 255, 0.05),
+      transparent 65%
     ),
     #0b0b0b;
 
@@ -93,6 +84,8 @@ export const Section = styled.section`
   }
 `;
 
+
+
 /* ===============================
    CARD CENTRAL
 ================================ */
@@ -129,21 +122,24 @@ export const SectionCard = styled(motion.div)`
 ================================ */
 export const SectionGlow = styled.div`
   position: absolute;
-  inset: -160px -200px;
+  inset: -120px -160px;
+
   background: radial-gradient(
       60% 40% at 50% 12%,
-      rgba(255, 255, 255, 0.08),
-      transparent 70%
+      rgba(255, 255, 255, 0.045),
+      transparent 85%
     ),
     radial-gradient(
       40% 30% at 50% 100%,
-      rgba(201, 169, 106, 0.08),
-      transparent 80%
+      rgba(201, 169, 106, 0.04),
+      transparent 90%
     );
-  filter: blur(90px);
+
+  filter: blur(130px);
   z-index: -1;
   pointer-events: none;
 `;
+
 
 /* ===============================
    TITLE

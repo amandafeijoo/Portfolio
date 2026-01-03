@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -19,18 +19,10 @@ import {
   StickyIcon,
 } from "./styles/Header.styles";
 
-import { HeaderContext } from "../context/HeaderContext";
-
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaFacebook,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { headerMode } = useContext(HeaderContext);
 
   const mobileLinks = [
     { label: "Home", to: "/" },
@@ -44,7 +36,7 @@ const Header = () => {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <HeaderWrapper data-mode={headerMode}>
+      <HeaderWrapper>
         <HeaderInner>
           <Left>
             <Logo
@@ -89,10 +81,7 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.12 }}
             >
-              <NavLink
-                to={item.to}
-                onClick={() => setOpen(false)}
-              >
+              <NavLink to={item.to} onClick={() => setOpen(false)}>
                 {item.label}
               </NavLink>
             </motion.div>
@@ -101,32 +90,16 @@ const Header = () => {
 
         {/* ===== SOCIALS MOBILE ===== */}
         <MobileSocials>
-          <a
-            href="https://github.com/amandafeijoo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/amandafeijoo" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </a>
-          <a
-            href="https://linkedin.com/in/amanda-flores-feijoo-93956a156"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://linkedin.com/in/amanda-flores-feijoo-93956a156" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </a>
-          <a
-            href="https://instagram.com/webcode.art"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://instagram.com/webcode.art" target="_blank" rel="noopener noreferrer">
             <FaInstagram />
           </a>
-          <a
-            href="https://www.facebook.com/amanda.f.feijoo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.facebook.com/amanda.f.feijoo" target="_blank" rel="noopener noreferrer">
             <FaFacebook />
           </a>
         </MobileSocials>
@@ -134,32 +107,16 @@ const Header = () => {
 
       {/* ================= DESKTOP SOCIALS ================= */}
       <StickySocials>
-        <StickyIcon
-          href="https://github.com/amandafeijoo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <StickyIcon href="https://github.com/amandafeijoo" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </StickyIcon>
-        <StickyIcon
-          href="https://linkedin.com/in/amanda-flores-feijoo-93956a156"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <StickyIcon href="https://linkedin.com/in/amanda-flores-feijoo-93956a156" target="_blank" rel="noopener noreferrer">
           <FaLinkedin />
         </StickyIcon>
-        <StickyIcon
-          href="https://instagram.com/webcode.art"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <StickyIcon href="https://instagram.com/webcode.art" target="_blank" rel="noopener noreferrer">
           <FaInstagram />
         </StickyIcon>
-        <StickyIcon
-          href="https://www.facebook.com/amanda.f.feijoo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <StickyIcon href="https://www.facebook.com/amanda.f.feijoo" target="_blank" rel="noopener noreferrer">
           <FaFacebook />
         </StickyIcon>
       </StickySocials>
@@ -168,6 +125,4 @@ const Header = () => {
 };
 
 export default Header;
-
-
 

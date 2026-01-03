@@ -1,12 +1,13 @@
 import React from "react";
+import styled from "styled-components"
+import { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import { CursorProvider } from "./context/CursorContext";
+import { ProjectProvider } from "./Context/ProjectContext";
+import { CursorProvider } from "./Context/CursorContext";
 import AboutMe from "./Components/AboutMe";
 import Header from "./Components/Header";
-import { createGlobalStyle } from "styled-components";
 import Home from "./Components/Home";
-import styled from "styled-components";
 import TechStack from "./Components/TechStack";
 import ProfileInfoBox from "./Components/ProfileInfoBox";
 import Projects from "./Components/Projects";
@@ -21,7 +22,6 @@ import AboutSummary from "./Components/AboutSummary";
 import SummaryProjects from "./Components/SummaryProjects";
 import ContactSummary from "./Components/ContactSummary";
 import Footer from "./Components/Footer";
-import { ProjectProvider } from "./Context/ProjectContext";
 import DemoPage from "./Components/DemoPage";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import LegalNotice from "./Components/LegalNotice";
