@@ -286,15 +286,19 @@ export const Badge = styled.span`
    DIVIDER
 ================================ */
 export const TitleDivider = styled.div`
-  width: 48px;
+  width: 90px;
   height: 1px;
-  margin: 24px auto 0;
+  margin: 12px auto 0;
+
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255, 255, 255, 0.4),
+    rgba(201,169,106,0.85),
     transparent
   );
+
+  box-shadow:
+    0 0 12px rgba(201,169,106,0.45);
 `;
 
 export const DesktopOnlyDivider = styled(TitleDivider)`

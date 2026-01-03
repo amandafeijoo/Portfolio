@@ -11,6 +11,7 @@ const float = keyframes`
   100% { transform: translateY(0px); }
 `;
 
+
 const arrowLoop = keyframes`
   0% {
     transform: translateY(-140%);
@@ -33,24 +34,28 @@ const arrowLoop = keyframes`
   }
 `;
 
+
+
 /* ===============================
    SECTION BASE (SIDE FOCUS + FRAME)
 ================================ */
 export const Section = styled.section`
   position: relative;
-  width: 100%;
+  width: 85%;
   padding: 50px 40px 20px;
   color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
 
-  background:
+  /* background:
     radial-gradient(
       120% 80% at 50% 18%,
-      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.02),
       transparent 65%
     ),
-    #0b0b0b;
+    #0b0b0b; */
 
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
 
   &::before,
   &::after {
@@ -92,10 +97,14 @@ export const Section = styled.section`
 export const SectionCard = styled(motion.div)`
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 100px 80px 90px;
   border-radius: 34px;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+
 
   background: linear-gradient(
     180deg,
@@ -103,10 +112,13 @@ export const SectionCard = styled(motion.div)`
     rgba(255, 255, 255, 0.015)
   );
 
-  border: 1px solid rgba(239, 231, 231, 0.12);
+  border: 2px solid rgba(239, 231, 231, 0.12);
 
-  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.85),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow:
+  0 60px 120px rgba(0, 0, 0, 0.26),          /* sombra principal */
+  0 0 40px rgba(255, 255, 255, 0.08),       /* ✨ brillo suave */
+  inset 0 1px 0 rgba(255, 255, 255, 0.22);  /* highlight interior */
+
 
   animation: ${float} 16s ease-in-out infinite;
 
@@ -182,10 +194,16 @@ export const TitleDivider = styled.div`
 
 export const VerticalDivider = styled.div`
   width: 1px;
-  height: 96px;
-  margin: 56px auto 32px;
-  background: linear-gradient(to bottom, rgba(201, 169, 106, 0.6), transparent);
-  opacity: 0.6;
+  height: 140px;
+  margin: 24px auto 32px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 169, 106, 0.50),
+    transparent
+  );
+
+  opacity: 0.55;
 
   @media (max-width: 768px) {
     display: none;
@@ -249,9 +267,10 @@ export const Statement = styled.p`
 ================================ */
 export const ScrollHint = styled.div`
   position: absolute;
-  bottom: 32px;
+  bottom: 42px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -32px); /* ⬆ sube aquí */
+
   display: flex;
   align-items: center;
   gap: 16px;
@@ -284,3 +303,4 @@ export const ScrollHint = styled.div`
     display: none;
   }
 `;
+

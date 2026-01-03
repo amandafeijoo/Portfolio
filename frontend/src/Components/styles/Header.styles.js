@@ -7,22 +7,24 @@ export const HeaderWrapper = styled.header`
   position: fixed;
 
   /* 🔥 SAFE AREA iPhone (notch) */
-  top: calc(env(safe-area-inset-top) + 10px);
+  top: calc(env(safe-area-inset-top) + 22px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
 
-  width: 52%;
+  width: 47%;
   max-width: 880px;
 
-  background: rgba(30, 30, 30, 0.55);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 0.35rem 0.8rem;
+  background: rgba(16, 15, 15, 0.95);
+backdrop-filter: blur(6px);
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 0 0 1px rgba(253, 253, 253, 0.06),
-    0 12px 40px rgba(42, 42, 42, 0.12);
+  border-radius: 18px;
+  padding: 0.95rem 0.6rem;
+
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+  0 6px 20px rgba(0, 0, 0, 0.45),
+  inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
   /* ================= TABLET ================= */
   @media (max-width: 1024px) {
@@ -56,7 +58,7 @@ export const Left = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 55px;
+  height: 40px;
   cursor: pointer;
   border-radius: 12px;
   transition: transform 0.2s ease;

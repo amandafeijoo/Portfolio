@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 ================================ */
 export const OrbitSectionWrapper = styled.section`
   position: relative;
-  width: 150%;
-  height: 150vh; 
+  width: 120%;
+  height: 120vh; 
   min-height: 900px; 
   background: transparent;
   margin-bottom: 150px; 
@@ -15,7 +15,7 @@ export const OrbitSectionWrapper = styled.section`
 
 export const OrbitVisual = styled.div`
   position: relative;
-  height: 85vh; // altura ajustada para mejor encuadre
+  height: 75vh; // altura ajustada para mejor encuadre
 `;
 
 export const OrbitFadeMask = styled.div`

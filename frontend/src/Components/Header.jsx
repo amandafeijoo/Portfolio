@@ -40,7 +40,7 @@ const Header = () => {
         <HeaderInner>
           <Left>
             <Logo
-              src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767138680/logo3_1_z65qe0.png"
+              src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767482033/webcode-brushes_1_pcvyz9.png"
               alt="Webcode Art Logo"
               onClick={() => {
                 setOpen(false);

@@ -180,7 +180,6 @@ export default function WhatIDo() {
                 <MobileCardText>
                   <MobileOnlyDivider />
                   <HeroTitle>{item.title}</HeroTitle>
-                  <TitleDivider />
                   <HeroText>{item.text}</HeroText>
                 </MobileCardText>
               )}

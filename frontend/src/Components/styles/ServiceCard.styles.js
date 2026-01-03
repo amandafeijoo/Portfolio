@@ -47,24 +47,32 @@ export const Card = styled(motion.div)`
 ================================ */
 export const CardTitle = styled.h3`
   font-family: "Playfair Display", serif;
-  font-size: 1.45rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.45rem);
   font-weight: 400;
   letter-spacing: 0.04em;
-  margin-top: 0;
-  margin-bottom: 16px;
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.35),
-    0 0 8px rgba(255, 255, 255, 0.18), 0 0 24px rgba(201, 169, 106, 0.18);
+  margin-bottom: 14px;
+
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.3),
+    0 0 6px rgba(255, 255, 255, 0.15),
+    0 0 18px rgba(201, 169, 106, 0.14);
 `;
+
 
 /* ===============================
    SUBTITLE
 ================================ */
 export const CardSubtitle = styled.p`
-  font-size: 0.85rem;
+  font-size: clamp(0.82rem, 2.8vw, 0.85rem);
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
+
 
 /* ===============================
    FEATURES (SIN BULLETS)
@@ -80,10 +88,10 @@ export const FeaturesList = styled.div`
    FEATURE ITEM
 ================================ */
 export const Feature = styled.div`
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 2.8vw, 0.95rem);
   color: rgba(255, 255, 255, 0.75);
   letter-spacing: 0.02em;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -93,37 +101,29 @@ export const Feature = styled.div`
   }
 `;
 
+
 /* ===============================
    FOOTER
 ================================ */
 export const CardFooter = styled.div`
-  margin-top: 22px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 
   strong {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.95);
   }
 
   span {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
   }
+
   &::before {
-    content: "";
-    display: block;
-    width: 48px;
-    height: 1px;
-    margin: 2px auto 20px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(201, 169, 106, 0.45),
-      transparent
-    );
+    width: 42px;
+    margin: 0 auto 18px;
   }
 `;
+
