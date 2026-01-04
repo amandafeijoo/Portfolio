@@ -6,16 +6,28 @@ import { motion } from "framer-motion";
 ================================ */
 export const OrbitSectionWrapper = styled.section`
   position: relative;
-  width: 120%;
-  height: 120vh; 
-  min-height: 900px; 
-  background: transparent;
-  margin-bottom: 150px; 
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 120px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 100vh;
+    min-height: 690px;
+    margin-bottom: 0px;
+    margin-top: -10px;
+  }
 `;
 
 export const OrbitVisual = styled.div`
   position: relative;
-  height: 75vh; // altura ajustada para mejor encuadre
+  height: 800px;
+  max-height: 75vh;
+
+  @media (max-width: 768px) {
+    height: 38vh; /* 👈 mucho más pequeño */
+    overflow: hidden;
+  }
 `;
 
 export const OrbitFadeMask = styled.div`
@@ -32,6 +44,16 @@ export const OrbitFadeMask = styled.div`
     rgba(0, 0, 0, 0.85) 90%,
     rgba(0, 0, 0, 1) 100%
   );
+
+  @media (max-width: 768px) {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.85) 75%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
 `;
 
 /* ===============================
@@ -39,12 +61,15 @@ export const OrbitFadeMask = styled.div`
 ================================ */
 export const HeroTextWrap = styled.div`
   position: absolute;
-  top: 22%;
+  top: 160px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   text-align: center;
-  pointer-events: none;
   z-index: 5;
+
+  @media (max-width: 768px) {
+    top: 14%; /* 👈 antes estaba demasiado abajo */
+  }
 `;
 
 /* ===============================
@@ -72,6 +97,10 @@ export const HeroTitle = styled(motion.h1)`
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4),
     0 0 8px rgba(255, 255, 255, 0.25), 0 0 26px rgba(201, 169, 106, 0.22),
     0 0 60px rgba(201, 169, 106, 0.16);
+
+  @media (max-width: 768px) {
+    font-size: clamp(1rem, 7.5vw, 1.4rem);
+  }
 `;
 
 /* ===============================
@@ -96,14 +125,21 @@ export const HeroSubtitle = styled.p`
   color: rgba(255, 255, 255, 0.48);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 0.47rem;
+    font-weight: 500;
+  }
 `;
 
 export const ServicesZone = styled.div`
-  position: relative;
-  margin-top: -7vh; 
+  margin-top: 30px;
   display: flex;
   justify-content: center;
-  z-index: 3;
+
+  @media (max-width: 768px) {
+    margin-top: 14ç5px;
+  }
 `;
 
 /* ===============================
@@ -125,18 +161,21 @@ export const ServicesLabel = styled.span`
   font-size: 0.8rem;
   letter-spacing: 0.35em;
   font-weight: 500;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
 
   /* ✨ glow sutil propio */
-  text-shadow:
-    0 0 4px rgba(255,255,255,0.35),
-    0 0 14px rgba(201,169,106,0.35),
-    0 0 40px rgba(201,169,106,0.18);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.35),
+    0 0 14px rgba(201, 169, 106, 0.35), 0 0 40px rgba(201, 169, 106, 0.18);
 
   margin-bottom: 10px;
-`;
 
+  @media screen {
+  }
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+`;
 
 /* ===============================
    DIVIDER
@@ -149,14 +188,12 @@ export const ServicesDivider = styled.div`
   background: linear-gradient(
     to right,
     transparent,
-    rgba(201,169,106,0.85),
+    rgba(201, 169, 106, 0.85),
     transparent
   );
 
-  box-shadow:
-    0 0 12px rgba(201,169,106,0.45);
+  box-shadow: 0 0 12px rgba(201, 169, 106, 0.45);
 `;
-
 
 /* ===============================
    DRAG HINT
@@ -180,5 +217,32 @@ export const DragHint = styled(motion.div)`
   span {
     font-size: 1rem;
     opacity: 0.6;
+  }
+  /* ================= MOBILE ================= */
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    opacity: 0.45;
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+`;
+
+export const DragHintDesktop = styled.div`
+  display: flex;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const DragHintMobile = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
   }
 `;

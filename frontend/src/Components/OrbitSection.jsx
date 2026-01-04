@@ -9,7 +9,6 @@ import {
   OrbitFadeMask,
   HeroTextWrap,
   HeroTitle,
-  TextHalo,
   HeroDash,
   HeroSubtitle,
   ServicesZone,
@@ -17,6 +16,8 @@ import {
   ServicesLabel,
   ServicesDivider,
   DragHint,
+  DragHintDesktop,
+  DragHintMobile,
 } from "./styles/OrbitSection.styles";
 
 export default function OrbitSection() {
@@ -95,17 +96,35 @@ export default function OrbitSection() {
 
           <ServicesDivider />
 
-          <DragHint
-            animate={{ x: [0, -6, 0, 6, 0] }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <span>↔</span>
-            Drag to explore
-          </DragHint>
+          {/* ✅ Desktop: Drag */}
+          <DragHintDesktop>
+            <DragHint
+              animate={{ x: [0, -6, 0, 6, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <span>↔</span>
+              Drag to explore
+            </DragHint>
+          </DragHintDesktop>
+
+          {/* ✅ Mobile: Swipe */}
+          <DragHintMobile>
+            <DragHint
+              animate={{ y: [0, 6, 0] }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <span>↑</span>
+              Swipe to explore
+            </DragHint>
+          </DragHintMobile>
         </ServicesHeader>
       </HeroTextWrap>
       {/* 🟣 SERVICES (ZONA INFERIOR) */}

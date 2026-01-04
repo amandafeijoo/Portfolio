@@ -16,6 +16,14 @@ export default function CustomCursor() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const { cursorMode } = useCursor();
 
+  // ✅ DETECTAR TOUCH / MOBILE
+  const isTouchDevice =
+    typeof window !== "undefined" &&
+    ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
+  // ❌ NO cursor en móvil / tablet
+  if (isTouchDevice) return null;
+
   useEffect(() => {
     const move = (e) => setMouse({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
