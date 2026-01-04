@@ -64,7 +64,6 @@ const cardVariants = {
     x: 0,
     y: 0,
     scale: 1.03,
-    boxShadow: "0 0 40px rgba(201,169,106,0.18)",
     opacity: 1,
     zIndex: 3,
   },
@@ -75,7 +74,6 @@ const cardVariants = {
     opacity: 0.3,
     zIndex: 1,
     filter: "blur(0.5px)",
-    boxShadow: "0 0 80px rgba(201,169,106,0.18)",
   },
   right: {
     x: 420,
@@ -84,7 +82,6 @@ const cardVariants = {
     opacity: 0.3,
     zIndex: 1,
     filter: "blur(0.8px)",
-    boxShadow: "0 0 80px rgba(201,169,106,0.18)",
   },
 };
 

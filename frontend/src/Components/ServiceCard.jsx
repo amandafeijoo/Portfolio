@@ -5,6 +5,7 @@ import {
   FeaturesList,
   Feature,
   CardFooter,
+  PriceDivider,
 } from "./styles/ServiceCard.styles";
 
 export default function ServiceCard({
@@ -30,6 +31,7 @@ export default function ServiceCard({
       </FeaturesList>
 
       <CardFooter>
+        <PriceDivider />
         <strong>{price}</strong>
         <span>{timeline}</span>
       </CardFooter>

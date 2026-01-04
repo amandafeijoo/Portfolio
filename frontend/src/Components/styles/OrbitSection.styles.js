@@ -15,7 +15,7 @@ export const OrbitSectionWrapper = styled.section`
     height: 100vh;
     min-height: 690px;
     margin-bottom: 0px;
-    margin-top: -10px;
+    margin-top: -90px;
   }
 `;
 
@@ -133,12 +133,12 @@ export const HeroSubtitle = styled.p`
 `;
 
 export const ServicesZone = styled.div`
-  margin-top: 30px;
+  margin-top: 0px;
   display: flex;
   justify-content: center;
 
   @media (max-width: 768px) {
-    margin-top: 14ç5px;
+    margin-top: 145px;
   }
 `;
 
@@ -243,6 +243,8 @@ export const DragHintMobile = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
+    font-size: 0.60rem;
+    font-weight: 500;
     justify-content: center;
   }
 `;
