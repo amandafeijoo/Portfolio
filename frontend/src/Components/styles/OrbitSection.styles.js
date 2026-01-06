@@ -25,7 +25,7 @@ export const OrbitVisual = styled.div`
   max-height: 75vh;
 
   @media (max-width: 768px) {
-    height: 38vh; /* 👈 mucho más pequeño */
+    height: 38vh; 
     overflow: hidden;
   }
 `;
@@ -68,7 +68,7 @@ export const HeroTextWrap = styled.div`
   z-index: 5;
 
   @media (max-width: 768px) {
-    top: 14%; /* 👈 antes estaba demasiado abajo */
+    top: 14%;
   }
 `;
 
@@ -243,7 +243,7 @@ export const DragHintMobile = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
-    font-size: 0.60rem;
+    font-size: 0.6rem;
     font-weight: 500;
     justify-content: center;
   }

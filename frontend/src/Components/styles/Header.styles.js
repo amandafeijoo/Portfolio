@@ -16,19 +16,18 @@ export const HeaderWrapper = styled.header`
   max-width: 880px;
 
   background: rgba(16, 15, 15, 0.95);
-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 
   border-radius: 18px;
   padding: 0.95rem 0.6rem;
 
   border: 2px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-  0 6px 20px rgba(0, 0, 0, 0.45),
-  inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
   /* ================= TABLET ================= */
   @media (max-width: 1024px) {
-    width: 76%; /* 👈 un poco más estrecho */
+    width: 76%; 
     top: calc(env(safe-area-inset-top) + 32px);
   }
 

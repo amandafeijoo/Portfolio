@@ -46,8 +46,6 @@ export default function ProcessCards() {
 
   const handleWheel = (e) => {
     if (!scrollerRef.current) return;
-
-    // exactamente igual que en InfoBoxesReserva
     e.preventDefault();
     scrollerRef.current.scrollLeft += e.deltaY;
   };

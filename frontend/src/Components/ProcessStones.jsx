@@ -51,7 +51,7 @@ export default function ProcessStones({ imageUrl, height = 900 }) {
       const centerX = w * 0.5;
       const centerY = h * 0.5;
 
-      const radiusX = w * 0.20;
+      const radiusX = w * 0.2;
       const radiusY = h * 0.25;
 
       const baseAngles = [-140, -80, -20, 40, 100, 160];
@@ -89,18 +89,17 @@ export default function ProcessStones({ imageUrl, height = 900 }) {
         const z = Math.sin(angle);
 
         const x = stones.centerX + Math.cos(angle) * stones.radiusX;
-        const y =
-          stones.centerY + Math.sin(angle) * stones.radiusY * tilt;
+        const y = stones.centerY + Math.sin(angle) * stones.radiusY * tilt;
 
         const lift = z * 42;
         const depthScale = 1 + z * 0.14;
 
         s.selfRotation += s.selfRotSpeed;
-        
-         /* =====================
+
+        /* =====================
        🎨   SIZE PIEDRA
           ===================== */
-        const baseSize = 130;  //** TAMANO DE LA PIEDRA */
+        const baseSize = 130; //** TAMANO DE LA PIEDRA */
         const size = baseSize * s.scale * depthScale;
         const ratio = img.width / img.height;
 
@@ -109,63 +108,56 @@ export default function ProcessStones({ imageUrl, height = 900 }) {
         s.y = y - lift;
         s.size = size;
 
-       // 🖱️ HOVER DETECTION
-const dx = mouseX - s.x;
-const dy = mouseY - s.y;
-const distance = Math.sqrt(dx * dx + dy * dy);
-const isHovered = distance < size * 0.6;
+        // 🖱️ HOVER DETECTION
+        const dx = mouseX - s.x;
+        const dy = mouseY - s.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const isHovered = distance < size * 0.6;
 
-ctx.save();
-ctx.translate(s.x, s.y);
-ctx.rotate(s.selfRotation);
+        ctx.save();
+        ctx.translate(s.x, s.y);
+        ctx.rotate(s.selfRotation);
 
-/* =========================
+        /* =========================
    🌑 PIEDRA BASE (oscura)
 ========================= */
-ctx.globalAlpha = 0.55;
+        ctx.globalAlpha = 0.55;
 
-ctx.drawImage(
-  img,
-  (-size * ratio) / 2,
-  -size / 2,
-  size * ratio,
-  size
-);
+        ctx.drawImage(img, (-size * ratio) / 2, -size / 2, size * ratio, size);
 
-/* =========================
+        /* =========================
    🔦 LUZ TIPO LINTERNA
 ========================= */
-if (isHovered) {
-  // 🔆 Aclara la textura
-  ctx.globalCompositeOperation = "screen";
+        if (isHovered) {
+          // 🔆 Aclara la textura
+          ctx.globalCompositeOperation = "screen";
 
-  const lightGradient = ctx.createRadialGradient(
-    dx * 0.25,  // dirección hacia el mouse
-    dy * 0.25,
-    size * 0.1,
-    0,
-    0,
-    size * 0.6
-  );
+          const lightGradient = ctx.createRadialGradient(
+            dx * 0.25, 
+            dy * 0.25,
+            size * 0.1,
+            0,
+            0,
+            size * 0.6
+          );
 
-  lightGradient.addColorStop(0, "rgba(255,255,255,0.40)");
-  lightGradient.addColorStop(0.4, "rgba(255,255,255,0.18)");
-  lightGradient.addColorStop(1, "rgba(255,255,255,0)");
+          lightGradient.addColorStop(0, "rgba(255,255,255,0.40)");
+          lightGradient.addColorStop(0.4, "rgba(255,255,255,0.18)");
+          lightGradient.addColorStop(1, "rgba(255,255,255,0)");
 
-  ctx.fillStyle = lightGradient;
-  ctx.beginPath();
-  ctx.arc(0, 0, size, 0, Math.PI * 2);
-  ctx.fill();
+          ctx.fillStyle = lightGradient;
+          ctx.beginPath();
+          ctx.arc(0, 0, size, 0, Math.PI * 2);
+          ctx.fill();
 
-  ctx.globalCompositeOperation = "source-over";
+          ctx.globalCompositeOperation = "source-over";
 
-  // ✨ Micro halo MUY sutil
-  ctx.shadowColor = "rgba(255,255,255,0.25)";
-  ctx.shadowBlur = 12;
-}
+          // ✨ Micro halo MUY sutil
+          ctx.shadowColor = "rgba(255,255,255,0.25)";
+          ctx.shadowBlur = 12;
+        }
 
-ctx.restore();
-
+        ctx.restore();
       });
 
       raf = requestAnimationFrame(draw);
@@ -224,5 +216,3 @@ ctx.restore();
     />
   );
 }
-
-

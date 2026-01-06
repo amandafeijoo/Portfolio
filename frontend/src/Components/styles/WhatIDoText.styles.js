@@ -108,8 +108,6 @@ export const SectionCard = styled(motion.div)`
     padding: 56px 22px 56px;
     border-radius: 26px;
     animation: none;
-
-    /* ✨ marco elegante en móvil */
     border-top: 1px solid rgba(201, 169, 106, 0.35);
     border-bottom: 1px solid rgba(201, 169, 106, 0.25);
   }
@@ -252,7 +250,7 @@ export const ScrollHint = styled.div`
   position: absolute;
   bottom: 42px;
   left: 50%;
-  transform: translate(-50%, -32px); /* ⬆ sube aquí */
+  transform: translate(-50%, -32px); 
 
   display: flex;
   align-items: center;

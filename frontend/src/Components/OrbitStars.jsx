@@ -90,7 +90,6 @@ export default function OrbitStars({ impulseRef }) {
         const x = cx + x3d;
         const y = cy - y3d;
 
-        // 🔥 CLAVE: definir la curvatura (terminator)
         const limb = Math.pow(depth, isMobile ? 2.6 : 1.8);
         const alpha = star.opacity * depth * limb;
         const size = star.size * (0.6 + depth);

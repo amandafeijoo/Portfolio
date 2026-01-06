@@ -30,8 +30,6 @@ export const IntroHero = styled.div`
   @media (max-width: 1280px) {
     margin-left: 0;
   }
-
-  /* 🔽 MOBILE: reducimos espacio inferior */
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 56px;
@@ -56,7 +54,6 @@ export const HeroTitle = styled.h2`
   margin-bottom: 24px;
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 0.95);
-  
 
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.25),
     0 0 32px rgba(255, 255, 255, 0.15), 0 12px 40px rgba(0, 0, 0, 0.6);
@@ -129,7 +126,6 @@ export const FloatingCard = styled(motion.div)`
 export const ScrollSpace = styled.div`
   height: 20vh;
 
-  /* 🔽 MOBILE: eliminamos espacio muerto */
   @media (max-width: 768px) {
     height: 0;
   }
@@ -143,7 +139,6 @@ export const CardsSection = styled.section`
   margin: 0 auto;
   padding: 70px 40px 200px;
 
-  /* 🔽 MOBILE: subimos el grid */
   @media (max-width: 768px) {
     padding: 24px 24px 120px;
   }
@@ -219,8 +214,8 @@ export const CardImg = styled.div`
     border-radius: 20px;
     background: linear-gradient(
       to bottom,
-      rgba(0,0,0,0.55),
-      rgba(0,0,0,0.15)
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.15)
     );
     pointer-events: none;
   }
@@ -255,13 +250,9 @@ export const CardTitle = styled.h3`
   border-radius: 8px;
 
   /* brillo real */
-  text-shadow:
-    0 0 8px rgba(255,255,255,0.35),
-    0 0 18px rgba(201,169,106,0.45);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35),
+    0 0 18px rgba(201, 169, 106, 0.45);
 `;
-
-
-
 
 export const CardText = styled.p`
   font-size: 0.92rem;
@@ -274,7 +265,7 @@ export const MobileCardText = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    margin: 36px 0 40px; /* 👈 arriba / abajo */
+    margin: 36px 0 40px;
   }
 `;
 
@@ -312,12 +303,11 @@ export const TitleDivider = styled.div`
   background: linear-gradient(
     to right,
     transparent,
-    rgba(201,169,106,0.85),
+    rgba(201, 169, 106, 0.85),
     transparent
   );
 
-  box-shadow:
-    0 0 12px rgba(201,169,106,0.45);
+  box-shadow: 0 0 12px rgba(201, 169, 106, 0.45);
 `;
 
 export const DesktopOnlyDivider = styled(TitleDivider)`
