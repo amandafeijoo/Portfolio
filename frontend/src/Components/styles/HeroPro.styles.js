@@ -46,6 +46,7 @@ export const HeroWrapper = styled.section`
   @media (max-width: 768px) {
     height: 100vh;
     margin-top: 0;
+    overflow: hi;
 
     &::after {
       background: radial-gradient(

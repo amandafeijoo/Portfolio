@@ -55,7 +55,8 @@ export const HeroTitle = styled.h2`
   line-height: 1.1;
   margin-bottom: 24px;
   letter-spacing: 0.5px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.95);
+  
 
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.25),
     0 0 32px rgba(255, 255, 255, 0.15), 0 12px 40px rgba(0, 0, 0, 0.6);
@@ -217,9 +218,9 @@ export const CardImg = styled.div`
     inset: 1px;
     border-radius: 20px;
     background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06),
-      transparent 45%
+      to bottom,
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.15)
     );
     pointer-events: none;
   }
@@ -236,13 +237,31 @@ export const CardImg = styled.div`
 /* ===============================
    TEXT
 ================================ */
-export const CardTitle = styled.h4`
-  margin: 18px 0 6px;
-  font-size: 1.02rem;
-  font-weight: 500;
+export const CardTitle = styled.h3`
+  position: relative;
+  z-index: 2;
 
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+
+  padding: 6px 10px;
+  margin: 12px auto;
+
+  /* 🔑 fondo oscuro SOLO detrás del texto */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+
+  /* brillo real */
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.35),
+    0 0 18px rgba(201,169,106,0.45);
 `;
+
+
+
 
 export const CardText = styled.p`
   font-size: 0.92rem;

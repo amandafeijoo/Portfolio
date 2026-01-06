@@ -151,8 +151,6 @@ export default function WhatIDo() {
 
       {/* ================= GRID ================= */}
       <CardsSection>
-        <DesktopOnlyDivider style={{ marginBottom: "40px" }} />
-
         <Grid>
           {/* ===== PRIMER CARD ===== */}
           <Card>

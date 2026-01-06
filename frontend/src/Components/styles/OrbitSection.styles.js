@@ -8,7 +8,7 @@ export const OrbitSectionWrapper = styled.section`
   position: relative;
   width: 100%;
   padding-top: 20px;
-  padding-bottom: 120px;
+  padding-bottom: 80px;
   overflow: hidden;
 
   @media (max-width: 768px) {

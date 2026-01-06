@@ -11,7 +11,6 @@ const float = keyframes`
   100% { transform: translateY(0px); }
 `;
 
-
 const arrowLoop = keyframes`
   0% {
     transform: translateY(-140%);
@@ -34,8 +33,6 @@ const arrowLoop = keyframes`
   }
 `;
 
-
-
 /* ===============================
    SECTION BASE (SIDE FOCUS + FRAME)
 ================================ */
@@ -47,16 +44,6 @@ export const Section = styled.section`
   overflow: hidden;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
 
-  /* background:
-    radial-gradient(
-      120% 80% at 50% 18%,
-      rgba(255, 255, 255, 0.02),
-      transparent 65%
-    ),
-    #0b0b0b; */
-
-
-
   &::before,
   &::after {
     content: "";
@@ -67,7 +54,7 @@ export const Section = styled.section`
     background: linear-gradient(
       to bottom,
       transparent,
-      rgba(255, 255, 255, 0.08),
+      rgba(245, 180, 59, 0.08),
       transparent
     );
   }
@@ -80,7 +67,9 @@ export const Section = styled.section`
   }
 
   @media (max-width: 768px) {
-    padding: 56px 20px 48px;
+    width: 100%;
+    padding: 56px 20px 56px;
+    overflow: visible;
 
     &::before,
     &::after {
@@ -89,22 +78,18 @@ export const Section = styled.section`
   }
 `;
 
-
-
 /* ===============================
    CARD CENTRAL
 ================================ */
+
 export const SectionCard = styled(motion.div)`
   max-width: 1200px;
   margin: 0 auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
   padding: 100px 80px 90px;
   border-radius: 34px;
   position: relative;
   z-index: 2;
   overflow: hidden;
-
 
   background: linear-gradient(
     180deg,
@@ -114,27 +99,32 @@ export const SectionCard = styled(motion.div)`
 
   border: 2px solid rgba(239, 231, 231, 0.12);
 
-  box-shadow:
-  0 60px 120px rgba(0, 0, 0, 0.26),          /* sombra principal */
-  0 0 40px rgba(255, 255, 255, 0.08),       /* ✨ brillo suave */
-  inset 0 1px 0 rgba(255, 255, 255, 0.22);  /* highlight interior */
-
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.26),
+    0 0 40px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 
   animation: ${float} 16s ease-in-out infinite;
 
   @media (max-width: 768px) {
-    padding: 64px 24px 56px;
+    padding: 56px 22px 56px;
     border-radius: 26px;
     animation: none;
+
+    /* ✨ marco elegante en móvil */
+    border-top: 1px solid rgba(201, 169, 106, 0.35);
+    border-bottom: 1px solid rgba(201, 169, 106, 0.25);
   }
 `;
 
 /* ===============================
-   GLOW SUAVE
+   GLOW
 ================================ */
+
 export const SectionGlow = styled.div`
   position: absolute;
   inset: -120px -160px;
+  filter: blur(130px);
+  z-index: -1;
+  pointer-events: none;
 
   background: radial-gradient(
       60% 40% at 50% 12%,
@@ -146,12 +136,7 @@ export const SectionGlow = styled.div`
       rgba(201, 169, 106, 0.04),
       transparent 90%
     );
-
-  filter: blur(130px);
-  z-index: -1;
-  pointer-events: none;
 `;
-
 
 /* ===============================
    TITLE
@@ -171,9 +156,9 @@ export const Title = styled(motion.h2)`
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 
   @media (max-width: 768px) {
-    font-size: 2.1rem;
-    letter-spacing: 0.12em;
-    margin: 20px 0 8px;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 20px 0 10px;
   }
 `;
 
@@ -197,11 +182,7 @@ export const VerticalDivider = styled.div`
   height: 140px;
   margin: 24px auto 32px;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(201, 169, 106, 0.50),
-    transparent
-  );
+  background: linear-gradient(to bottom, rgba(201, 169, 106, 0.5), transparent);
 
   opacity: 0.55;
 
@@ -217,30 +198,32 @@ export const Subtitle = styled(motion.p)`
   margin-top: 28px;
   text-align: center;
   font-size: 1.05rem;
-  color: rgba(246, 231, 206, 0.63);
+  color: rgba(167, 148, 117, 0.63);
   letter-spacing: 0.04em;
 `;
 
 export const StatementStrong = styled(motion.p)`
   max-width: 640px;
-  margin: 36px auto 18px;
+  margin: 32px auto 18px;
   text-align: center;
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
+
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.45;
+
   color: #ffffff;
-  text-shadow: 0 2px 12px rgba(201, 169, 106, 0.25);
+  text-shadow: 0 2px 10px rgba(201, 169, 106, 0.22);
 
   &::after {
     content: "";
     display: block;
-    width: 60px;
+    width: 56px;
     height: 1px;
     margin: 16px auto 0;
     background: linear-gradient(
       to right,
       transparent,
-      rgba(201, 169, 106, 0.8),
+      rgba(201, 169, 106, 0.6),
       transparent
     );
   }
@@ -304,3 +287,22 @@ export const ScrollHint = styled.div`
   }
 `;
 
+export const MobileDivider = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 1px;
+    height: 56px;
+    margin: 24px auto 28px;
+
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(201, 169, 106, 0.55),
+      transparent
+    );
+
+    opacity: 0.6;
+  }
+`;

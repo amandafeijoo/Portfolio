@@ -31,6 +31,7 @@ import FloatingHintMenu from "./Components/FloatingHintMenu";
 import CustomCursor from "./Components/CustomCursor";
 import WhatIDoText from "./Components/WhatIDoText";
 import OrbitSection from "./Components/OrbitSection";
+import ProcessSection from "./Components/ProcessSection";
 
 const AppContainer = styled.div`
   display: flex;
@@ -109,6 +110,7 @@ function App() {
             <WhatIDo />
             <FloatingHintMenu />
             <OrbitSection />
+            <ProcessSection />
             <div style={{ height: "40px" }} />
             <Routes>
               <Route path="/" element={<Home />} />

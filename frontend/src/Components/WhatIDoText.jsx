@@ -12,6 +12,7 @@ import {
   Statement,
   StatementStrong,
   ScrollHint,
+  MobileDivider,
 } from "./styles/WhatIDoText.styles";
 
 /* ===============================
@@ -120,6 +121,7 @@ export default function WhatIDoText() {
           You don’t need to understand the technical side. I handle it for you.
         </Statement>
         <VerticalDivider />
+        <MobileDivider />
 
         {/* Scroll hint */}
         <ScrollHint>

@@ -12,7 +12,7 @@ export const HeaderWrapper = styled.header`
   transform: translateX(-50%);
   z-index: 3000;
 
-  width: 47%;
+  width: 50%;
   max-width: 880px;
 
   background: rgba(16, 15, 15, 0.95);
@@ -58,7 +58,7 @@ export const Left = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 40px;
+  height: 45px;
   cursor: pointer;
   border-radius: 12px;
   transition: transform 0.2s ease;
