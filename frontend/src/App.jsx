@@ -25,13 +25,15 @@ import Footer from "./Components/Footer";
 import DemoPage from "./Components/DemoPage";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import LegalNotice from "./Components/LegalNotice";
-import HeroPro from "./Components/HeroPro";
+// import HeroPro from "./Components/HeroPro";
 import WhatIDo from "./Components/WhatIDo";
 import FloatingHintMenu from "./Components/FloatingHintMenu";
 import CustomCursor from "./Components/CustomCursor";
 import WhatIDoText from "./Components/WhatIDoText";
 import OrbitSection from "./Components/OrbitSection";
 import ProcessSection from "./Components/ProcessSection";
+import WorkSection from "./Components/WorkSection";
+import HeroSphere from "./Components/HeroSphere";
 
 const AppContainer = styled.div`
   display: flex;
@@ -105,12 +107,15 @@ function App() {
         <ProjectProvider>
           <Router>
             <Header />
-            <HeroPro />
+            <HeroSphere />
+            {/* <HeroPro /> */}
             <WhatIDoText />
             <WhatIDo />
             <FloatingHintMenu />
             <OrbitSection />
             <ProcessSection />
+            <WorkSection />
+            <ContactSummary />
             <div style={{ height: "40px" }} />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -130,7 +135,7 @@ function App() {
               <Route path="/circles" element={<Circles />} />
               <Route path="/about-summary" element={<AboutSummary />} />
               <Route path="/summary-projects" element={<SummaryProjects />} />
-              <Route path="/contact-summary" element={<ContactSummary />} />
+              {/* <Route path="/contact-summary" element={<ContactSummary />} /> */}
               <Route path="/demopage/:projectId" element={<DemoPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/legal-notice" element={<LegalNotice />} />

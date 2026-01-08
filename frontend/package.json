@@ -12,8 +12,13 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.7",
+    "@react-three/drei": "9.88.17",
+    "@react-three/fiber": "8.15.11",
     "axios": "^1.7.8",
     "canvas-sketch": "^0.7.7",
     "canvas-sketch-util": "^1.10.0",
@@ -37,7 +42,9 @@
     "react-router-dom": "^6.25.1",
     "react-wavify": "^1.11.1",
     "styled-components": "^6.1.13",
-    "sweetalert2": "^11.6.13"
+    "sweetalert2": "^11.6.13",
+    "three": "0.152.2"
+
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -1,171 +1,255 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
-
+import { useState } from "react";
 import {
-  HeaderWrapper,
-  HeaderInner,
-  Left,
-  Logo,
-  Center,
-  MenuLink,
-  Right,
-  ActionButton,
-  Burger,
-  MobileMenu,
-  MobileLinks,
-  MobileSocials,
-  StickySocials,
-  StickyIcon,
-} from "./styles/Header.styles";
+  AppBar,
+  Box,
+  Toolbar,
+  Button,
+  IconButton,
+  Drawer,
+  Stack,
+  Typography,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
-
-const Header = () => {
+export default function Header() {
   const [open, setOpen] = useState(false);
 
-  const mobileLinks = [
+  const mainLinks = [
     { label: "Home", to: "/" },
     { label: "Services", to: "/services" },
-    { label: "Process", to: "/process" },
     { label: "Work", to: "/projects" },
+  ];
+
+  const menuLinks = [
+    { label: "Process", to: "/process" },
     { label: "About", to: "/aboutme" },
     { label: "Contact", to: "/contactpage" },
   ];
 
   return (
     <>
-      {/* ================= HEADER ================= */}
-      <HeaderWrapper>
-        <HeaderInner>
-          <Left>
-            <Logo
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{
+          background: "rgba(213, 190, 169, 0.78)",
+          backdropFilter: "blur(10px)",
+          borderBottom: "1px solid rgba(0,0,0,0.06)",
+        }}
+      >
+        <Toolbar
+          sx={{
+            maxWidth: 1280,
+            width: "100%",
+            mx: "auto",
+            py: 0.1, // ⬅️ NAV MÁS ANGOSTO
+            display: "grid",
+            gridTemplateColumns: "auto 1fr auto",
+            alignItems: "center",
+          }}
+        >
+          {/* LOGO */}
+          <Box
+            sx={{ cursor: "pointer" }}
+            onClick={() => (window.location.href = "/")}
+          >
+            <img
               src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767547942/new_brush_ktsbyr.png"
               alt="Webcode Art Logo"
-              onClick={() => {
-                setOpen(false);
-                window.location.href = "/";
-              }}
+              style={{ height: 36 }} // ⬅️ un poco más pequeño
             />
-          </Left>
+          </Box>
 
-          {/* ===== DESKTOP MENU ===== */}
-          <Center>
-            <MenuLink as={NavLink} to="/">
-              HOME
-            </MenuLink>
-            <MenuLink as={NavLink} to="/services">
-              SERVICES
-            </MenuLink>
-            <MenuLink as={NavLink} to="/process">
-              PROCESS
-            </MenuLink>
-            <MenuLink as={NavLink} to="/projects">
-              WORK
-            </MenuLink>
-            <MenuLink as={NavLink} to="/aboutme">
-              ABOUT
-            </MenuLink>
-            <MenuLink as={NavLink} to="/contactpage">
-              CONTACT
-            </MenuLink>
-          </Center>
+          {/* NAV + MENU */}
+          <Stack
+            direction="row"
+            spacing={3.5}
+            justifyContent="center"
+            alignItems="center"
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
+            {mainLinks.map((link) => (
+              <Button
+                key={link.label}
+                href={link.to}
+                sx={{
+                  color: "rgba(58, 46, 28, 0.78)",
+                  fontSize: "0.88rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.06em",
+                  textTransform: "none",
+                  position: "relative",
+                  borderRadius: "6px",
+                  px: 1.2,
+                  py: 0.4,
 
-          <Right>
-            <ActionButton>LET’S TALK</ActionButton>
+                  transition:
+                    "color 240ms ease, letter-spacing 240ms ease, background-color 260ms ease",
 
-            {/* ===== BURGER MOBILE ===== */}
-            <Burger onClick={() => setOpen((prev) => !prev)}>
-              <span />
-              <span />
-              <span />
-            </Burger>
-          </Right>
-        </HeaderInner>
-      </HeaderWrapper>
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    bottom: -6,
+                    left: "50%",
+                    width: "32%",
+                    height: "1px",
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(201,169,106,0.6), transparent)",
+                    transform: "translateX(-50%) scaleX(0)",
+                    transformOrigin: "center",
+                    transition: "transform 320ms cubic-bezier(.22,.61,.36,1)",
+                  },
 
-      {/* ================= MOBILE MENU ================= */}
-      <MobileMenu open={open}>
-        <MobileLinks>
-          {mobileLinks.map((item) => (
-            <motion.div
-              key={item.label}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.12 }}
+                  "&:hover": {
+                    color: "rgba(219, 188, 124, 0.95)",
+                    letterSpacing: "0.09em",
+
+                    backgroundColor: "rgba(120, 116, 116, 0.22)",
+                  },
+
+                  "&:hover::after": {
+                    transform: "translateX(-50%) scaleX(1)",
+                  },
+                }}
+              >
+                {link.label}
+              </Button>
+            ))}
+            {/* MENU ICON JUNTO A WORK */}
+            <IconButton
+              onClick={() => setOpen(true)}
+              sx={{
+                ml: 0.5,
+                color: "rgba(131, 101, 43, 0.95)",
+                "&:hover": {
+                  color: "#7e6a3f",
+                },
+              }}
             >
-              <NavLink to={item.to} onClick={() => setOpen(false)}>
-                {item.label}
-              </NavLink>
-            </motion.div>
-          ))}
-        </MobileLinks>
+              <MenuIcon fontSize="small" />
+              
+            </IconButton>
+          </Stack>
 
-        {/* ===== SOCIALS MOBILE ===== */}
-        <MobileSocials>
-          <a
-            href="https://github.com/amandafeijoo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/amanda-flores-feijoo-93956a156"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://instagram.com/webcode.art"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.facebook.com/amanda.f.feijoo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaFacebook />
-          </a>
-        </MobileSocials>
-      </MobileMenu>
+          {/* CTA */}
+          <Button
+            variant="outlined"
+            href="/contactpage"
+            sx={{
+              position: "relative",
+              px: 3.4,
+              py: 1.15,
 
-      {/* ================= DESKTOP SOCIALS ================= */}
-      <StickySocials>
-        <StickyIcon
-          href="https://github.com/amandafeijoo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaGithub />
-        </StickyIcon>
-        <StickyIcon
-          href="https://linkedin.com/in/amanda-flores-feijoo-93956a156"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedin />
-        </StickyIcon>
-        <StickyIcon
-          href="https://instagram.com/webcode.art"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaInstagram />
-        </StickyIcon>
-        <StickyIcon
-          href="https://www.facebook.com/amanda.f.feijoo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaFacebook />
-        </StickyIcon>
-      </StickySocials>
+              fontSize: "0.72rem",
+              letterSpacing: "0.22em",
+              fontWeight: 500,
+              textTransform: "uppercase",
+
+              color: "rgba(60, 48, 28, 0.9)",
+
+              background: `
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,0.35),
+        rgba(255,255,255,0.12)
+      )
+    `,
+              backdropFilter: "blur(6px)",
+
+              borderRadius: "999px",
+              border: "1px solid rgba(201,169,106,0.35)",
+
+              boxShadow: `
+      inset 0 1px 0 rgba(255,255,255,0.45),
+      0 6px 18px rgba(0,0,0,0.12)
+    `,
+
+              transition: "all 280ms cubic-bezier(.22,.61,.36,1)",
+
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                inset: 0,
+                borderRadius: "999px",
+                background: `
+        radial-gradient(
+          120% 140% at 50% 0%,
+          rgba(201,169,106,0.55),
+          rgba(201,169,106,0.15) 40%,
+          transparent 70%
+        )
+      `,
+                opacity: 0,
+                transition: "opacity 300ms ease",
+                pointerEvents: "none",
+              },
+
+              "&:hover": {
+                transform: "translateY(-1px)",
+                color: "rgba(40, 32, 18, 1)",
+                borderColor: "rgba(201,169,106,0.6)",
+
+                boxShadow: `
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        0 10px 28px rgba(201,169,106,0.35)
+      `,
+              },
+
+              "&:hover::before": {
+                opacity: 1,
+              },
+
+              "&:active": {
+                transform: "translateY(0)",
+                boxShadow: `
+        inset 0 2px 4px rgba(0,0,0,0.18)
+      `,
+              },
+            }}
+          >
+            LET’S CREATE
+          </Button>
+        </Toolbar>
+      </AppBar>
+
+      {/* DRAWER */}
+      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+        <Box sx={{ width: 320, p: 4 }}>
+          <Typography variant="overline" sx={{ letterSpacing: "0.2em", mb: 3 }}>
+            MENU
+          </Typography>
+
+          <Stack spacing={2}>
+            {[...mainLinks, ...menuLinks].map((link) => (
+              <Button
+                key={link.label}
+                href={link.to}
+                onClick={() => setOpen(false)}
+                sx={{
+                  justifyContent: "flex-start",
+                  fontSize: "1.05rem",
+                  textTransform: "none",
+                  color: "#111",
+                }}
+              >
+                {link.label}
+              </Button>
+            ))}
+          </Stack>
+
+          {/* SOCIALS */}
+          <Box sx={{ mt: 6 }}>
+            <Typography variant="caption" color="text.secondary">
+              Follow
+            </Typography>
+            <Stack direction="row" spacing={2} mt={1}>
+              <Button size="small">IG</Button>
+              <Button size="small">IN</Button>
+              <Button size="small">GH</Button>
+            </Stack>
+          </Box>
+        </Box>
+      </Drawer>
     </>
   );
-};
-
-export default Header;
+}

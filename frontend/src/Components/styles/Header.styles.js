@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import styled from "styled-components";
 
 /* ==================================================
@@ -259,3 +260,27 @@ export const StickyIcon = styled.a`
     opacity: 0.8;
   }
 `;
+
+export const ActionButton = styled(Button)(() => ({
+  backgroundColor: "#111",
+  color: "#fff",
+  borderRadius: "999px",
+  padding: "10px 26px",
+  fontSize: "0.75rem",
+  letterSpacing: "0.14em",
+  boxShadow: "0 10px 28px rgba(0,0,0,0.22)",
+  transition: "transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease",
+  textTransform: "none",
+
+  "&:hover": {
+    backgroundColor: "#0d0d0d",
+    transform: "translateY(-1px)",
+    boxShadow:
+      "0 0 0 1px rgba(201,169,106,0.40), 0 0 18px rgba(201,169,106,0.38), 0 0 40px rgba(231,223,212,0.25)",
+  },
+
+  "&:focus-visible": {
+    outline: "2px solid rgba(201,169,106,0.55)",
+    outlineOffset: "3px",
+  },
+}))

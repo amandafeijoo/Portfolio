@@ -51,7 +51,7 @@ export default function ProcessStones({ imageUrl, height = 900 }) {
       const centerX = w * 0.5;
       const centerY = h * 0.5;
 
-      const radiusX = w * 0.2;
+      const radiusX = w * 0.23;
       const radiusY = h * 0.25;
 
       const baseAngles = [-140, -80, -20, 40, 100, 160];
@@ -99,7 +99,7 @@ export default function ProcessStones({ imageUrl, height = 900 }) {
         /* =====================
        🎨   SIZE PIEDRA
           ===================== */
-        const baseSize = 130; //** TAMANO DE LA PIEDRA */
+        const baseSize = 120; //** TAMANO DE LA PIEDRA */
         const size = baseSize * s.scale * depthScale;
         const ratio = img.width / img.height;
 
@@ -133,7 +133,7 @@ export default function ProcessStones({ imageUrl, height = 900 }) {
           ctx.globalCompositeOperation = "screen";
 
           const lightGradient = ctx.createRadialGradient(
-            dx * 0.25, 
+            dx * 0.25,
             dy * 0.25,
             size * 0.1,
             0,

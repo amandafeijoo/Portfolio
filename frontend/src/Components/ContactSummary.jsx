@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useAnimation } from "framer-motion";
+import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import ContactInputs from "./ContactInputs";
+import { Container, Box, Typography, Button } from "@mui/material";
+import ContactInputs2 from "./ContactInputs2";
+
+/* ===============================
+   HELPERS
+================================ */
 
 const getCSRFToken = () => {
   const cookies = document.cookie.split(";");
@@ -27,20 +25,28 @@ const getCSRFToken = () => {
 const validateEmail = (email) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+/* ===============================
+   COMPONENT
+================================ */
 
 const ContactSummary = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
   const [emailError, setEmailError] = useState("");
 
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.6 });
+  const [ref, inView] = useInView({ threshold: 0.6 });
   const navigate = useNavigate();
 
   useEffect(() => {
     controls.start({
-      scale: inView ? 1 : 0.2,
+      scale: inView ? 1 : 0.94,
       opacity: inView ? 1 : 0,
-      transition: { duration: 1 },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     });
   }, [inView, controls]);
 
@@ -73,9 +79,10 @@ const ContactSummary = () => {
 
       Swal.fire(
         "Success",
-        "Thank you for reaching out! I’ll get back to you as soon as possible.",
+        "Thank you for reaching out. I’ll get back to you soon.",
         "success"
       );
+
       setFormData({ name: "", email: "", message: "" });
       navigate("/");
     } catch (error) {
@@ -87,113 +94,186 @@ const ContactSummary = () => {
     <Container
       maxWidth={false}
       sx={{
+        minHeight: "100dvh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100dvh",
         px: { xs: 2, sm: 4 },
-        pb: 4,
-        mt: { xs: 0, sm: -30 },
-        overflowY: "auto",
-        fontFamily:  "'Source Code Pro', monospace",
+        pb: 6,
+        overflowX: "hidden",
+        fontFamily: "'Inter', sans-serif", 
 
-         // ✅ Solo en móviles
-    "@media (max-width: 768px)": {
-      overflowX: "hidden",
-    
-    },
-  
       }}
     >
-      <motion.div ref={ref} initial={{ scale: 0.2, opacity: 0 }} animate={controls}>
+      <motion.div
+        ref={ref}
+        initial={{ scale: 0.94, opacity: 0 }}
+        animate={controls}
+      >
         <Box
+          component="form"
+          onSubmit={handleSubmit}
           sx={{
-            border: "2px solid rgba(200, 162, 200, 0.5)",
-            borderRadius: 2,
-            p: { xs: 2, sm: 3 },
+            display: "flex",
+            flexDirection: "column",
+            gap: 3.5,
+            px: { xs: 4, sm: 5 },
+            py: { xs: 3, sm: 5 },
             width: "100%",
-            maxWidth:  { xs: "91%", sm: "600px" },
-            mx: "auto",
-            mt: { xs: 10, sm: 40 },
-            mb: 5,
-            fontFamily:  "'Source Code Pro', monospace",
+            maxWidth: "540px",
+            borderRadius: "30px",
+            fontFamily: "'Inter', sans-serif", 
+
+
+            color: "rgba(255,255,255,0.9)",
+
+            background: `
+              linear-gradient(
+                180deg,
+                rgba(255,255,255,0.05),
+                rgba(255,255,255,0.015)
+              )
+            `,
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+
+            border: "1.5px solid rgba(201,169,106,0.35)",
+
+            boxShadow: `
+              0 50px 120px rgba(0,0,0,0.65),
+              0 0 60px rgba(201,169,106,0.15),
+              inset 0 1px 0 rgba(255,255,255,0.18)
+            `,
+
+            transition: "all 0.45s cubic-bezier(0.22,1,0.36,1)",
+
+            "&:hover": {
+              boxShadow: `
+                0 70px 140px rgba(0,0,0,0.75),
+                0 0 80px rgba(201,169,106,0.22)
+              `,
+            },
           }}
         >
+          {/* TITLE */}
           <Typography
-            variant="body1"
             textAlign="center"
-            gutterBottom
-            sx={{ mb: 3, fontWeight: "bold", color: "#fff",fontFamily:  "'Source Code Pro', monospace",fontSize: {xs: "1.8rem",  sm: "2.7rem"} }}
+            sx={{
+              fontSize: { xs: "1.9rem", sm: "2.8rem" },
+              fontWeight: 600,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              fontFamily: "'Inter', sans-serif",
+
+              background: "linear-gradient(180deg, #ffffff, #e6d8c6)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+
+              textShadow: "0 8px 30px rgba(0,0,0,0.6)",
+            }}
           >
             Contact
           </Typography>
 
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
+          {/* SUBTITLE */}
+          <Typography
+            textAlign="center"
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              p: { xs: 2, sm: 3 },
-              borderRadius: 2,
-              color: "#fff",
-              boxShadow: "0 0 10px rgba(192, 192, 192, 0.5)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid #ff7799",
-              backgroundColor: "rgba(200, 162, 200, 0.5)",
+              fontSize: "0.9rem",
+              fontFamily: "'Inter', sans-serif",
+              lineHeight: 1.7,
+              color: "rgba(255,255,255,0.6)",
+              letterSpacing: "0.04em",
             }}
           >
-            <Typography variant="body1" textAlign="center" gutterBottom  sx={{ fontFamily: "'Source Code Pro', monospace",
-            fontSize: {xs: "0.8rem",  sm: "1rem",lineHeight: {xs: 1.4,sm: 1.6,},},
-             }}
-          >
-              Feel free to reach out for collaborations, questions, or just to say hi.{"\n"} I’m here to help!
-            </Typography>
+            Feel free to reach out for collaborations, questions,
+            or just to say hi.
+          </Typography>
 
-            <ContactInputs formData={formData} handleChange={handleChange} />
-            <Typography
-              sx={{
-                fontSize: "0.9rem",
-                color: "#ffffff",
-                textAlign: "center",
-                mt: 2,
-                fontFamily:  "'Source Code Pro', monospace",
-                fontSize: {xs: "0.65rem",sm: "0.9rem",},
-                lineHeight: {xs: 1.6,sm: 1.5,},
+          {/* DIVIDER */}
+          <Box
+            sx={{
+              width: "60px",
+              fontFamily: "'Inter', sans-serif",
+              height: "1px",
+              mx: "auto",
+              background:
+                "linear-gradient(to right, transparent, rgba(201,169,106,0.85), transparent)",
+              opacity: 0.8,
+            }}
+          />
+
+          <ContactInputs2
+            formData={formData}
+            handleChange={handleChange}
+          />
+
+          {/* PRIVACY */}
+          <Typography
+            textAlign="center"
+            sx={{
+              fontSize: { xs: "0.65rem", sm: "0.85rem" },
+              color: "rgba(255,255,255,0.5)",
+              fontFamily: "'Inter', sans-serif",
+              mt: 1,
+            }}
+          >
+            By submitting this form, you agree to our{" "}
+            <span
+              onClick={() => navigate("/privacy-policy")}
+              style={{
+                cursor: "pointer",
+                color: "rgba(201,169,106,0.9)",
+                fontFamily: "'Inter', sans-serif",
+                textDecoration: "underline",
               }}
             >
-              By submitting this form, you agree to our{" "}
-              <span
-                onClick={() => navigate("/privacy-policy")}
-                style={{
-                  cursor: "pointer",
-                  color: "#fbb6ce",
-                  fontWeight: "bold",
-                  textDecoration: "underline",
-                }}
-                onMouseEnter={(e) => (e.target.style.color = "#f783ac")}
-                onMouseLeave={(e) => (e.target.style.color = "#fbb6ce")}
-              >
-                Privacy Policy
-              </span>
-              .
-            </Typography>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                backgroundColor: "#ff5577",
-                fontFamily: "'Source Code Pro', monospace",
-                color: "#fff",
-                "&:hover": {
-                  backgroundColor: "#ff7799",
-                },
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
+              Privacy Policy
+            </span>
+          </Typography>
+
+          {/* BUTTON */}
+          <Button
+  type="submit"
+  sx={{
+    mt: 2,
+    py: 1.4,
+    borderRadius: "18px",
+
+    background: "rgba(10,10,10,0.85)",
+    color: "rgba(255,255,255,0.9)",
+
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: 500,
+    fontSize: "0.8rem",
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
+
+    border: "1px solid rgba(247, 246, 243, 0.35)",
+
+    boxShadow: `
+      0 10px 30px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.06)
+    `,
+
+    backdropFilter: "blur(6px)",
+
+    transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
+
+    "&:hover": {
+      transform: "translateY(-2px)",
+      borderColor: "rgba(201,169,106,0.7)",
+      boxShadow: `
+        0 20px 50px rgba(0,0,0,0.75),
+        0 0 30px rgba(201,169,106,0.25)
+      `,
+      background: "rgba(12,12,12,0.95)",
+    },
+  }}
+>
+  Send Message
+</Button>
+
         </Box>
       </motion.div>
     </Container>
@@ -201,3 +281,4 @@ const ContactSummary = () => {
 };
 
 export default ContactSummary;
+
