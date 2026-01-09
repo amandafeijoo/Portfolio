@@ -1,3 +1,6 @@
+import { useRef } from "react";
+import { useScroll } from "framer-motion";
+
 import WorkFlowLines from "./WorkFlowLines";
 import {
   Section,
@@ -8,14 +11,19 @@ import {
 } from "./styles/Work.styles";
 
 export default function WorkSection() {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
   return (
-    <Section id="work">
-      {/* Fondo animado */}
+    <Section id="work" ref={sectionRef}>
       <CanvasWrapper>
-        <WorkFlowLines height={600} />
+        <WorkFlowLines height={600} progress={scrollYProgress} />
       </CanvasWrapper>
 
-      {/* Contenido */}
       <Content>
         <Title>Work</Title>
         <Subtitle>
@@ -25,5 +33,6 @@ export default function WorkSection() {
     </Section>
   );
 }
+
 
 

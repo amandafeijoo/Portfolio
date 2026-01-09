@@ -42,7 +42,7 @@ export default function Header() {
             maxWidth: 1280,
             width: "100%",
             mx: "auto",
-            py: 0.1, // ⬅️ NAV MÁS ANGOSTO
+            py: 0.1, 
             display: "grid",
             gridTemplateColumns: "auto 1fr auto",
             alignItems: "center",
@@ -56,7 +56,7 @@ export default function Header() {
             <img
               src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767547942/new_brush_ktsbyr.png"
               alt="Webcode Art Logo"
-              style={{ height: 36 }} // ⬅️ un poco más pequeño
+              style={{ height: 36 }} 
             />
           </Box>
 
@@ -117,17 +117,28 @@ export default function Header() {
             ))}
             {/* MENU ICON JUNTO A WORK */}
             <IconButton
+              disableRipple
+              disableFocusRipple
+              disableTouchRipple
               onClick={() => setOpen(true)}
               sx={{
                 ml: 0.5,
-                color: "rgba(131, 101, 43, 0.95)",
+                color: "rgba(99, 80, 42, 0.95)",
+
                 "&:hover": {
                   color: "#7e6a3f",
+                },
+
+                "&:focus": {
+                  outline: "none",
+                },
+
+                "&.Mui-focusVisible": {
+                  outline: "none",
                 },
               }}
             >
               <MenuIcon fontSize="small" />
-              
             </IconButton>
           </Stack>
 

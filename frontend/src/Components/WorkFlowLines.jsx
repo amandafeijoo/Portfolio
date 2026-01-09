@@ -25,7 +25,7 @@ export default function WorkFlowLines({ height = 520 }) {
 
     const lines = Array.from({ length: 7 }).map((_, i) => ({
       index: i - 3, // centro = 0
-      spread: 220, // apertura inferior
+      spread: 240, // apertura inferior
       sway: 19, // curvatura suave
     }));
 

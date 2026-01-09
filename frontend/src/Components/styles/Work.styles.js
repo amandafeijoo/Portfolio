@@ -10,8 +10,8 @@ export const Section = styled.section`
   min-height: 640px;
   background: #000;
   overflow: hidden;
-  margin-top: -80px;
-
+  margin-top: -90px;
+  margin-bottom: -280px;
   display: flex;
   align-items: center;
   justify-content: center;

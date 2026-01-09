@@ -99,7 +99,7 @@ function MediaPlane({ position, media }) {
     return tex;
   }, [media]);
 
-  // Siempre mirar al centro
+  // Siempre miran al centro
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.lookAt(0, 0, 0);
@@ -122,25 +122,45 @@ function MediaPlane({ position, media }) {
 
 /* =========================
    ESCENA PRINCIPAL
-========================= */   
+========================= */
 export default function SphereScene() {
   const media = useMemo(() => {
     const allMedia = [
-        { type: "image", src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767899688/logo_web_spjpxj.png" },
-    
-        { type: "video", src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_07video_crz7cb.mp4" },
-        { type: "video", src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_12video_ogyq4b.mp4" },
-        { type: "video", src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/v1767908984/hero__02video_iy2ud3.mp4" },
-        { type: "video", src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_11video_whxuos.mp4" },
-        { type: "video", src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_03video_zm8hp0.mp4" },
-        { type: "video", src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_video05_v2huxf.mp4" },
+      {
+        type: "image",
+        src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767899688/logo_web_spjpxj.png",
+      },
 
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_07video_crz7cb.mp4",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_12video_ogyq4b.mp4",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/v1767908984/hero__02video_iy2ud3.mp4",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_11video_whxuos.mp4",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_03video_zm8hp0.mp4",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_video05_v2huxf.mp4",
+      },
+    ];
 
-      ];
-      
-
-    const videos = allMedia.filter(m => m.type === "video").slice(0, MAX_VIDEOS);
-    const images = allMedia.filter(m => m.type === "image");
+    const videos = allMedia
+      .filter((m) => m.type === "video")
+      .slice(0, MAX_VIDEOS);
+    const images = allMedia.filter((m) => m.type === "image");
 
     return shuffleArray([...videos, ...images]);
   }, []);
@@ -163,6 +183,3 @@ export default function SphereScene() {
     </Canvas>
   );
 }
-
-
-

@@ -34,6 +34,7 @@ import OrbitSection from "./Components/OrbitSection";
 import ProcessSection from "./Components/ProcessSection";
 import WorkSection from "./Components/WorkSection";
 import HeroSphere from "./Components/HeroSphere";
+import WorkFolders from "./Components/WorkFolders";
 
 const AppContainer = styled.div`
   display: flex;
@@ -115,6 +116,7 @@ function App() {
             <OrbitSection />
             <ProcessSection />
             <WorkSection />
+            <WorkFolders />
             <ContactSummary />
             <div style={{ height: "40px" }} />
             <Routes>

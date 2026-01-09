@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 
-export default function TypingWords({
-  words,
-  speed = 90,
-  pause = 1200,
-}) {
+export default function TypingWords({ words, speed = 90, pause = 1200 }) {
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -19,15 +15,12 @@ export default function TypingWords({
       if (!isDeleting && charIndex < currentWord.length) {
         setDisplayedText((prev) => prev + currentWord[charIndex]);
         setCharIndex((i) => i + 1);
-      } 
-      else if (isDeleting && charIndex > 0) {
+      } else if (isDeleting && charIndex > 0) {
         setDisplayedText((prev) => prev.slice(0, -1));
         setCharIndex((i) => i - 1);
-      } 
-      else if (!isDeleting && charIndex === currentWord.length) {
+      } else if (!isDeleting && charIndex === currentWord.length) {
         setTimeout(() => setIsDeleting(true), pause);
-      } 
-      else if (isDeleting && charIndex === 0) {
+      } else if (isDeleting && charIndex === 0) {
         setIsDeleting(false);
         setWordIndex((i) => (i + 1) % words.length);
       }
