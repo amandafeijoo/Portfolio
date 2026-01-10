@@ -39,10 +39,10 @@ export default function HeroText() {
         <Typography sx={titleStyle}>WEBCODE-ART</Typography>
 
         <Typography sx={bodyStyle}>
-          I design and build websites for
+        I DESIGN AND BUILD WEBSITES FOR
           <br />
           <TypingWords
-            words={["brands", "startups", "founders", "businesses"]}
+            words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
             speed={85}
             pause={1200}
           />
@@ -56,30 +56,12 @@ export default function HeroText() {
    STYLES
 ========================= */
 
-const sideStyle = {
-  fontFamily: "Source Code Pro, monospace",
-  fontSize: "0.75rem",
-  letterSpacing: "0.18em",
-  textTransform: "uppercase",
-  color: "#f5e2ce",
-  lineHeight: 1.7,
-};
-
 const titleStyle = {
   fontFamily: "Playfair Display, serif",
   fontSize: "clamp(2.2rem, 4vw, 1.7rem)",
-  letterSpacing: "0.32em",
+  letterSpacing: "0.28em",
   textTransform: "uppercase",
-  background: `
-      linear-gradient(
-        120deg,
-        #f5e2ce 0%,
-        #c8a46a 35%,
-        #f3d9a4 50%,
-        #c8a46a 65%,
-        #f5e2ce 100%
-      )
-    `,
+  background: "rgb(148, 123, 86) ",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   mb: 2,
@@ -94,10 +76,24 @@ const titleStyle = {
   `,
   },
 };
+const sideStyle = {
+    fontFamily: "Source Code Pro, monospace",
+    fontSize: "0.72rem",
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
+    color: "#d6cbb8",
+    opacity: 0.65,
+    lineHeight: 1.8,
+  };
 
 const bodyStyle = {
-  fontFamily: "Source Code Pro, monospace",
-  fontSize: "0.90em",
-  letterSpacing: "0.14em",
-  color: "#ffff",
-};
+    fontFamily: "Source Code Pro, monospace",
+    fontSize: "0.76rem",
+    letterSpacing: "0.14em",
+    color: "#d6cbb8",
+    lineHeight: 1.6,
+    opacity: 0.60,
+   
+
+  };
+  

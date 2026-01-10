@@ -133,23 +133,26 @@ export default function SphereScene() {
 
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_07video_crz7cb.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_001_fg3v1x.mp4",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_12video_ogyq4b.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_10_m7j8nz.mp4",
+        
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/v1767908984/hero__02video_iy2ud3.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/v1767908984/herotop_exhs4t.mp4",
+        
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_11video_whxuos.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_008_wm68ux.mp4",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_03video_zm8hp0.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_17_yahpcd.mp4",
+        
       },
       {
         type: "video",
