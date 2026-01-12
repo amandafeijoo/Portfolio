@@ -1,218 +1,122 @@
-import { useEffect, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import * as THREE from "three";
 
-export default function ProcessStones({ imageUrl, height = 900 }) {
-  const canvasRef = useRef(null);
+/* ============================
+   🟢 SPHERE NODE
+============================ */
+function SphereNode({
+  radius,
+  angleOffset = 0,
+  orbitRadius = 0,
+  speed = 0,
+  isCenter = false,
+  hasHalo = false,
+}) {
+  const ref = useRef();
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
 
-    const ctx = canvas.getContext("2d");
+    // 🔄 SOLO las secundarias orbitan
+    if (!isCenter) {
+      const angle = t * speed + angleOffset;
+      ref.current.position.x = Math.cos(angle) * orbitRadius;
+      ref.current.position.z = Math.sin(angle) * orbitRadius;
+      ref.current.position.y = Math.sin(angle * 0.6) * 0.35;
+    }
 
-    let w = 0,
-      h = 0,
-      dpr = 1;
-    let raf = 0;
-
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = imageUrl;
-
-    const stones = [];
-    let angleBase = 0;
-
-    // ⏱️ velocidad órbita
-    const ORBIT_SPEED = 0.001;
-
-    // 🖱️ mouse
-    let mouseX = -9999;
-    let mouseY = -9999;
-
-    /* =====================
-       📐 RESIZE
-    ===================== */
-    const resize = () => {
-      dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      w = rect.width;
-      h = rect.height;
-
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-
-    /* =====================
-       🪨 INIT STONES
-    ===================== */
-    const initStones = () => {
-      stones.length = 0;
-
-      const centerX = w * 0.5;
-      const centerY = h * 0.5;
-
-      const radiusX = w * 0.23;
-      const radiusY = h * 0.25;
-
-      const baseAngles = [-140, -80, -20, 40, 100, 160];
-
-      baseAngles.forEach((deg) => {
-        stones.push({
-          baseAngle: (deg * Math.PI) / 180,
-          scale: 0.55 + Math.random() * 0.25,
-          selfRotation: Math.random() * 0.2 - 0.1,
-          selfRotSpeed: Math.random() * 0.002 - 0.001,
-          x: 0,
-          y: 0,
-          size: 0,
-        });
-      });
-
-      stones.centerX = centerX;
-      stones.centerY = centerY;
-      stones.radiusX = radiusX;
-      stones.radiusY = radiusY;
-    };
-
-    /* =====================
-       🎨 DRAW
-    ===================== */
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-
-      angleBase += ORBIT_SPEED;
-
-      const tilt = 0.6;
-
-      stones.forEach((s) => {
-        const angle = s.baseAngle + angleBase;
-        const z = Math.sin(angle);
-
-        const x = stones.centerX + Math.cos(angle) * stones.radiusX;
-        const y = stones.centerY + Math.sin(angle) * stones.radiusY * tilt;
-
-        const lift = z * 42;
-        const depthScale = 1 + z * 0.14;
-
-        s.selfRotation += s.selfRotSpeed;
-
-        /* =====================
-       🎨   SIZE PIEDRA
-          ===================== */
-        const baseSize = 120; //** TAMANO DE LA PIEDRA */
-        const size = baseSize * s.scale * depthScale;
-        const ratio = img.width / img.height;
-
-        // guardar posición para hover
-        s.x = x;
-        s.y = y - lift;
-        s.size = size;
-
-        // 🖱️ HOVER DETECTION
-        const dx = mouseX - s.x;
-        const dy = mouseY - s.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const isHovered = distance < size * 0.6;
-
-        ctx.save();
-        ctx.translate(s.x, s.y);
-        ctx.rotate(s.selfRotation);
-
-        /* =========================
-   🌑 PIEDRA BASE (oscura)
-========================= */
-        ctx.globalAlpha = 0.55;
-
-        ctx.drawImage(img, (-size * ratio) / 2, -size / 2, size * ratio, size);
-
-        /* =========================
-   🔦 LUZ TIPO LINTERNA
-========================= */
-        if (isHovered) {
-          // 🔆 Aclara la textura
-          ctx.globalCompositeOperation = "screen";
-
-          const lightGradient = ctx.createRadialGradient(
-            dx * 0.25,
-            dy * 0.25,
-            size * 0.1,
-            0,
-            0,
-            size * 0.6
-          );
-
-          lightGradient.addColorStop(0, "rgba(255,255,255,0.40)");
-          lightGradient.addColorStop(0.4, "rgba(255,255,255,0.18)");
-          lightGradient.addColorStop(1, "rgba(255,255,255,0)");
-
-          ctx.fillStyle = lightGradient;
-          ctx.beginPath();
-          ctx.arc(0, 0, size, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.globalCompositeOperation = "source-over";
-
-          // ✨ Micro halo MUY sutil
-          ctx.shadowColor = "rgba(255,255,255,0.25)";
-          ctx.shadowBlur = 12;
-        }
-
-        ctx.restore();
-      });
-
-      raf = requestAnimationFrame(draw);
-    };
-
-    /* =====================
-       🖱️ MOUSE EVENTS
-    ===================== */
-    const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    };
-
-    const handleMouseLeave = () => {
-      mouseX = -9999;
-      mouseY = -9999;
-    };
-
-    /* =====================
-       🚀 INIT
-    ===================== */
-    const handleResize = () => {
-      resize();
-      initStones();
-    };
-
-    img.onload = () => {
-      handleResize();
-      draw();
-    };
-
-    window.addEventListener("resize", handleResize);
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", handleResize);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [imageUrl]);
+    // 🌬️ pulso orgánico MUY sutil
+    const pulse = 1 + Math.sin(t * 0.6) * 0.02;
+    ref.current.scale.setScalar(pulse);
+  });
 
   return (
-    <canvas
-      ref={canvasRef}
+    <group ref={ref}>
+      {/* 🌑 ESFERA BASE */}
+      <mesh>
+        <sphereGeometry args={[radius, 64, 64]} />
+        <meshStandardMaterial
+          color={isCenter ? "#121212" : "#2a2a2a"}
+          roughness={0.6}
+          metalness={0.1}
+          emissive="#e6dcc8"
+          emissiveIntensity={isCenter ? 0.08 : 0.22}
+        />
+      </mesh>
+
+      {/* ✨ NÚCLEO INTERIOR — SOLO CENTRAL */}
+      {isCenter && (
+        <mesh>
+          <sphereGeometry args={[radius * 0.18, 32, 32]} />
+          <meshBasicMaterial
+            color="#e6dcc8"
+            transparent
+            opacity={0.6}
+          />
+        </mesh>
+      )}
+
+      {/* ✨ HALO — SOLO ORBITALES */}
+      {hasHalo && (
+        <mesh scale={1.15}>
+          <sphereGeometry args={[radius, 64, 64]} />
+          <meshBasicMaterial
+            color="#e8dcc8"
+            transparent
+            opacity={0.08}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
+        </mesh>
+      )}
+    </group>
+  );
+}
+
+/* ============================
+   🟣 PROCESS SPHERES SCENE
+============================ */
+export default function ProcessSpheres({ height = 900 }) {
+  return (
+    <Canvas
       style={{
         position: "absolute",
         inset: 0,
         width: "100%",
         height,
-        pointerEvents: "auto",
         zIndex: 1,
+        pointerEvents: "none",
       }}
-    />
+      camera={{ position: [0, 0, 8], fov: 50 }}
+    >
+      {/* 🌫️ LUZ AMBIENTE BAJA (para que exista sombra) */}
+      <ambientLight intensity={0.3} />
+
+      {/* ☀️ LUZ PRINCIPAL */}
+      <pointLight position={[6, 6, 6]} intensity={1.05} />
+
+      {/* 🌘 LUZ DIRECCIONAL — CREA LA SOMBRA TIPO ECLIPSE */}
+      <directionalLight position={[2.5, 0.8, 4]} intensity={0.9} />
+
+      {/* ✨ LUZ LATERAL (halo suave) */}
+      <pointLight position={[-6, -3, 4]} intensity={0.5} />
+
+      {/* 🌕 ESFERA CENTRAL — IDEA */}
+      <SphereNode radius={1.16} isCenter />
+
+      {/* 🪐 ESFERAS ORBITALES — CONTEXTO */}
+      {Array.from({ length: 6 }).map((_, i) => (
+        <SphereNode
+          key={i}
+          radius={0.45}
+          angleOffset={(i / 6) * Math.PI * 2}
+          orbitRadius={2.9}
+          speed={0.22}
+          hasHalo
+        />
+      ))}
+    </Canvas>
   );
 }
+

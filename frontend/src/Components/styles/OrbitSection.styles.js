@@ -25,7 +25,7 @@ export const OrbitVisual = styled.div`
   max-height: 75vh;
 
   @media (max-width: 768px) {
-    height: 38vh; 
+    height: 38vh;
     overflow: hidden;
   }
 `;
@@ -92,7 +92,7 @@ export const HeroTitle = styled(motion.h1)`
   font-weight: 400;
   letter-spacing: 0.08em;
   margin: 0;
-  color: rgba(255, 255, 255, 0.97);
+  color: rgba(237, 231, 217, 0.95);
 
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.4),
     0 0 8px rgba(255, 255, 255, 0.25), 0 0 26px rgba(201, 169, 106, 0.22),

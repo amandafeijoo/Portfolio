@@ -146,7 +146,11 @@ export const Title = styled(motion.h2)`
   margin: 32px 0 6px;
   letter-spacing: 1px;
 
-  background: linear-gradient(180deg, #ffffff 0%, #e6d8c6 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(237, 231, 217, 0.95) 0%,
+    #e6d8c6 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -250,7 +254,7 @@ export const ScrollHint = styled.div`
   position: absolute;
   bottom: 42px;
   left: 50%;
-  transform: translate(-50%, -32px); 
+  transform: translate(-50%, -32px);
 
   display: flex;
   align-items: center;

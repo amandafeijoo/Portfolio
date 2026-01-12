@@ -16,7 +16,6 @@ export const Section = styled.section`
   align-items: center;
   justify-content: center;
 
-  /* respiración vertical */
   padding: 140px 0 160px;
 
   @media (max-width: 768px) {
@@ -65,12 +64,12 @@ export const Title = styled.h2`
   font-family: "Playfair Display", serif;
   font-size: clamp(3rem, 6vw, 4.4rem);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 
-  color: #ffffff;
+  color: rgba(237, 231, 217, 0.95);
 
-  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.55),
-    0 2px 12px rgba(201, 169, 106, 0.12);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(200, 164, 106, 0.18);
 `;
 
 /* ==================================================
@@ -79,13 +78,14 @@ export const Title = styled.h2`
 
 export const Subtitle = styled.p`
   font-family: "Source Code Pro", monospace;
-  font-size: 0.85rem;
-  letter-spacing: 0.26em;
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(201, 169, 106, 0.75);
+  opacity: 0.85;
 
-  margin-top: 4px;
+  margin-top: -20px;
 `;
 
 /* ==================================================

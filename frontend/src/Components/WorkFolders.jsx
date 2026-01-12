@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import { ProjectContext } from "../Context/ProjectContext";
 import SingleProjectCard from "./SingleProjectCard";
+import { color, m } from "framer-motion";
+import { MdChargingStation } from "react-icons/md";
 
 const WorkFolders = () => {
   const { projectList } = useContext(ProjectContext);
@@ -11,7 +13,8 @@ const WorkFolders = () => {
     <Box
       sx={{
         display: "flex",
-        height: "85vh",
+        height: "95vh",
+        with: "100%",
         gap: "14px",
         overflow: "hidden",
       }}
@@ -24,11 +27,9 @@ const WorkFolders = () => {
             key={project.id}
             onClick={() => setActiveIndex(index)}
             sx={{
-              flex: isActive ? 5 : 1,
+              flex: isActive ? 9 : 1,
               transition: "flex 0.75s cubic-bezier(0.4,0,0.2,1)",
-              backgroundColor: isActive
-                ? "#0f0f0f"
-                : "rgba(240,226,214,0.96)",
+              backgroundColor: isActive ? "rgba(239, 235, 235, 0.14) " : "rgba(240,226,214,0.96)",
               borderRadius: "28px",
               position: "relative",
               overflow: "hidden",
@@ -36,20 +37,34 @@ const WorkFolders = () => {
             }}
           >
             {/* Número */}
-            <Typography
-              sx={{
-                position: "absolute",
-                bottom: 36,
-                right: 32,
-                fontSize: "7rem",
-                fontFamily: "Playfair Display, serif",
-                color: isActive
-                  ? "rgba(255,255,255,0.08)"
-                  : "rgba(0,0,0,0.28)",
-              }}
-            >
-              {index + 1}
-            </Typography>
+            {!isActive && (
+              <Typography
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  color: "rgba(0, 0, 0, 0.14)",
+                  display: "flex",
+                  alignItems: "end",
+                  mb: 9,
+                  justifyContent: "center",
+
+                  mixblendmode: "multiply",
+
+                  fontSize: "4rem",
+                  fontFamily: "Playfair Display, serif",
+                  lineHeight: 1,
+
+                  opacity: isActive ? 0 : 1,
+                  transform: isActive ? "scale(0.95)" : "scale(1)",
+                  transition: "opacity 0.35s ease, transform 0.35s ease",
+
+                  pointerEvents: "none",
+                  userSelect: "none",
+                }}
+              >
+                {index + 1}
+              </Typography>
+            )}
 
             {/* CONTENIDO SOLO SI ACTIVA */}
             {isActive && (
@@ -71,4 +86,3 @@ const WorkFolders = () => {
 };
 
 export default WorkFolders;
-

@@ -65,7 +65,7 @@ export default function ProcessCards() {
         py: { xs: 6, md: 10 },
         display: "flex",
         justifyContent: "center",
-        mb: 20,
+        mb: 10,
       }}
     >
       <Box
@@ -121,42 +121,41 @@ export default function ProcessCards() {
           >
             {/* ICON */}
             <Box
-  component={motion.div}
-  animate={{
-    scale: [1, 1.06, 1],
-    boxShadow: [
-      "0 0 8px rgba(201,169,106,0.15)",
-      "0 0 16px rgba(201,169,106,0.35)",
-      "0 0 8px rgba(201,169,106,0.15)",
-    ],
-  }}
-  transition={{
-    duration: 4,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-  whileHover={{
-    scale: 1.15,
-    rotate: 3,
-  }}
-  sx={{
-    width: 42,
-    height: 42,
-    borderRadius: "50%",
-    mx: "auto",
-    mb: 2,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "rgba(201,169,106,0.9)",
-    border: "1px solid rgba(201,169,106,0.10)",
-    background: "rgba(201,169,106,0.01)",
-    cursor: "default",
-  }}
->
-  <FontAwesomeIcon icon={step.icon} style={{ fontSize: "1rem" }} />
-</Box>
-
+              component={motion.div}
+              animate={{
+                scale: [1, 1.06, 1],
+                boxShadow: [
+                  "0 0 8px rgba(201,169,106,0.05)",
+                  "0 0 16px rgba(201,169,106,0.10)",
+                  "0 0 8px rgba(201,169,106,0.10)",
+                ],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileHover={{
+                scale: 1.15,
+                rotate: 3,
+              }}
+              sx={{
+                width: 42,
+                height: 42,
+                borderRadius: "50%",
+                mx: "auto",
+                mb: 2,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "rgba(201,169,106,0.9)",
+                border: "1px solid rgba(201,169,106,0.10)",
+                background: "rgba(201,169,106,0.01)",
+                cursor: "default",
+              }}
+            >
+              <FontAwesomeIcon icon={step.icon} style={{ fontSize: "1rem" }} />
+            </Box>
 
             <Typography
               sx={{

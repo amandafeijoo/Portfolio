@@ -13,17 +13,14 @@ export default function ProcessSection() {
         marginTop: "-150px",
       }}
     >
-      {/* 🪐 FONDO — piedras flotantes (canvas interactivo) */}
-      <ProcessStones
-        imageUrl="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767569759/piedra___ynxdvx.png"
-      />
+      <ProcessStones imageUrl="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767569759/piedra___ynxdvx.png" />
 
       {/* 📝 CONTENIDO (NO bloquea el mouse) */}
       <div
         style={{
           position: "relative",
           zIndex: 2,
-          pointerEvents: "none", // ⬅️ CLAVE: deja pasar el mouse al canvas
+          pointerEvents: "none",
           maxWidth: "1200px",
           margin: "0 auto",
           paddingTop: "390px",
@@ -34,7 +31,7 @@ export default function ProcessSection() {
         {/* LABEL */}
         <span
           style={{
-            color: "rgba(201, 169, 106, 0.75)",
+            color: "rgba(240, 201, 123, 0.95)",
             letterSpacing: "2px",
             fontSize: "0.9rem",
             fontWeight: "600",
@@ -47,8 +44,8 @@ export default function ProcessSection() {
         {/* TITLE */}
         <h2
           style={{
-            color: "#fff",
-            fontSize: "2.8rem",
+            color: "rgba(237, 231, 217, 0.95)",
+            fontSize: "3rem",
             marginTop: "14px",
             marginBottom: "80px",
           }}
@@ -64,5 +61,3 @@ export default function ProcessSection() {
     </section>
   );
 }
-
-  

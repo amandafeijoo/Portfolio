@@ -9,6 +9,7 @@ import {
   ProjectComment,
   ProjectTechnologies,
   WaveBackground,
+  actionButtonStyles,
 } from "./styles/SingleProjectCard.styles";
 
 const SingleProjectCard = ({ project, inView = true }) => {
@@ -16,7 +17,7 @@ const SingleProjectCard = ({ project, inView = true }) => {
     <SingleProjectContainer inView={inView}>
       {/* WAVE BACKGROUND */}
       <WaveBackground
-        fill="rgba(200,164,106,0.35)"
+        fill="rgba(245, 244, 242, 0.35)"
         paused={false}
         options={{
           height: 12,
@@ -55,49 +56,31 @@ const SingleProjectCard = ({ project, inView = true }) => {
         <Button
           href={project.githubLink}
           target="_blank"
-          sx={{
-            fontFamily: "'Source Code Pro', monospace",
-            px: 3,
-            py: 1.4,
-            borderRadius: "999px",
-            border: "1px solid rgba(200,164,106,0.45)",
-            color: "#c8a46a",
-            letterSpacing: "0.14em",
-            fontSize: "0.7rem",
-            backgroundColor: "transparent",
-            "&:hover": {
-              backgroundColor: "rgba(200,164,106,0.12)",
-              boxShadow: "0 0 22px rgba(200,164,106,0.25)",
-            },
-          }}
+          rel="noopener noreferrer"
+          sx={actionButtonStyles}
         >
-          <GitHubIcon sx={{ mr: 1, fontSize: "1.05rem" }} />
-          GITHUB
+          <GitHubIcon sx={{ mr: 1, fontSize: "1.05rem", opacity: 0.85 }} />
+          GitHub
         </Button>
 
-        {/* WEBSITE */}
-        {project.web && (
+        {/* WEBSITE o DEMO */}
+        {project.web ? (
           <Button
             href={project.web}
             target="_blank"
-            sx={{
-              fontFamily: "'Source Code Pro', monospace",
-              px: 3,
-              py: 1.4,
-              borderRadius: "999px",
-              border: "1px solid rgba(200,164,106,0.45)",
-              color: "#c8a46a",
-              letterSpacing: "0.14em",
-              fontSize: "0.7rem",
-              backgroundColor: "transparent",
-              "&:hover": {
-                backgroundColor: "rgba(200,164,106,0.12)",
-                boxShadow: "0 0 22px rgba(200,164,106,0.25)",
-              },
-            }}
+            rel="noopener noreferrer"
+            sx={actionButtonStyles}
           >
-            <LinkIcon sx={{ mr: 1, fontSize: "1.05rem" }} />
-            WEBSITE
+            <LinkIcon sx={{ mr: 1, fontSize: "1.05rem", opacity: 0.85 }} />
+            Website
+          </Button>
+        ) : (
+          <Button
+            onClick={(event) => handleDemoClick(event, project.title)}
+            sx={actionButtonStyles}
+          >
+            <LinkIcon sx={{ mr: 1, fontSize: "1.05rem", opacity: 0.85 }} />
+            View Demo
           </Button>
         )}
       </div>

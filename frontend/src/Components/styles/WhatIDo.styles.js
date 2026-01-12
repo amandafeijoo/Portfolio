@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export const Section = styled.section`
   width: 100%;
   /* background: #0b0b0b; */
-  color: #fff;
+  color: rgba(237, 231, 217, 0.95);
   position: relative;
   overflow: hidden;
 `;
@@ -53,7 +53,7 @@ export const HeroTitle = styled.h2`
   line-height: 1.1;
   margin-bottom: 24px;
   letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(237, 231, 217, 0.95);
 
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.25),
     0 0 32px rgba(255, 255, 255, 0.15), 0 12px 40px rgba(0, 0, 0, 0.6);
@@ -239,17 +239,15 @@ export const CardTitle = styled.h3`
   font-size: 1.05rem;
   font-weight: 600;
   text-align: center;
-  color: #ffffff;
+  color: rgba(237, 231, 217, 0.95);
 
   padding: 6px 10px;
   margin: 12px auto;
 
-  /* 🔑 fondo oscuro SOLO detrás del texto */
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(6px);
   border-radius: 8px;
 
-  /* brillo real */
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.35),
     0 0 18px rgba(201, 169, 106, 0.45);
 `;

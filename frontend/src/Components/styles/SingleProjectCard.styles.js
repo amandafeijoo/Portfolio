@@ -37,21 +37,20 @@ export const SingleProjectContainer = styled.div`
 
   opacity: 0;
   padding: 24px;
-  margin: 20px auto;
-  max-width: 850px;
+  margin-top: -9px;
+
+  max-width: 970px;
 
   border-radius: 22px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(16, 16, 16, 0.95),
-    rgba(8, 8, 8, 0.9)
-  );
+  background: rgba(38, 38, 38, 0.96);
 
-  border: 1px solid rgba(200, 164, 106, 0.28);
+border: 1px solid rgba(224, 204, 167, 0.28);
 
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+box-shadow:
+  0 28px 65px rgba(0, 0, 0, 0.55),
+  inset 0 0 0 1px rgba(255,255,255,0.04),
+  inset 0 40px 80px rgba(200,164,106,0.08);
 
   overflow: hidden;
 
@@ -73,6 +72,7 @@ export const SingleProjectContainer = styled.div`
   }
 `;
 
+
 /* =========================
    Video
 ========================= */
@@ -81,7 +81,7 @@ export const ProjectVideo = styled.video`
   border-radius: 16px;
   object-fit: cover;
 
-  border: 1px solid rgba(200, 164, 106, 0.35);
+  border: 1px solid rgb(148, 123, 86);
 
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(200, 164, 106, 0.15);
@@ -93,21 +93,20 @@ export const ProjectVideo = styled.video`
 export const ProjectTitle = styled.h3`
   margin: 18px 0 6px;
   font-family: "Playfair Display", serif;
-  font-size: 1.6em;
+  font-size: 1.5em;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 
-  color: #c8a46a;
+  color: rgba(210, 195, 170, 0.9);
 
   @media (max-width: 768px) {
     font-size: 1.3em;
   }
 `;
-
 export const ProjectComment = styled.p`
   font-size: 0.95em;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(205, 200, 192, 0.75);
   margin-top: 12px;
 
   @media (max-width: 768px) {
@@ -119,7 +118,7 @@ export const ProjectTechnologies = styled.p`
   font-size: 0.75em;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(200, 164, 106, 0.75);
+  color: rgba(180, 170, 155, 0.6);
   margin-top: 20px;
 
   @media (max-width: 768px) {
@@ -136,7 +135,7 @@ export const WaveBackground = styled(Wavify)`
   left: 0;
 
   width: 100%;
-  height: 70px;
+  height: 100px;
 
   transform: scaleY(3.2);
   opacity: 0.22;
@@ -153,3 +152,67 @@ export const WaveBackground = styled(Wavify)`
     transform: scaleY(1.6);
   }
 `;
+
+export const actionButtonStyles = {
+    position: "relative",
+    overflow: "visible",
+  
+    fontFamily: "'Source Code Pro', monospace",
+    px: 3.6,
+    py: 1.55,
+    borderRadius: "999px",
+    fontSize: "0.7rem",
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+  
+    color: "#f5f0e8",
+    backgroundColor: "rgba(255,255,255,0.035)",
+  
+    border: "1px solid rgba(200,164,106,0.35)",
+  
+    /* 🔆 HALO BASE — MUY VISIBLE */
+    boxShadow: `
+      0 0 0 1px rgba(200,164,106,0.35),
+      0 0 28px rgba(200,164,106,0.55),
+    `,
+  
+    transition: "all 0.4s cubic-bezier(0.4,0,0.2,1)",
+  
+    /* 🌫️ HALO ATMOSFÉRICO */
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      inset: "-6px",
+      borderRadius: "inherit",
+      boxShadow: "0 0 90px rgba(200,164,106,0.45)",
+      opacity: 0.85,
+      filter: "blur(12px)",
+      transition: "all 0.4s ease",
+      pointerEvents: "none",
+    },
+  
+    /* 🚀 HOVER — EL HALO CAMBIA */
+    "&:hover": {
+      transform: "translateY(-1px)",
+      color: "#f5f0e8",
+
+      backgroundColor: "rgba(255,255,255,0.07)",
+      borderColor: "rgba(200,164,106,0.55)",
+  
+      boxShadow: `
+        0 0 0 1px rgba(200,164,106,0.55),
+        0 0 42px rgba(200,164,106,0.75),
+        0 0 80px rgba(200,164,106,0.45)
+      `,
+  
+      "&::before": {
+        inset: "-10px",
+        boxShadow: "0 0 140px rgba(200,164,106,0.65)",
+        opacity: 1,
+        filter: "blur(16px)",
+      },
+    },
+  };
+  
+  
+  

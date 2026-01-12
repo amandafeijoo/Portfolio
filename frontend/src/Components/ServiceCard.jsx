@@ -14,7 +14,7 @@ export default function ServiceCard({
   features,
   price,
   timeline,
-  featured = false, // 👈 default
+  featured = false,
 }) {
   return (
     <Card

@@ -39,7 +39,7 @@ export default function HeroText() {
         <Typography sx={titleStyle}>WEBCODE-ART</Typography>
 
         <Typography sx={bodyStyle}>
-        I DESIGN AND BUILD WEBSITES FOR
+          I DESIGN AND BUILD WEBSITES FOR
           <br />
           <TypingWords
             words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
@@ -77,23 +77,20 @@ const titleStyle = {
   },
 };
 const sideStyle = {
-    fontFamily: "Source Code Pro, monospace",
-    fontSize: "0.72rem",
-    letterSpacing: "0.22em",
-    textTransform: "uppercase",
-    color: "#d6cbb8",
-    opacity: 0.65,
-    lineHeight: 1.8,
-  };
+  fontFamily: "Source Code Pro, monospace",
+  fontSize: "0.72rem",
+  letterSpacing: "0.22em",
+  textTransform: "uppercase",
+  color: "#d6cbb8",
+  opacity: 0.65,
+  lineHeight: 1.8,
+};
 
 const bodyStyle = {
-    fontFamily: "Source Code Pro, monospace",
-    fontSize: "0.76rem",
-    letterSpacing: "0.14em",
-    color: "#d6cbb8",
-    lineHeight: 1.6,
-    opacity: 0.60,
-   
-
-  };
-  
+  fontFamily: "Source Code Pro, monospace",
+  fontSize: "0.76rem",
+  letterSpacing: "0.14em",
+  color: "#d6cbb8",
+  lineHeight: 1.6,
+  opacity: 0.6,
+};
