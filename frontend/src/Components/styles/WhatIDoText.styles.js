@@ -1,6 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 
+
+const tablet = "@media (max-width: 1024px)";
+const mobile = "@media (max-width: 768px)";
+
+
 /* ===============================
    ANIMATIONS
 ================================ */
@@ -39,10 +44,14 @@ const arrowLoop = keyframes`
 export const Section = styled.section`
   position: relative;
   width: 85%;
-  padding: 50px 40px 20px;
+  padding: 56px 40px 32px;
   color: #fff;
   overflow: hidden;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+  margin: 0 auto;
+    /* 🔒 evita desbordes horizontales */
+    max-width: 100vw;
+  overflow-x: hidden;
 
   &::before,
   &::after {
@@ -66,9 +75,23 @@ export const Section = styled.section`
     right: 80px;
   }
 
-  @media (max-width: 768px) {
+  /* 🟨 TABLET */
+  ${tablet} {
+    width: 92%;
+    padding: 56px 32px 40px;
+
+    &::before {
+      left: 48px;
+    }
+    &::after {
+      right: 48px;
+    }
+  }
+
+  /* 📱 MOBILE */
+  ${mobile} {
     width: 100%;
-    padding: 56px 20px 56px;
+    padding: 64px 16px 64px;    
     overflow: visible;
 
     &::before,
@@ -78,6 +101,7 @@ export const Section = styled.section`
   }
 `;
 
+
 /* ===============================
    CARD CENTRAL
 ================================ */
@@ -85,7 +109,7 @@ export const Section = styled.section`
 export const SectionCard = styled(motion.div)`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 80px 90px;
+  padding: 100px 80px 96px;
   border-radius: 34px;
   position: relative;
   z-index: 2;
@@ -99,19 +123,30 @@ export const SectionCard = styled(motion.div)`
 
   border: 2px solid rgba(239, 231, 231, 0.12);
 
-  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.26),
-    0 0 40px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 60px 120px rgba(0, 0, 0, 0.26),
+    0 0 40px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 
   animation: ${float} 16s ease-in-out infinite;
 
-  @media (max-width: 768px) {
-    padding: 56px 22px 56px;
+  /* 🟨 TABLET */
+  ${tablet} {
+    padding: 80px 56px 76px;
+    border-radius: 30px;
+  }
+
+  /* 📱 MOBILE */
+  ${mobile} {
+    padding: 64px 22px 68px;
     border-radius: 26px;
     animation: none;
+
     border-top: 1px solid rgba(201, 169, 106, 0.35);
     border-bottom: 1px solid rgba(201, 169, 106, 0.25);
   }
 `;
+
 
 /* ===============================
    GLOW
@@ -124,7 +159,8 @@ export const SectionGlow = styled.div`
   z-index: -1;
   pointer-events: none;
 
-  background: radial-gradient(
+  background:
+    radial-gradient(
       60% 40% at 50% 12%,
       rgba(255, 255, 255, 0.045),
       transparent 85%
@@ -134,7 +170,21 @@ export const SectionGlow = styled.div`
       rgba(201, 169, 106, 0.04),
       transparent 90%
     );
+
+  /* 🟨 TABLET */
+  @media (max-width: 1024px) {
+    inset: -100px -120px;
+    filter: blur(110px);
+  }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    inset: -60px -80px;
+    filter: blur(80px);
+    opacity: 0.75;
+  }
 `;
+
 
 /* ===============================
    TITLE
@@ -157,12 +207,22 @@ export const Title = styled(motion.h2)`
 
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 
+  /* 🟨 TABLET */
+  @media (max-width: 1024px) {
+    font-size: 2.6rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* 📱 MOBILE */
   @media (max-width: 768px) {
     font-size: 2.2rem;
     font-weight: 500;
     margin: 20px 0 10px;
+    letter-spacing: 0.3px;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   }
 `;
+
 
 /* ===============================
    DIVIDERS
@@ -177,21 +237,39 @@ export const TitleDivider = styled.div`
     rgba(255, 255, 255, 0.4),
     transparent
   );
-`;
 
+  @media (max-width: 768px) {
+    width: 36px;
+    margin-top: 20px;
+    opacity: 0.75;
+  }
+`;
 export const VerticalDivider = styled.div`
   width: 1px;
   height: 140px;
   margin: 24px auto 32px;
 
-  background: linear-gradient(to bottom, rgba(201, 169, 106, 0.5), transparent);
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 169, 106, 0.5),
+    transparent
+  );
 
   opacity: 0.55;
 
+  /* 🟨 TABLET */
+  @media (max-width: 1024px) {
+    height: 96px;
+    margin: 20px auto 28px;
+    opacity: 0.45;
+  }
+
+  /* 📱 MOBILE */
   @media (max-width: 768px) {
     display: none;
   }
 `;
+
 
 /* ===============================
    TEXTS
@@ -202,6 +280,19 @@ export const Subtitle = styled(motion.p)`
   font-size: 1.05rem;
   color: rgba(167, 148, 117, 0.63);
   letter-spacing: 0.04em;
+
+  /* 🟨 TABLET */
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    margin-top: 24px;
+  }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-top: 20px;
+    letter-spacing: 0.03em;
+  }
 `;
 
 export const StatementStrong = styled(motion.p)`
@@ -229,6 +320,19 @@ export const StatementStrong = styled(motion.p)`
       transparent
     );
   }
+
+  /* 🟨 TABLET */
+  @media (max-width: 1024px) {
+    margin: 28px auto 16px;
+  }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    margin: 24px auto 14px;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    text-shadow: 0 1px 6px rgba(201, 169, 106, 0.18);
+  }
 `;
 
 export const IntroText = styled(motion.p)`
@@ -238,14 +342,42 @@ export const IntroText = styled(motion.p)`
   font-size: 0.95rem;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.65);
+
+  /* 🟨 TABLET */
+  @media (max-width: 1024px) {
+    font-size: 0.92rem;
+  }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    padding: 0 4px;
+  }
 `;
+
 
 export const Statement = styled.p`
   margin-top: 26px;
   text-align: center;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+
+  /* 🟨 TABLET */
+  ${tablet} {
+    font-size: 0.88rem;
+    margin-top: 22px;
+  }
+
+  /* 📱 MOBILE */
+  ${mobile} {
+    font-size: 0.86rem;
+    margin-top: 20px;
+    line-height: 1.7;
+  }
 `;
+
 
 /* ===============================
    SCROLL HINT
@@ -276,7 +408,8 @@ export const ScrollHint = styled.div`
     background: #f2f2f2;
     color: #1a1a1a;
     overflow: hidden;
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4),
+    box-shadow:
+      0 10px 26px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
     svg {
@@ -284,15 +417,28 @@ export const ScrollHint = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  /* 🟨 TABLET */
+  ${tablet} {
+    bottom: 32px;
+    font-size: 0.8rem;
+
+    .arrowBtn {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* 📱 MOBILE */
+  ${mobile} {
     display: none;
   }
 `;
 
+
 export const MobileDivider = styled.div`
   display: none;
 
-  @media (max-width: 768px) {
+  ${mobile} {
     display: block;
     width: 1px;
     height: 56px;
@@ -308,3 +454,4 @@ export const MobileDivider = styled.div`
     opacity: 0.6;
   }
 `;
+

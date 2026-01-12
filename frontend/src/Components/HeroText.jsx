@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import TypingWords from "./TypingWords";
+
 export default function HeroText() {
   return (
     <Box
@@ -10,9 +11,15 @@ export default function HeroText() {
         pointerEvents: "none",
       }}
     >
-      {/* Arriba derecha */}
+      {/* ARRIBA DERECHA */}
       <Box
-        sx={{ position: "absolute", top: 120, right: 48, textAlign: "right" }}
+        sx={{
+          position: "absolute",
+          top: { xs: 32, sm: 80, md: 120 },
+          right: { xs: 20, sm: 36, md: 48 },
+          textAlign: "right",
+          display: { xs: "none", sm: "block" }, // 👈 oculto en mobile
+        }}
       >
         <Typography sx={sideStyle}>
           WEB EXPERIENCES
@@ -21,9 +28,15 @@ export default function HeroText() {
         </Typography>
       </Box>
 
-      {/* Abajo derecha */}
+      {/* ABAJO DERECHA */}
       <Box
-        sx={{ position: "absolute", bottom: 80, right: 48, textAlign: "right" }}
+        sx={{
+          position: "absolute",
+          bottom: { xs: 32, sm: 60, md: 80 },
+          right: { xs: 20, sm: 36, md: 48 },
+          textAlign: "right",
+          display: { xs: "none", sm: "block" }, // 👈 oculto en mobile
+        }}
       >
         <Typography sx={sideStyle}>
           STRATEGY.
@@ -34,8 +47,22 @@ export default function HeroText() {
         </Typography>
       </Box>
 
-      {/* Texto principal */}
-      <Box sx={{ position: "absolute", left: 64, top: 100 }}>
+      {/* TEXTO PRINCIPAL */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: { xs: "50%", md: 64 },
+          top: { xs: 38, sm: "50%", md: 100 },
+transform: {
+  xs: "translateX(-50%)",
+  sm: "translate(-50%, -50%)",
+  md: "none",
+},
+
+          textAlign: { xs: "center", md: "left" },
+          maxWidth: { xs: 320, sm: 420 },
+        }}
+      >
         <Typography sx={titleStyle}>WEBCODE-ART</Typography>
 
         <Typography sx={bodyStyle}>
@@ -52,45 +79,51 @@ export default function HeroText() {
   );
 }
 
+
 /* =========================
    STYLES
 ========================= */
 
 const titleStyle = {
-  fontFamily: "Playfair Display, serif",
-  fontSize: "clamp(2.2rem, 4vw, 1.7rem)",
-  letterSpacing: "0.28em",
-  textTransform: "uppercase",
-  background: "rgb(148, 123, 86) ",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  mb: 2,
-  textShadow: `
-      0 12px 40px rgba(200,164,106,0.35)
-    `,
-  "&:hover": {
-    textShadow: `
-    0 0 2px rgba(255,255,255,0.6),
-    0 0 28px rgba(200,164,106,0.55),
-    0 0 60px rgba(200,164,106,0.35)
-  `,
-  },
-};
-const sideStyle = {
-  fontFamily: "Source Code Pro, monospace",
-  fontSize: "0.72rem",
-  letterSpacing: "0.22em",
-  textTransform: "uppercase",
-  color: "#d6cbb8",
-  opacity: 0.65,
-  lineHeight: 1.8,
-};
+    fontFamily: "Playfair Display, serif",
+    fontSize: {
+      xs: "1.5rem",
+      sm: "1.9rem",
+      md: "2.3rem",
+    },
+    letterSpacing: {
+      xs: "0.18em",
+      sm: "0.22em",
+      md: "0.28em",
+    },
+    textTransform: "uppercase",
+    background: "rgb(148, 123, 86)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    mb: 2,
+    textShadow: {
+      xs: "0 6px 18px rgba(200,164,106,0.25)",
+      md: "0 12px 40px rgba(200,164,106,0.35)",
+    },
+  };
+  
+  const sideStyle = {
+    fontFamily: "Source Code Pro, monospace",
+    fontSize: "0.72rem",
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
+    color: "#d6cbb8",
+    opacity: 0.65,
+    lineHeight: 1.8,
+  };
+  
 
-const bodyStyle = {
-  fontFamily: "Source Code Pro, monospace",
-  fontSize: "0.76rem",
-  letterSpacing: "0.14em",
-  color: "#d6cbb8",
-  lineHeight: 1.6,
-  opacity: 0.6,
-};
+  const bodyStyle = {
+    fontFamily: "Source Code Pro, monospace",
+    fontSize: { xs: "0.7rem", sm: "0.75rem" },
+    letterSpacing: "0.14em",
+    color: "#d6cbb8",
+    lineHeight: 1.6,
+    opacity: 0.65,
+  };
+  

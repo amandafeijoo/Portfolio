@@ -4,10 +4,38 @@ import { Box } from "@mui/material";
 
 export default function HeroSphere() {
   return (
-    <Box sx={{ position: "relative", width: "100%", height: 820 }}>
-      <SphereScene />
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: {
+          xs: 520,
+          sm: 640,
+          md: 820,
+        },
+        overflow: "hidden",
+      }}
+    >
+      {/* ⬇️ ESFERA BAJADA EN MOBILE */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          top: {
+            xs: 120, 
+            sm: 0,
+            md: 0,
+          },
+        }}
+      >
+        <SphereScene />
+      </Box>
+
+      {/* TEXTO ARRIBA */}
       <HeroText />
     </Box>
   );
 }
+
+
 

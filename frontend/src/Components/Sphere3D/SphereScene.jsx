@@ -8,7 +8,7 @@ import SphereLines3D from "../SphereLines3D";
 ========================= */
 const RADIUS = 2.2;
 const IMAGE_SIZE = 0.65;
-const ROTATION_SPEED = 0.0015;
+const ROTATION_SPEED = 0.0020;
 const MAX_VIDEOS = 6;
 
 /* =========================
