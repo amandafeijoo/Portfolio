@@ -16,13 +16,12 @@ export default function HeroSphere() {
         overflow: "hidden",
       }}
     >
-      {/* ⬇️ ESFERA BAJADA EN MOBILE */}
       <Box
         sx={{
           position: "absolute",
           inset: 0,
           top: {
-            xs: 120, 
+            xs: 120,
             sm: 0,
             md: 0,
           },
@@ -30,12 +29,7 @@ export default function HeroSphere() {
       >
         <SphereScene />
       </Box>
-
-      {/* TEXTO ARRIBA */}
       <HeroText />
     </Box>
   );
 }
-
-
-

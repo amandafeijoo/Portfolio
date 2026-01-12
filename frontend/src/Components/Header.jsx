@@ -113,58 +113,55 @@ export default function Header() {
                 {link.label}
               </Button>
             ))}
-            {/* MENU ICON JUNTO A WORK */}
           </Stack>
-
           {/* RIGHT SIDE (CTA + MENU) */}
           <Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: 1.2,
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1.2,
 
-
-    /* 👇 SOLO MOBILE */
-    justifySelf: { xs: "start", md: "end" },
-    ml: { xs: 20.5, sm: 0 },
-  }}
->
+              /* 👇 SOLO MOBILE */
+              justifySelf: { xs: "start", md: "end" },
+              ml: { xs: 20.5, sm: 0 },
+            }}
+          >
             {/* CTA (HIDDEN ON MOBILE) */}
             <Button
-  variant="outlined"
-  href="/contactpage"
-  sx={{
-    display: "inline-flex",
+              variant="outlined"
+              href="/contactpage"
+              sx={{
+                display: "inline-flex",
 
-    px: { xs: 2.2, sm: 2.6, md: 3.4 },
-    py: { xs: 0.7, sm: 0.9, md: 1.15 },
+                px: { xs: 2.2, sm: 2.6, md: 3.4 },
+                py: { xs: 0.7, sm: 0.9, md: 1.15 },
 
-    fontSize: { xs: "0.6rem", sm: "0.68rem", md: "0.72rem" },
-    letterSpacing: { xs: "0.18em", sm: "0.2em", md: "0.22em" },
-    fontWeight: 600,
-    textTransform: "uppercase",
+                fontSize: { xs: "0.6rem", sm: "0.68rem", md: "0.72rem" },
+                letterSpacing: { xs: "0.18em", sm: "0.2em", md: "0.22em" },
+                fontWeight: 600,
+                textTransform: "uppercase",
 
-    color: "#f3ead8",
-    backgroundColor: "rgba(166,151,120,0.5)",
-    backdropFilter: "blur(6px)",
+                color: "#f3ead8",
+                backgroundColor: "rgba(166,151,120,0.5)",
+                backdropFilter: "blur(6px)",
 
-    borderRadius: "999px",
-    border: "1px solid rgba(201,169,106,0.55)",
+                borderRadius: "999px",
+                border: "1px solid rgba(201,169,106,0.55)",
 
-    boxShadow: {
-      xs: "0 6px 16px rgba(201,169,106,0.28)",
-      sm: `
+                boxShadow: {
+                  xs: "0 6px 16px rgba(201,169,106,0.28)",
+                  sm: `
         inset 0 1px 0 rgba(255,255,255,0.45),
         0 10px 28px rgba(201,169,106,0.35)
       `,
-    },
+                },
 
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      inset: 0,
-      borderRadius: "999px",
-      background: `
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "999px",
+                  background: `
         radial-gradient(
           120% 140% at 50% 0%,
           rgba(201,169,106,0.45),
@@ -172,30 +169,30 @@ export default function Header() {
           transparent 70%
         )
       `,
-      opacity: { xs: 0.7, sm: 1 },
-      pointerEvents: "none",
-    },
+                  opacity: { xs: 0.7, sm: 1 },
+                  pointerEvents: "none",
+                },
 
-    "&:hover": {
-      transform: { sm: "translateY(-1px)" },
-      color: "#f3ead8",
-      boxShadow: `
+                "&:hover": {
+                  transform: { sm: "translateY(-1px)" },
+                  color: "#f3ead8",
+                  boxShadow: `
         inset 0 1px 0 rgba(255,255,255,0.55),
         0 12px 30px rgba(201,169,106,0.4)
       `,
-    },
+                },
 
-    "&:active": {
-      transform: "translateY(0)",
-      boxShadow: `
+                "&:active": {
+                  transform: "translateY(0)",
+                  boxShadow: `
         inset 0 2px 4px rgba(0,0,0,0.18),
         0 6px 14px rgba(201,169,106,0.25)
       `,
-    },
-  }}
->
-  LET’S CREATE
-</Button>
+                },
+              }}
+            >
+              LET’S CREATE
+            </Button>
 
             <IconButton
               disableRipple

@@ -1,10 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 
-
 const tablet = "@media (max-width: 1024px)";
 const mobile = "@media (max-width: 768px)";
-
 
 /* ===============================
    ANIMATIONS
@@ -49,8 +47,7 @@ export const Section = styled.section`
   overflow: hidden;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
   margin: 0 auto;
-    /* 🔒 evita desbordes horizontales */
-    max-width: 100vw;
+  max-width: 100vw;
   overflow-x: hidden;
 
   &::before,
@@ -91,7 +88,7 @@ export const Section = styled.section`
   /* 📱 MOBILE */
   ${mobile} {
     width: 100%;
-    padding: 64px 16px 64px;    
+    padding: 64px 16px 64px;
     overflow: visible;
 
     &::before,
@@ -100,7 +97,6 @@ export const Section = styled.section`
     }
   }
 `;
-
 
 /* ===============================
    CARD CENTRAL
@@ -123,10 +119,8 @@ export const SectionCard = styled(motion.div)`
 
   border: 2px solid rgba(239, 231, 231, 0.12);
 
-  box-shadow:
-    0 60px 120px rgba(0, 0, 0, 0.26),
-    0 0 40px rgba(255, 255, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.26),
+    0 0 40px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 
   animation: ${float} 16s ease-in-out infinite;
 
@@ -147,7 +141,6 @@ export const SectionCard = styled(motion.div)`
   }
 `;
 
-
 /* ===============================
    GLOW
 ================================ */
@@ -159,8 +152,7 @@ export const SectionGlow = styled.div`
   z-index: -1;
   pointer-events: none;
 
-  background:
-    radial-gradient(
+  background: radial-gradient(
       60% 40% at 50% 12%,
       rgba(255, 255, 255, 0.045),
       transparent 85%
@@ -184,7 +176,6 @@ export const SectionGlow = styled.div`
     opacity: 0.75;
   }
 `;
-
 
 /* ===============================
    TITLE
@@ -223,7 +214,6 @@ export const Title = styled(motion.h2)`
   }
 `;
 
-
 /* ===============================
    DIVIDERS
 ================================ */
@@ -249,11 +239,7 @@ export const VerticalDivider = styled.div`
   height: 140px;
   margin: 24px auto 32px;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(201, 169, 106, 0.5),
-    transparent
-  );
+  background: linear-gradient(to bottom, rgba(201, 169, 106, 0.5), transparent);
 
   opacity: 0.55;
 
@@ -269,7 +255,6 @@ export const VerticalDivider = styled.div`
     display: none;
   }
 `;
-
 
 /* ===============================
    TEXTS
@@ -356,7 +341,6 @@ export const IntroText = styled(motion.p)`
   }
 `;
 
-
 export const Statement = styled.p`
   margin-top: 26px;
   text-align: center;
@@ -377,7 +361,6 @@ export const Statement = styled.p`
     line-height: 1.7;
   }
 `;
-
 
 /* ===============================
    SCROLL HINT
@@ -408,8 +391,7 @@ export const ScrollHint = styled.div`
     background: #f2f2f2;
     color: #1a1a1a;
     overflow: hidden;
-    box-shadow:
-      0 10px 26px rgba(0, 0, 0, 0.4),
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
     svg {
@@ -434,7 +416,6 @@ export const ScrollHint = styled.div`
   }
 `;
 
-
 export const MobileDivider = styled.div`
   display: none;
 
@@ -454,4 +435,3 @@ export const MobileDivider = styled.div`
     opacity: 0.6;
   }
 `;
-
