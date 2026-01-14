@@ -2,72 +2,77 @@ import { useEffect, useRef } from "react";
 
 export default function OrbitStars({ impulseRef }) {
   const canvasRef = useRef(null);
+  const animationRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-
-    /* ============================
-       📐 CANVAS SETUP (RETINA)
-    ============================ */
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    /* ============================
-       📱 DETECT MOBILE
-    ============================ */
-    const isMobile = rect.width < 768;
-
-    /* ============================
-       🌌 SPHERE CONFIG
-    ============================ */
-    const radius = isMobile ? rect.width * 0.55 : 480;
-    const cx = rect.width / 2;
-
-    // 🔥 centro más bajo en móvil para leer el arco
-    const cy = isMobile ? rect.height * 0.86 : rect.height * 0.86;
-
+    let stars = [];
     let tick = 0;
-
-    /* ============================
-       🌀 ROTATION + IMPULSE
-    ============================ */
-    let baseSpeed = isMobile ? 0.0042 : 0.0015;
     let impulse = 0;
 
+    let radius = 0;
+    let cx = 0;
+    let cy = 0;
+    let isMobile = false;
+    let baseSpeed = 0;
+
     /* ============================
-       ⭐ CREATE STARS (SPHERE)
+       🔄 RESIZE + SETUP
     ============================ */
-    const STAR_COUNT = isMobile ? 700 : 1000;
+    const setup = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const stars = Array.from({ length: STAR_COUNT }, () => {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      return {
-        theta,
-        phi,
-        size: Math.random() * 1.2 + 0.3,
-        opacity: Math.random() * 0.5 + 0.15,
-      };
-    });
+      isMobile = rect.width < 768;
 
-    let frameId;
+      radius = Math.min(
+        isMobile ? rect.width * 0.55 : rect.width * 0.38,
+        isMobile ? 260 : 480
+      );
+
+      cx = rect.width / 2;
+      cy = rect.height * (isMobile ? 0.86 : 0.86);
+
+      baseSpeed = isMobile ? 0.004 : 0.0015;
+
+      const STAR_COUNT = isMobile ? 520 : 1000;
+
+      stars = Array.from({ length: STAR_COUNT }, () => {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+
+        return {
+          theta,
+          phi,
+          size: Math.random() * 1.1 + 0.3,
+          opacity: Math.random() * 0.45 + 0.15,
+        };
+      });
+    };
+
+    setup();
+
+    /* 👂 OBSERVE RESIZE */
+    const resizeObserver = new ResizeObserver(setup);
+    resizeObserver.observe(canvas);
 
     /* ============================
-       🔄 ANIMATION LOOP
+       🎞 ANIMATION LOOP
     ============================ */
     const animate = () => {
-      ctx.clearRect(0, 0, rect.width, rect.height);
+      const { width, height } = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, width, height);
+
       tick += 0.01;
 
-      /* 🔥 IMPULSE FROM CARDS */
+      /* 🔥 impulse from cards */
       if (impulseRef?.current) {
         impulse += impulseRef.current;
         impulseRef.current = 0;
@@ -76,7 +81,7 @@ export default function OrbitStars({ impulseRef }) {
       impulse *= 0.92;
       const rotationSpeed = baseSpeed + impulse;
 
-      /* 🌍 DRAW SPHERE */
+      /* ⭐ STARS */
       stars.forEach((star) => {
         star.theta += rotationSpeed;
 
@@ -100,7 +105,7 @@ export default function OrbitStars({ impulseRef }) {
         ctx.fill();
       });
 
-      /* 🌫 HALO / RIM LIGHT */
+      /* 🌫 HALO */
       const halo = ctx.createRadialGradient(
         cx,
         cy,
@@ -127,11 +132,15 @@ export default function OrbitStars({ impulseRef }) {
       ctx.arc(cx, cy, radius, Math.PI, 0);
       ctx.stroke();
 
-      frameId = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     };
 
     animate();
-    return () => cancelAnimationFrame(frameId);
+
+    return () => {
+      cancelAnimationFrame(animationRef.current);
+      resizeObserver.disconnect();
+    };
   }, [impulseRef]);
 
   return (
