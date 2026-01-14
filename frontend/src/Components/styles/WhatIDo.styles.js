@@ -71,7 +71,7 @@ export const HeroTitle = styled.h2`
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    font-size: 1.60rem;
+    font-size: 1.6rem;
     line-height: 1.18;
     letter-spacing: 0.25px;
     text-shadow: 0 0 6px rgba(255, 255, 255, 0.18), 0 0 16px rgba(0, 0, 0, 0.45);
@@ -94,14 +94,13 @@ export const HeroText = styled.p`
 
   /* Mobile */
   @media (max-width: 768px) {
-    font-size: 1.05rem; /* 👈 mantenemos tamaño */
+    font-size: 1.05rem;
     line-height: 1.85;
-    max-width: 360px; /* 👈 CLAVE */
+    max-width: 360px; 
     margin: 0 auto;
     text-align: center;
   }
 `;
-
 
 /* ===============================
    MEDIA SLOT (DESKTOP ONLY)
@@ -256,8 +255,7 @@ export const CardImg = styled.div`
   position: relative;
   padding: 14px;
   border-radius: 22px;
-  max-width: 360px; 
-
+  max-width: 360px;
 
   background: linear-gradient(
     180deg,
@@ -273,26 +271,23 @@ export const CardImg = styled.div`
   transition: box-shadow 0.35s ease;
 
   &::before {
-  display: none;
-}
-
+    display: none;
+  }
 
   img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
     padding: 10px;
     width: 100%;
-    margin-left:220px;
+    margin-left: 220px;
     max-width: 260px;
-
   }
 `;
 
@@ -314,11 +309,9 @@ export const CardTitle = styled.h3`
   backdrop-filter: blur(6px);
   border-radius: 8px;
 
-  text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.25),
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
     0 0 14px rgba(201, 169, 106, 0.35);
 
-  /* 👇 solo si el navegador lo soporta */
   @supports (text-wrap: balance) {
     text-wrap: balance;
   }
@@ -327,7 +320,6 @@ export const CardTitle = styled.h3`
     max-width: 220px;
   }
 `;
-
 
 export const CardText = styled.p`
   font-size: 0.92rem;
@@ -345,14 +337,13 @@ export const MobileCardText = styled.div`
   @media (max-width: 768px) {
     display: block;
     margin: 24px auto 36px;
-    max-width: 320px; /* 👈 antes 420 */
+    max-width: 320px; 
     font-size: 0.95rem;
     line-height: 1.6;
     text-align: center;
     color: #b5b5b5;
   }
 `;
-
 
 /* ===============================
    PLACEHOLDER
