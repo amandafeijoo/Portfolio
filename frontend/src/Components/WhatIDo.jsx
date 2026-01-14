@@ -17,11 +17,12 @@ import {
   CardTitle,
   CardText,
   MobileCardText,
+  MobileTitle,
+  MobileText,
   PlaceholderMedia,
   Badge,
   TitleDivider,
   MobileOnlyDivider,
-  DesktopOnlyDivider,
 } from "./styles/WhatIDo.styles";
 import FloatingHintMenu from "./FloatingHintMenu";
 
@@ -31,7 +32,7 @@ import FloatingHintMenu from "./FloatingHintMenu";
 const items = [
   {
     title: "Custom websites & landing pages",
-    text: "I design unique websites tailored to your brand and goals not templates.",
+    text: "I design unique websites tailored to your brand and goals, not templates.",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767053696/landingpage_zk0sea.png",
   },
   {
@@ -177,8 +178,8 @@ export default function WhatIDo() {
               {isMobile && (
                 <MobileCardText>
                   <MobileOnlyDivider />
-                  <HeroTitle>{item.title}</HeroTitle>
-                  <HeroText>{item.text}</HeroText>
+                  <MobileTitle>{item.title}</MobileTitle>
+                  <MobileText>{item.text}</MobileText>
                 </MobileCardText>
               )}
 

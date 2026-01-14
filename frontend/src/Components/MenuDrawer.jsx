@@ -11,12 +11,16 @@ export default function MenuDrawer({
       <Box
         sx={{
           width: 320,
-          height: "100%",
+          minHeight: "100dvh", // 🔑 clave
           p: 4,
+          pb: "env(safe-area-inset-bottom)", // 🔑 iOS safe area
           backgroundColor: "rgba(235, 219, 194, 0.98)",
           borderLeft: "2px solid rgba(219, 182, 108, 0.18)",
           display: "flex",
           flexDirection: "column",
+
+          overflowY: "auto", // 🔑 scroll interno correcto
+          WebkitOverflowScrolling: "touch",
         }}
       >
         {/* TITLE */}
@@ -39,7 +43,7 @@ export default function MenuDrawer({
             width: "48%",
             background:
               "linear-gradient(90deg, rgba(201,169,106,0.45), transparent)",
-            mb: 5,
+            mb: { xs: 2, sm: 5 }, // 👈 sube en mobile
           }}
         />
 
@@ -92,7 +96,7 @@ export default function MenuDrawer({
         <Typography
           sx={{
             mt: 6,
-            mb: 6,
+            mb: { xs: 2, sm: 5 }, // 👈 sube en mobile
             fontSize: "0.7rem",
             lineHeight: 1.6,
             color: "rgba(120,120,120,0.6)",
@@ -104,14 +108,18 @@ export default function MenuDrawer({
         </Typography>
 
         {/* SOCIALS */}
-        <Box sx={{ mt: "auto" }}>
+        <Box
+          sx={{
+            mt: { xs: 5, sm: 4 },
+          }}
+        >
           <Typography
             sx={{
               fontSize: "0.65rem",
               letterSpacing: "0.28em",
               textTransform: "uppercase",
               color: "rgba(120,120,120,0.7)",
-              mb: 2,
+              mb: { xs: 3, sm: 5 },
             }}
           >
             Follow
@@ -176,7 +184,7 @@ export default function MenuDrawer({
           {/* BRAND VIDEO */}
           <Box
             sx={{
-              mt: 8,
+              mt: { xs: 4, sm: 2 }, // 👈 sube en mobile
               display: "flex",
               justifyContent: "center",
               pointerEvents: "none",
@@ -185,14 +193,18 @@ export default function MenuDrawer({
             <Box
               sx={{
                 position: "relative",
-                width: 290,
+                width: {
+                  xs: 220, // 📱 mobile (más pequeño)
+                  sm: 250, // 📲 tablet
+                  md: 280, // 💻 desktop (casi igual)
+                },
                 borderRadius: 14,
                 overflow: "hidden",
                 backgroundColor: "rgba(0,0,0,0.04)",
                 boxShadow: `
-                  0 18px 40px rgba(201,169,106,0.28),
-                  0 0 70px rgba(201,169,106,0.22)
-                `,
+      0 16px 32px rgba(201,169,106,0.25),
+      0 0 56px rgba(201,169,106,0.2)
+    `,
               }}
             >
               <video
@@ -215,4 +227,3 @@ export default function MenuDrawer({
     </Drawer>
   );
 }
-
