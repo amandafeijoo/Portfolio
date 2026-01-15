@@ -9,7 +9,7 @@ export default function HeroSphere() {
         position: "relative",
         width: "100%",
         height: {
-          xs: 620,
+          xs: 610,
           sm: 640,
           md: 820,
         },

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,8 +52,10 @@ I’m here to support you as your business grows.`,
 export default function ProcessCards() {
   const scrollerRef = useRef(null);
 
+  const isDesktop = useMediaQuery("(min-width:1024px)");
+
   const handleWheel = (e) => {
-    if (!scrollerRef.current) return;
+    if (!scrollerRef.current || !isDesktop) return;
     e.preventDefault();
     scrollerRef.current.scrollLeft += e.deltaY;
   };
@@ -63,24 +65,34 @@ export default function ProcessCards() {
       sx={{
         width: "100%",
         py: { xs: 6, md: 10 },
+        mb: { xs: 8, md: 12 },
         display: "flex",
         justifyContent: "center",
-        mb: 10,
       }}
     >
       <Box
         ref={scrollerRef}
         onWheel={handleWheel}
         sx={{
-          mt: 10,
+          mt: { xs: 6, md: 10 },
           display: "flex",
-          gap: 4,
+          gap: { xs: 3, md: 4 },
+
           overflowX: "auto",
-          overflowY: "hidden",
-          px: 4,
+          overflowY: "visible",
+
+          px: { xs: 2, md: 4 },
           width: "100%",
+          maxWidth: "100vw",
+
           WebkitOverflowScrolling: "touch",
 
+          scrollSnapType: {
+            xs: "x mandatory",
+            md: "none",
+          },
+
+          /* Scrollbar (desktop only, no molesta en mobile) */
           "&::-webkit-scrollbar": {
             height: "8px",
           },
@@ -94,13 +106,9 @@ export default function ProcessCards() {
             borderRadius: "10px",
             boxShadow: "0 0 6px rgba(201,169,106,0.4)",
           },
-          "&::-webkit-scrollbar-thumb:hover": {
-            background:
-              "linear-gradient(180deg, rgba(201,169,106,0.85), rgba(201,169,106,0.55))",
-          },
 
           scrollbarWidth: "thin",
-          scrollbarColor: "rgba(44, 38, 26, 0.6) rgba(255,255,255,0.05)",
+          scrollbarColor: "rgba(201,169,106,0.5) rgba(255,255,255,0.05)",
         }}
       >
         {steps.map((step, index) => (
@@ -108,11 +116,20 @@ export default function ProcessCards() {
             key={index}
             component={motion.div}
             sx={{
-              flex: "0 0 320px",
-              p: "36px 26px",
+              flex: {
+                xs: "0 0 78%", 
+                sm: "0 0 68%",
+                md: "0 0 320px",
+              },
+
+              scrollSnapAlign: "center",
+
+              p: { xs: "22px 18px", md: "36px 26px" },
               borderRadius: "22px",
+
               background:
                 "linear-gradient(rgba(15,15,15,0.92), rgba(15,15,15,0.92)) padding-box, radial-gradient(120% 140% at 50% 0%, rgba(201,169,106,0.45), rgba(201,169,106,0.12) 35%, rgba(255,255,255,0.12) 55%, rgba(255,255,255,0.04) 75%, transparent 100%) border-box",
+
               border: "1px solid transparent",
               backdropFilter: "blur(18px)",
               boxShadow: "0 40px 90px rgba(0,0,0,0.55)",
@@ -151,7 +168,6 @@ export default function ProcessCards() {
                 color: "rgba(201,169,106,0.9)",
                 border: "1px solid rgba(201,169,106,0.10)",
                 background: "rgba(201,169,106,0.01)",
-                cursor: "default",
               }}
             >
               <FontAwesomeIcon icon={step.icon} style={{ fontSize: "1rem" }} />
@@ -159,7 +175,7 @@ export default function ProcessCards() {
 
             <Typography
               sx={{
-                fontSize: "1.1rem",
+                fontSize: { xs: "1rem", md: "1.1rem" },
                 fontWeight: 500,
                 mb: 2,
                 color: "rgba(255,255,255,0.95)",
@@ -170,7 +186,7 @@ export default function ProcessCards() {
 
             <Typography
               sx={{
-                fontSize: "0.95rem",
+                fontSize: { xs: "0.9rem", md: "0.95rem" },
                 lineHeight: 1.7,
                 color: "rgba(255,255,255,0.65)",
                 whiteSpace: "pre-line",

@@ -35,7 +35,7 @@ export default function Header() {
           width: "100%",
           backgroundColor: "rgba(59, 58, 58, 0.72)",
           backdropFilter: "blur(18px)",
-          borderBottom: "1px solid rgba(223, 188, 117, 0.15)",
+          borderBottom: "2px solid rgba(223, 188, 117, 0.15)",
           boxShadow: "0 6px 22px rgba(0,0,0,0.45)",
           zIndex: open ? 1000 : 2000,
         }}

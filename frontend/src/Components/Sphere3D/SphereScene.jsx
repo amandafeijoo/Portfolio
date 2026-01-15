@@ -8,7 +8,7 @@ import SphereLines3D from "../SphereLines3D";
 ========================= */
 const RADIUS = 2.2;
 const IMAGE_SIZE = 0.65;
-const ROTATION_SPEED = 0.0020;
+const ROTATION_SPEED = 0.002;
 const MAX_VIDEOS = 6;
 
 /* =========================
@@ -39,7 +39,6 @@ function MediaSphere({ media }) {
   const planes = useMemo(() => {
     const count = media.length * 8;
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
-
     const shuffled = shuffleArray(media);
 
     return Array.from({ length: count }).map((_, i) => {
@@ -124,36 +123,40 @@ function MediaPlane({ position, media }) {
    ESCENA PRINCIPAL
 ========================= */
 export default function SphereScene() {
+  /* 📱 MOBILE DETECTION */
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 768px)").matches;
+
   const media = useMemo(() => {
     const allMedia = [
       {
         type: "image",
-        src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767899688/logo_web_spjpxj.png",
-      },
-
-      {
-        type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_001_fg3v1x.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/w_512,q_auto/logo_web_spjpxj.png",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_10_m7j8nz.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/hero_001_fg3v1x.mp4",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/v1767908984/herotop_exhs4t.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/hero_10_m7j8nz.mp4",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_008_wm68ux.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/herotop_exhs4t.mp4",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_17_yahpcd.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/hero_008_wm68ux.mp4",
       },
       {
         type: "video",
-        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_mp4,fps_12,du_3,q_auto:low,br_400k/hero_video05_v2huxf.mp4",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/hero_17_yahpcd.mp4",
+      },
+      {
+        type: "video",
+        src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/hero_video05_v2huxf.mp4",
       },
     ];
 
@@ -174,12 +177,15 @@ export default function SphereScene() {
 
       <MediaSphere media={media} />
 
-      <SphereLines3D
-        radius={RADIUS + 0.1}
-        linesPerSide={6}
-        spread={Math.PI * 0.15}
-        color={new THREE.Color("rgb(214, 189, 172)")}
-      />
+      {/* 🌐 LÍNEAS SOLO EN DESKTOP */}
+      {!isMobile && (
+        <SphereLines3D
+          radius={RADIUS + 0.1}
+          linesPerSide={6}
+          spread={Math.PI * 0.15}
+          color={new THREE.Color("rgb(214, 189, 172)")}
+        />
+      )}
     </Canvas>
   );
 }

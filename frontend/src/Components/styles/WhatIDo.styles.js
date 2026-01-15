@@ -96,7 +96,7 @@ export const HeroText = styled.p`
   @media (max-width: 768px) {
     font-size: 1.05rem;
     line-height: 1.85;
-    max-width: 360px; 
+    max-width: 360px;
     margin: 0 auto;
     text-align: center;
   }
@@ -286,7 +286,7 @@ export const CardImg = styled.div`
   @media (max-width: 768px) {
     padding: 10px;
     width: 100%;
-    margin-left: 220px;
+    margin-left: 55px;
     max-width: 260px;
   }
 `;
@@ -337,7 +337,7 @@ export const MobileCardText = styled.div`
   @media (max-width: 768px) {
     display: block;
     margin: 24px auto 36px;
-    max-width: 320px; 
+    max-width: 320px;
     font-size: 0.95rem;
     line-height: 1.6;
     text-align: center;
