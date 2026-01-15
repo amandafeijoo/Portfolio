@@ -3,26 +3,33 @@ import WorkOrbital from "./WorkOrbital";
 
 export default function WorkFlowLines({ height = 520 }) {
   const canvasRef = useRef(null);
+  const rafRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    const dpr = window.devicePixelRatio || 1;
-    const w = canvas.offsetWidth;
-    const h = height;
+    let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    let width = canvas.offsetWidth;
+    let h = height;
 
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.height = `${h}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    function resize() {
+      width = canvas.offsetWidth;
+      canvas.width = width * dpr;
+      canvas.height = h * dpr;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
 
     /* =========================
        CONFIGURACIÓN GEOMÉTRICA
     ========================= */
 
-    const cx = w / 2;
-    const originY = 40;
+    const cx = width / 2;
+    const originY = 5;
     const travel = h * 0.65;
 
     const lines = Array.from({ length: 7 }).map((_, i) => ({
@@ -78,16 +85,16 @@ export default function WorkFlowLines({ height = 520 }) {
         t === start ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
 
-      ctx.strokeStyle = "rgba(255,255,255,0.85)";
+      ctx.strokeStyle = "rgba(255,255,255,1)";
       ctx.lineWidth = 1.6;
-      ctx.shadowColor = "rgba(255,255,255,0.5)";
-      ctx.shadowBlur = 8;
+      ctx.shadowColor = "rgba(255,255,255,0.65)";
+      ctx.shadowBlur = 6;
       ctx.stroke();
       ctx.shadowBlur = 0;
     }
 
     function animate() {
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBaseLines();
       drawEnergySegment();
 
@@ -97,27 +104,33 @@ export default function WorkFlowLines({ height = 520 }) {
         activeLine = (activeLine + 1) % lines.length;
       }
 
-      requestAnimationFrame(animate);
+      rafRef.current = requestAnimationFrame(animate);
     }
 
     animate();
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", resize);
+    };
   }, [height]);
 
   return (
-    <div
+    <section
       style={{
         position: "relative",
-        height,
         width: "100%",
+        minHeight: height,
         overflow: "hidden",
       }}
     >
-      {/* 🌌 ORBITAL ARRIBA */}
+      {/* 🌌 ORBITAL */}
       <div
         style={{
           position: "absolute",
           top: 0,
           left: "50%",
+          width: "100%",
           transform: "translateX(-50%)",
           zIndex: 2,
           pointerEvents: "none",
@@ -126,7 +139,7 @@ export default function WorkFlowLines({ height = 520 }) {
         <WorkOrbital />
       </div>
 
-      {/* ✨ LÍNEAS ABAJO */}
+      {/* ✨ CANVAS */}
       <canvas
         ref={canvasRef}
         style={{
@@ -134,11 +147,10 @@ export default function WorkFlowLines({ height = 520 }) {
           height: "100%",
           display: "block",
           position: "absolute",
-          top: 0,
-          left: 0,
+          inset: 0,
           zIndex: 1,
         }}
       />
-    </div>
+    </section>
   );
 }

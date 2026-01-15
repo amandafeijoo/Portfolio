@@ -59,7 +59,6 @@ export const OrbitFadeMask = styled.div`
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 0.45) 55%,
         rgba(0, 0, 0, 0.8) 75%,
-        rgba(0, 0, 0, 1) 100%
       );
   }
 `;

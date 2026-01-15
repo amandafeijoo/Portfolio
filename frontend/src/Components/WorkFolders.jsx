@@ -1,22 +1,42 @@
 import React, { useState, useContext } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { ProjectContext } from "../Context/ProjectContext";
 import SingleProjectCard from "./SingleProjectCard";
-import { color, m } from "framer-motion";
-import { MdChargingStation } from "react-icons/md";
 
 const WorkFolders = () => {
   const { projectList } = useContext(ProjectContext);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+
+  /* ======================
+       MOBILE → STACK NORMAL
+    ====================== */
+  if (!isDesktop) {
+    return (
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 6, mb: 12 }}>
+        {projectList.map((project) => (
+          <SingleProjectCard key={project.id} project={project} />
+        ))}
+      </Box>
+    );
+  }
+
+  /* ======================
+       DESKTOP → FOLDERS
+    ====================== */
   return (
     <Box
       sx={{
         display: "flex",
+        flexDirection: "row",
+        width: "100%",
         height: "95vh",
-        with: "100%",
-        gap: "14px",
+        gap: "18px",
         overflow: "hidden",
+        mb: 20,
       }}
     >
       {projectList.map((project, index) => {
@@ -27,54 +47,39 @@ const WorkFolders = () => {
             key={project.id}
             onClick={() => setActiveIndex(index)}
             sx={{
-              flex: isActive ? 9 : 1,
-              transition: "flex 0.75s cubic-bezier(0.4,0,0.2,1)",
-              backgroundColor: isActive ? "rgba(239, 235, 235, 0.14) " : "rgba(240,226,214,0.96)",
-              borderRadius: "28px",
+              flex: isActive ? 8 : 1,
+              borderRadius: "42px",
               position: "relative",
               overflow: "hidden",
               cursor: "pointer",
+              backgroundColor: isActive
+                ? "rgba(10,10,10,0.98)"
+                : "rgba(245,235,220,0.96)",
+              transition: "flex 0.9s cubic-bezier(0.4,0,0.2,1)",
             }}
           >
-            {/* Número */}
+            {/* NÚMERO */}
             {!isActive && (
               <Typography
                 sx={{
                   position: "absolute",
-                  inset: 0,
-                  color: "rgba(0, 0, 0, 0.14)",
-                  display: "flex",
-                  alignItems: "end",
-                  mb: 9,
-                  justifyContent: "center",
-
-                  mixblendmode: "multiply",
-
-                  fontSize: "4rem",
+                  bottom: 48,
+                  left: "50%",
+                  transform: "translateX(-50%)",
                   fontFamily: "Playfair Display, serif",
-                  lineHeight: 1,
-
-                  opacity: isActive ? 0 : 1,
-                  transform: isActive ? "scale(0.95)" : "scale(1)",
-                  transition: "opacity 0.35s ease, transform 0.35s ease",
-
+                  fontSize: "clamp(4rem, 6vw, 7rem)",
+                  fontWeight: 600,
+                  color: "rgba(147, 121, 78, 0.65)",
                   pointerEvents: "none",
-                  userSelect: "none",
                 }}
               >
                 {index + 1}
               </Typography>
             )}
 
-            {/* CONTENIDO SOLO SI ACTIVA */}
+            {/* CONTENIDO */}
             {isActive && (
-              <Box
-                sx={{
-                  p: { xs: 3, md: 6 },
-                  height: "100%",
-                  overflowY: "auto",
-                }}
-              >
+              <Box sx={{ p: 5, height: "100%", overflowY: "auto" }}>
                 <SingleProjectCard project={project} />
               </Box>
             )}

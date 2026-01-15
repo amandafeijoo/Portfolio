@@ -2,67 +2,57 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import { useRef, useMemo } from "react";
 import * as THREE from "three";
+import { useMediaQuery } from "@mui/material";
 
 /* =========================
    ✨ STAR FIELD
 ========================= */
-function StarField({ count = 800 }) {
+function StarField({
+  count,
+  size,
+  rotFactor,
+  moveFactor,
+  depthFactor,
+  isMobile,
+}) {
   const ref = useRef();
 
-  /* =========================
-     POSICIONES (una sola vez)
-  ========================= */
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
-      const radius = THREE.MathUtils.randFloat(1.6, 3.2);
+      const radius = isMobile
+        ? THREE.MathUtils.randFloat(1.4, 3) // 📱 mobile  //////
+        : THREE.MathUtils.randFloat(3, 7); // 🖥 desktop ///////
+
       const angle = Math.random() * Math.PI * 2;
 
-      const x = Math.cos(angle) * radius + THREE.MathUtils.randFloatSpread(0.8);
+      arr[i * 3] =
+        Math.cos(angle) * radius + THREE.MathUtils.randFloatSpread(0.6);
 
-      const y = THREE.MathUtils.randFloatSpread(1.6);
-      const z = Math.sin(angle) * radius;
+      arr[i * 3 + 1] = THREE.MathUtils.randFloatSpread(1.4);
 
-      arr[i * 3] = x;
-      arr[i * 3 + 1] = y;
-      arr[i * 3 + 2] = z;
+      arr[i * 3 + 2] = Math.sin(angle) * radius;
     }
 
     return arr;
-  }, [count]);
+  }, [count, isMobile]);
 
-  /* =========================
-     SCROLL + ROTACIÓN
-  ========================= */
   useFrame((state) => {
     if (!ref.current) return;
 
     const t = state.clock.elapsedTime;
-
-    // 🌊 scroll normalizado (0 → 1)
     const maxScroll = document.body.scrollHeight - window.innerHeight;
-
     const scroll = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
-    /* ---------- ROTACIÓN ---------- */
-    // rotación guiada por scroll
-    const scrollRotY = scroll * Math.PI * 1.2; //
-    const scrollRotX = scroll * 0.25;
-
-    // micro vida orgánica (muy sutil)
     const wobbleY = Math.sin(t * 0.4) * 0.04;
     const wobbleX = Math.sin(t * 0.3) * 0.02;
 
-    ref.current.rotation.y = scrollRotY + wobbleY;
-    ref.current.rotation.x = scrollRotX + wobbleX;
+    ref.current.rotation.y = scroll * Math.PI * rotFactor + wobbleY;
+    ref.current.rotation.x = scroll * rotFactor * 0.25 + wobbleX;
 
-    /* ---------- DESPLAZAMIENTO ---------- */
-    // ⬅️➡️ movimiento horizontal con scroll
-    ref.current.position.x = (scroll - 0.5) * 1.6;
-
-    // profundidad muy ligera
-    ref.current.position.z = -scroll * 0.5;
+    ref.current.position.x = (scroll - 0.5) * moveFactor;
+    ref.current.position.z = -scroll * depthFactor;
   });
 
   return (
@@ -70,7 +60,7 @@ function StarField({ count = 800 }) {
       <PointMaterial
         transparent
         color="#f5e9d6"
-        size={0.035}
+        size={size}
         sizeAttenuation
         depthWrite={false}
         opacity={0.85}
@@ -80,17 +70,43 @@ function StarField({ count = 800 }) {
 }
 
 /* =========================
-   🌌 SCENE
+   🌌 SCENE (RESPONSIVE)
 ========================= */
 export default function WorkOrbital() {
+  const isMobile = useMediaQuery("(max-width:768px)");
+
+  const config = useMemo(() => {
+    if (isMobile) {
+      return {
+        height: 360,
+        cameraZ: 4.2,
+        count: 420,
+        size: 0.045,
+        rotFactor: 0.6,
+        moveFactor: 0.9,
+        depthFactor: 0.3,
+      };
+    }
+
+    return {
+      height: 520,
+      cameraZ: 5,
+      count: 800,
+      size: 0.035,
+      rotFactor: 1.2,
+      moveFactor: 1.6,
+      depthFactor: 0.5,
+    };
+  }, [isMobile]);
+
   return (
-    <div style={{ height: "520px", width: "100%" }}>
+    <div style={{ height: config.height, width: "100%" }}>
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
+        camera={{ position: [0, 0, config.cameraZ], fov: 50 }}
         gl={{ alpha: true, antialias: true }}
       >
         <ambientLight intensity={0.8} />
-        <StarField />
+        <StarField {...config} isMobile={isMobile} />
       </Canvas>
     </div>
   );
