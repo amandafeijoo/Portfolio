@@ -38,28 +38,46 @@ const SingleProjectCard = ({ project }) => {
   return (
     <Box
       sx={{
-        position: "relative", 
-        maxWidth: 880,
+        position: "relative",
+
+        width: "100%",
+        maxWidth: { xs: 360, sm: 420, md: 880 },
         mx: "auto",
-        px: { xs: 1.5, sm: 2, md: 3.5 },
-        py: { xs: 2.5, md: 5 },
+
+        px: { xs: 1.25, sm: 2, md: 3.5 },
+        py: { xs: 1.75, sm: 2.25, md: 5 },
+
         borderRadius: { xs: 14, md: 22 },
-        minHeight: { md: 600 }, // 👈 SOLO DESKTOP
+
+        minHeight: { md: 600 },
+        height: { xs: "370px" },
 
         backgroundColor: "rgba(38,38,38,0.96)",
-        border: "1px solid rgba(224,204,167,0.28)",
+        border: "2px solid rgba(224,204,167,0.28)",
 
         boxShadow: {
-          xs: "0 10px 26px rgba(0,0,0,0.45)",
+          xs: "0 8px 18px rgba(0,0,0,0.38)",
           md: `
-            0 28px 65px rgba(0,0,0,0.55),
-            inset 0 40px 80px rgba(200,164,106,0.08),
-            inset 0 0 18px rgba(255,255,255,0.12),
-            inset 0 -12px 24px rgba(0,0,0,0.2)
-          `,
+          0 28px 65px rgba(0,0,0,0.55),
+          inset 0 40px 80px rgba(200,164,106,0.08)
+        `,
         },
 
         overflow: "hidden",
+
+        /* ✨ HALO */
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          inset: "-14px",
+          borderRadius: "inherit",
+          background:
+            "radial-gradient(circle at center, rgba(225, 199, 156, 0.18), transparent 70%)",
+          filter: "blur(18px)",
+          opacity: { xs: 0.35, md: 0.6 },
+          zIndex: -1,
+          pointerEvents: "none",
+        },
       }}
     >
       {/* =====================
@@ -69,7 +87,8 @@ const SingleProjectCard = ({ project }) => {
         {/* VIDEO */}
         <Box
           sx={{
-            height: { xs: 140, sm: 160, md: 390 },
+            height: { xs: 200, sm: 160, md: 390 },
+            border: "1px solid rgba(200,164,106,0.25)",
             width: "90%",
             mx: "auto",
             mb: { xs: 1.5, md: 2.5 },
@@ -109,7 +128,7 @@ const SingleProjectCard = ({ project }) => {
         {/* DESCRIPTION */}
         <Typography
           sx={{
-            fontSize: { xs: "0.8rem", md: "0.99rem" },
+            fontSize: { xs: "0.9rem", md: "0.99rem" },
             lineHeight: { xs: 1.45, md: 1.7 },
             color: "rgba(205,200,192,0.75)",
             mb: 1,

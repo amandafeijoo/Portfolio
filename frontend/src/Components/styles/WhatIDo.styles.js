@@ -286,7 +286,7 @@ export const CardImg = styled.div`
   @media (max-width: 768px) {
     padding: 10px;
     width: 100%;
-    margin-left: 55px;
+    margin-left: 69px;
     max-width: 260px;
   }
 `;

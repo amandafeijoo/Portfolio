@@ -7,19 +7,20 @@ import styled from "styled-components";
 export const Section = styled.section`
   position: relative;
   width: 100%;
-  min-height: 100vh; 
+  min-height: 100vh;
   background: #000;
   overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: -290px;
+  margin-bottom: -200px;
 
   @media (max-width: 768px) {
     padding: 110px 0 130px;
     min-height: 90vh;
     margin-bottom: -370px;
+    margin-left: -20px;
   }
 `;
 
@@ -62,12 +63,12 @@ export const Title = styled.h2`
 
   font-size: clamp(2.2rem, 5vw, 4.4rem);
   letter-spacing: clamp(0.015em, 0.8vw, 0.04em);
-  line-height: 1.05; 
+  line-height: 1.05;
 
   color: rgba(237, 231, 217, 0.95);
   text-align: center;
 
-  margin: 0; 
+  margin: 0;
 
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 32px rgba(0, 0, 0, 0.6),
     0 0 24px rgba(200, 164, 106, 0.15);
@@ -97,8 +98,8 @@ export const Subtitle = styled.p`
 
   text-align: center;
 
-  max-width: 92vw; 
-  padding: 0 16px; 
+  max-width: 92vw;
+  padding: 0 16px;
 
   margin: 8px auto 0;
   line-height: 1.55;
@@ -106,7 +107,7 @@ export const Subtitle = styled.p`
   @media (max-width: 480px) {
     font-size: 0.72rem;
     letter-spacing: 0.12em;
-    padding: 0 20px; 
+    padding: 0 20px;
   }
 `;
 

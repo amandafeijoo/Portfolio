@@ -17,13 +17,13 @@ export default function Home() {
   const [showHero, setShowHero] = useState(false);
 
   /* =========================
-     DEFER HERO (CLAVE)
+     DEFER HERO (SEGURO)
   ========================= */
   useEffect(() => {
     const id =
       "requestIdleCallback" in window
         ? requestIdleCallback(() => setShowHero(true))
-        : setTimeout(() => setShowHero(true), 250);
+        : setTimeout(() => setShowHero(true), 100);
 
     return () => {
       if ("cancelIdleCallback" in window) cancelIdleCallback(id);
@@ -32,22 +32,35 @@ export default function Home() {
   }, []);
 
   return (
-    <Suspense fallback={null}>
-      {showHero && <HeroSphere />}
+    <>
+      {/* =========================
+          HERO (SIEMPRE VISIBLE)
+      ========================= */}
+      <Suspense fallback={null}>{showHero && <HeroSphere />}</Suspense>
 
-      <WhatIDoText />
-      <WhatIDo />
+      {/* =========================
+          CONTENIDO
+      ========================= */}
+      <Suspense fallback={null}>
+        <WhatIDoText />
+        <WhatIDo />
+        <FloatingHintMenu />
+      </Suspense>
 
-      <FloatingHintMenu />
+      <Suspense fallback={null}>
+        <OrbitSection />
+        <ProcessSection />
+      </Suspense>
 
-      <OrbitSection />
-      <ProcessSection />
+      <Suspense fallback={null}>
+        <WorkSection />
+        <WorkFolders />
+      </Suspense>
 
-      <WorkSection />
-      <WorkFolders />
-
-      <ContactSummary />
-    </Suspense>
+      <Suspense fallback={null}>
+        <ContactSummary />
+      </Suspense>
+    </>
   );
 }
 
