@@ -1,4 +1,5 @@
-import ProcessStones from "./ProcessStones";
+import { Box, Typography } from "@mui/material";
+import ProcessVisual from "./ProcessVisual";
 import ProcessCards from "./ProcessCards";
 
 export default function ProcessSection() {
@@ -13,52 +14,80 @@ export default function ProcessSection() {
         marginTop: "clamp(-150px, -10vw, -80px)",
       }}
     >
-      <ProcessStones />
+      {/* 👇 VISUAL (Three.js background) */}
+      <ProcessVisual />
 
-      {/* CONTENIDO */}
-      <div
-        style={{
+      {/* 👇 CONTENIDO */}
+      <Box
+        sx={{
           position: "relative",
           zIndex: 2,
           pointerEvents: "none",
           maxWidth: "1200px",
-          margin: "0 auto",
-          paddingTop: "clamp(220px, 35vw, 390px)",
-          paddingBottom: "clamp(80px, 18vw, 120px)",
+          mx: "auto",
+          pt: "clamp(220px, 35vw, 390px)",
+          pb: "clamp(80px, 18vw, 120px)",
           textAlign: "center",
-          paddingInline: "16px",
+          px: "16px",
         }}
       >
-        {/* LABEL */}
-        <span
-          style={{
-            color: "rgba(240, 201, 123, 0.95)",
-            letterSpacing: "2px",
-            fontSize: "clamp(0.75rem, 2.5vw, 0.9rem)",
-            fontWeight: "600",
-            display: "block",
+        {/* =====================
+           TITLE (ESTILO ABOUT)
+        ===================== */}
+        <Box
+          sx={{
+            textAlign: "center",
+            mb: "clamp(8px, 10vw, 10px)",
           }}
         >
-          PROCESS
-        </span>
+          {/* LABEL */}
+          <Typography
+            sx={{
+              fontSize: "0.8rem",
+              letterSpacing: "0.45em",
+              ml: "-30em",
+              fontWeight: 600,
+              color: "rgba(240, 201, 123, 0.95)",
+              textTransform: "uppercase",
+              mb: "20px",
+            }}
+          >
+            Process
+          </Typography>
 
-        {/* TITLE */}
-        <h2
-          style={{
-            color: "rgba(237, 231, 217, 0.95)",
-            fontSize: "clamp(2rem, 6vw, 3rem)",
-            marginTop: "14px",
-            marginBottom: "clamp(48px, 10vw, 80px)",
-          }}
-        >
-          How I work
-        </h2>
+          {/* TITLE */}
+          <Typography
+            sx={{
+              fontSize: "clamp(2.8rem, 6vw, 4.2rem)",
+              fontWeight: 500,
+              color: "#F4F2ED",
+              lineHeight: 1.1,
+              textShadow: `
+                0 0 18px rgba(201,184,138,0.25),
+                0 0 42px rgba(201,184,138,0.15)
+              `,
+            }}
+          >
+            How I work
+          </Typography>
+          <div
+            style={{
+              margin: "18px auto 0",
+              width: "64px",
+              height: "1px",
+              background:
+                "linear-gradient(90deg, rgba(201,184,138,0.6), transparent)",
+            }}
+          />
+        </Box>
 
-        {/* CARDS */}
-        <div style={{ pointerEvents: "auto" }}>
+        {/* =====================
+           CARDS
+        ===================== */}
+        <Box sx={{ pointerEvents: "auto" }}>
           <ProcessCards />
-        </div>
-      </div>
+        </Box>
+      </Box>
     </section>
   );
 }

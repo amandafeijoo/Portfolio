@@ -65,7 +65,7 @@ export default function ProcessCards() {
       sx={{
         width: "100%",
         py: { xs: 6, md: 10 },
-        mb: { xs: 8, md: 12 },
+        mb: { xs: 8, md: 8 },
         display: "flex",
         justifyContent: "center",
       }}
@@ -117,7 +117,7 @@ export default function ProcessCards() {
             component={motion.div}
             sx={{
               flex: {
-                xs: "0 0 78%", 
+                xs: "0 0 78%",
                 sm: "0 0 68%",
                 md: "0 0 320px",
               },
