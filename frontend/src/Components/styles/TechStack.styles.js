@@ -2,18 +2,24 @@ import styled, { keyframes } from "styled-components";
 
 export const KnowledgeBar = styled.div`
   width: 90%;
-  height: 10px;
-  background-color: rgba(200, 162, 200, 0.5);
-  margin-top: 10px;
+  height: 6px;
+  background-color: rgba(201, 184, 138, 0.15);
+  margin-top: 12px;
   position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+
   &::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+    inset: 0;
     width: ${({ $knowledge }) => $knowledge * 20}%;
-    background-color: ${({ $color }) => $color};
+    background: linear-gradient(
+      to right,
+      rgba(201, 184, 138, 0.85),
+      rgba(201, 184, 138, 0.45)
+    );
+    box-shadow: 0 0 12px rgba(201, 184, 138, 0.45);
   }
 `;
 
@@ -21,8 +27,8 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
+  padding: 40px 20px;
   max-width: 100%;
 
   @media (max-width: 1366px) {
@@ -53,31 +59,32 @@ export const GridItem = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #99aaff;
-  background-color: transparent;
+
+  background-color: rgba(18, 19, 20, 0.6);
+  border: 1px solid rgba(201, 184, 138, 0.25);
+  border-radius: 12px;
+
   cursor: pointer;
+
   width: ${(props) => (props.large ? "320px" : "160px")};
   height: ${(props) => (props.large ? "150px" : "140px")};
   grid-column: ${(props) => (props.span ? `span ${props.span}` : "auto")};
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease,
+    border-color 0.35s ease;
+
   &:hover {
-    background-color: ${(props) => props.color || "transparent"};
-  }
-
-  @media (max-width: 1366px) {
-    width: ${(props) => (props.large ? "280px" : "140px")};
-    height: ${(props) => (props.large ? "130px" : "120px")};
-  }
-
-  @media (max-width: 1024px) {
-    width: ${(props) => (props.large ? "240px" : "120px")};
-    height: ${(props) => (props.large ? "120px" : "100px")};
+    transform: translateY(-4px);
+    border-color: rgba(201, 184, 138, 0.6);
+    box-shadow: 0 0 25px rgba(201, 184, 138, 0.25),
+      0 0 60px rgba(201, 184, 138, 0.12);
+    background-color: rgba(18, 19, 20, 0.8);
   }
 
   @media (max-width: 768px) {
     width: ${(props) => (props.large ? "240px" : "110px")};
     height: ${(props) => (props.large ? "100px" : "80px")};
     margin-top: 20px;
-    color: #e6e6fa;
   }
 `;
 
@@ -121,22 +128,3 @@ const rotate = keyframes`
   }
 `;
 
-export const RotatingE = styled.span`
-  display: inline-block;
-  animation: ${rotate} 15s linear infinite;
-  border: 2px solid #99aaff;
-  margin-right: 9px;
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    z-index: 2;
-  }
-  &::before {
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-`;

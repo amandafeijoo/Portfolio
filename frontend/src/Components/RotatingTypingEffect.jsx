@@ -3,25 +3,41 @@ import { Box } from "@mui/material";
 import styled, { keyframes } from "styled-components";
 
 const borderAnimation = keyframes`
-  0% { border-color: #7799ff; }
-  25% { border-color: #ff7799; }
-  50% { border-color: #99ff77; }
-  75% { border-color: #ff99ff; }
-  100% { border-color: #7799ff; }
+  0% {
+    border-color: rgba(201, 184, 138, 0.25);
+    box-shadow: 0 0 20px rgba(201, 184, 138, 0.15);
+  }
+  50% {
+    border-color: rgba(201, 184, 138, 0.55);
+    box-shadow: 0 0 35px rgba(201, 184, 138, 0.35);
+  }
+  100% {
+    border-color: rgba(201, 184, 138, 0.25);
+    box-shadow: 0 0 20px rgba(201, 184, 138, 0.15);
+  }
 `;
 
 const AnimatedBox = styled(Box)`
   display: inline-block;
-  border: 2px solid;
-  border-radius: 10px;
-  padding: 10px;
+  position: relative;
+
+  border: 1px solid rgba(201, 184, 138, 0.35);
+  border-radius: 12px;
+  padding: 10px 14px;
+
   font-family: "Source Code Pro", monospace;
-  color: #fff;
   font-size: 12px;
+  letter-spacing: 0.03em;
+
+  background-color: rgba(18, 19, 20, 0.85);
+  color: #f4f2ed;
+
   margin-bottom: 20px;
-  text-align: justify;
   white-space: nowrap;
-  animation: ${borderAnimation} 4s linear infinite;
+
+  animation: ${borderAnimation} 6s ease-in-out infinite;
+
+  backdrop-filter: blur(6px);
 `;
 
 const RotatingTypingEffect = ({ messages, speed = 100, pause = 1000 }) => {
@@ -64,7 +80,17 @@ const RotatingTypingEffect = ({ messages, speed = 100, pause = 1000 }) => {
     <AnimatedBox>
       {displayedText}
       {showCursor && (
-        <span style={{ backgroundColor: "#fff", color: "#000" }}>&nbsp;</span>
+        <span
+          style={{
+            display: "inline-block",
+            width: "8px",
+            height: "1.1em",
+            marginLeft: "2px",
+            backgroundColor: "rgba(201, 184, 138, 0.9)",
+            opacity: showCursor ? 1 : 0,
+            transition: "opacity 0.2s",
+          }}
+        />
       )}
     </AnimatedBox>
   );

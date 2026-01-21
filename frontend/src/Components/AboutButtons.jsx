@@ -18,7 +18,7 @@ const AboutButtons = ({ onContactClick }) => (
     <ContactButton onClick={onContactClick}>
       <div style={{ display: "flex", alignItems: "center" }}>
         <ContactMailIcon style={{ marginRight: "8px", fontSize: "16px" }} />
-        Let’s Talk
+        Let’s Create
       </div>
     </ContactButton>
   </ButtonContainer>

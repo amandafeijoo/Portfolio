@@ -6,14 +6,18 @@ import { motion } from "framer-motion";
 ================================ */
 export const OrbitSectionWrapper = styled.section`
   position: relative;
-  width: 100%;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+
+  max-width: 1400px;
   min-height: 100vh;
-  padding-top: 60px; 
+  padding-top: 60px;
   padding-bottom: 80px;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    min-height: 92vh; 
+    min-height: 92vh;
     padding-top: 16px;
     padding-bottom: 48px;
   }
@@ -25,8 +29,8 @@ export const OrbitVisual = styled.div`
   max-height: 75vh;
 
   @media (max-width: 768px) {
-    top: -160px; 
-    bottom: -80px; 
+    top: -160px;
+    bottom: -80px;
     height: 620px;
   }
 `;
@@ -58,7 +62,7 @@ export const OrbitFadeMask = styled.div`
         to bottom,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 0.45) 55%,
-        rgba(0, 0, 0, 0.8) 75%,
+        rgba(0, 0, 0, 0.8) 75%
       );
   }
 `;
@@ -112,7 +116,7 @@ export const HeroTitle = styled(motion.h1)`
     0 0 60px rgba(201, 169, 106, 0.16);
 
   @media (max-width: 768px) {
-    font-size: clamp(1.6rem, 6.8vw, 2rem); 
+    font-size: clamp(1.6rem, 6.8vw, 2rem);
     line-height: 1.15;
   }
 `;
@@ -148,9 +152,9 @@ export const HeroSubtitle = styled.p`
 
   @media (max-width: 768px) {
     margin-top: 30px;
-    font-size: 0.6rem; 
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
-    max-width: 320px; 
+    max-width: 320px;
   }
 `;
 
@@ -163,7 +167,6 @@ export const ServicesZone = styled.div`
 
   @media (max-width: 768px) {
     margin-top: -40px;
-    
   }
 `;
 
@@ -219,7 +222,7 @@ export const ServicesDivider = styled.div`
   box-shadow: 0 0 12px rgba(201, 169, 106, 0.45);
 
   @media (max-width: 768px) {
-    width: 64px; 
+    width: 64px;
     margin-top: 8px;
     opacity: 0.85;
   }

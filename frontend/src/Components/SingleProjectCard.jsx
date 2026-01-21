@@ -9,28 +9,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 import Wavify from "react-wavify";
 
-/* =========================
-   ACTION BUTTON STYLES
-========================= */
-const actionButtonSx = {
-  px: { xs: 2, md: 3.5 },
-  py: { xs: 1, md: 1.4 },
-  fontSize: { xs: "0.6rem", md: "0.7rem" },
-  letterSpacing: "0.14em",
-  borderRadius: "999px",
-
-  color: "#f5f0e8",
-  border: "1px solid rgba(200,164,106,0.35)",
-  backgroundColor: "rgba(255,255,255,0.035)",
-
-  maxWidth: 260,
-  mx: "auto",
-
-  "&:hover": {
-    backgroundColor: "rgba(255,255,255,0.08)",
-  },
-};
-
 const SingleProjectCard = ({ project }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -39,7 +17,6 @@ const SingleProjectCard = ({ project }) => {
     <Box
       sx={{
         position: "relative",
-
         width: "100%",
         maxWidth: { xs: 360, sm: 420, md: 880 },
         mx: "auto",
@@ -48,7 +25,6 @@ const SingleProjectCard = ({ project }) => {
         py: { xs: 1.75, sm: 2.25, md: 5 },
 
         borderRadius: { xs: 14, md: 22 },
-
         minHeight: { md: 600 },
         height: { xs: "370px" },
 
@@ -58,21 +34,20 @@ const SingleProjectCard = ({ project }) => {
         boxShadow: {
           xs: "0 8px 18px rgba(0,0,0,0.38)",
           md: `
-          0 28px 65px rgba(0,0,0,0.55),
-          inset 0 40px 80px rgba(200,164,106,0.08)
-        `,
+            0 28px 65px rgba(0,0,0,0.55),
+            inset 0 40px 80px rgba(200,164,106,0.08)
+          `,
         },
 
         overflow: "hidden",
 
-        /* ✨ HALO */
         "&::before": {
           content: '""',
           position: "absolute",
           inset: "-14px",
           borderRadius: "inherit",
           background:
-            "radial-gradient(circle at center, rgba(225, 199, 156, 0.18), transparent 70%)",
+            "radial-gradient(circle at center, rgba(225,199,156,0.18), transparent 70%)",
           filter: "blur(18px)",
           opacity: { xs: 0.35, md: 0.6 },
           zIndex: -1,
@@ -81,9 +56,18 @@ const SingleProjectCard = ({ project }) => {
       }}
     >
       {/* =====================
-         CONTENT (zIndex 1)
+         CONTENT
       ===================== */}
-      <Box sx={{ position: "relative", zIndex: 1 }}>
+      <Box
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         {/* VIDEO */}
         <Box
           sx={{
@@ -120,6 +104,7 @@ const SingleProjectCard = ({ project }) => {
             textTransform: "uppercase",
             color: "rgba(210,195,170,0.9)",
             mb: 0.5,
+            textAlign: "center",
           }}
         >
           {project.title}
@@ -132,6 +117,8 @@ const SingleProjectCard = ({ project }) => {
             lineHeight: { xs: 1.45, md: 1.7 },
             color: "rgba(205,200,192,0.75)",
             mb: 1,
+            maxWidth: 720,
+            textAlign: "center",
 
             display: "-webkit-box",
             WebkitLineClamp: { xs: 3, md: "unset" },
@@ -150,7 +137,8 @@ const SingleProjectCard = ({ project }) => {
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "rgba(180,170,155,0.6)",
-              mb: 5,
+              mb: 4,
+              textAlign: "center",
             }}
           >
             {project.technologies}
@@ -160,30 +148,27 @@ const SingleProjectCard = ({ project }) => {
         {/* ACTIONS */}
         <Box
           sx={{
-            display: "inline-flex",
+            display: "flex",
+            justifyContent: "center",
             borderRadius: "999px",
             border: "1px solid rgba(200,164,106,0.35)",
             overflow: "hidden",
-            mx: "auto",
             mt: { xs: 1.5, md: 1 },
-
             backgroundColor: "rgba(255,255,255,0.035)",
 
-            /* ✨ HALO BASE */
             boxShadow: `
-      0 0 0 1px rgba(200,164,106,0.25),
-      0 0 18px rgba(200,164,106,0.35)
-    `,
+              0 0 0 1px rgba(200,164,106,0.25),
+              0 0 18px rgba(200,164,106,0.35)
+            `,
 
             transition: "box-shadow 0.35s ease",
 
-            /* ✨ HALO HOVER */
             "&:hover": {
               boxShadow: `
-        0 0 0 1px rgba(200,164,106,0.45),
-        0 0 32px rgba(200,164,106,0.65),
-        0 0 60px rgba(200,164,106,0.35)
-      `,
+                0 0 0 1px rgba(200,164,106,0.45),
+                0 0 32px rgba(200,164,106,0.65),
+                0 0 60px rgba(200,164,106,0.35)
+              `,
             },
           }}
         >
@@ -198,7 +183,6 @@ const SingleProjectCard = ({ project }) => {
               fontSize: { xs: "0.6rem", md: "0.7rem" },
               letterSpacing: "0.14em",
               color: "#f5f0e8",
-
               borderRadius: 0,
               borderRight: "1px solid rgba(200,164,106,0.25)",
 
@@ -211,7 +195,7 @@ const SingleProjectCard = ({ project }) => {
             GitHub
           </Button>
 
-          {/* WEBSITE o DEMO */}
+          {/* WEBSITE / DEMO */}
           {project.web ? (
             <Button
               href={project.web}
@@ -223,7 +207,6 @@ const SingleProjectCard = ({ project }) => {
                 fontSize: { xs: "0.6rem", md: "0.7rem" },
                 letterSpacing: "0.14em",
                 color: "#f5f0e8",
-
                 borderRadius: 0,
 
                 "&:hover": {
@@ -236,7 +219,6 @@ const SingleProjectCard = ({ project }) => {
             </Button>
           ) : (
             <Button
-              onClick={(e) => handleDemoClick(e, project.title)}
               startIcon={<LinkIcon />}
               sx={{
                 px: { xs: 2.2, md: 3 },
@@ -263,14 +245,13 @@ const SingleProjectCard = ({ project }) => {
       ===================== */}
       <Box
         component={Wavify}
-        fill="rgba(245, 244, 242, 0.35)"
+        fill="rgba(245,244,242,0.35)"
         paused={false}
         options={{ height: 12, amplitude: 14, speed: 0.12, points: 3 }}
         sx={{
           position: "absolute",
           bottom: { xs: -16, sm: -24, md: -35 },
           left: 0,
-
           width: "100%",
           height: { xs: 32, sm: 50, md: 100 },
 

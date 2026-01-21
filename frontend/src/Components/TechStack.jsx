@@ -4,13 +4,14 @@ import {
   GridItem,
   TechLogo,
   KnowledgeBar,
-  RotatingE
 } from "./styles/TechStack.styles";
 import { technologies } from "../data/technologies";
 
 const TechStack = () => {
   const [techName, setTechName] = useState("");
-  const [defaultText, setDefaultText] = useState("Explore my skills");
+  const [defaultText, setDefaultText] = useState(
+    "Technologies\nbehind Webcode-Art"
+  );
 
   const handleMouseEnter = (name) => {
     setTechName(name);
@@ -19,24 +20,69 @@ const TechStack = () => {
 
   const handleMouseLeave = () => {
     setTechName("");
-    setDefaultText("Explore my skills");
+    setDefaultText("Technologies\nbehind Webcode-Art");
   };
 
   return (
     <GridContainer>
       <GridItem span={2} large>
-        <span>
-          {defaultText === "Explore my skills" ? (
-            <>
-              <RotatingE>{defaultText.charAt(0)}</RotatingE>
-              {defaultText.slice(1)}
-            </>
-          ) : (
-            defaultText
-          )}
-        </span>
-        <span style={{ color: "#61DAFB", marginLeft: "10px" }}>{techName}</span>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "6px",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "1rem",
+              letterSpacing: "0.08em",
+              color: "#B8B4AA",
+              textTransform: "uppercase",
+            }}
+          >
+            Technologies
+          </span>
+
+          <span
+            style={{
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              color: "#F4F2ED",
+              textShadow: "0 0 18px rgba(201,184,138,0.35)",
+            }}
+          >
+            behind Webcode-Art
+          </span>
+
+          {/* línea sutil */}
+          <div
+            style={{
+              marginTop: "8px",
+              width: "48px",
+              height: "1px",
+              background:
+                "linear-gradient(90deg, rgba(201,184,138,0.6), transparent)",
+            }}
+          />
+        </div>
+
+        {techName && (
+          <span
+            style={{
+              marginTop: "12px",
+              color: "#F4F2ED",
+              fontSize: "0.9rem",
+              letterSpacing: "0.06em",
+              textShadow: "0 0 12px rgba(201,184,138,0.35)",
+            }}
+          >
+            {techName}
+          </span>
+        )}
       </GridItem>
+
       {technologies.map((tech, index) => (
         <GridItem
           key={index}

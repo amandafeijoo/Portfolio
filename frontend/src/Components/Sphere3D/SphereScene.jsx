@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import SphereLines3D from "../SphereLines3D";
 
@@ -29,7 +29,6 @@ function shuffleArray(array) {
 function MediaSphere({ media }) {
   const groupRef = useRef();
 
-  // Rotación global estable
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += ROTATION_SPEED;
@@ -37,6 +36,7 @@ function MediaSphere({ media }) {
   });
 
   const planes = useMemo(() => {
+    // 🔥 REDUCIDO para Safari
     const count = media.length * 8;
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
     const shuffled = shuffleArray(media);
@@ -68,7 +68,7 @@ function MediaSphere({ media }) {
 }
 
 /* =========================
-   PLANO INDIVIDUAL (IMG / VIDEO)
+   PLANO INDIVIDUAL
 ========================= */
 function MediaPlane({ position, media }) {
   const meshRef = useRef();
@@ -82,23 +82,30 @@ function MediaPlane({ position, media }) {
       video.muted = true;
       video.playsInline = true;
       video.autoplay = true;
-      video.play();
-
+      video.play().catch(() => {});
+  
       const vt = new THREE.VideoTexture(video);
       vt.colorSpace = THREE.SRGBColorSpace;
       vt.minFilter = THREE.LinearFilter;
       vt.magFilter = THREE.LinearFilter;
       vt.generateMipmaps = false;
-
+  
+      vt.flipY = false; // ✅ SOLO VIDEO (clave Safari)
+  
       return vt;
     }
-
+  
     const tex = new THREE.TextureLoader().load(media.src);
     tex.colorSpace = THREE.SRGBColorSpace;
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    tex.generateMipmaps = false;
+  
+    tex.flipY = true; // ✅ EXPLÍCITO para imágenes
+  
     return tex;
   }, [media]);
-
-  // Siempre miran al centro
+  
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.lookAt(0, 0, 0);
@@ -123,7 +130,13 @@ function MediaPlane({ position, media }) {
    ESCENA PRINCIPAL
 ========================= */
 export default function SphereScene() {
-  /* 📱 MOBILE DETECTION */
+  const [ready, setReady] = useState(false);
+
+  /* ⏱️ Delay 1 frame para Safari */
+  useEffect(() => {
+    requestAnimationFrame(() => setReady(true));
+  }, []);
+
   const isMobile =
     typeof window !== "undefined" &&
     window.matchMedia("(max-width: 768px)").matches;
@@ -171,13 +184,17 @@ export default function SphereScene() {
   return (
     <Canvas
       camera={{ position: [0, 0, 8], fov: 45 }}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.5]} // 🔥 CLAVE Safari
+      gl={{
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+      }}
     >
       <ambientLight intensity={1} />
 
-      <MediaSphere media={media} />
+      {ready && <MediaSphere media={media} />}
 
-      {/* 🌐 LÍNEAS SOLO EN DESKTOP */}
       {!isMobile && (
         <SphereLines3D
           radius={RADIUS + 0.1}

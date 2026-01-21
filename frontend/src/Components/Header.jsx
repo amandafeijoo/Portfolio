@@ -16,12 +16,12 @@ export default function Header() {
 
   const mainLinks = [
     { label: "Home", to: "/" },
-    { label: "Services", to: "/services" },
+    { label: "Services", to: "/orbit-section" },
     { label: "Work", to: "/projects" },
   ];
 
   const menuLinks = [
-    { label: "Process", to: "/process" },
+    { label: "Process", to: "/process-section" },
     { label: "About", to: "/aboutme" },
     { label: "Contact", to: "/contactpage" },
   ];

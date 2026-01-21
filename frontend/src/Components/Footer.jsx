@@ -6,16 +6,20 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
+    /* =========================
+       FOOTER OUTER (FULL BLEED)
+    ========================= */
     <Box
       component="footer"
       sx={{
+        width: "100vw",
         position: "relative",
-        width: "100%",
+        left: "50%",
+        transform: "translateX(-50%)",
         background:
           "linear-gradient(180deg, rgb(14,15,16) 0%, rgb(22,23,24) 100%)",
         borderTop: "1px solid rgba(240,230,210,0.85)",
         overflow: "hidden",
-        paddingInline: { xs: "32px", sm: "24px", md: "0px" },
 
         "&::before": {
           content: '""',
@@ -27,87 +31,83 @@ export default function Footer() {
         },
       }}
     >
-      {/* TOP */}
+      {/* =========================
+         FOOTER INNER (CENTERED)
+      ========================= */}
       <Box
         sx={{
-          maxWidth: { xs: 290, sm: 640, md: 1400 }, 
+          maxWidth: 1400,
           mx: "auto",
-          px: { xs: 0, sm: 0, md: 6 },
-
-          py: { xs: 2, md: 7 },
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: { xs: 3, md: 4 },
-          textAlign: { xs: "center", md: "left" },
+          px: { xs: 2, sm: 3, md: 6 },
           position: "relative",
           zIndex: 1,
         }}
       >
-        {/* LEFT */}
-        <Box>
-          <Box
-            component="img"
-            src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767547942/new_brush_ktsbyr.png"
-            alt="Webcode-art logo"
-            sx={{
-              width: 34,
-              mb: 1.5,
-              opacity: 0.85,
-              mx: { xs: "auto", md: 0 },
-            }}
-          />
-
-          <Typography
-            sx={{
-              fontFamily: "Playfair Display, serif",
-              letterSpacing: "0.32em",
-              fontSize: { xs: "0.95rem", sm: "1.05rem" },
-              color: "rgba(235,235,232,0.9)",
-              mb: 1,
-            }}
-          >
-            WEBCODE-ART
-          </Typography>
-
-          <Typography
-            sx={{
-              fontFamily: "Playfair Display, serif",
-              fontSize: { xs: "0.75rem", sm: "0.8rem" },
-              textAlign: { xs: "left", md: "left" },
-              lineHeight: 1.8,
-              color: "rgba(200,200,195,0.6)",
-              maxWidth: 420,
-              mx: { xs: "auto", md: 0 },
-            }}
-          >
-            Crafting thoughtful digital experiences
-            <br />
-            through design & code.
-          </Typography>
-        </Box>
-
-        {/* RIGHT — SOCIAL ICONS */}
-        <Box sx={{ mt: { xs: 2, md: 0 } }}>
-          <FooterSocial variant="icons" />
-        </Box>
-      </Box>
-
-      {/* BOTTOM */}
-      <Box
-        sx={{
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          py: { xs: 3, sm: 2.5 },
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
+        {/* ---------- TOP ---------- */}
         <Box
           sx={{
-            maxWidth: 1400,
-            mx: "auto",
-            px: { xs: 2, sm: 3, md: 6 },
+            py: { xs: 3, md: 7 },
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: { xs: 3, md: 4 },
+            textAlign: { xs: "center", md: "left" },
+          }}
+        >
+          {/* LEFT */}
+          <Box>
+            <Box
+              component="img"
+              src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767547942/new_brush_ktsbyr.png"
+              alt="Webcode-art logo"
+              sx={{
+                width: 34,
+                mb: 1.5,
+                opacity: 0.85,
+                mx: { xs: "auto", md: 0 },
+              }}
+            />
+
+            <Typography
+              sx={{
+                fontFamily: "Playfair Display, serif",
+                letterSpacing: "0.32em",
+                fontSize: { xs: "0.95rem", sm: "1.05rem" },
+                color: "rgba(235,235,232,0.9)",
+                mb: 1,
+              }}
+            >
+              WEBCODE-ART
+            </Typography>
+
+            <Typography
+              sx={{
+                fontFamily: "Playfair Display, serif",
+                fontSize: { xs: "0.75rem", sm: "0.8rem" },
+                lineHeight: 1.8,
+                color: "rgba(200,200,195,0.6)",
+                maxWidth: 420,
+                mx: { xs: "auto", md: 0 },
+              }}
+            >
+              Crafting thoughtful digital experiences
+              <br />
+              through design & code.
+            </Typography>
+          </Box>
+
+          {/* RIGHT */}
+          <Box sx={{ mt: { xs: 2, md: 0 } }}>
+            <FooterSocial variant="icons" />
+          </Box>
+        </Box>
+
+        {/* ---------- BOTTOM ---------- */}
+        <Box
+          sx={{
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            py: { xs: 3, sm: 2.5 },
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
             justifyContent: "space-between",

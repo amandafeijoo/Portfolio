@@ -13,7 +13,7 @@ export default function ProcessSection() {
         marginTop: "clamp(-150px, -10vw, -80px)",
       }}
     >
-      <ProcessStones imageUrl="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767569759/piedra___ynxdvx.png" />
+      <ProcessStones />
 
       {/* CONTENIDO */}
       <div

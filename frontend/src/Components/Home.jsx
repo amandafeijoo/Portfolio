@@ -11,7 +11,7 @@ const OrbitSection = lazy(() => import("./OrbitSection"));
 const ProcessSection = lazy(() => import("./ProcessSection"));
 const WorkSection = lazy(() => import("./WorkSection"));
 const WorkFolders = lazy(() => import("./WorkFolders"));
-const ContactSummary = lazy(() => import("./ContactSummary"));
+// const ContactSummary = lazy(() => import("./ContactSummary"));
 
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
@@ -57,9 +57,9 @@ export default function Home() {
         <WorkFolders />
       </Suspense>
 
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ContactSummary />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
