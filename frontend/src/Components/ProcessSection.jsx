@@ -7,17 +7,15 @@ export default function ProcessSection() {
     <section
       style={{
         position: "relative",
-        minHeight: "clamp(900px, 120vh, 1200px)",
         background: "#000",
         overflow: "hidden",
         width: "100%",
-        marginTop: "clamp(-150px, -10vw, -80px)",
+        marginTop: "-10px",
+        marginBottom: "90px",
       }}
     >
-      {/* 👇 VISUAL (Three.js background) */}
       <ProcessVisual />
 
-      {/* 👇 CONTENIDO */}
       <Box
         sx={{
           position: "relative",
@@ -44,8 +42,8 @@ export default function ProcessSection() {
           <Typography
             sx={{
               fontSize: "0.8rem",
-              letterSpacing: "0.45em",
-              ml: "-30em",
+              letterSpacing: "0.9em",
+              ml: "-10em",
               fontWeight: 600,
               color: "rgba(240, 201, 123, 0.95)",
               textTransform: "uppercase",
@@ -58,10 +56,11 @@ export default function ProcessSection() {
           {/* TITLE */}
           <Typography
             sx={{
-              fontSize: "clamp(2.8rem, 6vw, 4.2rem)",
+              fontSize: "clamp(2.8rem, 6vw, 3.5rem)",
               fontWeight: 500,
               color: "#F4F2ED",
               lineHeight: 1.1,
+              mb: 5,
               textShadow: `
                 0 0 18px rgba(201,184,138,0.25),
                 0 0 42px rgba(201,184,138,0.15)

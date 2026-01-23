@@ -20,10 +20,10 @@ export default function FloatingHintMenu({ scale }) {
   /* ============================
      VISIBILIDAD POR SCROLL
   ============================ */
-  const opacityByScroll = useTransform(
+  const opacityByScroll = useTransform(     // para hacer fade out al hacer scroll
     scale,
-    [1, 0.95, 0.9, 0.82, 0.78],
-    [0, 0, 1, 1, 0]
+    [1.2, 0.99, 0.9, 0.82, 0.8],
+    [0.1, 0, 1, 0, 0]
   );
 
   const pointerEventsByScroll = useTransform(
@@ -92,8 +92,8 @@ export default function FloatingHintMenu({ scale }) {
           animate={{
             color:
               cursorPhase === 4
-                ? "#ffffff" // 🔥 BLANCO en el click
-                : "rgba(0,0,0,0.55)", // gris el resto del tiempo
+                ? "#ffffff"
+                : "rgba(0,0,0,0.55)", 
           }}
           transition={{
             duration: 0.15,

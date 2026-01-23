@@ -47,6 +47,7 @@ export const IntroHero = styled.div`
 
 export const IntroTextWrap = styled.div`
   max-width: 580px;
+  margin-top: -50px;
 
   @media (max-width: 1024px) {
     max-width: 520px;
@@ -59,7 +60,14 @@ export const IntroTextWrap = styled.div`
 `;
 
 export const HeroTitle = styled.h2`
-  font-size: clamp(2.2rem, 4.5vw, 2.9rem);
+  font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+  text-align: center;
+  margin-top: 10;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: 420px;
   font-weight: 600;
   line-height: 1.1;
   margin-bottom: 24px;
@@ -80,10 +88,12 @@ export const HeroTitle = styled.h2`
 
 export const HeroText = styled.p`
   font-size: 1.05rem;
+  margin: 0 auto;
+  text-align: center;
   line-height: 1.7;
   color: #bdbdbd;
   opacity: 0.9;
-  max-width: 520px;
+  max-width: 400px;
 
   /* Tablet */
   @media (max-width: 1024px) {
@@ -300,10 +310,15 @@ export const CardTitle = styled.h3`
   color: rgba(237, 231, 217, 0.95);
 
   max-width: 260px;
-  margin: 16px auto;
-  padding: 8px 12px;
+  margin: 16px auto 0;
+  padding: 2px 5px;
   text-align: center;
   line-height: 1.35;
+
+  min-height: 3.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(6px);
@@ -318,13 +333,21 @@ export const CardTitle = styled.h3`
 
   @media (max-width: 768px) {
     max-width: 220px;
+    min-height: 3.6em;
   }
 `;
 
 export const CardText = styled.p`
   font-size: 0.92rem;
-  color: #aaaaaa;
+  color: rgba(220, 220, 220, 0.85);
+  max-width: 280px;
+  margin: 0 auto;
   line-height: 1.55;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65);
+
+  text-align: center;
+
+  min-height: 4.2em;
 
   @media (max-width: 768px) {
     display: none;
@@ -361,7 +384,7 @@ export const PlaceholderMedia = styled.div`
 export const Badge = styled.span`
   display: block;
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
   font-size: 0.75rem;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -372,18 +395,11 @@ export const Badge = styled.span`
    DIVIDER
 ================================ */
 export const TitleDivider = styled.div`
-  width: 90px;
+  width: 42px;
   height: 1px;
-  margin: 12px auto 0;
+  margin: 24px auto 16px;
 
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(201, 169, 106, 0.85),
-    transparent
-  );
-
-  box-shadow: 0 0 12px rgba(201, 169, 106, 0.45);
+  background: linear-gradient(90deg, rgba(201, 169, 106, 0.6), transparent);
 `;
 
 export const DesktopOnlyDivider = styled(TitleDivider)`
@@ -394,6 +410,7 @@ export const DesktopOnlyDivider = styled(TitleDivider)`
 
 export const MobileOnlyDivider = styled(TitleDivider)`
   display: none;
+  margin-top: 10px;
 
   @media (max-width: 768px) {
     display: block;

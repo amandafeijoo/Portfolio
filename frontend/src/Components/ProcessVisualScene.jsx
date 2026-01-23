@@ -31,7 +31,7 @@ export default function ProcessVisualScene() {
         <OrbitNode
           key={i}
           angleOffset={(i / 6) * Math.PI * 2}
-          orbitRadius={3}
+          orbitRadius={2.4} // orbitRadius={1.4 + i * 0.3}
           speed={0.22}
           scale={0.35}
         />

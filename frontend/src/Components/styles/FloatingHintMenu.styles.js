@@ -53,6 +53,7 @@ export const MenuWrapper = styled.div`
 export const MenuItem = styled.div`
   font-family: "Playfair Display", serif;
   font-size: 1.15rem;
+  text-align: center;
   color: #111;
   padding: 6px 0;
 
@@ -77,6 +78,7 @@ export const MenuCTA = styled(motion.div)`
   font-family: "Inter", sans-serif;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
+  text-align: center;
   text-transform: uppercase;
   font-weight: 600;
   color: #000;

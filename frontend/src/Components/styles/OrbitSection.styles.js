@@ -7,14 +7,15 @@ import { motion } from "framer-motion";
 export const OrbitSectionWrapper = styled.section`
   position: relative;
   width: 100vw;
+  padding-top: clamp(140px, 18vw, 220px);
+  padding-bottom: clamp(90px, 12vw, 170px);
   left: 50%;
   transform: translateX(-50%);
 
   max-width: 1400px;
-  min-height: 100vh;
   padding-top: 60px;
   padding-bottom: 80px;
-  overflow: hidden;
+  overflow: visible;
 
   @media (max-width: 768px) {
     min-height: 92vh;
@@ -106,7 +107,6 @@ export const HeroTitle = styled(motion.h1)`
   font-family: "Playfair Display", serif;
   font-weight: 400;
   letter-spacing: 0.08em;
-  margin: 0;
   color: rgba(237, 231, 217, 0.95);
 
   font-size: clamp(2.2rem, 6vw, 2.6rem);
@@ -159,7 +159,7 @@ export const HeroSubtitle = styled.p`
 `;
 
 export const ServicesZone = styled.div`
-  margin-top: 0;
+  margin-top: clamp(8px, 8vw, 10px);
   display: flex;
   justify-content: center;
   position: relative;
@@ -186,10 +186,10 @@ export const ServicesHeader = styled.div`
 ================================ */
 export const ServicesLabel = styled.span`
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 1rem;
   letter-spacing: 0.32em;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(240, 201, 123, 0.95);
   text-transform: uppercase;
   margin-bottom: 10px;
 
@@ -238,17 +238,17 @@ export const DragHint = styled(motion.div)`
   margin-top: 6px;
   margin-bottom: 6px;
 
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(201, 184, 138, 0.35);
 
   pointer-events: none;
 
   span {
-    font-size: 1rem;
-    opacity: 0.6;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 
   /* 📱 MOBILE */

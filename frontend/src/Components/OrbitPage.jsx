@@ -1,4 +1,3 @@
-// OrbitPage.jsx
 import OrbitSection from "./OrbitSection";
 
 export default function OrbitPage() {
@@ -6,9 +5,10 @@ export default function OrbitPage() {
     <main
       style={{
         width: "100%",
-        minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
+        marginBottom: 0,
+        paddingBottom: 0,
       }}
     >
       <div

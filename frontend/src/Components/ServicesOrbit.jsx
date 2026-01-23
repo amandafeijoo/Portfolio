@@ -8,41 +8,42 @@ import ServiceCard from "./ServiceCard";
 ================================ */
 const services = [
   {
-    title: "Starter Website",
+    title: "Essential Website",
     subtitle:
-      "Perfect for therapists, coaches, freelancers and personal brands.",
+      "A clear and elegant online presence for professionals and small businesses.",
     features: [
       "1–3 pages (Home, About, Contact)",
-      "Responsive design",
-      "Basic SEO setup",
+      "Custom design adapted to your brand",
+      "Responsive & mobile-friendly",
+      "Basic SEO & performance setup",
       "Contact form connected to your email",
     ],
-    price: "Starting at 900 €",
-    timeline: "Timeline: ~2–3 weeks",
+    price: "Starting at €700",
+    timeline: "Approx. 2–3 weeks",
   },
   {
-    title: "Professional Website",
+    title: "Business Website",
     subtitle:
-      "For small businesses that need more structure and functionality.",
+      "For growing businesses that need structure, clarity and flexibility.",
     features: [
-      "4–6 pages (Home, Services, FAQ, Contact…)",
-      "Custom design aligned with your brand",
-      "Blog or resources section (optional)",
+      "4–6 pages (Services, FAQ, Blog, Contact…)",
+      "Design system & visual consistency",
+      "Optional blog or content section",
       "Integrations (booking, newsletter, etc.)",
-      "Performance & responsive optimization",
+      "Performance & accessibility optimization",
     ],
-    price: "Starting at 1.500 €",
-    timeline: "Timeline: ~4–5 weeks",
+    price: "Starting at €1.200",
+    timeline: "Approx. 4–5 weeks",
   },
   {
-    title: "Full-Stack Solution",
-    subtitle: "For platforms that need logic behind the scenes.",
+    title: "Custom Web Application",
+    subtitle: "For ideas that require logic, data or user interaction.",
     features: [
       "Custom front-end (React)",
       "Back-end with Django & PostgreSQL",
-      "User accounts, bookings, payments (Stripe)",
-      "Admin panel to manage content",
-      "Scalable architecture",
+      "User accounts or booking systems",
+      "Payments & integrations (Stripe)",
+      "Admin panel & scalable structure",
     ],
     price: "Custom quote",
     timeline: "Based on project scope",
@@ -124,12 +125,12 @@ export default function ServicesOrbit({ impulseRef }) {
               dragElastic={0.25}
               onDragEnd={(e, info) => {
                 if (info.offset.x < -90) {
-                  impulseRef.current = 0.025; 
+                  impulseRef.current = 0.025;
                   nextCard();
                 }
 
                 if (info.offset.x > 90) {
-                  impulseRef.current = -0.025; 
+                  impulseRef.current = -0.025;
                   prevCard();
                 }
               }}

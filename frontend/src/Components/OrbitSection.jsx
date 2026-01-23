@@ -34,7 +34,6 @@ export default function OrbitSection() {
         <OrbitStars impulseRef={orbitImpulse} />
         <OrbitFadeMask />
       </OrbitVisual>
-      {/* ✨ TEXTO BRILLANTE */}
       <HeroTextWrap
         initial={{ opacity: 0, scale: 0.96, filter: "blur(8px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -44,6 +43,16 @@ export default function OrbitSection() {
           delay: 0.25,
         }}
       >
+        <ServicesLabel>SERVICES</ServicesLabel>
+        <div
+          style={{
+            margin: "18px auto 0",
+            width: "64px",
+            height: "1px",
+            background:
+              "linear-gradient(90deg, rgba(201,184,138,0.6), transparent)",
+          }}
+        />
         <HeroTitle
           animate={{
             textShadow: [
@@ -92,10 +101,6 @@ export default function OrbitSection() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <ServicesLabel>SERVICES</ServicesLabel>
-
-          <ServicesDivider />
-
           {/* ✅ Desktop: Drag */}
           <DragHintDesktop>
             <DragHint
