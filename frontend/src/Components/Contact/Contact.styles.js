@@ -80,7 +80,6 @@ export const HeroInner = styled.div`
 `;
 
 export const Kicker = styled.div`
-  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -126,7 +125,6 @@ export const HeroRow = styled.div`
 `;
 
 export const HeroPill = styled.div`
-  font-family: "Source Code Pro", monospace;
   font-size: 0.82rem;
   letter-spacing: 0.06em;
   color: rgba(244, 242, 237, 0.88);
@@ -269,7 +267,6 @@ export const TrustCard = styled.div`
 `;
 
 export const TrustKicker = styled.div`
-  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.78rem;

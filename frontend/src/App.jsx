@@ -21,7 +21,7 @@ import IntroLoader from "./Components/IntroLoader";
 ========================= */
 import Home from "./Components/Home";
 import OrbitPage from "./Components/Services/OrbitPage";
-import ProcessSection from "./Components/ProcessSection";
+import ProcessSection from "./Components/Process/ProcessSection";
 import AboutMe from "./Components/AboutMe";
 import TechStack from "./Components/TechStack";
 import ProfileInfoBox from "./Components/ProfileInfoBox";

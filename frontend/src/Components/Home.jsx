@@ -4,11 +4,11 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
    LAZY SECTIONS
 ========================= */
 const HeroSphere = lazy(() => import("./HeroSphere"));
-const WhatIDoText = lazy(() => import("./WhatIDoText"));
+ const WhatIDoHero = lazy(() => import("./WhatIDoHero"));
 const WhatIDo = lazy(() => import("./WhatIDo"));
 const FloatingHintMenu = lazy(() => import("./FloatingHintMenu"));
 const OrbitSection = lazy(() => import("./Services/OrbitSection"));
-const ProcessSection = lazy(() => import("./ProcessSection"));
+const ProcessSection = lazy(() => import("./Process/ProcessSection"));
 const WorkSection = lazy(() => import("./WorkSection"));
 const WorkFolders = lazy(() => import("./WorkFolders"));
 const HomeContactInvite = lazy(() =>
@@ -44,7 +44,7 @@ export default function Home() {
           CONTENIDO
       ========================= */}
       <Suspense fallback={null}>
-        <WhatIDoText />
+        <WhatIDoHero />
         <WhatIDo />
         <FloatingHintMenu />
       </Suspense>

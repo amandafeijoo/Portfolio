@@ -4,7 +4,7 @@ export const InviteWrap = styled.section`
   position: relative;
   padding: 180px 20px;
   overflow: hidden;
-  margin-top: 370px;
+  margin-top: 200px;
 `;
 
 export const InviteContent = styled.div`
