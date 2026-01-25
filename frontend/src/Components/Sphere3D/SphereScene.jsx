@@ -150,6 +150,7 @@ export default function SphereScene() {
       {
         type: "video",
         src: "https://res.cloudinary.com/dp6jrgvoz/video/upload/w_512,f_auto,fps_12,du_3,q_auto:low,br_400k/hero_001_fg3v1x.mp4",
+
       },
       {
         type: "video",

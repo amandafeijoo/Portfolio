@@ -1,64 +1,249 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-export const borderAnimation = keyframes`
-  0% { border-color: #99aaff; }
-  50% { border-color: #ff99aa; }
-  100% { border-color: #99aaff; }
-`;
-
-export const rotate = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
-export const Container = styled.div`
-  text-align: center;
-  margin-top: 50px;
-  padding: 20px;
-`;
-
-export const AnimatedLetter = styled.span`
-  display: inline-block;
+/* =========================
+   HERO WRAP (FULL WIDTH)
+   → MISMO SISTEMA QUE SELECTED WORK
+========================= */
+export const CaseHeroWrap = styled.section`
   position: relative;
-  animation: ${rotate} 20s infinite;
-  border: 2px solid rgba(200, 162, 200, 0.5);
-  margin-right: 13px;
+  width: 100%;
+  padding: 140px 20px 100px;
+  overflow: hidden;
+
+  background: radial-gradient(
+    60% 40% at 50% 0%,
+    rgba(201, 184, 138, 0.12),
+    transparent 70%
+  );
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(
+      40% 30% at 50% 30%,
+      rgba(201, 184, 138, 0.08),
+      transparent 70%
+    );
+    filter: blur(80px);
+    pointer-events: none;
+  }
 `;
 
-export const StyledText = styled.span`
-  font-size: 5em;
-  display: inline-block;
-  text-shadow: 0 0 3px #fff;
-  color: #fff;
-  margin-top: 33px;
-  margin-bottom: 40px;
+/* =========================
+   HERO INNER (CENTER CONTENT)
+========================= */
+export const CaseHeroInner = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+`;
+
+/* =========================
+   HEADER TEXT
+========================= */
+export const CaseKicker = styled.div`
   font-family: "Source Code Pro", monospace;
-  animation: ${borderAnimation} 3s infinite;
-
-  @media (max-width: 480px) { font-size: 3em; }
-  @media (max-width: 768px) { font-size: 2.5em; margin-top: 220px; }
-  @media (max-width: 834px) and (min-width: 768px) { font-size: 3.5em; margin-top: 100px; }
-  @media (max-width: 1024px) { font-size: 4em; margin-top: 40px; }
-  @media (min-width: 1024px) and (max-width: 1366px) { font-size: 4.5em; margin-top: 150px; }
-`;
-
-export const StyledVideo = styled.video`
-  width: 80%;
-  height: auto;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  border: 3px solid #d8bfd8;
-  margin-bottom: 40px;
-  animation: ${borderAnimation} 3s infinite;
-  padding: 10px;
-`;
-
-export const DescriptionContainer = styled.div`
-  text-align: left;
-  text-justify: inter-word;
-  padding: 20px;
-  border: 3px solid #99aaff;
-  border-radius: 10px;
-  animation: ${borderAnimation} 3s infinite;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: rgba(201, 184, 138, 0.9);
   margin-bottom: 20px;
+`;
+
+export const CaseTitle = styled.h1`
+  color: #f4f2ed;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 24px;
+
+  text-shadow: 0 0 32px rgba(201, 184, 138, 0.18);
+`;
+
+export const CaseSubtitle = styled.p`
+  max-width: 60ch;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(244, 242, 237, 0.78);
+  white-space: pre-line;
+`;
+
+export const CaseDivider = styled.div`
+  margin: 24px auto 0;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 184, 138, 0.7),
+    transparent
+  );
+`;
+
+/* =========================
+   CONTENT CONTAINER (NO HALO)
+========================= */
+export const Container = styled.section`
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+`;
+
+/* =========================
+   VIDEO
+========================= */
+export const CaseVideo = styled.video`
+  width: 100%;
+  border-radius: 18px;
+  margin-bottom: 60px;
+  background: #000;
+
+  box-shadow: 0 0 30px rgba(201, 184, 138, 0.18),
+    0 0 90px rgba(201, 184, 138, 0.08);
+`;
+
+/* =========================
+   CONTENT
+========================= */
+export const CaseContent = styled.div`
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(244, 242, 237, 0.82);
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    margin-top: 48px;
+    margin-bottom: 18px;
+    font-size: 1.3rem;
+    color: #f4f2ed;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 24px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+`;
+
+/* =========================
+   META
+========================= */
+export const CaseMeta = styled.div`
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(201, 184, 138, 0.25);
+
+  strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #f4f2ed;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+  }
+
+  span {
+    color: rgba(201, 184, 138, 0.9);
+  }
+`;
+
+/* =========================
+   ACTIONS
+========================= */
+export const CaseActions = styled.div`
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+`;
+
+export const CaseButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 28px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(201, 184, 138, 0.45);
+  background: rgba(201, 184, 138, 0.18);
+  color: #f4f2ed;
+
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    opacity: 0.85;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(201, 184, 138, 0.26);
+    box-shadow: 0 0 28px rgba(201, 184, 138, 0.28);
+    color: #f4f2ed;
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+`;
+
+export const CaseGhostButton = styled(CaseButton)`
+  background: transparent;
+  color: rgba(201, 184, 138, 0.95);
+
+  &:hover {
+    background: rgba(201, 184, 138, 0.18);
+    color: rgba(201, 184, 138, 0.95);
+  }
+`;
+
+export const GitHubIconButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  background: rgba(18, 19, 20, 0.6);
+  border: 1px solid rgba(201, 184, 138, 0.35);
+
+  color: rgba(244, 242, 237, 0.9);
+
+  transition: all 0.35s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    background: rgba(201, 184, 138, 0.22);
+    box-shadow: 0 0 28px rgba(201, 184, 138, 0.25);
+    transform: translateY(-2px);
+    color: #f4f2ed;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
 `;

@@ -46,7 +46,7 @@ export default function Footer() {
         {/* ---------- TOP ---------- */}
         <Box
           sx={{
-            py: { xs: 3, md: 7 },
+            py: { xs: 3, md: 2.5 },
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
@@ -74,7 +74,9 @@ export default function Footer() {
                 fontFamily: "Playfair Display, serif",
                 letterSpacing: "0.32em",
                 fontSize: { xs: "0.95rem", sm: "1.05rem" },
-                color: "rgba(235,235,232,0.9)",
+                color: "rgba(201,169,106,0.55)",
+                textShadow: "0 0 12px rgba(201,169,106,0.25)",
+
                 mb: 1,
               }}
             >
@@ -121,6 +123,8 @@ export default function Footer() {
               fontFamily: "Playfair Display, serif",
               fontSize: "0.7rem",
               color: "rgba(180,180,175,0.5)",
+              mb: { xs: 1, sm: 0 },
+              textShadow: "0 0 8px rgba(180,180,175,0.15)",
             }}
           >
             © {new Date().getFullYear()} WEBCODE-ART. All Rights Reserved.

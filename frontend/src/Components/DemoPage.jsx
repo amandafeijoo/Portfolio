@@ -3,81 +3,91 @@ import { useParams } from "react-router-dom";
 import { ProjectContext } from "../Context/ProjectContext";
 import { detailedDescriptions } from "../data/projectDetails";
 import {
+  CaseHeroWrap,
+  CaseHeroInner,
   Container,
-  AnimatedLetter,
-  StyledText,
-  StyledVideo,
-  DescriptionContainer,
-} from "./styles/DemoPage.styles"; 
-import { Button } from "@mui/material";
+  CaseKicker,
+  CaseTitle,
+  CaseButton,
+  CaseSubtitle,
+  CaseDivider,
+  CaseVideo,
+  CaseContent,
+  CaseMeta,
+  CaseActions,
+  CaseGhostButton,
+  GitHubIconButton,
+} from "./styles/DemoPage.styles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LazyLoad from "react-lazyload";
 
-const DemoPage = () => {
+export default function DemoPage() {
   const { projectId } = useParams();
   const { projectList } = useContext(ProjectContext);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => window.scrollTo(0, 0), []);
 
   const project = projectList.find((p) => p.title === projectId);
-
-  if (!project) {
-    return <div>Demo not found</div>;
-  }
+  if (!project) return null;
 
   return (
-    <Container>
-      <StyledText>
-        <AnimatedLetter>{project.title.charAt(0)}</AnimatedLetter>
-        {project.title.slice(1)}
-      </StyledText>
+    <>
+      {/* =========================
+         HERO (HALO + TITLES)
+      ========================= */}
+      <CaseHeroWrap>
+        <CaseHeroInner>
+          <CaseKicker>
+            {project.web ? "Live Project" : "Demo Project"}
+          </CaseKicker>
 
-      <LazyLoad height={200} offset={100}>
-        <StyledVideo controls>
-          <source src={project.demoLink} type="video/mp4" />
-          Your browser does not support the video tag.
-        </StyledVideo>
-      </LazyLoad>
+          <CaseTitle>{project.title}</CaseTitle>
 
-      <DescriptionContainer
-        dangerouslySetInnerHTML={{
-          __html: `<p>${project.comment}</p><p>Technologies: ${project.technologies}</p><hr style="border: 1px solid #d8bfd8;" />${detailedDescriptions[project.title]}`,
-        }}
-      />
+          <CaseSubtitle>{project.comment}</CaseSubtitle>
 
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <Button
-          href={project.githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            fontFamily: "'Source Code Pro', monospace",
-            padding: "12px 22px",
-            backgroundColor: "rgba(200, 162, 200, 0.3)",
-            borderRadius: "12px",
-            color: "#a080a0",
-            display: "flex",
-            textDecoration: "none",
-            transition: "all 0.3s ease",
-            "&:hover": {
-              backgroundColor: "rgba(200, 162, 200, 0.5)",
-              color: "#d8bfd8",
-            },
-            "& svg": {
-              color: "white",
-              marginRight: "8px",
-            },
+          <CaseDivider />
+        </CaseHeroInner>
+      </CaseHeroWrap>
+
+      {/* =========================
+         MAIN CONTENT
+      ========================= */}
+      <Container>
+        <LazyLoad height={300} offset={150}>
+          <CaseVideo controls>
+            <source src={project.demoLink} type="video/mp4" />
+          </CaseVideo>
+        </LazyLoad>
+
+        <CaseContent
+          dangerouslySetInnerHTML={{
+            __html: detailedDescriptions[project.title],
           }}
-        >
-          <GitHubIcon />
-          View on GitHub
-        </Button>
-      </div>
-    </Container>
+        />
+
+        <CaseMeta>
+          <strong>Technologies</strong>
+          <span>{project.technologies}</span>
+        </CaseMeta>
+
+        <CaseActions>
+          {project.githubLink && (
+            <GitHubIconButton
+              href={project.githubLink}
+              target="_blank"
+              aria-label="View on GitHub"
+            >
+              <GitHubIcon />
+            </GitHubIconButton>
+          )}
+
+          {project.web && (
+            <CaseGhostButton href={project.web} target="_blank">
+              Visit Website
+            </CaseGhostButton>
+          )}
+        </CaseActions>
+      </Container>
+    </>
   );
-};
-
-export default DemoPage;
-
+}

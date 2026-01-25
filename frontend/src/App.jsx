@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
-import { ProjectProvider } from "./Context/ProjectContext";
+import { ProjectProvider } from "./Context/ProjectProvider";
 import { CursorProvider } from "./Context/CursorContext";
 
 import Header from "./Components/Header";
@@ -56,40 +61,58 @@ const isLocalhost =
   window.location.hostname === "localhost" ||
   window.location.hostname === "127.0.0.1";
 
-function App() {
-  const [showIntro, setShowIntro] = useState(true);
+/* =========================
+   APP CONTENT (CON RUTA)
+========================= */
+function AppContent() {
+  const location = useLocation();
 
+  // 👉 solo mostrar loader si estamos en "/"
+  const [showIntro, setShowIntro] = useState(location.pathname === "/");
+
+  return (
+    <>
+      {/* 🔥 INTRO LOADER SOLO EN HOME */}
+      {location.pathname === "/" && showIntro && (
+        <IntroLoader onFinish={() => setShowIntro(false)} />
+      )}
+
+      {/* 👇 APP REAL (SE VE DETRÁS DEL LOADER) */}
+      <AppContainer>
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/orbit-section" element={<OrbitPage />} />
+          <Route path="/process-section" element={<ProcessSection />} />
+          <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/tech-stack" element={<TechStack />} />
+          <Route path="/profile-info-box" element={<ProfileInfoBox />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contactform" element={<ContactForm />} />
+          <Route path="/contactpage" element={<ContactPage />} />
+          <Route path="/demopage/:projectId" element={<DemoPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/legal-notice" element={<LegalNotice />} />
+        </Routes>
+
+        <Footer />
+      </AppContainer>
+    </>
+  );
+}
+
+/* =========================
+   APP ROOT
+========================= */
+function App() {
   return (
     <CursorProvider>
       <ProjectProvider>
         <Router basename={isLocalhost ? "/static" : undefined}>
           <GlobalStyle />
           <CustomCursor />
-
-          {/* 👇 INTRO LOADER (SOLO AL ENTRAR) */}
-          {showIntro && <IntroLoader onFinish={() => setShowIntro(false)} />}
-
-          {/* 👇 APP REAL (SE MONTA DETRÁS) */}
-          <AppContainer>
-            <Header />
-
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/orbit-section" element={<OrbitPage />} />
-              <Route path="/process-section" element={<ProcessSection />} />
-              <Route path="/aboutme" element={<AboutMe />} />
-              <Route path="/tech-stack" element={<TechStack />} />
-              <Route path="/profile-info-box" element={<ProfileInfoBox />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contactform" element={<ContactForm />} />
-              <Route path="/contactpage" element={<ContactPage />} />
-              <Route path="/demopage/:projectId" element={<DemoPage />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/legal-notice" element={<LegalNotice />} />
-            </Routes>
-
-            <Footer />
-          </AppContainer>
+          <AppContent />
         </Router>
       </ProjectProvider>
     </CursorProvider>
