@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ServicesSection, DragWrapper } from "./styles/ServicesOrbit.styles";
+import { ServicesSection, DragWrapper } from "./ServicesOrbit.styles";
 import ServiceCard from "./ServiceCard";
 
 /* ===============================

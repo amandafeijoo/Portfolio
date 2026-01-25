@@ -6,7 +6,7 @@ import {
   Feature,
   CardFooter,
   PriceDivider,
-} from "./styles/ServiceCard.styles";
+} from "./ServiceCard.styles";
 
 export default function ServiceCard({
   title,

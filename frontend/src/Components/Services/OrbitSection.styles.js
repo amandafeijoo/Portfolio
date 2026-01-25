@@ -8,7 +8,7 @@ export const OrbitSectionWrapper = styled.section`
   position: relative;
   width: 100vw;
   padding-top: clamp(140px, 18vw, 220px);
-  padding-bottom: clamp(90px, 12vw, 170px);
+  padding-bottom: clamp(160px, 22vw, 240px); 
   left: 50%;
   transform: translateX(-50%);
 
@@ -20,7 +20,7 @@ export const OrbitSectionWrapper = styled.section`
   @media (max-width: 768px) {
     min-height: 92vh;
     padding-top: 16px;
-    padding-bottom: 48px;
+    padding-bottom: 140px;
   }
 `;
 
@@ -69,18 +69,154 @@ export const OrbitFadeMask = styled.div`
 `;
 
 /* ===============================
-   TEXT WRAPPER
+   HERO TEXT TOP (WOW)
 ================================ */
-export const HeroTextWrap = styled.div`
+export const HeroTextTop = styled(motion.div)`
   position: absolute;
-  top: 160px;
+  top: clamp(90px, 14vw, 160px);
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
   z-index: 5;
+  text-align: center;
+  max-width: 720px;
+  padding: 0 20px;
 
   @media (max-width: 768px) {
-    top: 14%;
+    top: 12%;
+    max-width: 92%;
+  }
+`;
+
+/* ===============================
+   SERVICES LABEL
+================================ */
+export const ServicesLabel = styled.span`
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  letter-spacing: 0.38em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(240, 201, 123, 0.9);
+
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
+    0 0 18px rgba(201, 169, 106, 0.45), 0 0 40px rgba(201, 169, 106, 0.25);
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+  }
+`;
+
+/* ===============================
+   HERO TITLE
+================================ */
+export const HeroTitle = styled(motion.h1)`
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  letter-spacing: clamp(0.05em, 0.3vw, 0.08em);
+  line-height: 1.05;
+  color: rgba(237, 231, 217, 0.96);
+
+  font-size: clamp(2.2rem, 5.6vw, 2.7rem);
+
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.25), 0 0 28px rgba(201, 169, 106, 0.25),
+    0 0 60px rgba(201, 169, 106, 0.18);
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.7rem, 6.8vw, 2.2rem);
+    line-height: 1.15;
+  }
+`;
+
+/* ===============================
+   HERO DIVIDER
+================================ */
+export const HeroDivider = styled.div`
+  width: 96px;
+  height: 1px;
+  margin: 26px auto 18px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(201, 169, 106, 0.85),
+    transparent
+  );
+
+  box-shadow: 0 0 14px rgba(201, 169, 106, 0.55);
+
+  @media (max-width: 768px) {
+    width: 64px;
+    margin: 22px auto 16px;
+  }
+`;
+
+/* ===============================
+   HERO SUBTITLE
+================================ */
+export const HeroSubtitle = styled.p`
+  max-width: 520px;
+  margin: 0 auto 34px;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+
+  @media (max-width: 768px) {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    max-width: 90%;
+  }
+`;
+
+/* ===============================
+   HERO ROW (PILLS)
+================================ */
+export const HeroRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+`;
+
+/* ===============================
+   HERO PILL
+================================ */
+export const HeroPill = styled.div`
+  padding: 8px 16px;
+  border-radius: 999px;
+
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  color: rgba(237, 231, 217, 0.85);
+
+  background: rgba(15, 15, 15, 0.55);
+  border: 1px solid rgba(201, 169, 106, 0.35);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 169, 106, 0.7);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6),
+      0 0 24px rgba(201, 169, 106, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.58rem;
+    padding: 7px 14px;
   }
 `;
 
@@ -100,66 +236,11 @@ export const TextHalo = styled.div`
 `;
 
 /* ===============================
-   TITLE
+    SERVICES ZONE
 ================================ */
-
-export const HeroTitle = styled(motion.h1)`
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: rgba(237, 231, 217, 0.95);
-
-  font-size: clamp(2.2rem, 6vw, 2.6rem);
-
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4),
-    0 0 8px rgba(255, 255, 255, 0.25), 0 0 26px rgba(201, 169, 106, 0.22),
-    0 0 60px rgba(201, 169, 106, 0.16);
-
-  @media (max-width: 768px) {
-    font-size: clamp(1.6rem, 6.8vw, 2rem);
-    line-height: 1.15;
-  }
-`;
-
-/* ===============================
-   DASH
-================================ */
-export const HeroDash = styled.span`
-  display: inline-block;
-  margin: 0 0.12em;
-  color: rgba(201, 169, 106, 0.65);
-  transform: translateY(-0.04em);
-
-  text-shadow: 0 0 8px rgba(201, 169, 106, 0.55),
-    0 0 26px rgba(201, 169, 106, 0.38), 0 0 60px rgba(201, 169, 106, 0.28);
-
-  @media (max-width: 768px) {
-    margin: 0 0.08em;
-  }
-`;
-
-/* ===============================
-   SUBTITLE
-================================ */
-export const HeroSubtitle = styled.p`
-  margin-top: 14px;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.48);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-align: center;
-  max-width: 420px;
-
-  @media (max-width: 768px) {
-    margin-top: 30px;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    max-width: 320px;
-  }
-`;
 
 export const ServicesZone = styled.div`
-  margin-top: clamp(8px, 8vw, 10px);
+  margin-top: clamp(40px, 8vw, 50px);
   display: flex;
   justify-content: center;
   position: relative;
@@ -179,29 +260,6 @@ export const ServicesHeader = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 14px;
-`;
-
-/* ===============================
-   SERVICES LABEL
-================================ */
-export const ServicesLabel = styled.span`
-  display: inline-block;
-  font-size: 1rem;
-  letter-spacing: 0.32em;
-  font-weight: 500;
-  color: rgba(240, 201, 123, 0.95);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.35),
-    0 0 14px rgba(201, 169, 106, 0.35), 0 0 40px rgba(201, 169, 106, 0.18);
-
-  @media (max-width: 768px) {
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    opacity: 0.75;
-    margin-bottom: 8px;
-  }
 `;
 
 /* ===============================
@@ -231,24 +289,26 @@ export const ServicesDivider = styled.div`
 /* ===============================
    DRAG HINT
 ================================ */
-export const DragHint = styled(motion.div)`
-  display: flex;
+export const DragHint = styled.span`
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 6px;
-  margin-bottom: 6px;
 
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  margin-top: 26px;
+
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(201, 184, 138, 0.35);
 
+  color: rgba(201, 184, 138, 0.45);
+
+  opacity: 1.2;
   pointer-events: none;
 
-  span {
-    font-size: 1.5rem;
-    font-weight: 700;
+  &::before {
+    content: "↔";
+    font-size: 0.85rem;
+    opacity: 0.6;
   }
 
   /* 📱 MOBILE */

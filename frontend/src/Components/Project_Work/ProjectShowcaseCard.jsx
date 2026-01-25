@@ -12,8 +12,8 @@ import {
   Tagline,
   ActionsRow,
   ActionBtn,
-  GhostBtn
-} from "./styles/ProjectShowcaseCard.styles";
+  GhostBtn,
+} from "./ProjectShowcaseCard.styles";
 
 export default function ProjectShowcaseCard({ project, variant = "featured" }) {
   const navigate = useNavigate();
@@ -33,9 +33,21 @@ export default function ProjectShowcaseCard({ project, variant = "featured" }) {
   };
 
   return (
-    <CardWrap $variant={variant} onClick={handlePrimary} role="button" tabIndex={0}>
+    <CardWrap
+      $variant={variant}
+      onClick={handlePrimary}
+      role="button"
+      tabIndex={0}
+    >
       <MediaWrap>
-        <Video autoPlay muted loop playsInline preload="metadata" poster={project.posterSrc}>
+        <Video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={project.posterSrc}
+        >
           <source src={project.videoSrc} type="video/mp4" />
         </Video>
       </MediaWrap>
@@ -47,7 +59,15 @@ export default function ProjectShowcaseCard({ project, variant = "featured" }) {
 
         <ActionsRow>
           <ActionBtn onClick={handlePrimary}>
-            {isLive ? <>Visit Website <LaunchIcon /></> : <>View Case <ArrowForwardIcon /></>}
+            {isLive ? (
+              <>
+                Visit Website <LaunchIcon />
+              </>
+            ) : (
+              <>
+                View Case <ArrowForwardIcon />
+              </>
+            )}
           </ActionBtn>
 
           {project.githubLink && (

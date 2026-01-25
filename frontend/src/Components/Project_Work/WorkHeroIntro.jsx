@@ -1,5 +1,5 @@
-// WorkHeroIntro.jsx
 import React from "react";
+import ThreeWorkGridBackground from "./ThreeWorkParticlesBackground";
 import {
   HeroWrap,
   HeroInner,
@@ -7,11 +7,12 @@ import {
   Headline,
   Subline,
   Divider,
-} from "./styles/WorkHeroIntro.styles";
-
+} from "./WorkHeroIntro.styles";
 export default function WorkHeroIntro() {
   return (
     <HeroWrap>
+      <ThreeWorkGridBackground />
+
       <HeroInner>
         <Kicker>Selected Work</Kicker>
 

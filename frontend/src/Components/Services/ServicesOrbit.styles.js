@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 export const ServicesSection = styled.section`
   position: relative;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   display: flex;
   justify-content: center;
   margin-top: -80px;
-  align-items: flex-end; 
+  align-items: flex-end;
   background: transparent;
   pointer-events: auto;
 `;
@@ -26,7 +26,7 @@ export const DragWrapper = styled(motion.div)`
   align-items: center;
 
   width: 100%;
-  height: 460px; 
+  height: 460px;
   padding-bottom: 6vh;
 
   cursor: default;

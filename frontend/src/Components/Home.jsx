@@ -7,12 +7,13 @@ const HeroSphere = lazy(() => import("./HeroSphere"));
 const WhatIDoText = lazy(() => import("./WhatIDoText"));
 const WhatIDo = lazy(() => import("./WhatIDo"));
 const FloatingHintMenu = lazy(() => import("./FloatingHintMenu"));
-const OrbitSection = lazy(() => import("./OrbitSection"));
+const OrbitSection = lazy(() => import("./Services/OrbitSection"));
 const ProcessSection = lazy(() => import("./ProcessSection"));
 const WorkSection = lazy(() => import("./WorkSection"));
 const WorkFolders = lazy(() => import("./WorkFolders"));
-const HomeContactInvite = lazy(() => import("./HomeContactInvite/HomeContactInvite"));
-// const ContactSummary = lazy(() => import("./ContactSummary"));
+const HomeContactInvite = lazy(() =>
+  import("./HomeContactInvite/HomeContactInvite")
+);
 
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
@@ -60,10 +61,6 @@ export default function Home() {
       <Suspense fallback={null}>
         <HomeContactInvite />
       </Suspense>
-
-      {/* <Suspense fallback={null}>
-        <ContactSummary />
-      </Suspense> */}
     </>
   );
 }

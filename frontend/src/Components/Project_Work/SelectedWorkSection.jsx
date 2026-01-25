@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from "react";
-import { ProjectContext } from "../Context/ProjectContext";
-import { ShowcaseWrap, ShowcaseGrid } from "./styles/SelectedWork.styles";
+import { ProjectContext } from "../../Context/ProjectContext";
+import { ShowcaseWrap, ShowcaseGrid } from "./SelectedWork.styles";
 import ProjectShowcaseCard from "./ProjectShowcaseCard";
 
 export default function SelectedWorkSection() {

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export const Card = styled(motion.div)`
   position: relative;
   width: 280px;
-  margin-top: -220px;
+  margin-top: -190px;
   margin-bottom: -370px;
   max-width: 90%;
   padding: 34px 26px 30px;

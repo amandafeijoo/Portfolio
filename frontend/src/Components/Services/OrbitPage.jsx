@@ -7,7 +7,8 @@ export default function OrbitPage() {
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        marginBottom: 0,
+        marginTop: 50,
+        marginBottom: 160,
         paddingBottom: 0,
       }}
     >

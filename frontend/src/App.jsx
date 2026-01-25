@@ -20,12 +20,12 @@ import IntroLoader from "./Components/IntroLoader";
    PAGES
 ========================= */
 import Home from "./Components/Home";
-import OrbitPage from "./Components/OrbitPage";
+import OrbitPage from "./Components/Services/OrbitPage";
 import ProcessSection from "./Components/ProcessSection";
 import AboutMe from "./Components/AboutMe";
 import TechStack from "./Components/TechStack";
 import ProfileInfoBox from "./Components/ProfileInfoBox";
-import Projects from "./Components/Projects";
+import Projects from "./Components/Project_Work/Projects";
 import ContactPage from "./Components/Contact/ContactPage";
 import ContactForm from "./Components/ContactForm";
 import DemoPage from "./Components/DemoPage";
