@@ -11,6 +11,7 @@ const OrbitSection = lazy(() => import("./OrbitSection"));
 const ProcessSection = lazy(() => import("./ProcessSection"));
 const WorkSection = lazy(() => import("./WorkSection"));
 const WorkFolders = lazy(() => import("./WorkFolders"));
+const HomeContactInvite = lazy(() => import("./HomeContactInvite/HomeContactInvite"));
 // const ContactSummary = lazy(() => import("./ContactSummary"));
 
 export default function Home() {
@@ -55,6 +56,9 @@ export default function Home() {
       <Suspense fallback={null}>
         <WorkSection />
         <WorkFolders />
+      </Suspense>
+      <Suspense fallback={null}>
+        <HomeContactInvite />
       </Suspense>
 
       {/* <Suspense fallback={null}>
