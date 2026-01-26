@@ -17,8 +17,7 @@ const getCSRFToken = () => {
   return null;
 };
 
-const validateEmail = (email) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 /* =========================
    COMPONENT
@@ -58,11 +57,7 @@ export default function ContactForm() {
     }
 
     if (!validateEmail(formData.email)) {
-      Swal.fire(
-        "Invalid email",
-        "Please use a valid email address.",
-        "error"
-      );
+      Swal.fire("Invalid email", "Please use a valid email address.", "error");
       return;
     }
 
@@ -70,10 +65,11 @@ export default function ContactForm() {
     const payload = {
       name: formData.name,
       email: formData.email,
-      project_type: formData.projectType, // 👈 CLAVE
+      project_type: formData.projectType,
       budget: formData.budget,
-      project_details: formData.message, // 👈 CLAVE
+      message: formData.message,
     };
+    /* ---------- ENVÍO ---------- */
 
     setLoading(true);
 
@@ -146,26 +142,16 @@ export default function ContactForm() {
           <option value="Essential Website">
             Essential Website (1–3 pages)
           </option>
-          <option value="Business Website">
-            Business Website (4–6 pages)
-          </option>
-          <option value="Custom Web Application">
-            Custom Web Application
-          </option>
-          <option value="Not sure yet">
-            Not sure yet / Let’s discuss
-          </option>
+          <option value="Business Website">Business Website (4–6 pages)</option>
+          <option value="Custom Web Application">Custom Web Application</option>
+          <option value="Not sure yet">Not sure yet / Let’s discuss</option>
         </Select>
       </Field>
 
       {/* BUDGET */}
       <Field>
         <Label>Budget range (optional)</Label>
-        <Select
-          name="budget"
-          value={formData.budget}
-          onChange={handleChange}
-        >
+        <Select name="budget" value={formData.budget} onChange={handleChange}>
           <option value="">Select a range</option>
           <option value="< 1.000 €">Under €1.000</option>
           <option value="1.000 – 2.000 €">€1.000 – €2.000</option>
@@ -313,4 +299,3 @@ const Hint = styled.p`
   font-size: 0.75rem;
   opacity: 0.6;
 `;
-
