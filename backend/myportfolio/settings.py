@@ -50,6 +50,18 @@ INSTALLED_APPS = [
     'myportfolio.contact',
     'corsheaders',
 ]
+
+# Django REST Framework - Throttling (anti-spam)
+
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "10/minute",
+    },
+}
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",  # <- imprescindible
@@ -109,16 +121,26 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = False         # True solo cuando este segura
 
 
+# Email settings (Resend)
+
+CONTACT_EMAIL = "contact@webcode-art.com"
+DEFAULT_FROM_EMAIL = CONTACT_EMAIL
+
+RESEND_API_KEY = config("RESEND_API_KEY")
+
+
+
+
 # Email (contact form)
 
-EMAIL_BACKEND    = config('EMAIL_BACKEND')
-EMAIL_HOST       = config('EMAIL_HOST')
-EMAIL_PORT       = config('EMAIL_PORT', cast=int)
-EMAIL_USE_TLS    = config('EMAIL_USE_TLS', cast=bool)
-EMAIL_HOST_USER  = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL  = config('DEFAULT_FROM_EMAIL')
-EMAIL_TIMEOUT = 10  # 👈 ESTO AQUÍ
+# EMAIL_BACKEND    = config('EMAIL_BACKEND')
+# EMAIL_HOST       = config('EMAIL_HOST')
+# EMAIL_PORT       = config('EMAIL_PORT', cast=int)
+# EMAIL_USE_TLS    = config('EMAIL_USE_TLS', cast=bool)
+# EMAIL_HOST_USER  = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL  = config('DEFAULT_FROM_EMAIL')
+# EMAIL_TIMEOUT = 10  # 👈 ESTO AQUÍ
 
 
 
@@ -156,3 +178,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
