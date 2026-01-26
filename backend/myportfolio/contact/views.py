@@ -42,10 +42,11 @@ class ContactCreateView(APIView):
                 reply_to=[data["email"]],
             )
 
+            # 🔑 CLAVE: no bloquear el worker
             try:
-                email.send(fail_silently=False)
-            except Exception as e:
-                logger.error(f"Email sending failed: {str(e)}")
+                email.send(fail_silently=True)
+            except Exception:
+                pass
 
             logger.info("Contact form processed successfully")
 
