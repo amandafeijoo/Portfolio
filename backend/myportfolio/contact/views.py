@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class ContactCreateView(APIView):
-    permission_classes = []  # público
+    permission_classes = []  # endpoint público
 
     def post(self, request):
         logger.info("Received contact form submission")
@@ -19,7 +19,7 @@ class ContactCreateView(APIView):
         serializer = ContactSerializer(data=request.data)
 
         if serializer.is_valid():
-            contact = serializer.save()
+            serializer.save()
             data = serializer.validated_data
 
             # =====================

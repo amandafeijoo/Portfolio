@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from myportfolio.contact.views import ContactView
+from myportfolio.contact.views import ContactCreateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("contact/", ContactView.as_view(), name="contact"),
+    path("contact/", ContactCreateView.as_view(), name="contact"),
 
     # raíz de la SPA
     path("", TemplateView.as_view(template_name="index.html"), name="home"),
