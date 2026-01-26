@@ -10,9 +10,6 @@ from .serializers import ContactSerializer
 
 logger = logging.getLogger(__name__)
 
-# Inicializa Resend
-resend.api_key = settings.RESEND_API_KEY
-
 
 class ContactCreateView(APIView):
     permission_classes = []  # endpoint público
@@ -28,6 +25,9 @@ class ContactCreateView(APIView):
 
         serializer.save()
         data = serializer.validated_data
+
+        # 🔐 Inicializar Resend SOLO aquí
+        resend.api_key = settings.RESEND_API_KEY
 
         # =====================
         # 1️⃣ EMAIL PARA TI (NOTIFICACIÓN)
