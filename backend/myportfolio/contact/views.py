@@ -10,30 +10,27 @@ from .serializers import ContactSerializer
 
 logger = logging.getLogger(__name__)
 
+# Inicializa Resend
+resend.api_key = settings.RESEND_API_KEY
+
 
 class ContactCreateView(APIView):
-    permission_classes = []  # endpoint público
+    permission_classes = []
 
     def post(self, request):
-        logger.info("Received contact form submission")
-
         serializer = ContactSerializer(data=request.data)
 
         if not serializer.is_valid():
-            logger.warning(f"Contact form validation errors: {serializer.errors}")
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         serializer.save()
         data = serializer.validated_data
 
-        # 🔐 Inicializar Resend SOLO aquí
-        resend.api_key = settings.RESEND_API_KEY
-
         # =====================
-        # 1️⃣ EMAIL PARA TI (NOTIFICACIÓN)
+        # 1️⃣ EMAIL PARA TI
         # =====================
         try:
-            resend.emails.send({
+            resend.Emails.send({
                 "from": "Webcode-Art <contact@webcode-art.com>",
                 "to": ["amandaflores@webcode-art.com"],
                 "reply_to": data["email"],
@@ -52,18 +49,18 @@ class ContactCreateView(APIView):
             logger.error(f"Admin email failed: {e}")
 
         # =====================
-        # 2️⃣ CONFIRMACIÓN AL CLIENTE (EN + ES)
+        # 2️⃣ CONFIRMACIÓN CLIENTE (EN + ES)
         # =====================
         try:
-            resend.emails.send({
+            resend.Emails.send({
                 "from": "Amanda Flores – Webcode-Art <contact@webcode-art.com>",
                 "to": [data["email"]],
                 "subject": "Thank you for contacting Webcode-Art",
                 "html": f"""
                     <p><strong>Hello {data['name']},</strong></p>
 
-                    <p>Thank you for reaching out to me ✨  
-                    I’ve received your message successfully and will get back to you as soon as possible.</p>
+                    <p>Thank you for reaching out ✨  
+                    I’ve received your message successfully and will reply as soon as possible.</p>
 
                     <p>Best regards,<br>
                     <strong>Amanda Flores</strong><br>
@@ -84,9 +81,8 @@ class ContactCreateView(APIView):
         except Exception as e:
             logger.error(f"Client confirmation email failed: {e}")
 
-        logger.info("Contact form processed successfully")
-
         return Response(
             {"message": "Your request has been sent successfully."},
             status=status.HTTP_201_CREATED,
         )
+
