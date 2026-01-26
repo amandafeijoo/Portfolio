@@ -17,7 +17,8 @@ const getCSRFToken = () => {
   return null;
 };
 
-const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const validateEmail = (email) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 /* =========================
    COMPONENT
@@ -41,6 +42,7 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    /* ---------- VALIDATION ---------- */
     if (
       !formData.name ||
       !formData.email ||
@@ -56,14 +58,27 @@ export default function ContactForm() {
     }
 
     if (!validateEmail(formData.email)) {
-      Swal.fire("Invalid email", "Please use a valid email address.", "error");
+      Swal.fire(
+        "Invalid email",
+        "Please use a valid email address.",
+        "error"
+      );
       return;
     }
+
+    /* ---------- PAYLOAD CORRECTO PARA DJANGO ---------- */
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      project_type: formData.projectType, // 👈 CLAVE
+      budget: formData.budget,
+      project_details: formData.message, // 👈 CLAVE
+    };
 
     setLoading(true);
 
     try {
-      await axios.post("/contact/", formData, {
+      await axios.post("/contact/", payload, {
         headers: {
           "X-CSRFToken": getCSRFToken(),
         },
@@ -75,6 +90,7 @@ export default function ContactForm() {
         "success"
       );
 
+      /* ---------- RESET ---------- */
       setFormData({
         name: "",
         email: "",
@@ -83,6 +99,7 @@ export default function ContactForm() {
         message: "",
       });
     } catch (error) {
+      console.error("Contact form error:", error);
       Swal.fire(
         "Error",
         "Something went wrong. Please try again later.",
@@ -129,16 +146,26 @@ export default function ContactForm() {
           <option value="Essential Website">
             Essential Website (1–3 pages)
           </option>
-          <option value="Business Website">Business Website (4–6 pages)</option>
-          <option value="Custom Web Application">Custom Web Application</option>
-          <option value="Not sure yet">Not sure yet / Let’s discuss</option>
+          <option value="Business Website">
+            Business Website (4–6 pages)
+          </option>
+          <option value="Custom Web Application">
+            Custom Web Application
+          </option>
+          <option value="Not sure yet">
+            Not sure yet / Let’s discuss
+          </option>
         </Select>
       </Field>
 
       {/* BUDGET */}
       <Field>
         <Label>Budget range (optional)</Label>
-        <Select name="budget" value={formData.budget} onChange={handleChange}>
+        <Select
+          name="budget"
+          value={formData.budget}
+          onChange={handleChange}
+        >
           <option value="">Select a range</option>
           <option value="< 1.000 €">Under €1.000</option>
           <option value="1.000 – 2.000 €">€1.000 – €2.000</option>
@@ -163,30 +190,29 @@ export default function ContactForm() {
       <SubmitButton disabled={loading}>
         {loading ? "Sending..." : "Request a quote →"}
       </SubmitButton>
+
       <PrivacyNote>
         By submitting this form, you agree to the processing of your data as
         described in the <a href="/privacy-policy">Privacy Policy</a>.
       </PrivacyNote>
+
       <Hint>I usually reply within 24–48 hours.</Hint>
     </FormWrapper>
   );
 }
 
 /* =========================
-   STYLES
+   STYLES (SIN CAMBIOS)
 ========================= */
 
 const FormWrapper = styled.form`
   max-width: 640px;
   margin: 0 auto;
-
   padding: 56px 56px 64px;
   border-radius: 28px;
-
   display: flex;
   flex-direction: column;
   gap: 32px;
-
   backdrop-filter: blur(22px);
 `;
 
@@ -238,18 +264,6 @@ const Select = styled.select`
   }
 `;
 
-const PrivacyNote = styled.p`
-  margin-top: 12px;
-  font-size: 0.7rem;
-  opacity: 0.55;
-  max-width: 420px;
-
-  a {
-    color: rgba(201, 184, 138, 0.9);
-    text-decoration: underline;
-  }
-`;
-
 const Textarea = styled.textarea`
   ${baseInput}
   resize: vertical;
@@ -258,19 +272,15 @@ const Textarea = styled.textarea`
 const SubmitButton = styled.button`
   margin-top: 24px;
   align-self: flex-start;
-
   padding: 12px 28px;
   border-radius: 14px;
   border: 1px solid rgba(201, 184, 138, 0.45);
-
   background: rgba(201, 184, 138, 0.18);
   color: #f4f2ed;
-
   font-family: "Source Code Pro", monospace;
   font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-
   cursor: pointer;
   transition: all 0.35s ease;
 
@@ -286,8 +296,21 @@ const SubmitButton = styled.button`
   }
 `;
 
+const PrivacyNote = styled.p`
+  margin-top: 12px;
+  font-size: 0.7rem;
+  opacity: 0.55;
+  max-width: 420px;
+
+  a {
+    color: rgba(201, 184, 138, 0.9);
+    text-decoration: underline;
+  }
+`;
+
 const Hint = styled.p`
   margin-top: 8px;
   font-size: 0.75rem;
   opacity: 0.6;
 `;
+
