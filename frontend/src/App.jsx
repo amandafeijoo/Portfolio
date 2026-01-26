@@ -29,7 +29,7 @@ import Projects from "./Components/Project_Work/Projects";
 import ContactPage from "./Components/Contact/ContactPage";
 import ContactForm from "./Components/ContactForm";
 import DemoPage from "./Components/DemoPage";
-import PrivacyPolicy from "./Components/PrivacyPolicy";
+import PrivacyPage from "./Components/Privacy_Terms/PrivacyPage";
 import LegalNotice from "./Components/LegalNotice";
 
 /* =========================
@@ -92,7 +92,7 @@ function AppContent() {
           <Route path="/contactform" element={<ContactForm />} />
           <Route path="/contactpage" element={<ContactPage />} />
           <Route path="/demopage/:projectId" element={<DemoPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPage />} />
           <Route path="/legal-notice" element={<LegalNotice />} />
         </Routes>
 

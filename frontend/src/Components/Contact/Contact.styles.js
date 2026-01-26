@@ -152,7 +152,7 @@ export const SectionTitle = styled.h2`
 `;
 
 export const SectionLead = styled.p`
-  max-width: 72ch;
+  max-width: 100ch;
   margin: 0 0 22px;
   color: rgba(244, 242, 237, 0.74);
   line-height: 1.65;

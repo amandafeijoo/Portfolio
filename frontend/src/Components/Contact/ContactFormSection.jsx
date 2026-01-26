@@ -1,19 +1,16 @@
 import React from "react";
-import {
-  Section,
-  SectionTitle,
-  SectionLead,
-  FormCard,
-  FormCardTopGlow,
-} from "./Contact.styles";
+import { Section, SectionTitle, SectionLead, FormCard } from "./Contact.styles";
 
 export default function ContactFormSection({ children }) {
   return (
     <Section>
-      <SectionTitle>Tell me about your idea</SectionTitle>
+      {/* 🟣 TÍTULO DE ACCIÓN */}
+      <SectionTitle>Tell me about your project</SectionTitle>
+
+      {/* 🟣 TEXTO DE CONTEXTO */}
       <SectionLead>
-        Share a few details and I’ll come back with questions (if needed),
-        timeline and a clear next step.
+        Share a few details about what you’re looking to build. I’ll get back to
+        you with next steps, availability, and a clear plan.
       </SectionLead>
 
       <FormCard>{children}</FormCard>

@@ -26,6 +26,8 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    projectType: "",
+    budget: "",
     message: "",
   });
 
@@ -39,8 +41,17 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
-      Swal.fire("Missing info", "Please fill in all fields.", "warning");
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.projectType ||
+      !formData.message
+    ) {
+      Swal.fire(
+        "Missing information",
+        "Please fill in all required fields.",
+        "warning"
+      );
       return;
     }
 
@@ -59,12 +70,18 @@ export default function ContactForm() {
       });
 
       Swal.fire(
-        "Message sent",
-        "Thank you for reaching out. I’ll get back to you shortly.",
+        "Request sent",
+        "Thanks for reaching out. I’ll get back to you within 24–48 hours.",
         "success"
       );
 
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        projectType: "",
+        budget: "",
+        message: "",
+      });
     } catch (error) {
       Swal.fire(
         "Error",
@@ -78,8 +95,9 @@ export default function ContactForm() {
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
+      {/* NAME */}
       <Field>
-        <Label>Name</Label>
+        <Label>Name *</Label>
         <Input
           name="name"
           value={formData.name}
@@ -88,8 +106,9 @@ export default function ContactForm() {
         />
       </Field>
 
+      {/* EMAIL */}
       <Field>
-        <Label>Email</Label>
+        <Label>Email *</Label>
         <Input
           name="email"
           value={formData.email}
@@ -98,20 +117,57 @@ export default function ContactForm() {
         />
       </Field>
 
+      {/* PROJECT TYPE */}
       <Field>
-        <Label>Tell me about your project</Label>
+        <Label>Type of project *</Label>
+        <Select
+          name="projectType"
+          value={formData.projectType}
+          onChange={handleChange}
+        >
+          <option value="">Select an option</option>
+          <option value="Essential Website">
+            Essential Website (1–3 pages)
+          </option>
+          <option value="Business Website">Business Website (4–6 pages)</option>
+          <option value="Custom Web Application">Custom Web Application</option>
+          <option value="Not sure yet">Not sure yet / Let’s discuss</option>
+        </Select>
+      </Field>
+
+      {/* BUDGET */}
+      <Field>
+        <Label>Budget range (optional)</Label>
+        <Select name="budget" value={formData.budget} onChange={handleChange}>
+          <option value="">Select a range</option>
+          <option value="< 1.000 €">Under €1.000</option>
+          <option value="1.000 – 2.000 €">€1.000 – €2.000</option>
+          <option value="2.000 – 4.000 €">€2.000 – €4.000</option>
+          <option value="4.000 €+">€4.000+</option>
+          <option value="Not sure">Not sure yet</option>
+        </Select>
+      </Field>
+
+      {/* MESSAGE */}
+      <Field>
+        <Label>Project details *</Label>
         <Textarea
           name="message"
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          placeholder="What are you looking to build?"
+          placeholder="Tell me about your idea, goals, timeline, or anything important."
         />
       </Field>
 
       <SubmitButton disabled={loading}>
-        {loading ? "Sending..." : "Send message →"}
+        {loading ? "Sending..." : "Request a quote →"}
       </SubmitButton>
+      <PrivacyNote>
+        By submitting this form, you agree to the processing of your data as
+        described in the <a href="/privacy-policy">Privacy Policy</a>.
+      </PrivacyNote>
+      <Hint>I usually reply within 24–48 hours.</Hint>
     </FormWrapper>
   );
 }
@@ -129,7 +185,7 @@ const FormWrapper = styled.form`
 
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 32px;
 
   backdrop-filter: blur(22px);
 `;
@@ -172,6 +228,28 @@ const Input = styled.input`
   ${baseInput}
 `;
 
+const Select = styled.select`
+  ${baseInput}
+  cursor: pointer;
+
+  option {
+    background: #0e0e0e;
+    color: #f4f2ed;
+  }
+`;
+
+const PrivacyNote = styled.p`
+  margin-top: 12px;
+  font-size: 0.7rem;
+  opacity: 0.55;
+  max-width: 420px;
+
+  a {
+    color: rgba(201, 184, 138, 0.9);
+    text-decoration: underline;
+  }
+`;
+
 const Textarea = styled.textarea`
   ${baseInput}
   resize: vertical;
@@ -206,4 +284,10 @@ const SubmitButton = styled.button`
     opacity: 0.5;
     pointer-events: none;
   }
+`;
+
+const Hint = styled.p`
+  margin-top: 8px;
+  font-size: 0.75rem;
+  opacity: 0.6;
 `;

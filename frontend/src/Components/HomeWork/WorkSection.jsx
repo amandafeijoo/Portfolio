@@ -1,9 +1,9 @@
 import { useRef } from "react";
-import { useScroll } from "framer-motion";
+import { useScroll, motion, useTransform } from "framer-motion";
 import { Box, Typography } from "@mui/material";
 
-import WorkFlowLines from "./WorkFlowLines";
-import { Section, CanvasWrapper, Content } from "./styles/Work.styles";
+import WorkFlowLines from "../WorkFlowLines";
+import { Section, CanvasWrapper, Content } from "../styles/Work.styles";
 
 export default function WorkSection() {
   const sectionRef = useRef(null);
@@ -13,15 +13,22 @@ export default function WorkSection() {
     offset: ["start end", "end start"],
   });
 
+  // Animaciones suaves, elegantes
+  const y = useTransform(scrollYProgress, [0, 0.3], [60, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+
   return (
     <Section id="work" ref={sectionRef}>
-      {/* 🎥 CANVAS */}
+      {/* 🎥 CANVAS BACKGROUND */}
       <CanvasWrapper>
         <WorkFlowLines height={800} progress={scrollYProgress} />
       </CanvasWrapper>
 
       {/* 🧠 CONTENT */}
-      <Content>
+      <Content
+        as={motion.div}
+        style={{ y, opacity }}
+      >
         <Box
           sx={{
             textAlign: "center",
@@ -39,12 +46,12 @@ export default function WorkSection() {
           >
             <Typography
               sx={{
-                fontSize: "0.9rem",
+                fontSize: "0.85rem",
                 letterSpacing: "0.45em",
                 fontWeight: 600,
                 color: "rgba(240, 201, 123, 0.95)",
                 textTransform: "uppercase",
-                mb: "12px",
+                mb: "14px",
               }}
             >
               Work
@@ -54,23 +61,34 @@ export default function WorkSection() {
           {/* TITLE */}
           <Typography
             sx={{
-              fontSize: "clamp(2.8rem, 6vw, 3.5rem)",
+              position: "relative",
+              fontSize: "clamp(2.6rem, 6vw, 3.4rem)",
               fontWeight: 500,
               color: "#F4F2ED",
               lineHeight: 1.1,
+              mb: "16px",
               textShadow: `
                 0 0 18px rgba(201,184,138,0.25),
                 0 0 42px rgba(201,184,138,0.15)
               `,
+              "::after": {
+                content: '""',
+                position: "absolute",
+                inset: "-70%",
+                background:
+                  "radial-gradient(circle, rgba(201,184,138,0.10), transparent 70%)",
+                filter: "blur(50px)",
+                zIndex: -1,
+              },
             }}
           >
-            Selected projects
+            Selected work
           </Typography>
 
           {/* SUBTITLE */}
           <Typography
             sx={{
-              mt: "18px",
+              mt: "16px",
               fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
               color: "rgba(220,215,205,0.65)",
               maxWidth: "520px",
@@ -78,13 +96,16 @@ export default function WorkSection() {
               lineHeight: 1.7,
             }}
           >
-            Crafted digital experiences with attention to detail and intent
+            A selection of projects where design, clarity and purpose come together.
           </Typography>
-          <div
-            style={{
-              margin: "18px auto 0",
+
+          {/* DIVIDER */}
+          <Box
+            sx={{
+              mt: "22px",
               width: "64px",
               height: "1px",
+              mx: "auto",
               background:
                 "linear-gradient(90deg, rgba(201,184,138,0.6), transparent)",
             }}

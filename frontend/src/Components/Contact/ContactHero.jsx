@@ -15,13 +15,20 @@ export default function ContactHero({ compact = false }) {
   return (
     <HeroWrap $compact={compact}>
       <ThreeContactBackground />
+
       <HeroInner>
         <Kicker>Contact</Kicker>
-        <Headline>Let’s build something exceptional.</Headline>
+
+        {/* 🟣 TÍTULO */}
+        <Headline>Let’s build something together.</Headline>
+
         <Divider />
+
+        {/* 🟣 TEXTO */}
         <Subline>
-          Tell me about your project. I usually reply within 24–48 hours with
-          next steps and a clear plan.
+          Ready to start a project, or just exploring an idea? Tell me a bit
+          about what you’re looking for and I’ll get back to you with next
+          steps, availability, and an estimated timeline.
         </Subline>
 
         <HeroRow>

@@ -1,48 +1,58 @@
 import logging
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
-from rest_framework.parsers import JSONParser
-from .serializers import ContactSerializer
-from django.utils.decorators import method_decorator
-from django.views import View
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from django.core.mail import EmailMessage
 from django.conf import settings
 
+from .serializers import ContactSerializer
+
 logger = logging.getLogger(__name__)
 
-@method_decorator(csrf_exempt, name='dispatch')
-class ContactView(View):
-    def post(self, request, *args, **kwargs):
-        try:
-            logger.info('Received POST request at /contact/')
-            data = JSONParser().parse(request)
-            logger.debug(f'Request data: {data}')
-            
-            serializer = ContactSerializer(data=data)
-            if serializer.is_valid():
-                serializer.save()
-                logger.info('Contact form submitted successfully.')
-                
-                # Construir el mensaje de correo electrónico
-                email_subject = f"New message from {data.get('name')}"
-                email_message = f"Message: {data.get('message')}\n\nFrom: {data.get('name')} <{data.get('email')}>"
-                
-                # Crear el objeto EmailMessage
-                email = EmailMessage(
-                    subject=email_subject,
-                    body=email_message,
-                    from_email=settings.DEFAULT_FROM_EMAIL,  # Your email
-                    to=[settings.DEFAULT_FROM_EMAIL],
-                    reply_to=[data.get('email')]  # User's email
-                )
-                
-                # Enviar el correo electrónico
+
+class ContactCreateView(APIView):
+    permission_classes = []  # público
+
+    def post(self, request):
+        logger.info("Received contact form submission")
+
+        serializer = ContactSerializer(data=request.data)
+
+        if serializer.is_valid():
+            contact = serializer.save()
+            data = serializer.validated_data
+
+            # =====================
+            # EMAIL NOTIFICATION
+            # =====================
+            subject = f"New project inquiry from {data['name']}"
+            body = (
+                f"Name: {data['name']}\n"
+                f"Email: {data['email']}\n"
+                f"Project type: {data.get('project_type', 'Not specified')}\n"
+                f"Budget: {data.get('budget', 'Not specified')}\n\n"
+                f"Message:\n{data['message']}"
+            )
+
+            email = EmailMessage(
+                subject=subject,
+                body=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[settings.DEFAULT_FROM_EMAIL],
+                reply_to=[data["email"]],
+            )
+
+            try:
                 email.send(fail_silently=False)
-                
-                return JsonResponse({'message': 'Your message has been sent successfully!'}, status=201)
-            
-            logger.warning(f'Serializer errors: {serializer.errors}')
-            return JsonResponse(serializer.errors, status=400)
-        except Exception as e:
-            logger.error(f'Error processing request: {str(e)}')
-            return JsonResponse({'error': str(e)}, status=400)
+            except Exception as e:
+                logger.error(f"Email sending failed: {str(e)}")
+
+            logger.info("Contact form processed successfully")
+
+            return Response(
+                {"message": "Your request has been sent successfully."},
+                status=status.HTTP_201_CREATED,
+            )
+
+        logger.warning(f"Contact form validation errors: {serializer.errors}")
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

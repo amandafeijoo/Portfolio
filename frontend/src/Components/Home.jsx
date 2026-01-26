@@ -9,8 +9,8 @@ const WhatIDo = lazy(() => import("./WhatIDo"));
 const FloatingHintMenu = lazy(() => import("./FloatingHintMenu"));
 const OrbitSection = lazy(() => import("./Services/OrbitSection"));
 const ProcessSection = lazy(() => import("./Process/ProcessSection"));
-const WorkSection = lazy(() => import("./WorkSection"));
-const WorkFolders = lazy(() => import("./WorkFolders"));
+const WorkSection = lazy(() => import("./HomeWork/WorkSection"));
+const WorkFolders = lazy(() => import("./HomeWork/WorkFolders"));
 const HomeContactInvite = lazy(() =>
   import("./HomeContactInvite/HomeContactInvite")
 );
@@ -57,6 +57,7 @@ export default function Home() {
       <Suspense fallback={null}>
         <WorkSection />
         <WorkFolders />
+
       </Suspense>
       <Suspense fallback={null}>
         <HomeContactInvite />
