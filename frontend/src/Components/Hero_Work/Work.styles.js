@@ -10,6 +10,7 @@ export const Section = styled.section`
   min-height: 100vh;
   background: #000;
   overflow: hidden;
+  margin-top: -90px;
 
   display: flex;
   align-items: center;
@@ -33,6 +34,7 @@ export const CanvasWrapper = styled.div`
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  margin-top: 50px;
 
   canvas {
     width: 100%;

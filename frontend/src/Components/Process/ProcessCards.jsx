@@ -65,22 +65,32 @@ export default function ProcessCards() {
         width: "100%",
         py: { xs: 6, md: 10 },
         mb: { xs: 8, md: 10 },
-        mt: { xs: 2, md: -5 },
         display: "flex",
         justifyContent: "center",
+        overflow: "hidden",
       }}
     >
+      {/* =========================
+          SCROLLER
+      ========================= */}
       <Box
         ref={scrollerRef}
         onWheel={handleWheel}
         sx={{
-          mt: { xs: 6, md: 10 },
           display: "flex",
           gap: { xs: 3, md: 4 },
           overflowX: "auto",
+          overflowY: "hidden",
           px: { xs: 2, md: 4 },
+
           width: "100%",
-          maxWidth: "100vw",
+          maxWidth: "100%",
+          boxSizing: "border-box",
+          justifyContent: {
+            xs: "flex-start",
+            md: "center",
+          },
+
           WebkitOverflowScrolling: "touch",
 
           scrollSnapType: {
@@ -99,7 +109,6 @@ export default function ProcessCards() {
             background:
               "linear-gradient(180deg, rgba(201,169,106,0.65), rgba(201,169,106,0.35))",
             borderRadius: "10px",
-            boxShadow: "0 0 6px rgba(201,169,106,0.4)",
           },
         }}
       >
@@ -107,21 +116,24 @@ export default function ProcessCards() {
           <Box
             key={index}
             component={motion.div}
-            whileHover={{
-              y: -8,
-              boxShadow: "0 60px 120px rgba(0,0,0,0.65)",
-            }}
+            whileHover={{ y: -8 }}
             transition={{
               type: "spring",
               stiffness: 120,
               damping: 20,
             }}
             sx={{
+              position: "relative",
+              overflow: "hidden",
+              boxSizing: "border-box",
+              filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.6))",
+
               flex: {
                 xs: "0 0 78%",
                 sm: "0 0 68%",
                 md: "0 0 320px",
               },
+
               scrollSnapAlign: "center",
               p: { xs: "22px 18px", md: "36px 26px" },
               borderRadius: "22px",
@@ -201,7 +213,6 @@ export default function ProcessCards() {
               sx={{
                 fontSize: { xs: "1rem", md: "1.1rem" },
                 fontWeight: 500,
-                letterSpacing: "0.01em",
                 mb: 2,
                 color: "rgba(255,255,255,0.95)",
               }}
@@ -216,7 +227,8 @@ export default function ProcessCards() {
                 lineHeight: 1.7,
                 color: "rgba(255,255,255,0.62)",
                 whiteSpace: "pre-line",
-                maxWidth: "34ch",
+                maxWidth: "100%", // 🔒 antes 34ch
+                wordBreak: "break-word",
                 mx: "auto",
               }}
             >

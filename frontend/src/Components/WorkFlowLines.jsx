@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import WorkOrbital from "./WorkOrbital";
+import WorkOrbital from "./Hero_Work/WorkOrbital";
 
 export default function WorkFlowLines({ height = 520 }) {
   const canvasRef = useRef(null);

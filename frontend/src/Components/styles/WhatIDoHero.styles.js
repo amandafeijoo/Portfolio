@@ -18,12 +18,13 @@ export const HeroWrap = styled.section`
     rgba(255, 255, 255, 0.06),
     rgba(255, 255, 255, 0.015)
   );
+  isolation: isolate;
 
   /* halo interno sutil */
   &::after {
     content: "";
     position: absolute;
-    inset: -40%;
+    inset: -30%;
     background: radial-gradient(
       40% 30% at 50% 30%,
       rgba(201, 184, 138, 0.06),
@@ -31,6 +32,7 @@ export const HeroWrap = styled.section`
     );
     filter: blur(90px);
     pointer-events: none;
+    max-width:100vw;
   }
 `;
 

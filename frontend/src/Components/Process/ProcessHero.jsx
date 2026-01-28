@@ -6,12 +6,15 @@ import {
   Headline,
   Divider,
   Subline,
+  ThreeWrapper,
 } from "./ProcessHero.styles";
 
 export default function ProcessHero() {
   return (
     <HeroWrap>
-      <ThreeProcessBackground />
+      <ThreeWrapper>
+    <ThreeProcessBackground />
+  </ThreeWrapper>
 
       <HeroInner>
         <Kicker>Process</Kicker>

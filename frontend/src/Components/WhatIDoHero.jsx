@@ -11,6 +11,7 @@ import {
   ScrollHint,
 } from "./styles/WhatIDoHero.styles";
 
+
 export default function WhatIDoHero() {
   return (
     <HeroWrap>

@@ -23,7 +23,7 @@ function StarField({
     for (let i = 0; i < count; i++) {
       const radius = isMobile
         ? THREE.MathUtils.randFloat(1.4, 3) // 📱 mobile  //////
-        : THREE.MathUtils.randFloat(3, 7); // 🖥 desktop ///////
+        : THREE.MathUtils.randFloat(2, 5); // 🖥 desktop ///////
 
       const angle = Math.random() * Math.PI * 2;
 
