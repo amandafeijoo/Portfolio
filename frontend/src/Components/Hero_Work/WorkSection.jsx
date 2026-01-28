@@ -5,7 +5,7 @@ import LivingWireSphere from "./LivingWireSphere";
 export default function WorkSection() {
   return (
     <Box
-      id="work"©
+      id="work"
       sx={{
         position: "relative",
         background: "#000",
