@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InviteWrap = styled.section`
   position: relative;
-  padding: 160px 30px;
+  padding: 180px 20px;
   overflow: hidden;
   margin-top: 200px;
 `;

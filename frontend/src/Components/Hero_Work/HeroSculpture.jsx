@@ -9,28 +9,39 @@ export default function HeroSculpture({ enter, onProgress }) {
   const progress = useRef(0);
   const { camera } = useThree();
 
-  useFrame((_, delta) => {
+  // 🎯 VALORES BASE (CLAVE)
+  const baseScale = 1.3;      // tamaño normal del hero
+  const idleCameraZ = 4.8;    // cámara en estado idle
+
+  useFrame(() => {
     if (!group.current) return;
 
-    // 🔄 progreso suave (0 → 1)
+    // 🔄 PROGRESO SUAVE (portal)
     progress.current = THREE.MathUtils.lerp(
       progress.current,
       enter ? 1 : 0,
-      0.002 // velocidad de interpolación de la entrada/salida al portal
+      0.002 
     );
 
-    // el progreso al padre (React)
+    // 📡 enviar progreso al padre
     if (onProgress) {
       onProgress(progress.current);
     }
 
     // 🔮 ESCULTURA
-    group.current.scale.setScalar(1 + progress.current * 2.2);
+    group.current.scale.setScalar(
+      baseScale + progress.current * 2.2
+    );
+
     group.current.rotation.y += progress.current * 0.02;
     group.current.position.z = -progress.current * 4;
 
     // 🎥 CÁMARA
-    camera.position.z = THREE.MathUtils.lerp(6, 0.8, progress.current);
+    camera.position.z = THREE.MathUtils.lerp(
+      idleCameraZ,
+      0.8,
+      progress.current
+    );
   });
 
   return (
@@ -45,3 +56,4 @@ export default function HeroSculpture({ enter, onProgress }) {
     </group>
   );
 }
+

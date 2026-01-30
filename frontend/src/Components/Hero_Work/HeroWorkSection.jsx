@@ -29,11 +29,10 @@ export default function HeroWorkSection() {
       sx={{
         position: "relative",
         width: "100%",
-        minHeight: "100dvh",
-        background: "#000",
+        height: "100vh",
         overflow: "hidden",
-        mt: 0,
-        pt: 0,
+        background: "#000",
+        mt: 10,
       }}
     >
       {/* 🌌 THREE SCENE */}
