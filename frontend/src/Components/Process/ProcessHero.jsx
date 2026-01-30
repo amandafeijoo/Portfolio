@@ -1,4 +1,3 @@
-import ThreeProcessBackground from "./ThreeProcessBackground";
 import {
   HeroWrap,
   HeroInner,
@@ -9,20 +8,19 @@ import {
   ThreeWrapper,
 } from "./ProcessHero.styles";
 
+import ProcessHeroBackground from "./ProcessHeroBackground";
+
 export default function ProcessHero() {
   return (
     <HeroWrap>
       <ThreeWrapper>
-    <ThreeProcessBackground />
-  </ThreeWrapper>
+        <ProcessHeroBackground />
+      </ThreeWrapper>
 
       <HeroInner>
         <Kicker>Process</Kicker>
-
         <Headline>How I work</Headline>
-
         <Divider />
-
         <Subline>
           A clear and thoughtful process — from first idea to final launch.
         </Subline>
@@ -30,3 +28,4 @@ export default function ProcessHero() {
     </HeroWrap>
   );
 }
+

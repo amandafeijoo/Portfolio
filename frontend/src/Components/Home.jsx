@@ -10,7 +10,7 @@ const FloatingHintMenu = lazy(() => import("./FloatingHintMenu"));
 const OrbitSection = lazy(() => import("./Services/OrbitSection"));
 const ProcessSection = lazy(() => import("./Process/ProcessSection"));
 const HeroWorkSection = lazy(() => import("./Hero_Work/HeroWorkSection"));
-const WorkPortal = lazy(() => import("./Hero_Work/WorkPortal"));
+// const WorkPortal = lazy(() => import("./Hero_Work/WorkPortal"));
 const HomeContactInvite = lazy(() =>
   import("./HomeContactInvite/HomeContactInvite")
 );
@@ -64,12 +64,13 @@ export default function Home() {
         <HeroWorkSection onEnter={() => setEnterWork(true)} />
       </Suspense>
 
-      {/* =========================
+      {
+        /* =========================
           WORK PORTAL (DIMENSIÓN)
       ========================= */}
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         {enterWork && <WorkPortal onClose={() => setEnterWork(false)} />}
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={null}>
         <HomeContactInvite />

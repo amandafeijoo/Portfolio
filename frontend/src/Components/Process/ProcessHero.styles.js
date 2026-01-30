@@ -4,18 +4,18 @@ export const HeroWrap = styled.section`
   position: relative;
   width: 100%;
   padding: 160px 20px 140px;
-  overflow-x: hidden; /* 👈 SOLO aquí está bien */
+  overflow-x: hidden; 
   margin-top: 300px;
 `;
+
 export const ThreeWrapper = styled.div`
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  z-index: 0;
   pointer-events: none;
-
-  width: 100%;
-  max-width: 100%;
+  overflow: hidden;
 `;
+
 
 export const HeroInner = styled.div`
   max-width: 900px;
