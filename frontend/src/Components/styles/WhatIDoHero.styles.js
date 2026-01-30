@@ -10,29 +10,37 @@ const mobile = "@media (max-width: 768px)";
 
 export const HeroWrap = styled.section`
   position: relative;
+  min-height: 100vh;
   width: 100%;
-  padding: 140px 20px 160px;
+  padding: 10px 10px; /* ⬅️ mucho menos */
   overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.015)
-  );
-  isolation: isolate;
+  background: #000;
 
-  /* halo interno sutil */
-  &::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
     content: "";
     position: absolute;
-    inset: -30%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 120vw;
+    height: 120vw;
+
     background: radial-gradient(
-      40% 30% at 50% 30%,
-      rgba(201, 184, 138, 0.06),
-      transparent 70%
+      circle at center,
+      rgba(255, 220, 180, 0.1),
+      rgba(255, 220, 180, 0.04) 30%,
+      rgba(0, 0, 0, 0.95) 65%
     );
-    filter: blur(90px);
+
+    filter: blur(200px);
     pointer-events: none;
-    max-width:100vw;
+    z-index: 0;
   }
 `;
 
@@ -49,7 +57,6 @@ export const HeroInner = styled.div`
 ========= */
 
 export const Kicker = styled.div`
-  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   font-size: 0.8rem;

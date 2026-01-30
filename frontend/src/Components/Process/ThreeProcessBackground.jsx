@@ -37,7 +37,11 @@ function ConnectionLines({ positions }) {
 
   return (
     <lineSegments geometry={geometry}>
-      <lineBasicMaterial color="#c9b88a" transparent opacity={0.15} />
+      <lineBasicMaterial
+        color="rgba(254, 253, 253, 0.55)"
+        transparent
+        opacity={0.18}
+      />
     </lineSegments>
   );
 }
@@ -70,18 +74,20 @@ function FloatingNodes() {
   }, [positions]);
 
   useFrame(({ clock }) => {
+    if (!group.current) return;
     group.current.rotation.y = clock.elapsedTime * 0.02;
     group.current.rotation.x = Math.sin(clock.elapsedTime * 0.1) * 0.05;
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} position={[0, 0, 0]}>
       <points geometry={geometry}>
         <pointsMaterial
           size={0.03}
-          color="#c9b88a"
+          color="rgba(254, 253, 253, 0.55)"
           transparent
-          opacity={0.55}
+          opacity={0.85}
+          depthWrite={false}
         />
       </points>
 
@@ -91,20 +97,23 @@ function FloatingNodes() {
 }
 
 /* =========================
-   CANVAS FINAL
+   CANVAS FINAL (CENTRADO REAL)
 ========================= */
 export default function ThreeProcessBackground() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 6], fov: 50 }}
+      camera={{ position: [0, 0, 7.5], fov: 50 }}
       style={{
         position: "absolute",
-        inset: 0,
+        top: "50%",
+        left: "50%",
+        width: "75vw",
+        height: "75vh",
+        transform: "translate(-50%, -50%)",
         zIndex: 0,
-        width: "100%",
-        height: "100%",
         pointerEvents: "none",
       }}
+      gl={{ alpha: true, antialias: true }}
     >
       <ambientLight intensity={0.6} />
       <FloatingNodes />

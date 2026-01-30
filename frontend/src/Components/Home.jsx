@@ -3,22 +3,24 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 /* =========================
    LAZY SECTIONS
 ========================= */
-const HeroSphere = lazy(() => import("./HeroSphere"));
- const WhatIDoHero = lazy(() => import("./WhatIDoHero"));
+const HeroSection = lazy(() => import("./Hero/HeroSection"));
+const WhatIDoHero = lazy(() => import("./WhatIDoHero"));
 const WhatIDo = lazy(() => import("./WhatIDo"));
 const FloatingHintMenu = lazy(() => import("./FloatingHintMenu"));
 const OrbitSection = lazy(() => import("./Services/OrbitSection"));
 const ProcessSection = lazy(() => import("./Process/ProcessSection"));
-const WorkSection = lazy(() => import("./Hero_Work/WorkSection"));
-// const WorkFolders = lazy(() => import("./HomeWork/WorkFolders"));
-const FeaturedWork = lazy(() => import("./Hero_Work/FeaturedWork"));
-const HomeContactInvite = lazy(() =>import("./HomeContactInvite/HomeContactInvite"));
+const HeroWorkSection = lazy(() => import("./Hero_Work/HeroWorkSection"));
+const WorkPortal = lazy(() => import("./Hero_Work/WorkPortal"));
+const HomeContactInvite = lazy(() =>
+  import("./HomeContactInvite/HomeContactInvite")
+);
 
 export default function Home() {
   const [showHero, setShowHero] = useState(false);
+  const [enterWork, setEnterWork] = useState(false);
 
   /* =========================
-     DEFER HERO (SEGURO)
+     DEFER HERO
   ========================= */
   useEffect(() => {
     const id =
@@ -35,9 +37,11 @@ export default function Home() {
   return (
     <>
       {/* =========================
-          HERO (SIEMPRE VISIBLE)
+          HERO PRINCIPAL
       ========================= */}
-      <Suspense fallback={null}>{showHero && <HeroSphere />}</Suspense>
+      <Suspense fallback={null}>
+        {showHero && <HeroSection />}
+      </Suspense>
 
       {/* =========================
           CONTENIDO
@@ -53,18 +57,27 @@ export default function Home() {
         <ProcessSection />
       </Suspense>
 
+      {/* =========================
+          WORK HERO
+      ========================= */}
       <Suspense fallback={null}>
-      <WorkSection/>
-
-        {/* <WorkFolders /> */}
-
+        <HeroWorkSection onEnter={() => setEnterWork(true)} />
       </Suspense>
+
+      {/* =========================
+          WORK PORTAL (DIMENSIÓN)
+      ========================= */}
+      <Suspense fallback={null}>
+        {enterWork && <WorkPortal onClose={() => setEnterWork(false)} />}
+      </Suspense>
+
       <Suspense fallback={null}>
         <HomeContactInvite />
       </Suspense>
     </>
   );
 }
+
 
 // import React from "react";
 // import { useEffect } from "react";

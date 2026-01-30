@@ -36,7 +36,7 @@ export const ProjectProvider = ({ children }) => {
       subtitle: "Developer showcase & contact platform",
       description: "This portfolio site presents my projects...",
       technologies: "React, styled-components, Vite, Cloudinary, Framer Motion",
-      githubLink: "https://github.com/amandafeijoo/Portfolio-Personal",
+      githubLink: "https://github.com/amandafeijoo/Portfolio.git",
       web: "https://webcode-art.com",
     },
     {

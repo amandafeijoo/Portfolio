@@ -160,24 +160,12 @@ export default function ProcessCards() {
                 fontFamily: "Source Code Pro, monospace",
                 fontSize: "0.75rem",
                 letterSpacing: "0.25em",
-                color: "rgba(201,169,106,0.6)",
+                color: "rgba(241, 233, 217, 0.6)",
                 mb: 1,
               }}
             >
               STEP {index + 1}
             </Typography>
-
-            {/* Decorative line */}
-            <Box
-              sx={{
-                width: "36px",
-                height: "1px",
-                mx: "auto",
-                mb: 2,
-                background:
-                  "linear-gradient(90deg, transparent, rgba(201,169,106,0.8), transparent)",
-              }}
-            />
 
             {/* ICON */}
             <Box
@@ -227,7 +215,7 @@ export default function ProcessCards() {
                 lineHeight: 1.7,
                 color: "rgba(255,255,255,0.62)",
                 whiteSpace: "pre-line",
-                maxWidth: "100%", // 🔒 antes 34ch
+                maxWidth: "100%",
                 wordBreak: "break-word",
                 mx: "auto",
               }}

@@ -11,7 +11,9 @@ export default function SphereLines3D({
   const material = new THREE.LineBasicMaterial({
     color: new THREE.Color("rgb(174, 163, 163)"),
     transparent: true,
-    opacity: 0.2,
+    opacity: 0.18,
+    depthWrite: false,
+    depthTest: true,
   });
 
   const createSide = (direction) => {
@@ -20,25 +22,27 @@ export default function SphereLines3D({
       const angle = -spread / 2 + spread * t;
 
       const points = [
-        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, -1.2), // ⬅️ empieza DETRÁS
         new THREE.Vector3(
           Math.cos(angle) * radius * direction,
           Math.sin(angle) * radius * 0.15,
-          0
+          -1.2
         ),
         new THREE.Vector3(
           Math.cos(angle) * length * direction,
           Math.sin(angle) * length,
-          0
+          -2.5 // ⬅️ se va más atrás
         ),
       ];
 
       const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
       lines.push(
         <line
           key={`${direction}-${i}`}
           geometry={geometry}
           material={material}
+          renderOrder={0}
         />
       );
     }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InviteWrap = styled.section`
   position: relative;
-  padding: 180px 20px;
+  padding: 160px 30px;
   overflow: hidden;
   margin-top: 200px;
 `;
@@ -14,11 +14,11 @@ export const InviteContent = styled.div`
 `;
 
 export const InviteKicker = styled.div`
-  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  color: rgba(201, 184, 138, 0.75);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(201, 184, 138, 0.9);
   margin-bottom: 18px;
 `;
 

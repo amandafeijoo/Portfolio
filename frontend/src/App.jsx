@@ -68,14 +68,14 @@ function AppContent() {
   const location = useLocation();
 
   // 👉 solo mostrar loader si estamos en "/"
-  const [showIntro, setShowIntro] = useState(location.pathname === "/");
+  // const [showIntro, setShowIntro] = useState(location.pathname === "/");
 
   return (
     <>
-      {/* 🔥 INTRO LOADER SOLO EN HOME */}
+      {/* 🔥 INTRO LOADER SOLO EN HOME
       {location.pathname === "/" && showIntro && (
         <IntroLoader onFinish={() => setShowIntro(false)} />
-      )}
+      )} */}
 
       {/* 👇 APP REAL (SE VE DETRÁS DEL LOADER) */}
       <AppContainer>

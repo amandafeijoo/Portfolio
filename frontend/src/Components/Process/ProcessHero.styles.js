@@ -6,11 +6,6 @@ export const HeroWrap = styled.section`
   padding: 160px 20px 140px;
   overflow-x: hidden; /* 👈 SOLO aquí está bien */
   margin-top: 300px;
-  background: radial-gradient(
-    60% 40% at 50% 0%,
-    rgba(255,255,255,0.62),
-    transparent 10%
-  );
 `;
 export const ThreeWrapper = styled.div`
   position: absolute;
@@ -21,8 +16,6 @@ export const ThreeWrapper = styled.div`
   width: 100%;
   max-width: 100%;
 `;
-
-
 
 export const HeroInner = styled.div`
   max-width: 900px;

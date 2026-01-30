@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { ProjectContext } from "../../Context/ProjectContext";
+import { ProjectContext } from "../Context/ProjectContext";
 import SingleProjectCard from "./SingleProjectCard";
 
 const WorkFolders = () => {
