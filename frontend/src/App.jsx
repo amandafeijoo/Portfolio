@@ -12,7 +12,7 @@ import { ProjectProvider } from "./Context/ProjectProvider";
 import { CursorProvider } from "./Context/CursorContext";
 
 import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import Footer from "./Components/Footer/Footer";
 import CustomCursor from "./Components/CustomCursor/CustomCursor";
 import IntroLoader from "./Components/IntroLoader";
 
@@ -84,7 +84,7 @@ function AppContent() {
           <Route path="/orbit-section" element={<OrbitPage />} />
           <Route path="/process-section" element={<ProcessSection />} />
           <Route path="/aboutme" element={<AboutMe />} />
-          <Route path="/tech-stack" element={<TechStack/>} />
+          <Route path="/tech-stack" element={<TechStack />} />
           <Route path="/profile-info-box" element={<ProfileInfoBox />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contactform" element={<ContactForm />} />

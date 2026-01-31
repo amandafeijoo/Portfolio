@@ -17,8 +17,9 @@ export default function HeroSection() {
         position: "relative",
         height: "100vh",
         width: "100%",
-        background: "#000",
         overflow: "hidden",
+        background:
+          "radial-gradient(circle at 50% 42%, rgba(231, 217, 188, 0.18), #000 70%)",
       }}
     >
       {/* THREE BACKGROUND */}
@@ -29,4 +30,3 @@ export default function HeroSection() {
     </Box>
   );
 }
-

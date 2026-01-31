@@ -130,24 +130,20 @@ export default function WhatIDo() {
     ? 1
     : useTransform(scrollYProgress, [0, 0.45], [1, endScale]);
 
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
+    const rotateX = (y / rect.height - 0.5) * -6;
+    const rotateY = (x / rect.width - 0.5) * 6;
 
-    const handleMouseMove = (e) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-    
-      const rotateX = ((y / rect.height) - 0.5) * -6;
-      const rotateY = ((x / rect.width) - 0.5) * 6;
-    
-      e.currentTarget.style.transform =
-        `translateY(-14px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-    };
-    
-    const handleMouseLeave = (e) => {
-      e.currentTarget.style.transform = "";
-    };
-    
+    e.currentTarget.style.transform = `translateY(-14px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+  };
+
+  const handleMouseLeave = (e) => {
+    e.currentTarget.style.transform = "";
+  };
 
   /* ===============================
      RENDER
@@ -201,55 +197,54 @@ export default function WhatIDo() {
         <Grid>
           {/* ===== PRIMER CARD ===== */}
           <Card
-  onMouseMove={!isMobile ? handleMouseMove : undefined}
-  onMouseLeave={!isMobile ? handleMouseLeave : undefined}
->
-  <CardImg ref={!isMobile ? targetRef : null}>
-    {isMobile ? (
-      <img src={items[0].src} alt={items[0].title} />
-    ) : (
-      <PlaceholderMedia />
-    )}
-  </CardImg>
+            onMouseMove={!isMobile ? handleMouseMove : undefined}
+            onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+          >
+            <CardImg ref={!isMobile ? targetRef : null}>
+              {isMobile ? (
+                <img src={items[0].src} alt={items[0].title} />
+              ) : (
+                <PlaceholderMedia />
+              )}
+            </CardImg>
 
-  {!isMobile && (
-    <>
-      <CardTitle>{items[0].title}</CardTitle>
-      <Divider />
-      <CardText>{items[0].text}</CardText>
-    </>
-  )}
-</Card>
+            {!isMobile && (
+              <>
+                <CardTitle>{items[0].title}</CardTitle>
+                <Divider />
+                <CardText>{items[0].text}</CardText>
+              </>
+            )}
+          </Card>
 
           {/* ===== RESTO DE CARDS ===== */}
           {items.slice(1).map((item, i) => (
-  <Card
-    key={i}
-    onMouseMove={!isMobile ? handleMouseMove : undefined}
-    onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-  >
-    {isMobile && (
-      <MobileCardText>
-        <MobileOnlyDivider />
-        <MobileTitle>{item.title}</MobileTitle>
-        <MobileText>{item.text}</MobileText>
-      </MobileCardText>
-    )}
+            <Card
+              key={i}
+              onMouseMove={!isMobile ? handleMouseMove : undefined}
+              onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+            >
+              {isMobile && (
+                <MobileCardText>
+                  <MobileOnlyDivider />
+                  <MobileTitle>{item.title}</MobileTitle>
+                  <MobileText>{item.text}</MobileText>
+                </MobileCardText>
+              )}
 
-    <CardImg>
-      <img src={item.src} alt={item.title} />
-    </CardImg>
+              <CardImg>
+                <img src={item.src} alt={item.title} />
+              </CardImg>
 
-    {!isMobile && (
-      <>
-        <CardTitle>{item.title}</CardTitle>
-        <Divider />
-        <CardText>{item.text}</CardText>
-      </>
-    )}
-  </Card>
-))}
-
+              {!isMobile && (
+                <>
+                  <CardTitle>{item.title}</CardTitle>
+                  <Divider />
+                  <CardText>{item.text}</CardText>
+                </>
+              )}
+            </Card>
+          ))}
         </Grid>
       </CardsSection>
     </Section>

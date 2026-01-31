@@ -8,12 +8,12 @@ export const OrbitSectionWrapper = styled.section`
   position: relative;
   width: 100vw;
   padding-top: clamp(140px, 18vw, 220px);
-  padding-bottom: clamp(160px, 22vw, 240px); 
+  padding-bottom: clamp(160px, 22vw, 240px);
   left: 50%;
   transform: translateX(-50%);
 
   max-width: 1400px;
-  padding-top: 60px;
+  padding-top: 10px;
   padding-bottom: 80px;
   overflow: visible;
 

@@ -4,13 +4,11 @@ import { motion } from "framer-motion";
 const tablet = "@media (max-width: 1024px)";
 const mobile = "@media (max-width: 768px)";
 
-
 const float = keyframes`
   0%   { transform: translateY(0); opacity: 0.35; }
   50%  { transform: translateY(8px); opacity: 0.65; }
   100% { transform: translateY(0); opacity: 0.35; }
 `;
-
 
 /* =========
    Hero
@@ -20,7 +18,7 @@ export const HeroWrap = styled.section`
   position: relative;
   min-height: 100vh;
   width: 100%;
-  padding: 10px 10px; /* ⬅️ mucho menos */
+  padding: 10px 10px;
   overflow: hidden;
   background: #000;
 
@@ -150,7 +148,6 @@ export const ScrollHint = styled.div`
   align-items: center;
 `;
 
-
 export const ScrollLine = styled.div`
   width: 1px;
   height: 48px;
@@ -164,4 +161,3 @@ export const ScrollLine = styled.div`
 
   animation: ${float} 3.2s ease-in-out infinite;
 `;
-

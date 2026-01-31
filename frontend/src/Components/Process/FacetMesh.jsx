@@ -4,10 +4,10 @@ import * as THREE from "three";
 
 export default function FacetMesh({
   radius = 2,
-  expand = 1, 
+  expand = 1,
   opacity = 0.35,
   speed = 0.08,
-  color = "#e6d5bc", 
+  color = "#e6d5bc",
 }) {
   const group = useRef();
 

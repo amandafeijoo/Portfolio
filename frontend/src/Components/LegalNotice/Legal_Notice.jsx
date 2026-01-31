@@ -14,7 +14,7 @@ import {
   PolicyCard,
   SectionTitle,
   ListItemRow,
-} from "./Legal_notice.styles"; 
+} from "./Legal_Notice.styles";
 
 const Item = ({ icon, text }) => (
   <ListItemRow>
@@ -146,9 +146,7 @@ export default function LegalNotice() {
           icon={<MdGavel />}
           text="This Legal Notice is governed by applicable European and Norwegian legislation."
         />
-
       </PolicyCard>
     </PageWrap>
   );
 }
-

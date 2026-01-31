@@ -28,16 +28,13 @@ export default function ProcessHeroBackground() {
         radius={1.6}
         opacity={0.3}
         speed={0.07}
-        /* usa el color por defecto */
       />
 
       <FacetMesh
         radius={1.2}
         opacity={0.5}
         speed={0.12}
-        color="#f1eadc" // 👈 DORADO CLARO SOLO ESTE
-
-        /* usa el color por defecto */
+        color="#f1eadc" 
       />
     </Canvas>
   );

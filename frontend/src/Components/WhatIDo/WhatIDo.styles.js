@@ -103,10 +103,8 @@ export const HeroTitle = styled.h2`
     text-wrap: balance;
   }
 
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, 0.22),
-    0 0 26px rgba(255, 255, 255, 0.12),
-    0 10px 32px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.22),
+    0 0 26px rgba(255, 255, 255, 0.12), 0 10px 32px rgba(0, 0, 0, 0.55);
 
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -114,8 +112,6 @@ export const HeroTitle = styled.h2`
     max-width: 360px;
   }
 `;
-
-
 
 export const HeroText = styled.p`
   font-size: 1.05rem;
@@ -140,7 +136,6 @@ export const HeroText = styled.p`
     line-height: 1.9;
   }
 `;
-
 
 /* ===============================
    MEDIA SLOT (DESKTOP ONLY)
@@ -269,16 +264,11 @@ export const Card = styled.div`
   transform-style: preserve-3d;
   will-change: transform;
 
-  transition:
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.6s ease;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.55);
-
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
 
   &:hover {
-    transform:
-      translateY(-14px)
-      scale(1.02);
+    transform: translateY(-14px) scale(1.02);
     filter: brightness(1.06);
   }
   &::before {
@@ -308,7 +298,6 @@ export const Card = styled.div`
     z-index: 1;
   }
 
-   
   /* 📱 MOBILE */
   @media (max-width: 768px) {
     &:hover {
@@ -332,34 +321,29 @@ export const CardImg = styled.div`
   border-radius: 22px;
   max-width: 360px;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.08),
-      rgba(255,255,255,0.02)
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
 
-  border: 1px solid rgba(201,184,138,0.35);
+  border: 1px solid rgba(201, 184, 138, 0.35);
 
-  box-shadow:
-    0 40px 80px rgba(0,0,0,0.65),
-    inset 0 1px 0 rgba(255,255,255,0.12);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
-  transition:
-    box-shadow 0.6s ease,
-    border-color 0.6s ease;
+  transition: box-shadow 0.6s ease, border-color 0.6s ease;
 
   /* Halo */
   &::after {
     content: "";
     position: absolute;
     inset: -20%;
-    background:
-      radial-gradient(
-        circle,
-        rgba(201,184,138,0.25),
-        transparent 70%
-      );
+    background: radial-gradient(
+      circle,
+      rgba(201, 184, 138, 0.25),
+      transparent 70%
+    );
     opacity: 0;
     filter: blur(28px);
     transition: opacity 0.6s ease;
@@ -390,16 +374,14 @@ export const CardImg = styled.div`
 export const CardTitle = styled.h3`
   font-size: 1.05rem;
   font-weight: 600;
-  color: rgba(237,231,217,0.95);
+  color: rgba(237, 231, 217, 0.95);
 
   max-width: 260px;
   margin: 18px auto 6px;
 
   opacity: 0.85;
   transform: translateY(6px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 
   ${Card}:hover & {
     opacity: 1;
@@ -414,15 +396,13 @@ export const CardTitle = styled.h3`
 
 export const CardText = styled.p`
   font-size: 0.92rem;
-  color: rgba(220,220,220,0.8);
+  color: rgba(220, 220, 220, 0.8);
   max-width: 280px;
   margin: 0 auto;
 
   opacity: 0;
   transform: translateY(8px);
-  transition:
-    opacity 0.55s ease,
-    transform 0.55s ease;
+  transition: opacity 0.55s ease, transform 0.55s ease;
 
   ${Card}:hover & {
     opacity: 1;
@@ -458,7 +438,6 @@ export const PlaceholderMedia = styled.div`
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.04);
 `;
-
 
 /* ===============================
    DIVIDER

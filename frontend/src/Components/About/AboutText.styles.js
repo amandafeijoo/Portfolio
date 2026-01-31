@@ -15,7 +15,7 @@ export const StyledText = styled.div`
   text-shadow: 0 0 24px rgba(201, 184, 138, 0.18),
     0 0 48px rgba(201, 184, 138, 0.08);
 
-  margin-top: -10px;
+  margin-top: 20px;
   margin-bottom: 32px;
 
   @media (max-width: 1024px) {
@@ -32,6 +32,34 @@ export const StyledText = styled.div`
     font-size: 2.5em;
     margin-top: 56px;
   }
+`;
+
+/* =========
+   Kicker
+========= */
+
+export const Kicker = styled.div`
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: rgba(201, 184, 138, 0.9);
+  margin-top: 50px;
+  text-align: center;
+`;
+/* =========
+   Divider
+========= */
+
+export const Divider = styled.div`
+  margin: 0 auto 22px;
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 184, 138, 0.7),
+    transparent
+  );
 `;
 
 export const Description = styled.p`

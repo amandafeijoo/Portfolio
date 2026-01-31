@@ -1,4 +1,5 @@
 import { Drawer, Box, Stack, Typography } from "@mui/material";
+import BrandObject from "./BrandObject";
 
 export default function MenuDrawer({
   open,
@@ -11,15 +12,15 @@ export default function MenuDrawer({
       <Box
         sx={{
           width: 320,
-          minHeight: "100dvh", // 🔑 clave
+          minHeight: "100dvh",
           p: 4,
-          pb: "env(safe-area-inset-bottom)", // 🔑 iOS safe area
+          pb: "env(safe-area-inset-bottom)",
           backgroundColor: "rgba(235, 219, 194, 0.98)",
           borderLeft: "2px solid rgba(219, 182, 108, 0.18)",
           display: "flex",
           flexDirection: "column",
 
-          overflowY: "auto", // 🔑 scroll interno correcto
+          overflowY: "auto",
           WebkitOverflowScrolling: "touch",
         }}
       >
@@ -43,7 +44,7 @@ export default function MenuDrawer({
             width: "48%",
             background:
               "linear-gradient(90deg, rgba(201,169,106,0.45), transparent)",
-            mb: { xs: 2, sm: 5 }, // 👈 sube en mobile
+            mb: { xs: 2, sm: 5 },
           }}
         />
 
@@ -96,7 +97,7 @@ export default function MenuDrawer({
         <Typography
           sx={{
             mt: 6,
-            mb: { xs: 2, sm: 5 }, // 👈 sube en mobile
+            mb: { xs: 2, sm: 5 },
             fontSize: "0.7rem",
             lineHeight: 1.6,
             color: "rgba(120,120,120,0.6)",
@@ -181,10 +182,9 @@ export default function MenuDrawer({
             </Box>
           </Stack>
 
-          {/* BRAND VIDEO */}
           <Box
             sx={{
-              mt: { xs: 4, sm: 2 }, // 👈 sube en mobile
+              mt: { xs: 4, sm: 2 },
               display: "flex",
               justifyContent: "center",
               pointerEvents: "none",
@@ -192,34 +192,19 @@ export default function MenuDrawer({
           >
             <Box
               sx={{
-                position: "relative",
-                width: {
-                  xs: 220, // 📱 mobile (más pequeño)
-                  sm: 250, // 📲 tablet
-                  md: 280, // 💻 desktop (casi igual)
-                },
-                borderRadius: 14,
+                width: { xs: 200, sm: 230, md: 240 },
+                height: { xs: 200, sm: 230, md: 240 },
+                borderRadius: "50%",
                 overflow: "hidden",
-                backgroundColor: "rgba(0,0,0,0.04)",
+                background:
+                  "radial-gradient(circle at 30% 30%, rgba(201,169,106,0.25), transparent 60%)",
                 boxShadow: `
-      0 16px 32px rgba(201,169,106,0.25),
-      0 0 56px rgba(201,169,106,0.2)
-    `,
+        0 24px 48px rgba(201,169,106,0.25),
+        inset 0 0 22px rgba(0,0,0,0.25)
+      `,
               }}
             >
-              <video
-                src="https://res.cloudinary.com/dp6jrgvoz/video/upload/f_mp4,q_auto:low,br_300k,fps_12,w_320,du_6/hero_009_mm4eba.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                style={{
-                  width: "100%",
-                  display: "block",
-                  boxShadow: "inset 0 0 18px rgba(0,0,0,0.12)",
-                }}
-              />
+              <BrandObject />
             </Box>
           </Box>
         </Box>

@@ -12,7 +12,6 @@ import {
   ScrollLine,
 } from "./WhatIDoHero.styles";
 
-
 export default function WhatIDoHero() {
   return (
     <HeroWrap>
@@ -37,13 +36,12 @@ export default function WhatIDoHero() {
         </Statement>
 
         <SupportingText>
-          You don’t need to worry about the technical side.  
-          I take care of it, so you can focus on your business.
+          You don’t need to worry about the technical side. I take care of it,
+          so you can focus on your business.
         </SupportingText>
         <ScrollHint>
-  <ScrollLine />
-</ScrollHint>
-
+          <ScrollLine />
+        </ScrollHint>
       </HeroInner>
     </HeroWrap>
   );

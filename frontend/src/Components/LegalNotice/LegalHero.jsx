@@ -17,9 +17,7 @@ export default function LegalHero() {
       <HeroInner>
         <Kicker>Legal Notice</Kicker>
 
-        <Headline>
-          Transparency and professional responsibility.
-        </Headline>
+        <Headline>Transparency and professional responsibility.</Headline>
 
         <Divider />
 

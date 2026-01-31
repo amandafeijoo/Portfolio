@@ -4,6 +4,7 @@ import {
   GridItem,
   TechLogo,
   KnowledgeBar,
+  Divider,
 } from "./TechStack.styles";
 import { technologies } from "../../data/technologies.js";
 
@@ -39,7 +40,7 @@ const TechStack = () => {
               fontSize: "1rem",
               letterSpacing: "0.08em",
               color: "#B8B4AA",
-              textTransform: "uppercase",
+              textShadow: "0 0 12px rgba(201,184,138,0.25)",
             }}
           >
             Technologies
@@ -47,25 +48,15 @@ const TechStack = () => {
 
           <span
             style={{
-              fontSize: "1.2rem",
+              fontSize: "0.8rem",
               fontWeight: 500,
               color: "#F4F2ED",
               textShadow: "0 0 18px rgba(201,184,138,0.35)",
             }}
           >
-            behind Webcode-Art
+            Behind Webcode-Art
           </span>
-
-          {/* línea sutil */}
-          <div
-            style={{
-              marginTop: "8px",
-              width: "48px",
-              height: "1px",
-              background:
-                "linear-gradient(90deg, rgba(201,184,138,0.6), transparent)",
-            }}
-          />
+          <Divider />
         </div>
 
         {techName && (

@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import MenuDrawer from "./MenuDrawer";
+import MenuDrawer from "./MenuDrawer/MenuDrawer";
 
 export default function Header() {
   const [open, setOpen] = useState(false);

@@ -6,7 +6,7 @@ export default function LegalPage() {
   return (
     <>
       <LegalHero />
-        <Legal_Notice />
+      <Legal_Notice />
     </>
   );
 }

@@ -11,8 +11,10 @@ import {
 } from "./AboutContainer.styles";
 import {
   StyledText,
+  Divider,
   Description,
   AnimatedLetter,
+  Kicker,
 } from "./AboutText.styles";
 import {
   DesktopMessageContainer,
@@ -51,23 +53,11 @@ const AboutMe = () => {
       >
         <AboutVisual />
       </Box>
+      {/* KICKER */}
+      <Kicker>ABOUT</Kicker>
 
       {/* TITLE */}
       <StyledText as="div">
-        <span
-          style={{
-            fontSize: "0.9rem",
-            letterSpacing: "0.45em",
-            fontWeight: 600,
-            color: "rgba(240, 201, 123, 0.95)",
-            textTransform: "uppercase",
-            marginBottom: "12px",
-            display: "block",
-          }}
-        >
-          About
-        </span>
-
         <span
           style={{
             fontSize: "clamp(2.8rem, 6vw, 4.2rem)",
@@ -79,15 +69,7 @@ const AboutMe = () => {
           Webcode-Art
         </span>
       </StyledText>
-      <div
-        style={{
-          margin: "18px auto 0",
-          width: "64px",
-          height: "1px",
-          background:
-            "linear-gradient(90deg, rgba(201,184,138,0.6), transparent)",
-        }}
-      />
+      <Divider />
 
       <AboutContainer>
         {/* TEXT */}

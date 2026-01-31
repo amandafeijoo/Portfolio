@@ -20,7 +20,7 @@ export default function FloatingHintMenu({ scale }) {
   /* ============================
      VISIBILIDAD POR SCROLL
   ============================ */
-  const opacityByScroll = useTransform(     // para hacer fade out al hacer scroll
+  const opacityByScroll = useTransform(
     scale,
     [1.2, 0.99, 0.9, 0.82, 0.8],
     [0.1, 0, 1, 0, 0]
@@ -90,10 +90,7 @@ export default function FloatingHintMenu({ scale }) {
 
         <MenuCTA
           animate={{
-            color:
-              cursorPhase === 4
-                ? "#ffffff"
-                : "rgba(0,0,0,0.55)", 
+            color: cursorPhase === 4 ? "#ffffff" : "rgba(0,0,0,0.55)",
           }}
           transition={{
             duration: 0.15,

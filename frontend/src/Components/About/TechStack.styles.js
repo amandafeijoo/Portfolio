@@ -128,3 +128,19 @@ const rotate = keyframes`
   }
 `;
 
+/* =========
+   Divider
+========= */
+
+export const Divider = styled.div`
+  margin: 0 auto 22px;
+  width: 90px;
+  margin-top: 12px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 184, 138, 0.7),
+    transparent
+  );
+`;
