@@ -31,22 +31,13 @@ export default function MenuDrawer({
             letterSpacing: "0.28em",
             fontSize: "0.65rem",
             color: "rgba(120,120,120,0.75)",
-            mb: 2,
+            mb: { xs: 3, sm: 3 },
           }}
         >
           MENU
         </Typography>
 
-        {/* EDITORIAL DIVIDER */}
-        <Box
-          sx={{
-            height: "1px",
-            width: "48%",
-            background:
-              "linear-gradient(90deg, rgba(201,169,106,0.45), transparent)",
-            mb: { xs: 2, sm: 5 },
-          }}
-        />
+    
 
         {/* LINKS */}
         <Stack spacing={2.4}>
@@ -97,7 +88,7 @@ export default function MenuDrawer({
         <Typography
           sx={{
             mt: 6,
-            mb: { xs: 2, sm: 5 },
+            mb: { xs: 2, sm: 1 },
             fontSize: "0.7rem",
             lineHeight: 1.6,
             color: "rgba(120,120,120,0.6)",
@@ -111,7 +102,7 @@ export default function MenuDrawer({
         {/* SOCIALS */}
         <Box
           sx={{
-            mt: { xs: 5, sm: 4 },
+            mt: { xs: 5, sm: 3 },
           }}
         >
           <Typography
@@ -120,7 +111,7 @@ export default function MenuDrawer({
               letterSpacing: "0.28em",
               textTransform: "uppercase",
               color: "rgba(120,120,120,0.7)",
-              mb: { xs: 3, sm: 5 },
+              mb: { xs: 3, sm: 2 },
             }}
           >
             Follow

@@ -15,7 +15,7 @@ export const StyledText = styled.div`
   text-shadow: 0 0 24px rgba(201, 184, 138, 0.18),
     0 0 48px rgba(201, 184, 138, 0.08);
 
-  margin-top: 20px;
+  margin-top: -5px;
   margin-bottom: 32px;
 
   @media (max-width: 1024px) {
@@ -43,7 +43,7 @@ export const Kicker = styled.div`
   text-transform: uppercase;
   font-size: 0.8rem;
   color: rgba(201, 184, 138, 0.9);
-  margin-top: 50px;
+  margin-top: 60px;
   text-align: center;
 `;
 /* =========
@@ -54,6 +54,7 @@ export const Divider = styled.div`
   margin: 0 auto 22px;
   width: 90px;
   height: 1px;
+  margin-top: -20px;
   background: linear-gradient(
     90deg,
     transparent,

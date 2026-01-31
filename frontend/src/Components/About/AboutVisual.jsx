@@ -24,9 +24,9 @@ export default function AboutVisual() {
       <Canvas
         camera={{ position: [0, 0, 3.4], fov: 48 }}
         style={{
-          width: "115%",
-          height: "115%",
-          left: 370,
+          width: "90%",
+          height: "90%",
+          left: 390,
           marginTop: 120,
         }}
       >
