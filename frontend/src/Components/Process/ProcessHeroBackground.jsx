@@ -1,25 +1,50 @@
+import FacetMesh from "./FacetMesh";
+import FacetParticles from "./FacetParticles";
 import { Canvas } from "@react-three/fiber";
-import ConvergenceField from "./ConvergenceField";
 
 export default function ProcessHeroBackground() {
   return (
     <Canvas
-    camera={{ position: [0, 0, 7.8], fov: 50 }}
-    style={{
-      position: "absolute",
-      inset: 0,
-      pointerEvents: "none",
-    }}
-  >
-  
+      camera={{ position: [0, 0, 8.2], fov: 50 }}
+      style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+    >
       <ambientLight intensity={0.6} />
 
-      {/* LAYERS DE CONVERGENCIA */}
-      <ConvergenceField radius={3.8} lines={28} opacity={0.12} speed={0.03} />
-<ConvergenceField radius={2.6} lines={48} opacity={0.25} speed={0.07} />
-<ConvergenceField radius={1.6} lines={64} opacity={0.45} speed={0.12} />
+      {/* RELLENO */}
+        <FacetParticles
+     count={130}
+  spread={3}
+  depth={3}
+  size={0.03}
+  opacity={0.4}
+  speed={0.015}
 
+/>
+
+    {/* ESTRUCTURA */}
+<FacetMesh
+  radius={2.3}
+  opacity={0.15}
+  speed={0.03}
+/>
+
+<FacetMesh
+  radius={1.6}
+  opacity={0.3}
+  speed={0.07}
+  /* usa el color por defecto */
+ />
+
+<FacetMesh
+  radius={1.2}
+  opacity={0.5}
+  speed={0.12}
+  color="#f1eadc"   // 👈 DORADO CLARO SOLO ESTE
+
+  /* usa el color por defecto */
+ />
 
     </Canvas>
   );
 }
+

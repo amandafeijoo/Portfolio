@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const HeroWrap = styled.section`
   position: relative;
-  width: 100%;
-  padding: 160px 20px 140px;
-  overflow-x: hidden; 
-  margin-top: 300px;
+  min-height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  overflow: hidden;
+  margin-bottom: -240px;
 `;
 
 export const ThreeWrapper = styled.div`
@@ -15,7 +18,6 @@ export const ThreeWrapper = styled.div`
   pointer-events: none;
   overflow: hidden;
 `;
-
 
 export const HeroInner = styled.div`
   max-width: 900px;

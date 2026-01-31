@@ -3,7 +3,6 @@ import {
   HeroInner,
   Kicker,
   Headline,
-  Divider,
   Subline,
   ThreeWrapper,
 } from "./ProcessHero.styles";
@@ -20,7 +19,6 @@ export default function ProcessHero() {
       <HeroInner>
         <Kicker>Process</Kicker>
         <Headline>How I work</Headline>
-        <Divider />
         <Subline>
           A clear and thoughtful process — from first idea to final launch.
         </Subline>

@@ -73,7 +73,7 @@ export default function WorkOverlay({ onEnter, enter }) {
             },
           }}
         >
-          Enter work
+          EXPLORE
         </Button>
       </Box>
     </Box>
