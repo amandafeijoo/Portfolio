@@ -20,7 +20,7 @@ import {
   commentStyles,
   titleStyles,
   ProjectVideo,
-} from "./styles/ProjectCard.styles";
+} from "../styles/ProjectCard.styles";
 
 const ProjectCard = ({
   videoSrc,

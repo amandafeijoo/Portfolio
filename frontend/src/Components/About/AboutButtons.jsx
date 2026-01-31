@@ -3,7 +3,7 @@ import {
   ButtonContainer,
   DownloadButton,
   ContactButton,
-} from "./styles/AboutButtons.styles";
+} from "./AboutButtons.styles";
 import DownloadIcon from "@mui/icons-material/Download";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 

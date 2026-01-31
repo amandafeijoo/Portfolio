@@ -1,7 +1,7 @@
 // ContactInfoItem.jsx
 import React from "react";
 import { Typography } from "@mui/material";
-import { ContactInfo, SmallSection } from "./styles/ContactSections.styles";
+import { ContactInfo, SmallSection } from "../styles/ContactSections.styles";
 
 const ContactInfoItem = ({ label, link, display }) => (
   <SmallSection>

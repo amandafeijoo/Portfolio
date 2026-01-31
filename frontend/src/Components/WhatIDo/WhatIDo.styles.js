@@ -59,58 +59,88 @@ export const IntroTextWrap = styled.div`
   }
 `;
 
-export const HeroTitle = styled.h2`
-  font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+/* =========
+   Kicker
+========= */
+
+export const Kicker = styled.div`
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
   text-align: center;
-  margin-top: 10;
-  margin-bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
+  color: rgba(201, 184, 138, 0.9);
+  margin-bottom: 18px;
+`;
 
-  max-width: 420px;
+export const MetaLine = styled.div`
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin: 12px 0 22px;
+  text-align: center;
+`;
+
+export const HeroTitle = styled.h2`
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  text-align: center;
+
+  max-width: 520px;
+  margin: 0 auto 24px;
+
   font-weight: 600;
-  line-height: 1.1;
-  margin-bottom: 24px;
-  letter-spacing: 0.4px;
-  color: rgba(237, 231, 217, 0.95);
+  line-height: 1.18;
+  letter-spacing: 0.2px;
 
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.22),
-    0 0 26px rgba(255, 255, 255, 0.12), 0 10px 32px rgba(0, 0, 0, 0.55);
+  color: rgba(237, 231, 217, 0.96);
 
-  /* 📱 MOBILE */
+  /* Fallback */
+  word-break: normal;
+  overflow-wrap: break-word;
+
+  /* ✅ Modern browsers */
+  @supports (text-wrap: balance) {
+    text-wrap: balance;
+  }
+
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.22),
+    0 0 26px rgba(255, 255, 255, 0.12),
+    0 10px 32px rgba(0, 0, 0, 0.55);
+
   @media (max-width: 768px) {
-    font-size: 1.6rem;
-    line-height: 1.18;
-    letter-spacing: 0.25px;
-    text-shadow: 0 0 6px rgba(255, 255, 255, 0.18), 0 0 16px rgba(0, 0, 0, 0.45);
+    font-size: 1.8rem;
+    line-height: 1.25;
+    max-width: 360px;
   }
 `;
+
+
 
 export const HeroText = styled.p`
   font-size: 1.05rem;
-  margin: 0 auto;
   text-align: center;
-  line-height: 1.7;
+
+  max-width: 460px;
+  margin: 0 auto;
+
+  line-height: 1.8;
   color: #bdbdbd;
   opacity: 0.9;
-  max-width: 400px;
 
-  /* Tablet */
-  @media (max-width: 1024px) {
-    margin: 0 auto;
-    text-align: center;
-    max-width: 480px;
+  overflow-wrap: break-word;
+
+  @supports (text-wrap: balance) {
+    text-wrap: balance;
   }
 
-  /* Mobile */
   @media (max-width: 768px) {
-    font-size: 1.05rem;
-    line-height: 1.85;
+    font-size: 1rem;
     max-width: 360px;
-    margin: 0 auto;
-    text-align: center;
+    line-height: 1.9;
   }
 `;
+
 
 /* ===============================
    MEDIA SLOT (DESKTOP ONLY)
@@ -236,14 +266,49 @@ export const Card = styled.div`
   text-align: center;
   position: relative;
 
-  transform: translateZ(0);
-  transition: transform 0.35s ease, filter 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.55);
+
 
   &:hover {
-    transform: translateY(-8px);
-    filter: brightness(1.05);
+    transform:
+      translateY(-14px)
+      scale(1.02);
+    filter: brightness(1.06);
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 18px;
+
+    background: radial-gradient(
+      circle at top center,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.06),
+      transparent 55%
+    );
+
+    opacity: 0.9;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 2;
   }
 
+  img {
+    width: 100%;
+    border-radius: 18px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+   
   /* 📱 MOBILE */
   @media (max-width: 768px) {
     &:hover {
@@ -267,31 +332,49 @@ export const CardImg = styled.div`
   border-radius: 22px;
   max-width: 360px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.07),
-    rgba(255, 255, 255, 0.02)
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.02)
+    );
 
-  border: 3px solid rgba(79, 74, 66, 0.88);
+  border: 1px solid rgba(201,184,138,0.35);
 
-  box-shadow: 0 45px 90px rgba(0, 0, 0, 0.65), 0 12px 28px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.65),
+    inset 0 1px 0 rgba(255,255,255,0.12);
 
-  transition: box-shadow 0.35s ease;
+  transition:
+    box-shadow 0.6s ease,
+    border-color 0.6s ease;
 
-  &::before {
-    display: none;
+  /* Halo */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(
+        circle,
+        rgba(201,184,138,0.25),
+        transparent 70%
+      );
+    opacity: 0;
+    filter: blur(28px);
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  ${Card}:hover &::after {
+    opacity: 1;
   }
 
   img {
     width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: cover;
+    border-radius: 18px;
     display: block;
   }
-
   /* 📱 MOBILE */
   @media (max-width: 768px) {
     padding: 10px;
@@ -307,28 +390,20 @@ export const CardImg = styled.div`
 export const CardTitle = styled.h3`
   font-size: 1.05rem;
   font-weight: 600;
-  color: rgba(237, 231, 217, 0.95);
+  color: rgba(237,231,217,0.95);
 
   max-width: 260px;
-  margin: 16px auto 0;
-  padding: 2px 5px;
-  text-align: center;
-  line-height: 1.35;
+  margin: 18px auto 6px;
 
-  min-height: 3.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 0.85;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  border-radius: 8px;
-
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
-    0 0 14px rgba(201, 169, 106, 0.35);
-
-  @supports (text-wrap: balance) {
-    text-wrap: balance;
+  ${Card}:hover & {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   @media (max-width: 768px) {
@@ -339,18 +414,24 @@ export const CardTitle = styled.h3`
 
 export const CardText = styled.p`
   font-size: 0.92rem;
-  color: rgba(220, 220, 220, 0.85);
+  color: rgba(220,220,220,0.8);
   max-width: 280px;
   margin: 0 auto;
-  line-height: 1.55;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65);
 
-  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
 
-  min-height: 4.2em;
+  ${Card}:hover & {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media (max-width: 768px) {
-    display: none;
+    opacity: 1;
+    transform: none;
   }
 `;
 
@@ -378,34 +459,32 @@ export const PlaceholderMedia = styled.div`
   background: rgba(255, 255, 255, 0.04);
 `;
 
-/* ===============================
-   BADGE
-================================ */
-export const Badge = styled.span`
-  display: block;
-  text-align: center;
-  margin-bottom: 28px;
-  font-size: 0.75rem;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  opacity: 0.55;
-`;
 
 /* ===============================
    DIVIDER
 ================================ */
 export const TitleDivider = styled.div`
-  width: 42px;
+  margin: 0 auto 22px;
+  width: 90px;
   height: 1px;
-  margin: 24px auto 16px;
-
-  background: linear-gradient(90deg, rgba(201, 169, 106, 0.6), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 184, 138, 0.7),
+    transparent
+  );
 `;
-
-export const DesktopOnlyDivider = styled(TitleDivider)`
-  @media (max-width: 768px) {
-    display: none;
-  }
+export const Divider = styled.div`
+  margin: 0 auto 22px;
+  margin-top: 22px;
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 184, 138, 0.7),
+    transparent
+  );
 `;
 
 export const MobileOnlyDivider = styled(TitleDivider)`

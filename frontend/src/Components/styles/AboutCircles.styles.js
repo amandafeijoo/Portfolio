@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { float } from "./animationsAbout";
+import { float } from "../About/animationsAbout";
 
 export const Circle = styled.div`
   position: absolute;

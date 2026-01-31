@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Container, Box, Typography, Button } from "@mui/material";
-import ContactInputs2 from "./ContactInputs2";
+import ContactInputs2 from "./Portfolio/ContactInputs2";
 
 /* ===============================
    HELPERS

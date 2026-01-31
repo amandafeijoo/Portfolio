@@ -4,6 +4,14 @@ import { motion } from "framer-motion";
 const tablet = "@media (max-width: 1024px)";
 const mobile = "@media (max-width: 768px)";
 
+
+const float = keyframes`
+  0%   { transform: translateY(0); opacity: 0.35; }
+  50%  { transform: translateY(8px); opacity: 0.65; }
+  100% { transform: translateY(0); opacity: 0.35; }
+`;
+
+
 /* =========
    Hero
 ========= */
@@ -136,20 +144,24 @@ export const SupportingText = styled.p`
 ========= */
 
 export const ScrollHint = styled.div`
-  margin-top: 80px;
-  font-family: "Source Code Pro", monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(201, 184, 138, 0.5);
-
+  margin-top: 70px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-
-  .arrow {
-    font-size: 1.2rem;
-    opacity: 0.6;
-  }
 `;
+
+
+export const ScrollLine = styled.div`
+  width: 1px;
+  height: 48px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(201, 184, 138, 0.65),
+    transparent
+  );
+
+  animation: ${float} 3.2s ease-in-out infinite;
+`;
+

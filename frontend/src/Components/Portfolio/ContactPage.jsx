@@ -5,8 +5,8 @@ import {
   } from "./styles/ContactSections.styles";
 import { AnimatedLetter, StyledText } from "./styles/ContactHeader.styles";
 import { AnimatedTypography } from "./styles/ContactTypography.styles";
-import ContactForm from "./ContactForm";
-import Circles from "./Circles";
+import ContactForm from "./Portfolio/ContactForm";
+import Circles from "./Portfolio/Circles";
 import { ContactFormContainer } from "./styles/ContactForm.styles";
 import ContactInfoItem from "./ContactInfoItem";
 

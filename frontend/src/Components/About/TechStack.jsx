@@ -4,8 +4,8 @@ import {
   GridItem,
   TechLogo,
   KnowledgeBar,
-} from "./styles/TechStack.styles";
-import { technologies } from "../data/technologies";
+} from "./TechStack.styles";
+import { technologies } from "../../data/technologies.js";
 
 const TechStack = () => {
   const [techName, setTechName] = useState("");

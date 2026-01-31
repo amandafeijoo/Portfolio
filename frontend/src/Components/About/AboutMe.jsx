@@ -8,17 +8,17 @@ import {
   AboutContainer,
   TextContainer,
   ImageContainer,
-} from "./styles/AboutContainer.styles";
+} from "./AboutContainer.styles";
 import {
   StyledText,
   Description,
   AnimatedLetter,
-} from "./styles/AboutText.styles";
+} from "./AboutText.styles";
 import {
   DesktopMessageContainer,
   MobileMessageContainer,
-} from "./styles/AboutMessages.styles";
-import { ProfileImage } from "./styles/AboutImage.styles";
+} from "./AboutMessages.styles";
+import { ProfileImage } from "./AboutImage.styles";
 import AboutButtons from "./AboutButtons";
 import AboutVisual from "./AboutVisual";
 

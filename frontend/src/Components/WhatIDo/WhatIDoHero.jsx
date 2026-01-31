@@ -9,7 +9,8 @@ import {
   Statement,
   SupportingText,
   ScrollHint,
-} from "./styles/WhatIDoHero.styles";
+  ScrollLine,
+} from "./WhatIDoHero.styles";
 
 
 export default function WhatIDoHero() {
@@ -39,11 +40,10 @@ export default function WhatIDoHero() {
           You don’t need to worry about the technical side.  
           I take care of it, so you can focus on your business.
         </SupportingText>
-
         <ScrollHint>
-          <span>Scroll to explore</span>
-          <span className="arrow">↓</span>
-        </ScrollHint>
+  <ScrollLine />
+</ScrollHint>
+
       </HeroInner>
     </HeroWrap>
   );

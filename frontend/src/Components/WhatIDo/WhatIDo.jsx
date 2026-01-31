@@ -20,18 +20,28 @@ import {
   MobileTitle,
   MobileText,
   PlaceholderMedia,
-  Badge,
+  Kicker,
+  MetaLine,
+  Divider,
   TitleDivider,
   MobileOnlyDivider,
-} from "./styles/WhatIDo.styles";
+} from "./WhatIDo.styles";
 import FloatingHintMenu from "./FloatingHintMenu";
 
 /* ===============================
    DATA
 ================================ */
+const introCopy = {
+  kicker: "WHAT I DO",
+  meta: "Design · Code · Motion",
+  title: "Designing digital experiences\nthat feel intentional",
+  text: `I combine design, code, and animation to build websites
+that communicate clearly, move naturally, and scale with your product.`,
+};
+
 const items = [
   {
-    title: "Custom websites & landing pages",
+    title: "Bespoke websites",
     text: "I design unique websites tailored to your brand and goals, not templates.",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767053696/landingpage_zk0sea.png",
   },
@@ -46,8 +56,8 @@ const items = [
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054695/payment_c2tn0p.png",
   },
   {
-    title: "Perfect on all devices",
-    text: "Your website will look and work great on mobile, tablet, and desktop.",
+    title: "Designed for every screen",
+    text: "From mobile to desktop, your site stays fast, readable, and beautifully balanced.",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767050948/responsive_t95h1u.png",
   },
 ];
@@ -120,6 +130,25 @@ export default function WhatIDo() {
     ? 1
     : useTransform(scrollYProgress, [0, 0.45], [1, endScale]);
 
+
+
+    const handleMouseMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+    
+      const rotateX = ((y / rect.height) - 0.5) * -6;
+      const rotateY = ((x / rect.width) - 0.5) * 6;
+    
+      e.currentTarget.style.transform =
+        `translateY(-14px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    };
+    
+    const handleMouseLeave = (e) => {
+      e.currentTarget.style.transform = "";
+    };
+    
+
   /* ===============================
      RENDER
   ================================ */
@@ -138,11 +167,28 @@ export default function WhatIDo() {
       {/* ================= INTRO ================= */}
       <IntroHero>
         <IntroTextWrap>
-          <Badge>What I Do</Badge>
+          <Kicker>{introCopy.kicker}</Kicker>
+
+          <MetaLine>{introCopy.meta}</MetaLine>
+
           <TitleDivider />
-          <HeroTitle>{items[0].title}</HeroTitle>
-          <HeroText>{items[0].text}</HeroText>
-          <TitleDivider />
+          <HeroTitle>
+            {introCopy.title.split("\n").map((line, i) => (
+              <span key={i}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </HeroTitle>
+
+          <HeroText>
+            {introCopy.text.split("\n").map((line, i) => (
+              <span key={i}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </HeroText>
         </IntroTextWrap>
 
         {!isMobile && <IntroMediaSlot ref={startRef} />}
@@ -154,48 +200,56 @@ export default function WhatIDo() {
       <CardsSection>
         <Grid>
           {/* ===== PRIMER CARD ===== */}
-          <Card>
-            <CardImg ref={!isMobile ? targetRef : null}>
-              {isMobile ? (
-                <img src={items[0].src} alt={items[0].title} />
-              ) : (
-                <PlaceholderMedia />
-              )}
-            </CardImg>
+          <Card
+  onMouseMove={!isMobile ? handleMouseMove : undefined}
+  onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+>
+  <CardImg ref={!isMobile ? targetRef : null}>
+    {isMobile ? (
+      <img src={items[0].src} alt={items[0].title} />
+    ) : (
+      <PlaceholderMedia />
+    )}
+  </CardImg>
 
-            {!isMobile && (
-              <>
-                <CardTitle>{items[0].title}</CardTitle>
-                <TitleDivider />
-                <CardText>{items[0].text}</CardText>
-              </>
-            )}
-          </Card>
+  {!isMobile && (
+    <>
+      <CardTitle>{items[0].title}</CardTitle>
+      <Divider />
+      <CardText>{items[0].text}</CardText>
+    </>
+  )}
+</Card>
 
           {/* ===== RESTO DE CARDS ===== */}
           {items.slice(1).map((item, i) => (
-            <Card key={i}>
-              {isMobile && (
-                <MobileCardText>
-                  <MobileOnlyDivider />
-                  <MobileTitle>{item.title}</MobileTitle>
-                  <MobileText>{item.text}</MobileText>
-                </MobileCardText>
-              )}
+  <Card
+    key={i}
+    onMouseMove={!isMobile ? handleMouseMove : undefined}
+    onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+  >
+    {isMobile && (
+      <MobileCardText>
+        <MobileOnlyDivider />
+        <MobileTitle>{item.title}</MobileTitle>
+        <MobileText>{item.text}</MobileText>
+      </MobileCardText>
+    )}
 
-              <CardImg>
-                <img src={item.src} alt={item.title} />
-              </CardImg>
+    <CardImg>
+      <img src={item.src} alt={item.title} />
+    </CardImg>
 
-              {!isMobile && (
-                <>
-                  <CardTitle>{item.title}</CardTitle>
-                  <TitleDivider />
-                  <CardText>{item.text}</CardText>
-                </>
-              )}
-            </Card>
-          ))}
+    {!isMobile && (
+      <>
+        <CardTitle>{item.title}</CardTitle>
+        <Divider />
+        <CardText>{item.text}</CardText>
+      </>
+    )}
+  </Card>
+))}
+
         </Grid>
       </CardsSection>
     </Section>

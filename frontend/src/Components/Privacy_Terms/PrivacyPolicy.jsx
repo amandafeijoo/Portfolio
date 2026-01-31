@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
         </Typography>
 
         <Typography sx={{ opacity: 0.6, mb: 4 }}>
-          Last updated: January 26, 2026
+          Last updated: January 31, 2026
         </Typography>
 
         <Typography sx={{ mb: 4 }}>

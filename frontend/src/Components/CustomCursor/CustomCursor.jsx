@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { useCursor } from "../Context/CursorContext";
+import { useCursor } from "../../Context/CursorContext";
 
 /* 🔵 HALO */
 const Ring = styled(motion.div)`

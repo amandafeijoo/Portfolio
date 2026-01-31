@@ -8,12 +8,13 @@ import {
   HeroRow,
   HeroPill,
   DragHint,
+  Kicker,
 } from "./OrbitSection.styles";
 
 export default function ServicesHero() {
   return (
     <HeroTextTop>
-      <ServicesLabel>SERVICES</ServicesLabel>
+      <Kicker>SERVICES</Kicker>
 
       <HeroTitle>
         Design-led development

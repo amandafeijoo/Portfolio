@@ -11,40 +11,34 @@ export default function ProcessHeroBackground() {
       <ambientLight intensity={0.6} />
 
       {/* RELLENO */}
-        <FacetParticles
-     count={130}
-  spread={3}
-  depth={3}
-  size={0.03}
-  opacity={0.4}
-  speed={0.015}
+      <FacetParticles
+        count={130}
+        spread={5}
+        depth={3}
+        size={0.03}
+        opacity={0.4}
+        speed={0.015}
+        color="rgba(201, 184, 138, 0.9)"
+      />
 
-/>
+      {/* ESTRUCTURA */}
+      <FacetMesh radius={2.3} opacity={0.15} speed={0.03} />
 
-    {/* ESTRUCTURA */}
-<FacetMesh
-  radius={2.3}
-  opacity={0.15}
-  speed={0.03}
-/>
+      <FacetMesh
+        radius={1.6}
+        opacity={0.3}
+        speed={0.07}
+        /* usa el color por defecto */
+      />
 
-<FacetMesh
-  radius={1.6}
-  opacity={0.3}
-  speed={0.07}
-  /* usa el color por defecto */
- />
+      <FacetMesh
+        radius={1.2}
+        opacity={0.5}
+        speed={0.12}
+        color="#f1eadc" // 👈 DORADO CLARO SOLO ESTE
 
-<FacetMesh
-  radius={1.2}
-  opacity={0.5}
-  speed={0.12}
-  color="#f1eadc"   // 👈 DORADO CLARO SOLO ESTE
-
-  /* usa el color por defecto */
- />
-
+        /* usa el color por defecto */
+      />
     </Canvas>
   );
 }
-

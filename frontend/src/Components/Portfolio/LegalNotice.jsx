@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
 import {MdGavel,MdPublic,MdBusiness,MdLock,MdLanguage,} from "react-icons/md";
 import {AnimatedBox,StyledTitle,StyledSubtitle,FloatingCircle,
-} from "./styles/LegalNotice.styles";
+} from "../styles/LegalNotice.styles";
 
 
 const ListItem = ({ icon, text }) => (

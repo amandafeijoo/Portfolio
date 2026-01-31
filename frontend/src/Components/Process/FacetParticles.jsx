@@ -39,8 +39,8 @@ export default function FacetParticles({
       </bufferGeometry>
 
       <pointsMaterial
-        color="#e6d5bc"
-        size={1.3} // 👈 tamaño particulas
+        color= "rgba(201, 184, 138, 0.9)"
+        size={1.4} 
         sizeAttenuation={false} 
         transparent
         opacity={opacity}

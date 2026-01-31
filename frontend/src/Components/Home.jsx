@@ -4,13 +4,12 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
    LAZY SECTIONS
 ========================= */
 const HeroSection = lazy(() => import("./Hero/HeroSection"));
-const WhatIDoHero = lazy(() => import("./WhatIDoHero"));
-const WhatIDo = lazy(() => import("./WhatIDo"));
-const FloatingHintMenu = lazy(() => import("./FloatingHintMenu"));
+const WhatIDoHero = lazy(() => import("./WhatIDo/WhatIDoHero"));
+const WhatIDo = lazy(() => import("./WhatIDo/WhatIDo"));
+const FloatingHintMenu = lazy(() => import("./WhatIDo/FloatingHintMenu"));
 const OrbitSection = lazy(() => import("./Services/OrbitSection"));
 const ProcessSection = lazy(() => import("./Process/ProcessSection"));
 const HeroWorkSection = lazy(() => import("./Hero_Work/HeroWorkSection"));
-// const WorkPortal = lazy(() => import("./Hero_Work/WorkPortal"));
 const HomeContactInvite = lazy(() =>
   import("./HomeContactInvite/HomeContactInvite")
 );
@@ -39,9 +38,7 @@ export default function Home() {
       {/* =========================
           HERO PRINCIPAL
       ========================= */}
-      <Suspense fallback={null}>
-        {showHero && <HeroSection />}
-      </Suspense>
+      <Suspense fallback={null}>{showHero && <HeroSection />}</Suspense>
 
       {/* =========================
           CONTENIDO
@@ -63,22 +60,12 @@ export default function Home() {
       <Suspense fallback={null}>
         <HeroWorkSection onEnter={() => setEnterWork(true)} />
       </Suspense>
-
-      {
-        /* =========================
-          WORK PORTAL (DIMENSIÓN)
-      ========================= */}
-      {/* <Suspense fallback={null}>
-        {enterWork && <WorkPortal onClose={() => setEnterWork(false)} />}
-      </Suspense> */}
-
       <Suspense fallback={null}>
         <HomeContactInvite />
       </Suspense>
     </>
   );
 }
-
 
 // import React from "react";
 // import { useEffect } from "react";

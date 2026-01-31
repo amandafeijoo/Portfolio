@@ -67,7 +67,14 @@ export const OrbitFadeMask = styled.div`
       );
   }
 `;
-
+export const Kicker = styled.div`
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-align: center;
+  color: rgba(201, 184, 138, 0.9);
+  margin-bottom: 18px;
+`;
 /* ===============================
    HERO TEXT TOP (WOW)
 ================================ */

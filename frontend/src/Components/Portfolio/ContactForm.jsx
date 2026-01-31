@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { ContactFormContainer } from "./styles/ContactForm.styles";
+import { ContactFormContainer } from "../styles/ContactForm.styles";
 import ContactInputs from "./ContactInputs";
 
 

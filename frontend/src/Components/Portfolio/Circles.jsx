@@ -1,7 +1,7 @@
 // src/Components/Circles.jsx
 import React, { useState, useEffect } from "react";
-import { Circle } from "./styles/Circles.styles";
-import useDeviceInfo from "../utils/useDeviceInfo";
+import { Circle } from "../styles/Circles.styles";
+import useDeviceInfo from "../../utils/useDeviceInfo";
 
 const Circles = () => {
   const [scrollY, setScrollY] = useState(0);
