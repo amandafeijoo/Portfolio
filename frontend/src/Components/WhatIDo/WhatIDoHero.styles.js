@@ -28,10 +28,12 @@ export const HeroWrap = styled.section`
   /* 💻 Desktop */
   min-height: 100vh;
 
-  /* 📱 Mobile: NO full height */
+  /* 📱 Mobile */
   ${mobile} {
     min-height: auto;
     padding: 80px 16px 90px;
+    margin-top: -50px;
+    margin-bottom: -10px;
   }
 
   &::before {
@@ -40,17 +42,32 @@ export const HeroWrap = styled.section`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+
+    /* 💻 Desktop halo */
     width: 120vw;
     height: 120vw;
+    filter: blur(200px);
     background: radial-gradient(
       circle at center,
       rgba(255, 220, 180, 0.1),
       rgba(255, 220, 180, 0.04) 30%,
       rgba(0, 0, 0, 0.95) 65%
     );
-    filter: blur(200px);
-    pointer-events: none;
-    z-index: 0;
+
+    /* 📱 Mobile halo — MISMO ESTILO, AJUSTADO */
+    ${mobile} {
+      width: 160vw;
+      height: 160vw;
+      filter: blur(120px);
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 220, 180, 0.24),
+        rgba(255, 220, 180, 0.08) 35%,
+        rgba(0, 0, 0, 0.96) 70%
+      );
+    }
   }
 `;
 
@@ -60,6 +77,29 @@ export const HeroInner = styled.div`
   text-align: center;
   position: relative;
   z-index: 2;
+
+  /* 📱 Mobile halo */
+  ${mobile} {
+    padding: 32px 16px;
+  }
+
+  ${mobile}::before {
+    content: "";
+    position: absolute;
+    inset: -20px -10px;
+    z-index: -1;
+
+    background: radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 215, 170, 0.16),
+      rgba(255, 215, 170, 0.08) 35%,
+      rgba(0, 0, 0, 0.92) 70%
+    );
+
+    filter: blur(60px);
+    border-radius: 40px;
+    pointer-events: none;
+  }
 `;
 
 /* =========

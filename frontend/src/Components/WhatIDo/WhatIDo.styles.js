@@ -60,22 +60,6 @@ export const IntroTextWrap = styled.div`
   @media (max-width: 768px) {
     max-width: 420px;
     padding: 12px 8px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -12% -2%; /* tamaño del halo  AQUI ME QUEDE*/
-      z-index: -1;
-
-      background: radial-gradient(
-        circle at center,
-        rgba(201, 184, 138, 0.18),
-        transparent 22%
-      );
-
-      filter: blur(78px);
-      pointer-events: none;
-    }
   }
 `;
 
@@ -104,6 +88,13 @@ export const MetaLine = styled.div`
   opacity: 0.55;
   margin: 12px 0 22px;
   text-align: center;
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    font-size: 0.76rem;
+    line-height: 1.25;
+    max-width: 360px;
+  }
 `;
 
 export const HeroTitle = styled.h2`
@@ -134,23 +125,6 @@ export const HeroTitle = styled.h2`
     font-size: 1.7rem;
     line-height: 1.25;
     max-width: 360px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      inset: -35% -20%;
-      z-index: -1;
-
-      background: radial-gradient(
-        circle at center,
-        rgba(201, 184, 138, 0.18),
-        rgba(201, 184, 138, 0.08) 45%,
-        transparent 70%
-      );
-
-      filter: blur(40px);
-      pointer-events: none;
-    }
   }
 `;
 
@@ -159,16 +133,12 @@ export const HeroText = styled.p`
   text-align: center;
   max-width: 460px;
   margin: 0 auto;
-
   line-height: 1.8;
   color: #bdbdbd;
   opacity: 0.9;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
-    max-width: 290px;
-    line-height: 1.85;
-    max-width: 32ch;
+    display: none;
   }
 `;
 
@@ -267,6 +237,7 @@ export const CardsSection = styled.section`
 
   @media (max-width: 600px) {
     padding: 32px 20px 100px;
+    margin-top: -80px;
   }
 `;
 
@@ -403,7 +374,7 @@ export const CardImg = styled.div`
   @media (max-width: 768px) {
     padding: 10px;
     width: 100%;
-    margin-left: 52px;
+    margin-left: 48px;
     max-width: 260px;
   }
 `;

@@ -30,7 +30,6 @@ export default function MenuDrawer({
           WebkitOverflowScrolling: "touch",
         }}
       >
-        {/* TITLE */}
         <Typography
           variant="overline"
           sx={{
@@ -38,13 +37,14 @@ export default function MenuDrawer({
             fontSize: "0.65rem",
             color: "rgba(120,120,120,0.75)",
             mb: { xs: 3, sm: 3 },
+            display: { xs: "none", sm: "block" },
           }}
         >
           MENU
         </Typography>
 
         {/* LINKS */}
-        <Stack spacing={2.4}>
+        <Stack spacing={{ xs: 1.5, sm: 2.4 }}>
           {[...mainLinks, ...menuLinks].map((link) => (
             <Box
               key={link.label}
@@ -53,14 +53,22 @@ export default function MenuDrawer({
               onClick={onClose}
               sx={{
                 position: "relative",
-                fontSize: "1.05rem",
+
+                /* ---------- TYPO ---------- */
+                fontSize: { xs: "1rem", sm: "1.05rem" },
                 fontWeight: 400,
-                letterSpacing: "0.04em",
+                letterSpacing: { xs: "0.02em", sm: "0.04em" },
+
                 color: "rgba(40,32,20,0.85)",
                 textDecoration: "none",
-                paddingLeft: "12px",
+
+                /* ---------- SPACING ---------- */
+                paddingLeft: { xs: "6px", sm: "12px" },
+                paddingY: { xs: "6px", sm: "0px" },
+
                 transition: "all 260ms cubic-bezier(.22,.61,.36,1)",
 
+                /* ---------- DECOR LINE ---------- */
                 "&::before": {
                   content: '""',
                   position: "absolute",
@@ -71,11 +79,15 @@ export default function MenuDrawer({
                   background: "rgba(201,169,106,0.6)",
                   transform: "translateY(-50%)",
                   transition: "height 260ms ease",
+
+                  /* ❌ en mobile no */
+                  display: { xs: "none", sm: "block" },
                 },
 
+                /* ---------- HOVER (desktop only) ---------- */
                 "&:hover": {
                   color: "#7e6a3f",
-                  paddingLeft: "18px",
+                  paddingLeft: { sm: "18px" },
                 },
 
                 "&:hover::before": {
@@ -187,8 +199,8 @@ export default function MenuDrawer({
           >
             <Box
               sx={{
-                width: { xs: 200, sm: 230, md: 240 },
-                height: { xs: 200, sm: 230, md: 240 },
+                width: { xs: 130, sm: 230, md: 240 },
+                height: { xs: 130, sm: 230, md: 240 },
                 borderRadius: "50%",
                 overflow: "hidden",
                 background:
