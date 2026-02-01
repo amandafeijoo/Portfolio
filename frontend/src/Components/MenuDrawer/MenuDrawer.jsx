@@ -8,7 +8,13 @@ export default function MenuDrawer({
   menuLinks = [],
 }) {
   return (
-    <Drawer anchor="right" open={open} onClose={onClose}>
+    <Drawer
+      anchor="right"
+      open={open}
+      onClose={onClose}
+      variant="temporary"
+      ModalProps={{ keepMounted: true }}
+    >
       <Box
         sx={{
           width: 320,
@@ -36,8 +42,6 @@ export default function MenuDrawer({
         >
           MENU
         </Typography>
-
-    
 
         {/* LINKS */}
         <Stack spacing={2.4}>

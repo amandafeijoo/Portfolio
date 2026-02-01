@@ -20,6 +20,12 @@ export default function HeroSection() {
         overflow: "hidden",
         background:
           "radial-gradient(circle at 50% 42%, rgba(231, 217, 188, 0.18), #000 70%)",
+
+        /* 👇 SUBIR TODO SOLO EN MOBILE */
+        transform: {
+          xs: "translateY(-6vh)",
+          sm: "none",
+        },
       }}
     >
       {/* THREE BACKGROUND */}

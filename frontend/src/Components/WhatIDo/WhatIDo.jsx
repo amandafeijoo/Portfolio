@@ -1,5 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
+import { useTheme, useMediaQuery } from "@mui/material";
+
 import {
   Section,
   IntroHero,
@@ -16,15 +18,11 @@ import {
   CardImg,
   CardTitle,
   CardText,
-  MobileCardText,
-  MobileTitle,
-  MobileText,
   PlaceholderMedia,
   Kicker,
   MetaLine,
   Divider,
   TitleDivider,
-  MobileOnlyDivider,
 } from "./WhatIDo.styles";
 import FloatingHintMenu from "./FloatingHintMenu";
 
@@ -66,7 +64,8 @@ export default function WhatIDo() {
   /* ===============================
      BREAKPOINT
   ================================ */
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   /* ===============================
      REFS
@@ -108,8 +107,8 @@ export default function WhatIDo() {
     });
 
     setEnd({
-      x: t.left - f.left - 24,
-      y: t.top - f.top - 55,
+      x: t.left - f.left - 34,
+      y: t.top - f.top - 68,
     });
 
     setEndScale((t.width / f.width) * 0.9);
@@ -121,15 +120,16 @@ export default function WhatIDo() {
   const x = isMobile
     ? 0
     : useTransform(scrollYProgress, [0, 0.45], [start.x, end.x]);
-
   const y = isMobile
     ? 0
     : useTransform(scrollYProgress, [0, 0.45], [start.y, end.y]);
-
   const scale = isMobile
     ? 1
     : useTransform(scrollYProgress, [0, 0.45], [1, endScale]);
 
+  /* ===============================
+     INTERACTION (DESKTOP)
+  ================================ */
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -138,7 +138,12 @@ export default function WhatIDo() {
     const rotateX = (y / rect.height - 0.5) * -6;
     const rotateY = (x / rect.width - 0.5) * 6;
 
-    e.currentTarget.style.transform = `translateY(-14px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    e.currentTarget.style.transform = `
+      translateY(-14px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.02)
+    `;
   };
 
   const handleMouseLeave = (e) => {
@@ -150,7 +155,7 @@ export default function WhatIDo() {
   ================================ */
   return (
     <Section ref={sectionRef}>
-      {/* ================= FLOATING IMAGE (DESKTOP ONLY) ================= */}
+      {/* ================= FLOATING CARD (DESKTOP ONLY) ================= */}
       {!isMobile && (
         <StickyLayer>
           <FloatingCard ref={floatingRef} style={{ x, y, scale }}>
@@ -164,10 +169,9 @@ export default function WhatIDo() {
       <IntroHero>
         <IntroTextWrap>
           <Kicker>{introCopy.kicker}</Kicker>
-
           <MetaLine>{introCopy.meta}</MetaLine>
-
           <TitleDivider />
+
           <HeroTitle>
             {introCopy.title.split("\n").map((line, i) => (
               <span key={i}>
@@ -195,7 +199,7 @@ export default function WhatIDo() {
       {/* ================= GRID ================= */}
       <CardsSection>
         <Grid>
-          {/* ===== PRIMER CARD ===== */}
+          {/* ===== CARD 1 (INTEGRATED ON MOBILE) ===== */}
           <Card
             onMouseMove={!isMobile ? handleMouseMove : undefined}
             onMouseLeave={!isMobile ? handleMouseLeave : undefined}
@@ -208,41 +212,25 @@ export default function WhatIDo() {
               )}
             </CardImg>
 
-            {!isMobile && (
-              <>
-                <CardTitle>{items[0].title}</CardTitle>
-                <Divider />
-                <CardText>{items[0].text}</CardText>
-              </>
-            )}
+            <CardTitle>{items[0].title}</CardTitle>
+            <Divider />
+            <CardText>{items[0].text}</CardText>
           </Card>
 
-          {/* ===== RESTO DE CARDS ===== */}
+          {/* ===== REST OF CARDS ===== */}
           {items.slice(1).map((item, i) => (
             <Card
               key={i}
               onMouseMove={!isMobile ? handleMouseMove : undefined}
               onMouseLeave={!isMobile ? handleMouseLeave : undefined}
             >
-              {isMobile && (
-                <MobileCardText>
-                  <MobileOnlyDivider />
-                  <MobileTitle>{item.title}</MobileTitle>
-                  <MobileText>{item.text}</MobileText>
-                </MobileCardText>
-              )}
-
               <CardImg>
                 <img src={item.src} alt={item.title} />
               </CardImg>
 
-              {!isMobile && (
-                <>
-                  <CardTitle>{item.title}</CardTitle>
-                  <Divider />
-                  <CardText>{item.text}</CardText>
-                </>
-              )}
+              <CardTitle>{item.title}</CardTitle>
+              <Divider />
+              <CardText>{item.text}</CardText>
             </Card>
           ))}
         </Grid>

@@ -15,6 +15,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer/Footer";
 import CustomCursor from "./Components/CustomCursor/CustomCursor";
 import IntroLoader from "./Components/IntroLoader";
+import MainLayout from "./Components/Layout/MainLayout";
 
 /* =========================
    PAGES
@@ -36,13 +37,29 @@ import LegalPage from "./Components/LegalNotice/LegalPage";
    GLOBAL STYLE
 ========================= */
 const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: "Inter", sans-serif;
-    background: #000;
-    min-height: 100vh;
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; 
     margin: 0;
     padding: 0;
+    background: #000;
     color-scheme: dark;
+    font-family: "Inter", sans-serif;
+  }
+
+  body {
+    position: relative;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   input, textarea, button, select {
@@ -78,22 +95,22 @@ function AppContent() {
 
       <AppContainer>
         <Header />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/orbit-section" element={<OrbitPage />} />
-          <Route path="/process-section" element={<ProcessSection />} />
-          <Route path="/aboutme" element={<AboutMe />} />
-          <Route path="/tech-stack" element={<TechStack />} />
-          <Route path="/profile-info-box" element={<ProfileInfoBox />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contactform" element={<ContactForm />} />
-          <Route path="/contactpage" element={<ContactPage />} />
-          <Route path="/demopage/:projectId" element={<DemoPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPage />} />
-          <Route path="/legal-notice" element={<LegalPage />} />
-        </Routes>
-
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/orbit-section" element={<OrbitPage />} />
+            <Route path="/process-section" element={<ProcessSection />} />
+            <Route path="/aboutme" element={<AboutMe />} />
+            <Route path="/tech-stack" element={<TechStack />} />
+            <Route path="/profile-info-box" element={<ProfileInfoBox />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contactform" element={<ContactForm />} />
+            <Route path="/contactpage" element={<ContactPage />} />
+            <Route path="/demopage/:projectId" element={<DemoPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPage />} />
+            <Route path="/legal-notice" element={<LegalPage />} />
+          </Routes>
+        </MainLayout>
         <Footer />
       </AppContainer>
     </>

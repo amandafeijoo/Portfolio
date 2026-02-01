@@ -7,15 +7,16 @@ import SphereLines3D from "./SphereLines3D";
 export default function ParticleSphere({ enter }) {
   const pointsRef = useRef();
   const haloRef = useRef();
-  const { mouse, camera } = useThree();
+  const { mouse, camera, size } = useThree();
   const navigate = useNavigate();
+
+  const isMobile = size.width < 768;
 
   const zoom = useRef(0);
 
   const PARTICLE_COUNT = 1800;
-  const SPHERE_RADIUS = 2.4; // Radio de la esfera base
-  const DURATION = 2.4; // segundos
-
+  const SPHERE_RADIUS = 2.4;
+  const DURATION = 2.4;
 
   const positions = useMemo(() => {
     const arr = new Float32Array(PARTICLE_COUNT * 3);
@@ -31,7 +32,6 @@ export default function ParticleSphere({ enter }) {
   useFrame((_, delta) => {
     const t = performance.now() * 0.001;
 
-    // Rotación normal (solo si NO está entrando)
     if (!enter) {
       if (pointsRef.current) {
         pointsRef.current.rotation.y = t * 0.06;
@@ -44,7 +44,6 @@ export default function ParticleSphere({ enter }) {
       return;
     }
 
-    // Animación de entrada
     zoom.current = Math.min(zoom.current + delta / DURATION, 1);
 
     camera.position.z = THREE.MathUtils.lerp(6, 0.35, zoom.current);
@@ -57,17 +56,20 @@ export default function ParticleSphere({ enter }) {
     }
 
     if (zoom.current >= 1) {
-      navigate("/contactpage"); //RUTA DE DESTINO
+      navigate("/contactpage");
     }
   });
 
   return (
     <group>
-      <group position={[0, 0, -0.6]} renderOrder={0}>
-        <SphereLines3D />
-      </group>
+      {/* 👇 SOLO DESKTOP / TABLET */}
+      {!isMobile && (
+        <group position={[0, 0, -0.6]} renderOrder={0}>
+          <SphereLines3D />
+        </group>
+      )}
 
-      <mesh ref={haloRef} scale={2.6} renderOrder={1}> 
+      <mesh ref={haloRef} scale={2.6} renderOrder={1}>
         <sphereGeometry args={[1, 48, 48]} />
         <meshBasicMaterial
           color="#e6d5bc"

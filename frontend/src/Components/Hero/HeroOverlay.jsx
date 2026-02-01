@@ -1,25 +1,31 @@
 import { Box, Typography, Button } from "@mui/material";
 import TypingWords from "../Hero/TypingWords";
 
+/* =========================
+   SHARED STYLES
+========================= */
+
 const sideStyle = {
   fontFamily: "Source Code Pro, monospace",
-  fontSize: "0.7rem",
   letterSpacing: "0.35em",
   textTransform: "uppercase",
   color: "rgba(214, 211, 204, 0.75)",
   lineHeight: 1.8,
   textShadow: "0 2px 8px rgba(0,0,0,0.3)",
 };
+
 const bodyStyle = {
   fontFamily: "Source Code Pro, monospace",
-  fontSize: "0.95rem",
   letterSpacing: "0.08em",
   color: "rgba(220,215,205,0.7)",
   lineHeight: 2.1,
-  maxWidth: 260,
 };
 
-export default function HeroOverlay({ onEnter, enter }) {
+/* =========================
+   COMPONENT
+========================= */
+
+export default function HeroOverlay({ onEnter }) {
   return (
     <Box
       sx={{
@@ -29,19 +35,29 @@ export default function HeroOverlay({ onEnter, enter }) {
         pointerEvents: "none",
       }}
     >
-      {/* =========================
-    ARRIBA IZQUIERDA
-========================= */}
+      {/* ======================================================
+          MOBILE — TOP CENTER (above sphere)
+      ====================================================== */}
       <Box
         sx={{
           position: "absolute",
-          top: { xs: 32, sm: 80, md: 120 },
-          left: { xs: 20, sm: 36, md: 48 },
-          display: { xs: "none", sm: "block" },
-          textAlign: "left",
+          top: { xs: 24, sm: "auto" },
+          left: 0,
+          right: 0,
+          display: { xs: "flex", sm: "none" },
+          justifyContent: "center",
+          textAlign: "center",
+          px: 3,
         }}
       >
-        <Typography sx={bodyStyle}>
+        <Typography
+          sx={{
+            ...bodyStyle,
+            fontSize: "0.8rem",
+            maxWidth: 300,
+            mt: 10,
+          }}
+        >
           I design and build websites for{" "}
           <Box component="span" sx={{ display: "inline-block", minWidth: 90 }}>
             <TypingWords
@@ -53,9 +69,38 @@ export default function HeroOverlay({ onEnter, enter }) {
         </Typography>
       </Box>
 
-      {/* =========================
-          CENTRO
-      ========================= */}
+      {/* ======================================================
+          DESKTOP / TABLET — TOP LEFT
+      ====================================================== */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: { sm: 80, md: 120 },
+          left: { sm: 36, md: 48 },
+          display: { xs: "none", sm: "block" },
+          maxWidth: { sm: 220, md: 260 },
+        }}
+      >
+        <Typography
+          sx={{
+            ...bodyStyle,
+            fontSize: { sm: "0.85rem", md: "0.95rem" },
+          }}
+        >
+          I design and build websites for{" "}
+          <Box component="span" sx={{ display: "inline-block", minWidth: 90 }}>
+            <TypingWords
+              words={["brands", "startups", "founders", "businesses"]}
+              speed={85}
+              pause={1200}
+            />
+          </Box>
+        </Typography>
+      </Box>
+
+      {/* ======================================================
+          CENTER — TITLE + CTA (ALL DEVICES)
+      ====================================================== */}
       <Box
         sx={{
           position: "absolute",
@@ -65,11 +110,22 @@ export default function HeroOverlay({ onEnter, enter }) {
           justifyContent: "center",
         }}
       >
-        <Box sx={{ textAlign: "center", maxWidth: 720 }}>
+        <Box
+          sx={{
+            textAlign: "center",
+            maxWidth: 720,
+            px: { xs: 2, sm: 0 },
+            mt: { xs: 6, sm: 0 },
+          }}
+        >
           <Typography
             sx={{
               fontFamily: "Playfair Display, serif",
-              fontSize: "clamp(3rem, 6vw, 4.2rem)",
+              fontSize: {
+                xs: "clamp(2.1rem, 8vw, 2.6rem)",
+                sm: "clamp(2.8rem, 6vw, 3.4rem)",
+                md: "clamp(3rem, 6vw, 4.2rem)",
+              },
               color: "rgba(241, 238, 232, 0.75)",
               mb: 2,
               position: "relative",
@@ -90,8 +146,10 @@ export default function HeroOverlay({ onEnter, enter }) {
           <Typography
             sx={{
               color: "rgba(214, 211, 204, 0.75)",
-              fontSize: "1rem",
-              mb: 4,
+              fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
+              mb: { xs: 3, md: 4 },
+              maxWidth: { xs: 280, sm: 360, md: 520 },
+              mx: "auto",
             }}
           >
             Design & development for web experiences that feel alive.
@@ -101,17 +159,17 @@ export default function HeroOverlay({ onEnter, enter }) {
             onClick={onEnter}
             sx={{
               pointerEvents: "auto",
-              px: 4,
-              py: 1.4,
+              px: { xs: 3, md: 4 },
+              py: { xs: 1.1, md: 1.4 },
+              fontSize: { xs: "0.75rem", md: "0.8rem" },
               borderRadius: "999px",
               border: "1px solid rgba(200,164,106,0.6)",
               color: "#f5f0e8",
               letterSpacing: "0.14em",
-                backdropFilter: "blur(6px)",
-                "&:hover": {
-                    backgroundColor: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(200,164,106,0.6)",
-                    },
+              backdropFilter: "blur(6px)",
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.08)",
+              },
             }}
           >
             LET’S CREATE
@@ -119,19 +177,49 @@ export default function HeroOverlay({ onEnter, enter }) {
         </Box>
       </Box>
 
-      {/* =========================
-          ABAJO DERECHA
-      ========================= */}
+      {/* ======================================================
+          MOBILE — BOTTOM CENTER (below sphere)
+      ====================================================== */}
       <Box
         sx={{
           position: "absolute",
-          bottom: { xs: 32, sm: 60, md: 80 },
-          right: { xs: 20, sm: 36, md: 48 },
-          textAlign: "right",
-          display: { xs: "none", sm: "block" },
+          bottom: { xs: 94, sm: "auto" },
+          left: 0,
+          right: 0,
+          display: { xs: "flex", sm: "none" },
+          justifyContent: "center",
+          textAlign: "center",
         }}
       >
-        <Typography sx={sideStyle}>
+        <Typography
+          sx={{
+            ...sideStyle,
+            fontSize: "0.6rem",
+            lineHeight: 1.9,
+          }}
+        >
+          STRATEGY · DESIGN · DEVELOPMENT
+        </Typography>
+      </Box>
+
+      {/* ======================================================
+          DESKTOP / TABLET — BOTTOM RIGHT
+      ====================================================== */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: { sm: 60, md: 80 },
+          right: { sm: 36, md: 48 },
+          display: { xs: "none", sm: "block" },
+          textAlign: "right",
+        }}
+      >
+        <Typography
+          sx={{
+            ...sideStyle,
+            fontSize: { sm: "0.65rem", md: "0.7rem" },
+          }}
+        >
           STRATEGY.
           <br />
           DESIGN.

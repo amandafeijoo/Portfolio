@@ -26,36 +26,56 @@ export const IntroHero = styled.div`
 
   margin-left: 100px;
 
+  /* ↓ Desktop medio */
   @media (max-width: 1280px) {
     margin-left: 0;
   }
 
-  /* 📱 TABLET */
+  /* 📱 Tablet */
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 56px;
-    padding: 64px 32px 80px;
+    padding: 72px 32px 88px;
     text-align: center;
   }
 
-  /* 📱 MOBILE */
+  /* 📱 Mobile */
   @media (max-width: 600px) {
-    padding: 48px 20px 64px;
-    gap: 40px;
+    padding: 56px 20px 64px;
+    gap: 36px;
   }
 `;
 
 export const IntroTextWrap = styled.div`
+  position: relative;
   max-width: 580px;
   margin-top: -50px;
+  z-index: 1;
 
   @media (max-width: 1024px) {
     max-width: 520px;
     margin: 0 auto;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     max-width: 420px;
+    padding: 12px 8px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -12% -2%; /* tamaño del halo  AQUI ME QUEDE*/
+      z-index: -1;
+
+      background: radial-gradient(
+        circle at center,
+        rgba(201, 184, 138, 0.18),
+        transparent 22%
+      );
+
+      filter: blur(78px);
+      pointer-events: none;
+    }
   }
 `;
 
@@ -70,6 +90,11 @@ export const Kicker = styled.div`
   text-align: center;
   color: rgba(201, 184, 138, 0.9);
   margin-bottom: 18px;
+
+  /* 📱 OCULTAR EN MÓVIL */
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const MetaLine = styled.div`
@@ -82,23 +107,21 @@ export const MetaLine = styled.div`
 `;
 
 export const HeroTitle = styled.h2`
+  position: relative;
+
   font-size: clamp(2.4rem, 5vw, 3rem);
   text-align: center;
-
   max-width: 520px;
   margin: 0 auto 24px;
 
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: 0.2px;
-
   color: rgba(237, 231, 217, 0.96);
 
-  /* Fallback */
   word-break: normal;
   overflow-wrap: break-word;
 
-  /* ✅ Modern browsers */
   @supports (text-wrap: balance) {
     text-wrap: balance;
   }
@@ -106,17 +129,34 @@ export const HeroTitle = styled.h2`
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.22),
     0 0 26px rgba(255, 255, 255, 0.12), 0 10px 32px rgba(0, 0, 0, 0.55);
 
+  /* 📱 MOBILE */
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     line-height: 1.25;
     max-width: 360px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -35% -20%;
+      z-index: -1;
+
+      background: radial-gradient(
+        circle at center,
+        rgba(201, 184, 138, 0.18),
+        rgba(201, 184, 138, 0.08) 45%,
+        transparent 70%
+      );
+
+      filter: blur(40px);
+      pointer-events: none;
+    }
   }
 `;
 
 export const HeroText = styled.p`
   font-size: 1.05rem;
   text-align: center;
-
   max-width: 460px;
   margin: 0 auto;
 
@@ -124,16 +164,11 @@ export const HeroText = styled.p`
   color: #bdbdbd;
   opacity: 0.9;
 
-  overflow-wrap: break-word;
-
-  @supports (text-wrap: balance) {
-    text-wrap: balance;
-  }
-
   @media (max-width: 768px) {
     font-size: 1rem;
-    max-width: 360px;
-    line-height: 1.9;
+    max-width: 290px;
+    line-height: 1.85;
+    max-width: 32ch;
   }
 `;
 
@@ -250,7 +285,8 @@ export const Grid = styled.div`
 
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 56px;
+    justify-items: center;
   }
 `;
 
@@ -280,7 +316,7 @@ export const Card = styled.div`
     background: radial-gradient(
       circle at top center,
       rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0.06),
+      rgba(0, 0, 0, 0.06),
       transparent 55%
     );
 
@@ -300,15 +336,19 @@ export const Card = styled.div`
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    &:hover {
-      transform: none;
-      filter: none;
-    }
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(201, 184, 138, 0.25);
 
-    &:active {
-      transform: scale(0.985);
-      filter: brightness(1.02);
-    }
+    background: radial-gradient(
+      circle at top center,
+      rgba(201, 184, 138, 0.12),
+      rgba(0, 0, 0, 0.85) 65%
+    );
+
+    border-radius: 20px;
+    padding-bottom: 34px;
+    padding-top: 18px;
+    width: 100%;
   }
 `;
 
@@ -363,7 +403,7 @@ export const CardImg = styled.div`
   @media (max-width: 768px) {
     padding: 10px;
     width: 100%;
-    margin-left: 69px;
+    margin-left: 52px;
     max-width: 260px;
   }
 `;
@@ -388,9 +428,13 @@ export const CardTitle = styled.h3`
     transform: translateY(0);
   }
 
+  /* 📱 Mobile */
   @media (max-width: 768px) {
-    max-width: 220px;
-    min-height: 3.6em;
+    max-width: 240px;
+    font-size: 1.1rem;
+    line-height: 1.35;
+
+    transform: none;
   }
 `;
 
@@ -409,9 +453,15 @@ export const CardText = styled.p`
     transform: translateY(0);
   }
 
+  /* 📱 Mobile */
   @media (max-width: 768px) {
     opacity: 1;
     transform: none;
+
+    max-width: 260px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 4px;
   }
 `;
 
@@ -489,7 +539,7 @@ export const MobileTitle = styled.h3`
 `;
 
 export const MobileText = styled.p`
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.55;
   color: #bdbdbd;
 `;

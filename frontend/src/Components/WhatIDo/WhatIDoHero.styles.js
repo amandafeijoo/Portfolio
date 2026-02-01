@@ -16,9 +16,8 @@ const float = keyframes`
 
 export const HeroWrap = styled.section`
   position: relative;
-  min-height: 100vh;
   width: 100%;
-  padding: 10px 10px;
+  padding: 10px;
   overflow: hidden;
   background: #000;
 
@@ -26,24 +25,29 @@ export const HeroWrap = styled.section`
   align-items: center;
   justify-content: center;
 
+  /* 💻 Desktop */
+  min-height: 100vh;
+
+  /* 📱 Mobile: NO full height */
+  ${mobile} {
+    min-height: auto;
+    padding: 80px 16px 90px;
+  }
+
   &::before {
     content: "";
     position: absolute;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     width: 120vw;
     height: 120vw;
-
     background: radial-gradient(
       circle at center,
       rgba(255, 220, 180, 0.1),
       rgba(255, 220, 180, 0.04) 30%,
       rgba(0, 0, 0, 0.95) 65%
     );
-
     filter: blur(200px);
     pointer-events: none;
     z-index: 0;
@@ -68,6 +72,11 @@ export const Kicker = styled.div`
   font-size: 0.8rem;
   color: rgba(201, 184, 138, 0.9);
   margin-bottom: 18px;
+
+  ${mobile} {
+    font-size: 0.65rem;
+    margin-bottom: 14px;
+  }
 `;
 
 /* =========
@@ -81,24 +90,34 @@ export const Headline = styled.h2`
   font-weight: 400;
   line-height: 1.08;
   margin-bottom: 22px;
-
   text-shadow: 0 0 34px rgba(201, 184, 138, 0.14);
+
+  ${mobile} {
+    font-size: clamp(1.9rem, 7vw, 2.4rem);
+    line-height: 1.18;
+    margin-bottom: 18px;
+  }
 `;
 
 /* =========
    Divider
 ========= */
-
 export const Divider = styled.div`
   margin: 0 auto 22px;
   width: 90px;
   height: 1px;
+
   background: linear-gradient(
     90deg,
     transparent,
     rgba(201, 184, 138, 0.7),
     transparent
   );
+
+  ${mobile} {
+    margin-bottom: 18px;
+    width: 70px;
+  }
 `;
 
 /* =========
@@ -111,6 +130,13 @@ export const Subline = styled.p`
   font-size: 1rem;
   line-height: 1.65;
   color: rgba(244, 242, 237, 0.78);
+
+  ${mobile} {
+    max-width: 36ch;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
 `;
 
 /* =========
@@ -123,6 +149,13 @@ export const Statement = styled.p`
   font-size: 0.95rem;
   line-height: 1.7;
   color: rgba(244, 242, 237, 0.72);
+
+  ${mobile} {
+    max-width: 36ch;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
 `;
 
 /* =========
@@ -135,6 +168,12 @@ export const SupportingText = styled.p`
   font-size: 0.9rem;
   line-height: 1.7;
   color: rgba(244, 242, 237, 0.6);
+
+  ${mobile} {
+    max-width: 34ch;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
 `;
 
 /* =========
@@ -146,6 +185,10 @@ export const ScrollHint = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${mobile} {
+    margin-top: 46px;
+  }
 `;
 
 export const ScrollLine = styled.div`
