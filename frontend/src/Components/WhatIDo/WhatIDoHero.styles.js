@@ -25,17 +25,11 @@ export const HeroWrap = styled.section`
   align-items: center;
   justify-content: center;
 
-  /* 💻 Desktop */
   min-height: 100vh;
 
-  /* 📱 Mobile */
-  ${mobile} {
-    min-height: auto;
-    padding: 80px 16px 90px;
-    margin-top: -50px;
-    margin-bottom: -10px;
-  }
-
+  /* ======================
+     DESKTOP HALO (::before)
+  ====================== */
   &::before {
     content: "";
     position: absolute;
@@ -45,7 +39,6 @@ export const HeroWrap = styled.section`
     pointer-events: none;
     z-index: 0;
 
-    /* 💻 Desktop halo */
     width: 120vw;
     height: 120vw;
     filter: blur(200px);
@@ -55,19 +48,29 @@ export const HeroWrap = styled.section`
       rgba(255, 220, 180, 0.04) 30%,
       rgba(0, 0, 0, 0.95) 65%
     );
+  }
 
-    /* 📱 Mobile halo — MISMO ESTILO, AJUSTADO */
-    ${mobile} {
-      width: 160vw;
-      height: 160vw;
-      filter: blur(120px);
-      background: radial-gradient(
-        circle at center,
-        rgba(255, 220, 180, 0.24),
-        rgba(255, 220, 180, 0.08) 35%,
-        rgba(0, 0, 0, 0.96) 70%
-      );
+  /* ======================
+     MOBILE OVERRIDE
+  ====================== */
+  ${mobile} {
+    min-height: auto;
+    padding: 80px 16px 90px;
+    margin-top: -50px;
+    margin-bottom: 0px;
+
+    /* 🔥 APAGAMOS EL ::before */
+    &::before {
+      display: none;
     }
+    /* 🌟 HALO LIMPIO COMO BACKGROUND */
+    background: radial-gradient(
+        120% 80% at 50% 50%,
+        /* 👈 CENTRO REAL */ rgba(255, 220, 180, 0.11) 0%,
+        rgba(255, 220, 180, 0.06) 35%,
+        rgba(0, 0, 0, 0.96) 72%
+      ),
+      #000;
   }
 `;
 
@@ -81,24 +84,6 @@ export const HeroInner = styled.div`
   /* 📱 Mobile halo */
   ${mobile} {
     padding: 32px 16px;
-  }
-
-  ${mobile}::before {
-    content: "";
-    position: absolute;
-    inset: -20px -10px;
-    z-index: -1;
-
-    background: radial-gradient(
-      circle at 50% 35%,
-      rgba(255, 215, 170, 0.16),
-      rgba(255, 215, 170, 0.08) 35%,
-      rgba(0, 0, 0, 0.92) 70%
-    );
-
-    filter: blur(60px);
-    border-radius: 40px;
-    pointer-events: none;
   }
 `;
 

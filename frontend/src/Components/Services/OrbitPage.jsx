@@ -1,25 +1,27 @@
+import { Box } from "@mui/material";
 import OrbitSection from "./OrbitSection";
 
 export default function OrbitPage() {
   return (
-    <main
-      style={{
+    <Box
+      component="main"
+      sx={{
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        marginTop: 50,
-        marginBottom: 160,
-        paddingBottom: 0,
+        mt: { xs: 0, md: 6 },
+        mb: { xs: 0, md: 20 },
+        px: { xs: 0, md: 2 },
       }}
     >
-      <div
-        style={{
+      <Box
+        sx={{
           width: "100%",
           maxWidth: "1400px",
         }}
       >
         <OrbitSection />
-      </div>
-    </main>
+      </Box>
+    </Box>
   );
 }
