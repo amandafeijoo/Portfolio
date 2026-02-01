@@ -1,4 +1,5 @@
 import styled from "styled-components";
+const mobile = "@media (max-width: 768px)";
 
 export const HeroWrap = styled.section`
   position: relative;
@@ -9,6 +10,13 @@ export const HeroWrap = styled.section`
   padding: 0 20px;
   overflow: hidden;
   margin-bottom: -240px;
+  /* 📱 Mobile */
+  ${mobile} {
+    min-height: 100vh;
+    margin-bottom: -20px;
+    margin-top: -60px;
+    margin-bottom: -190px; 
+  }
 `;
 
 export const ThreeWrapper = styled.div`

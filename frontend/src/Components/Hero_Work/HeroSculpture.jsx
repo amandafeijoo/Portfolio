@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import OctagonWire from "./OctagonWire";
@@ -7,53 +7,76 @@ import FloatingParticles from "./FloatingParticles";
 export default function HeroSculpture({ enter, onProgress }) {
   const group = useRef();
   const progress = useRef(0);
-  const { camera } = useThree();
+  const { camera, size } = useThree();
 
-  // 🎯 VALORES BASE (CLAVE)
-  const baseScale = 1.3;      // tamaño normal del hero
-  const idleCameraZ = 4.8;    // cámara en estado idle
+  // 📐 Breakpoints reales
+  const isMobile = size.width < 768;
+  const isTablet = size.width >= 768 && size.width < 1024;
+
+  // 🎯 VALORES RESPONSIVE
+  const config = useMemo(() => {
+    if (isMobile) {
+      return {
+        baseScale: 1.3,
+        idleCameraZ: 6.2,
+        offsetX: 0,
+        radii: [1.35, 1.15, 0.95],
+      };
+    }
+
+    if (isTablet) {
+      return {
+        baseScale: 1.15,
+        idleCameraZ: 5.4,
+        offsetX: -0.4,
+        radii: [1.6, 1.35, 1.1],
+      };
+    }
+
+    // 💻 Desktop
+    return {
+      baseScale: 1.03,
+      idleCameraZ: 4.8,
+      offsetX: -0.95,
+      radii: [1.8, 1.5, 1.2],
+    };
+  }, [isMobile, isTablet]);
 
   useFrame(() => {
     if (!group.current) return;
 
-    // 🔄 PROGRESO SUAVE (portal)
+    // 🔄 PROGRESO SUAVE
     progress.current = THREE.MathUtils.lerp(
       progress.current,
       enter ? 1 : 0,
-      0.002 
+      0.002
     );
 
-    // 📡 enviar progreso al padre
-    if (onProgress) {
-      onProgress(progress.current);
-    }
+    if (onProgress) onProgress(progress.current);
 
     // 🔮 ESCULTURA
-    group.current.scale.setScalar(
-      baseScale + progress.current * 2.2
-    );
+    group.current.scale.setScalar(config.baseScale + progress.current * 2.2);
 
     group.current.rotation.y += progress.current * 0.02;
     group.current.position.z = -progress.current * 4;
 
     // 🎥 CÁMARA
     camera.position.z = THREE.MathUtils.lerp(
-      idleCameraZ,
+      config.idleCameraZ,
       0.8,
       progress.current
     );
   });
 
   return (
-    <group ref={group} position={[-0.95, 0, 0]}>
+    <group ref={group} position={[config.offsetX, 0, 0]}>
       {/* 🌌 PARTÍCULAS */}
-      <FloatingParticles count={260} />
+      <FloatingParticles count={isMobile ? 160 : 260} />
 
       {/* 🔮 OCTÁGONOS */}
-      <OctagonWire radius={1.8} opacity={0.18} speed={0.05} />
-      <OctagonWire radius={1.5} opacity={0.35} speed={0.1} />
-      <OctagonWire radius={1.2} opacity={0.6} speed={0.18} />
+      <OctagonWire radius={config.radii[0]} opacity={0.18} speed={0.05} />
+      <OctagonWire radius={config.radii[1]} opacity={0.35} speed={0.1} />
+      <OctagonWire radius={config.radii[2]} opacity={0.6} speed={0.18} />
     </group>
   );
 }
-

@@ -129,7 +129,7 @@ export default function ProcessCards() {
               filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.6))",
 
               flex: {
-                xs: "0 0 78%",
+                xs: "0 0 88%",
                 sm: "0 0 68%",
                 md: "0 0 320px",
               },

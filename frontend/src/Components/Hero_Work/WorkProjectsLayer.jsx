@@ -12,20 +12,22 @@ export default function WorkProjectsLayer() {
         position: "fixed",
         inset: 0,
         zIndex: 20,
-        overflowY: "auto", 
+
+        overflowY: "auto",
         overscrollBehavior: "contain",
         pointerEvents: "auto",
-        background: `
-  linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(0, 0, 0, 0.35) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  )
-`,
 
-        pt: { xs: 14, md: 18 },
-        pb: 20,
+        background: `
+          linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.35) 50%,
+            rgba(0, 0, 0, 0.7) 100%
+          )
+        `,
+
+        pt: { xs: 18, md: 18 },
+        pb: { xs: 16, md: 20 },
       }}
     >
       {/* GRID */}
@@ -33,30 +35,46 @@ export default function WorkProjectsLayer() {
         sx={{
           maxWidth: 1000,
           mx: "auto",
-          px: 3,
+
+          px: { xs: 0, md: 3 }, 
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 4,
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(2, 1fr)",
+          },
+
+          gap: { xs: 5, md: 5 },
         }}
       >
-        {projectList.map((project, index) => (
-          <Box
-            key={project.id}
-            sx={{
-              gridColumn:
-                index === 0 || index === projectList.length - 1
-                  ? "span 2" 
-                  : "span 1",
+        {projectList.map((project, index) => {
+          const isWide = index === 0 || index === projectList.length - 1;
 
-              height:
-                index === 0 || index === projectList.length - 1
-                  ? { xs: 260, md: 340 }
-                  : { xs: 240, md: 280 },
-            }}
-          >
-            <ProjectContent project={project} />
-          </Box>
-        ))}
+          return (
+            <Box
+              key={project.id}
+              sx={{
+                gridColumn: {
+                  xs: "span 1",
+                  md: isWide ? "span 2" : "span 1",
+                },
+
+                height: isWide ? { xs: 220, md: 340 } : { xs: 220, md: 280 },
+
+                width: "100%",
+                boxSizing: "border-box",
+                overflow: "hidden",
+
+                borderRadius: {
+                  xs: 4, 
+                  md: 4, 
+                },
+              }}
+            >
+              <ProjectContent project={project} />
+            </Box>
+          );
+        })}
       </Box>
     </Box>
   );

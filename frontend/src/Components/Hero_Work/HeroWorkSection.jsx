@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import WorkHeroScene from "./WorkHeroScene";
 import WorkOverlay from "./WorkOverlay";
 import WorkProjectsLayer from "./WorkProjectsLayer";
+import { m } from "framer-motion";
 
 export default function HeroWorkSection() {
   const [enterWork, setEnterWork] = useState(false);
@@ -32,7 +33,8 @@ export default function HeroWorkSection() {
         height: "100vh",
         overflow: "hidden",
         background: "#000",
-        mt: 10,
+        mt: -9,
+        mb: -20,
       }}
     >
       {/* 🌌 THREE SCENE */}
@@ -55,13 +57,24 @@ export default function HeroWorkSection() {
             onClick={() => setEnterWork(false)}
             sx={{
               position: "relative",
-              fontSize: "0.7rem",
+
+              /* 🔤 TEXTO */
+              fontSize: {
+                xs: "0.6rem",
+                sm: "0.65rem",
+                md: "0.7rem",
+              },
               letterSpacing: "0.18em",
               color: "#f4f2ed",
+
+              /* 📐 ESPACIADO */
+              px: { xs: 2, sm: 2.3, md: 2.5 },
+              py: { xs: 0.8, sm: 0.9, md: 1 },
+
+              /* ⬇️ MARGEN TOP RESPONSIVE */
+              mt: { xs: 10, sm: 10, md: 16 },
+
               borderRadius: 999,
-              px: 2.5,
-              py: 1,
-              mt: 20,
               border: "1px solid rgba(201,184,138,0.45)",
               background: "rgba(18,19,20,0.55)",
               backdropFilter: "blur(8px)",
@@ -71,10 +84,11 @@ export default function HeroWorkSection() {
       0 0 34px rgba(201,184,138,0.12)
     `,
 
+              /* 🌕 HALO */
               "&::before": {
                 content: '""',
                 position: "absolute",
-                inset: -8,
+                inset: { xs: -6, md: -8 },
                 borderRadius: 999,
                 background:
                   "radial-gradient(circle, rgba(201,184,138,0.25), transparent 70%)",
@@ -84,6 +98,7 @@ export default function HeroWorkSection() {
                 pointerEvents: "none",
               },
 
+              /* ✨ HOVER */
               "&:hover": {
                 background: "rgba(201,184,138,0.25)",
                 border: "1px solid rgba(201,184,138,0.6)",

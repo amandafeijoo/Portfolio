@@ -19,8 +19,13 @@ export default function ProjectContent({ project }) {
         position: "relative",
         height: "100%",
         width: "100%",
-        borderRadius: 20,
         overflow: "hidden",
+        gap: 2,
+
+        borderRadius: {
+          xs: 0,  
+          md: 0, 
+        },
       }}
     >
       {/* VIDEO */}
