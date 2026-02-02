@@ -126,68 +126,106 @@ export default function Header() {
               ml: { xs: 20.5, sm: 0 },
             }}
           >
-            {/* CTA (HIDDEN ON MOBILE) */}
             <Button
               variant="outlined"
               href="/contactpage"
               sx={{
+                position: "relative",
+                isolation: "isolate",
+                overflow: "visible",
+
                 display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
 
-                px: { xs: 2.2, sm: 2.6, md: 3.4 },
-                py: { xs: 0.7, sm: 0.9, md: 1.15 },
+                /* 📐 SIZE */
+                px: { xs: 2.2, sm: 2.6, md: 3.2 },
+                py: { xs: 0.65, sm: 0.85, md: 1.05 },
 
-                fontSize: { xs: "0.6rem", sm: "0.68rem", md: "0.72rem" },
-                letterSpacing: { xs: "0.18em", sm: "0.2em", md: "0.22em" },
+                /* 🔤 TEXT */
+                fontSize: { xs: "0.6rem", sm: "0.66rem", md: "0.7rem" },
+                letterSpacing: { xs: "0.16em", sm: "0.18em", md: "0.2em" },
                 fontWeight: 600,
                 textTransform: "uppercase",
+                fontFamily: '"Source Code Pro", monospace',
 
-                color: "#f3ead8",
-                backgroundColor: "rgba(166,151,120,0.5)",
-                backdropFilter: "blur(6px)",
-
+                /* 🎨 COLORS – MÁS CLARO */
+                color: "#f7f3ea",
                 borderRadius: "999px",
-                border: "1px solid rgba(201,169,106,0.55)",
+                border: "1px solid rgba(220,195,140,0.55)",
 
-                boxShadow: {
-                  xs: "0 6px 16px rgba(201,169,106,0.28)",
-                  sm: `
-        inset 0 1px 0 rgba(255,255,255,0.45),
-        0 10px 28px rgba(201,169,106,0.35)
-      `,
+                background: "rgba(60,56,48,0.55)", // 👈 más claro
+                backdropFilter: "blur(10px)",
+
+                /* 🌕 DEPTH */
+                boxShadow: `
+      0 0 10px rgba(220,195,140,0.25),
+      0 0 26px rgba(220,195,140,0.18)
+    `,
+
+                cursor: "pointer",
+
+                transition:
+                  "transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
+
+                /* 🌕 HALO EXTERNO – MÁS LUMINOSO */
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  inset: { xs: -6, md: -8 },
+                  borderRadius: "999px",
+                  background:
+                    "radial-gradient(circle, rgba(235,210,160,0.4), transparent 70%)",
+                  filter: { xs: "blur(12px)", md: "blur(18px)" },
+                  opacity: 0.85,
+                  zIndex: -1,
+                  pointerEvents: "none",
+                  transition: "opacity 0.3s ease, filter 0.3s ease",
                 },
 
-                "&::before": {
+                /* ✨ HALO INTERNO */
+                "&::after": {
                   content: '""',
                   position: "absolute",
                   inset: 0,
                   borderRadius: "999px",
-                  background: `
-        radial-gradient(
-          120% 140% at 50% 0%,
-          rgba(201,169,106,0.45),
-          rgba(201,169,106,0.15) 40%,
-          transparent 70%
-        )
-      `,
-                  opacity: { xs: 0.7, sm: 1 },
+                  background:
+                    "radial-gradient(60% 60% at 50% 0%, rgba(235,210,160,0.28), transparent 70%)",
+                  opacity: 0.65,
                   pointerEvents: "none",
                 },
 
+                /* ✨ HOVER */
                 "&:hover": {
                   transform: { sm: "translateY(-1px)" },
-                  color: "#f3ead8",
+                  background: "rgba(235,210,160,0.22)",
+                  color: "#f7f3ea",
+
                   boxShadow: `
-        inset 0 1px 0 rgba(255,255,255,0.55),
-        0 12px 30px rgba(201,169,106,0.4)
+        0 0 18px rgba(235,210,160,0.45),
+        0 0 46px rgba(235,210,160,0.28)
       `,
+
+                  "&::before": {
+                    opacity: 1,
+                    filter: { xs: "blur(14px)", md: "blur(22px)" },
+                  },
                 },
 
                 "&:active": {
                   transform: "translateY(0)",
-                  boxShadow: `
-        inset 0 2px 4px rgba(0,0,0,0.18),
-        0 6px 14px rgba(201,169,106,0.25)
-      `,
+                },
+
+                /* 🚫 iOS BLUE RING */
+                "&:focus": { outline: "none" },
+                "&:focus-visible": { outline: "none" },
+                WebkitTapHighlightColor: "transparent",
+
+                /* 📱 MOBILE */
+                "@media (max-width: 520px)": {
+                  px: 2,
+                  fontSize: "0.58rem",
+                  letterSpacing: "0.14em",
                 },
               }}
             >

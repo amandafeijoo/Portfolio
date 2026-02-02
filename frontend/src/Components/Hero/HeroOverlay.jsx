@@ -158,17 +158,111 @@ export default function HeroOverlay({ onEnter }) {
           <Button
             onClick={onEnter}
             sx={{
+              position: "relative",
+              isolation: "isolate",
               pointerEvents: "auto",
-              px: { xs: 3, md: 4 },
-              py: { xs: 1.1, md: 1.4 },
-              fontSize: { xs: "0.75rem", md: "0.8rem" },
+              overflow: "visible",
+
+              /* 📐 SIZE */
+              px: { xs: 3.2, sm: 3.6, md: 4.2 },
+              py: { xs: 1.1, sm: 1.2, md: 1.4 },
+
+              /* 🔤 TEXT */
+              fontSize: { xs: "0.68rem", sm: "0.72rem", md: "0.8rem" },
+              letterSpacing: { xs: "0.12em", md: "0.14em" },
+              textTransform: "uppercase",
+              fontFamily: '"Source Code Pro", monospace',
+
+              /* 🎨 COLORS */
+              color: "#f5f0e8",
               borderRadius: "999px",
               border: "1px solid rgba(200,164,106,0.6)",
-              color: "#f5f0e8",
-              letterSpacing: "0.14em",
-              backdropFilter: "blur(6px)",
+
+              background: "rgba(18,19,20,0.55)",
+              backdropFilter: "blur(10px)",
+
+              /* 🌕 DEPTH */
+              boxShadow: `
+      0 0 14px rgba(200,164,106,0.25),
+      0 0 40px rgba(200,164,106,0.15)
+    `,
+
+              cursor: "pointer",
+
+              transition:
+                "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
+
+              /* 🌕 HALO EXTERNO */
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                inset: { xs: -8, md: -12 },
+                borderRadius: "999px",
+                background:
+                  "radial-gradient(circle, rgba(200,164,106,0.35), transparent 70%)",
+                filter: { xs: "blur(16px)", md: "blur(24px)" },
+                opacity: 0.85,
+                zIndex: -1,
+                pointerEvents: "none",
+                transition: "opacity 0.35s ease, filter 0.35s ease",
+              },
+
+              /* ✨ HALO INTERNO */
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                inset: 0,
+                borderRadius: "999px",
+                background:
+                  "radial-gradient(60% 60% at 50% 0%, rgba(200,164,106,0.22), transparent 70%)",
+                opacity: 0.6,
+                pointerEvents: "none",
+              },
+
+              /* ✨ HOVER */
               "&:hover": {
-                backgroundColor: "rgba(255,255,255,0.08)",
+                transform: "translateY(-2px)",
+                background: "rgba(200,164,106,0.18)",
+                border: "1px solid rgba(200,164,106,0.75)",
+                color: "#fdf9f0",
+
+                boxShadow: `
+        0 0 26px rgba(200,164,106,0.45),
+        0 0 70px rgba(200,164,106,0.25)
+      `,
+
+                "&::before": {
+                  opacity: 1,
+                  filter: { xs: "blur(20px)", md: "blur(28px)" },
+                },
+              },
+
+              /* 🖱 ACTIVE */
+              "&:active": {
+                transform: "translateY(0)",
+              },
+
+              /* 🚫 QUITAR BORDE AZUL iOS */
+              "&:focus": {
+                outline: "none",
+                boxShadow: "none",
+              },
+              "&:focus-visible": {
+                outline: "none",
+                boxShadow: "none",
+              },
+              "&:active:focus": {
+                outline: "none",
+              },
+              WebkitTapHighlightColor: "transparent",
+
+              /* 📱 MOBILE – botón más corto */
+              "@media (max-width: 520px)": {
+                width: "auto",
+                maxWidth: 220,
+                px: 2.6,
+                fontSize: "0.68rem",
+                letterSpacing: "0.12em",
               },
             }}
           >

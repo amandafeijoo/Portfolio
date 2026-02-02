@@ -34,7 +34,7 @@ export default function HeroWorkSection() {
         overflow: "hidden",
         background: "#000",
         mt: -9,
-        mb: -20,
+        mb: 0,
       }}
     >
       {/* 🌌 THREE SCENE */}

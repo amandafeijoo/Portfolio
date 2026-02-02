@@ -92,7 +92,7 @@ export const InviteCTA = styled.button`
   border: 1px solid rgba(201, 184, 138, 0.45);
   color: #f4f2ed;
 
-  padding: 18px 24px;
+  padding: 16px 22px;
   border-radius: 999px;
 
   font-family: "Source Code Pro", monospace;
