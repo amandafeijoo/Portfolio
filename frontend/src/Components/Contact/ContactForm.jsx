@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import axios from "axios";
+import {
+  FormWrapper,
+  Field,
+  Label,
+  Input,
+  Select,
+  Textarea,
+  SubmitButton,
+  PrivacyNote,
+  Hint,
+} from "./ContactForm.styles";
 
 /* =========================
    HELPERS
@@ -186,116 +197,3 @@ export default function ContactForm() {
     </FormWrapper>
   );
 }
-
-/* =========================
-   STYLES (SIN CAMBIOS)
-========================= */
-
-const FormWrapper = styled.form`
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 56px 64px;
-  border-radius: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  backdrop-filter: blur(22px);
-`;
-
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const Label = styled.label`
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(201, 184, 138, 0.9);
-`;
-
-const baseInput = `
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-  padding: 10px 0;
-  color: #f4f2ed;
-  font-size: 0.95rem;
-
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    outline: none;
-    border-color: rgba(201,184,138,0.9);
-  }
-
-  &::placeholder {
-    color: rgba(255,255,255,0.35);
-  }
-`;
-
-const Input = styled.input`
-  ${baseInput}
-`;
-
-const Select = styled.select`
-  ${baseInput}
-  cursor: pointer;
-
-  option {
-    background: #0e0e0e;
-    color: #f4f2ed;
-  }
-`;
-
-const Textarea = styled.textarea`
-  ${baseInput}
-  resize: vertical;
-`;
-
-const SubmitButton = styled.button`
-  margin-top: 24px;
-  align-self: flex-start;
-  padding: 12px 28px;
-  border-radius: 14px;
-  border: 1px solid rgba(201, 184, 138, 0.45);
-  background: rgba(201, 184, 138, 0.18);
-  color: #f4f2ed;
-  font-family: "Source Code Pro", monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.35s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(201, 184, 138, 0.3);
-    background: rgba(201, 184, 138, 0.26);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-`;
-
-const PrivacyNote = styled.p`
-  margin-top: 12px;
-  font-size: 0.7rem;
-  opacity: 0.55;
-  max-width: 420px;
-
-  a {
-    color: rgba(201, 184, 138, 0.9);
-    text-decoration: underline;
-  }
-`;
-
-const Hint = styled.p`
-  margin-top: 8px;
-  font-size: 0.75rem;
-  opacity: 0.6;
-`;

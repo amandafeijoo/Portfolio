@@ -45,11 +45,18 @@ export default function HeroSculpture({ enter, onProgress }) {
   useFrame(() => {
     if (!group.current) return;
 
-    // 🔄 PROGRESO SUAVE
+    // 🔄 PROGRESO AL ENTRAR Y SALIR DEL PORTAL
+    const enterSpeed = 0.0035;
+    const exitSpeed = 0.02;
+
+    const speed = enter
+      ? enterSpeed
+      : THREE.MathUtils.lerp(exitSpeed, 0.008, progress.current);
+
     progress.current = THREE.MathUtils.lerp(
       progress.current,
       enter ? 1 : 0,
-      0.002
+      speed
     );
 
     if (onProgress) onProgress(progress.current);

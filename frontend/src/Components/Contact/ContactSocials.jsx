@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 
 export default function ContactSocials() {
   return (
-    <Box sx={{ mt: { xs: 6, md: 8 }, textAlign: "center" }}>
+    <Box sx={{ mt: { xs: 2, md: 2 }, textAlign: "center" }}>
       <Typography
         sx={{
           fontSize: "0.65rem",

@@ -16,15 +16,24 @@ export default function WorkProjectsLayer() {
         overflowY: "auto",
         overscrollBehavior: "contain",
         pointerEvents: "auto",
-
-        background: `
-          linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.35) 50%,
-            rgba(0, 0, 0, 0.7) 100%
-          )
-        `,
+        background: {
+          xs: `
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.95) 55%,
+      rgba(0, 0, 0, 1) 100%
+    )
+  `,
+          md: `
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.8) 60%,
+      rgba(0, 0, 0, 1) 100%
+    )
+  `,
+        },
 
         pt: { xs: 18, md: 18 },
         pb: { xs: 16, md: 20 },
@@ -36,7 +45,7 @@ export default function WorkProjectsLayer() {
           maxWidth: 1000,
           mx: "auto",
 
-          px: { xs: 0, md: 3 }, 
+          px: { xs: 0, md: 3 },
           display: "grid",
 
           gridTemplateColumns: {
@@ -66,8 +75,8 @@ export default function WorkProjectsLayer() {
                 overflow: "hidden",
 
                 borderRadius: {
-                  xs: 4, 
-                  md: 4, 
+                  xs: 4,
+                  md: 4,
                 },
               }}
             >

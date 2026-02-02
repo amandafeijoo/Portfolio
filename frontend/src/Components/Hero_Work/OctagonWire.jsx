@@ -46,7 +46,7 @@ export default function OctagonWire({
     }
 
     const geo = new THREE.ShapeGeometry(shape);
-    geo.center(); // 👈 ESTO LO ARREGLA TODO
+    geo.center();
 
     return geo;
   }, [radius]);

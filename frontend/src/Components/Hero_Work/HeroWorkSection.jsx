@@ -66,13 +66,15 @@ export default function HeroWorkSection() {
               },
               letterSpacing: "0.18em",
               color: "#f4f2ed",
+              textTransform: "uppercase",
+              fontWeight: 500,
 
               /* 📐 ESPACIADO */
-              px: { xs: 2, sm: 2.3, md: 2.5 },
-              py: { xs: 0.8, sm: 0.9, md: 1 },
+              px: { xs: 3, sm: 2.3, md: 2.5 },
+              py: { xs: 0.9, sm: 0.9, md: 1 },
 
               /* ⬇️ MARGEN TOP RESPONSIVE */
-              mt: { xs: 10, sm: 10, md: 16 },
+              mt: { xs: 0, sm: 10, md: 2 },
 
               borderRadius: 999,
               border: "1px solid rgba(201,184,138,0.45)",
