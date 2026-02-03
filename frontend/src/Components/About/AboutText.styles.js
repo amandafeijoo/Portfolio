@@ -16,7 +16,7 @@ export const StyledText = styled.div`
     0 0 48px rgba(201, 184, 138, 0.08);
 
   margin-top: -5px;
-  margin-bottom: 32px;
+  margin-bottom: 0%;
 
   @media (max-width: 1024px) {
     font-size: 4.2em;
@@ -24,13 +24,13 @@ export const StyledText = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 3.2em;
+    font-size: 3em;
     margin-top: 80px;
   }
 
   @media (max-width: 480px) {
-    font-size: 2.5em;
-    margin-top: 56px;
+    font-size: 0.7em;
+    margin-top: 10px;
   }
 `;
 
@@ -43,8 +43,13 @@ export const Kicker = styled.div`
   text-transform: uppercase;
   font-size: 0.8rem;
   color: rgba(201, 184, 138, 0.9);
-  margin-top: 60px;
+  margin-top: 10px;
   text-align: center;
+
+  @media (max-width: 480px) {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
 `;
 /* =========
    Divider
@@ -54,7 +59,7 @@ export const Divider = styled.div`
   margin: 0 auto 22px;
   width: 90px;
   height: 1px;
-  margin-top: -20px;
+  margin-top: 0px;
   background: linear-gradient(
     90deg,
     transparent,

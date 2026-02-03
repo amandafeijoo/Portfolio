@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
-export const AboutContainer = styled.div`
-  margin-top: 0px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 40px;
+/* Breakpoints */
+const tablet = "1024px";
+const mobile = "768px";
 
+export const AboutContainer = styled.section`
   position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+
+  padding: clamp(32px, 6vw, 56px);
+  margin-top: clamp(30px, 18vw, 70px);
+
   box-sizing: border-box;
 
+  /* 🌕 HALO */
   &::before {
     content: "";
     position: absolute;
@@ -24,29 +30,17 @@ export const AboutContainer = styled.div`
     pointer-events: none;
   }
 
-  @media (max-width: 768px) {
+  /* 📱 TABLET & MOBILE */
+  @media (max-width: ${tablet}) {
     grid-template-columns: 1fr;
-    margin-top: 200px;
-    padding: 20px;
-    gap: 24px;
+    gap: 40px;
+    margin-top: clamp(120px, 22vw, 180px);
   }
 
-  @media (max-width: 430px) {
-    margin-top: 150px;
-  }
-
-  @media (max-width: 390px) {
-    margin-top: 140px;
-  }
-
-  @media (max-width: 375px) {
-    margin-top: 130px;
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    margin-top: 180px;
-    padding: 30px;
+  @media (max-width: ${mobile}) {
+    gap: 28px;
+    padding: 24px;
+    margin-top: clamp(100px, 28vw, 160px);
   }
 `;
 
@@ -55,13 +49,14 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  padding-right: 28px;
 
+  /* línea vertical solo en desktop */
   &::after {
     content: "";
     position: absolute;
-    top: 10%;
-    bottom: 10%;
+    top: 12%;
+    bottom: 2%;
     right: 0;
     width: 1px;
     background: linear-gradient(
@@ -73,9 +68,16 @@ export const TextContainer = styled.div`
     box-shadow: 0 0 12px rgba(201, 184, 138, 0.35);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    padding-right: 0;
+
     &::after {
       display: none;
+    }
+    @media (max-width: ${mobile}) {
+      gap: 28px;
+      margin-top: -100px;
+      font-size: 19px;
     }
   }
 `;

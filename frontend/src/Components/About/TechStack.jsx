@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTheme, useMediaQuery, Typography, Box } from "@mui/material";
 import {
   GridContainer,
   GridItem,
@@ -7,96 +8,180 @@ import {
   Divider,
 } from "./TechStack.styles";
 import { technologies } from "../../data/technologies.js";
+import styled from "styled-components";
+
+/* =========================
+   MOBILE TECH NAME
+========================= */
+const TechName = styled.span`
+  margin-top: 10px;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(201, 184, 138, 0.85);
+  text-align: center;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
 
 const TechStack = () => {
+  const isMobile = useMediaQuery("(max-width:768px)");
+
   const [techName, setTechName] = useState("");
-  const [defaultText, setDefaultText] = useState(
-    "Technologies\nbehind Webcode-Art"
-  );
 
   const handleMouseEnter = (name) => {
-    setTechName(name);
-    setDefaultText("Technical Skill:");
+    if (!isMobile) setTechName(name);
   };
 
   const handleMouseLeave = () => {
-    setTechName("");
-    setDefaultText("Technologies\nbehind Webcode-Art");
+    if (!isMobile) setTechName("");
   };
 
   return (
-    <GridContainer>
-      <GridItem span={2} large>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            gap: "6px",
+    <>
+      {isMobile && (
+        <Box
+          sx={{
+            textAlign: "center",
+            mb: 2,
+            mt: 4,
+            px: 3,
+
+            /* halo sutil */
+            position: "relative",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: -40,
+              background:
+                "radial-gradient(circle, rgba(201,184,138,0.12), transparent 70%)",
+              filter: "blur(60px)",
+              pointerEvents: "none",
+            },
           }}
         >
-          <span
-            style={{
-              fontSize: "1rem",
-              letterSpacing: "0.08em",
-              color: "#B8B4AA",
-              textShadow: "0 0 12px rgba(201,184,138,0.25)",
+          {/* TITLE */}
+          <Typography
+            sx={{
+              fontFamily: "Playfair Display, serif",
+              fontSize: "clamp(2.1rem, 8vw, 2.6rem)",
+              color: "#F4F2ED",
+              lineHeight: 1.15,
+              mb: 1,
+              textShadow: "0 0 24px rgba(201,184,138,0.25)",
             }}
           >
             Technologies
-          </span>
+          </Typography>
 
-          <span
-            style={{
-              fontSize: "0.8rem",
-              fontWeight: 500,
-              color: "#F4F2ED",
-              textShadow: "0 0 18px rgba(201,184,138,0.35)",
-            }}
-          >
-            Behind Webcode-Art
-          </span>
-          <Divider />
-        </div>
-
-        {techName && (
-          <span
-            style={{
-              marginTop: "12px",
-              color: "#F4F2ED",
+          {/* SUBTITLE */}
+          <Typography
+            sx={{
               fontSize: "0.9rem",
-              letterSpacing: "0.06em",
-              textShadow: "0 0 12px rgba(201,184,138,0.35)",
+              lineHeight: 1.6,
+              color: "rgba(201,184,138,0.85)",
+              maxWidth: 320,
+              mx: "auto",
+              textShadow: "0 0 12px rgba(201,184,138,0.25)",
             }}
           >
-            {techName}
-          </span>
-        )}
-      </GridItem>
+            The tools behind every Webcode-Art project.
+          </Typography>
+        </Box>
+      )}
 
-      {technologies.map((tech, index) => (
-        <GridItem
-          key={index}
-          color={tech.color}
-          onMouseEnter={() => handleMouseEnter(tech.name)}
-          onMouseLeave={handleMouseLeave}
-          $large={true}
-          $span={2}
-        >
-          <TechLogo
-            src={tech.logo}
-            alt={tech.name}
-            needsBackground={["EXPRESS.JS", "GITHUB", "IOS SIMULATOR"].includes(
-              tech.name
-            )}
-            invertColor={["EXPRESS.JS", "GITHUB", "IOS SIMULATOR"].includes(
-              tech.name
-            )}
-          />
-          <KnowledgeBar $knowledge={tech.knowledge} $color={tech.color} />
-        </GridItem>
-      ))}
-    </GridContainer>
+      <GridContainer>
+        {/* =========================
+         HEADER CARD
+      ========================= */}
+        {!isMobile && (
+          <GridItem span={2} large>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "6px",
+                width: "100%",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "#B8B4AA",
+                  textShadow: "0 0 12px rgba(201,184,138,0.25)",
+                }}
+              >
+                Technologies
+              </span>
+
+              <span
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: 500,
+                  color: "#F4F2ED",
+                  textShadow: "0 0 18px rgba(201,184,138,0.35)",
+                }}
+              >
+                Behind Webcode-Art
+              </span>
+
+              <Divider />
+
+              {techName && (
+                <span
+                  style={{
+                    marginTop: "12px",
+                    color: "#F4F2ED",
+                    fontSize: "0.85rem",
+                    letterSpacing: "0.06em",
+                    textShadow: "0 0 12px rgba(201,184,138,0.35)",
+                  }}
+                >
+                  {techName}
+                </span>
+              )}
+            </div>
+          </GridItem>
+        )}
+
+        {/* =========================
+         TECHNOLOGY CARDS
+      ========================= */}
+        {technologies.map((tech, index) => (
+          <GridItem
+            key={index}
+            onMouseEnter={() => handleMouseEnter(tech.name)}
+            onMouseLeave={handleMouseLeave}
+            $large
+            $span={2}
+          >
+            <TechLogo
+              src={tech.logo}
+              alt={tech.name}
+              needsBackground={[
+                "EXPRESS.JS",
+                "GITHUB",
+                "IOS SIMULATOR",
+              ].includes(tech.name)}
+              invertColor={["EXPRESS.JS", "GITHUB", "IOS SIMULATOR"].includes(
+                tech.name
+              )}
+            />
+
+            {/* 👇 MOBILE NAME */}
+            {isMobile && <TechName>{tech.name}</TechName>}
+
+            <KnowledgeBar $knowledge={tech.knowledge} />
+          </GridItem>
+        ))}
+      </GridContainer>
+    </>
   );
 };
+
 export default TechStack;

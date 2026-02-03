@@ -25,33 +25,21 @@ export const KnowledgeBar = styled.div`
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 24px;
-  padding: 40px 20px;
-  margin-bottom: 100px;
-  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 
-  @media (max-width: 1366px) {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: 15px;
-    max-width: calc(100% - 30px);
-  }
+  gap: clamp(16px, 3vw, 28px);
+  padding: clamp(16px, 4vw, 40px);
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    padding: 10px;
-    max-width: calc(100% - 20px);
-  }
+  margin-bottom: clamp(40px, 8vw, 100px);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    padding: 0px;
-    max-width: 100%;
-    margin-bottom: 40px;
+  /* 📱 MOBILE FIX */
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding: 16px 17px;
   }
 `;
 

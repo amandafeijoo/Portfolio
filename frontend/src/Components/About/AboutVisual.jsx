@@ -7,27 +7,33 @@ export default function AboutVisual() {
     <Box
       sx={{
         width: "100%",
-        maxWidth: { xs: 360, sm: 480, md: 640, lg: 720 },
-
-        height: { xs: 360, sm: 420, md: 520 },
+        maxWidth: { xs: 320, sm: 420, md: 560, lg: 680 },
+        height: { xs: 300, sm: 360, md: 460, lg: 520 },
 
         mx: "auto",
-        my: { xs: 4, md: 6 },
+        my: { xs: 3, md: 5 },
+        mt: { xs: 2, md: 10 },
 
         display: "flex",
-        alignItems: "center", 
+        alignItems: "center",
         justifyContent: "center",
 
         position: "relative",
+
+        /* 🎯 AJUSTE FINO DE POSICIÓN */
+        transform: {
+          xs: "translateX(28px)",
+          sm: "translateX(12px)",
+          md: "translateX(0px)",
+          lg: "translateX(397px)",
+        },
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 3.4], fov: 48 }}
+        camera={{ position: [0, 0, 3.6], fov: 48 }}
         style={{
-          width: "90%",
-          height: "90%",
-          left: 390,
-          marginTop: 120,
+          width: "100%",
+          height: "100%",
         }}
       >
         <ambientLight intensity={0.35} />

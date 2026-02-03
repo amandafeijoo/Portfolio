@@ -10,16 +10,17 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 const AboutButtons = ({ onContactClick }) => (
   <ButtonContainer>
     <DownloadButton href="/CV_webdeveloper.pdf" download>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <DownloadIcon style={{ marginRight: "8px", fontSize: "16px" }} />
-        Access My CV
-      </div>
+      <span className="icon">
+        <DownloadIcon />
+      </span>
+      Access My CV
     </DownloadButton>
+
     <ContactButton onClick={onContactClick}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <ContactMailIcon style={{ marginRight: "8px", fontSize: "16px" }} />
-        Let’s Create
-      </div>
+      <span className="icon">
+        <ContactMailIcon />
+      </span>
+      Let’s Create
     </ContactButton>
   </ButtonContainer>
 );
