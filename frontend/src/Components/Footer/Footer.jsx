@@ -18,7 +18,23 @@ export default function Footer() {
         transform: "translateX(-50%)",
         background:
           "linear-gradient(180deg, rgb(14,15,16) 0%, rgb(22,23,24) 100%)",
-        borderTop: "1px solid rgba(240,230,210,0.85)",
+        borderTop: {
+          xs: "1px solid rgba(240,230,210,0.45)",
+          md: "1px solid rgba(240,230,210,0.85)",
+        },
+        borderBottom: {
+          xs: "1px solid rgba(240,230,210,0.45)",
+          md: "1px solid rgba(240,230,210,0.85)",
+        },
+        borderLeft: {
+          xs: "1px solid rgba(240,230,210,0.25)",
+          md: "1px solid rgba(240,230,210,0.45)",
+        },
+        borderRight: {
+          xs: "1px solid rgba(240,230,210,0.25)",
+          md: "1px solid rgba(240,230,210,0.45)",
+        },
+
         overflow: "hidden",
 
         "&::before": {
@@ -46,12 +62,12 @@ export default function Footer() {
         {/* ---------- TOP ---------- */}
         <Box
           sx={{
-            py: { xs: 3, md: 2.5 },
+            py: { xs: 4, sm: 3, md: 2.5 },
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
             alignItems: "center",
-            gap: { xs: 3, md: 4 },
+            gap: { xs: 3.5, md: 4 },
             textAlign: { xs: "center", md: "left" },
           }}
         >
@@ -62,7 +78,7 @@ export default function Footer() {
               src="https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767547942/new_brush_ktsbyr.png"
               alt="Webcode-art logo"
               sx={{
-                width: 34,
+                width: { xs: 28, sm: 32, md: 34 },
                 mb: 1.5,
                 opacity: 0.85,
                 mx: { xs: "auto", md: 0 },
@@ -72,11 +88,10 @@ export default function Footer() {
             <Typography
               sx={{
                 fontFamily: "Playfair Display, serif",
-                letterSpacing: "0.32em",
-                fontSize: { xs: "0.95rem", sm: "1.05rem" },
+                letterSpacing: { xs: "0.24em", sm: "0.32em" },
+                fontSize: { xs: "0.85rem", sm: "1.05rem" },
                 color: "rgba(201,169,106,0.55)",
                 textShadow: "0 0 12px rgba(201,169,106,0.25)",
-
                 mb: 1,
               }}
             >
@@ -86,10 +101,10 @@ export default function Footer() {
             <Typography
               sx={{
                 fontFamily: "Playfair Display, serif",
-                fontSize: { xs: "0.75rem", sm: "0.8rem" },
-                lineHeight: 1.8,
+                fontSize: { xs: "0.72rem", sm: "0.8rem" },
+                lineHeight: 1.75,
                 color: "rgba(200,200,195,0.6)",
-                maxWidth: 420,
+                maxWidth: { xs: 280, sm: 420 },
                 mx: { xs: "auto", md: 0 },
               }}
             >
@@ -100,7 +115,13 @@ export default function Footer() {
           </Box>
 
           {/* RIGHT */}
-          <Box sx={{ mt: { xs: 2, md: 0 } }}>
+          <Box
+            sx={{
+              mt: { xs: 3, md: 0 },
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <FooterSocial variant="icons" />
           </Box>
         </Box>
@@ -109,21 +130,20 @@ export default function Footer() {
         <Box
           sx={{
             borderTop: "1px solid rgba(255,255,255,0.08)",
-            py: { xs: 3, sm: 2.5 },
+            py: { xs: 3.5, sm: 2.5 },
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
             justifyContent: "space-between",
             alignItems: "center",
-            gap: { xs: 1.5, sm: 2 },
+            gap: { xs: 2, sm: 2 },
             textAlign: { xs: "center", sm: "left" },
           }}
         >
           <Typography
             sx={{
               fontFamily: "Playfair Display, serif",
-              fontSize: "0.7rem",
+              fontSize: { xs: "0.65rem", sm: "0.7rem" },
               color: "rgba(180,180,175,0.5)",
-              mb: { xs: 1, sm: 0 },
               textShadow: "0 0 8px rgba(180,180,175,0.15)",
             }}
           >
@@ -133,7 +153,7 @@ export default function Footer() {
           <Box
             sx={{
               display: "flex",
-              gap: 1.5,
+              gap: { xs: 2, sm: 1.5 },
               alignItems: "center",
               justifyContent: "center",
             }}

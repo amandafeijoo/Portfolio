@@ -149,18 +149,18 @@ export default function Header() {
                 textTransform: "uppercase",
                 fontFamily: '"Source Code Pro", monospace',
 
-                /* 🎨 COLORS – MÁS CLARO */
-                color: "#f7f3ea",
+                /* 🎨 COLORS – CREMA */
+                color: "#fbf7ef",
                 borderRadius: "999px",
-                border: "1px solid rgba(220,195,140,0.55)",
+                border: "1px solid rgba(235,220,190,0.6)",
 
-                background: "rgba(60,56,48,0.55)", // 👈 más claro
+                background: "rgba(90,85,75,0.55)",
                 backdropFilter: "blur(10px)",
 
                 /* 🌕 DEPTH */
                 boxShadow: `
-      0 0 10px rgba(220,195,140,0.25),
-      0 0 26px rgba(220,195,140,0.18)
+      0 0 10px rgba(235,220,190,0.28),
+      0 0 26px rgba(235,220,190,0.18)
     `,
 
                 cursor: "pointer",
