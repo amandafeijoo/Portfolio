@@ -1,40 +1,56 @@
 import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 
-export default function TypingWords({ words, speed = 90, pause = 1200 }) {
-  const [displayedText, setDisplayedText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [charIndex, setCharIndex] = useState(0);
+export default function TypingWords({
+  words,
+  speed = 90,
+  pause = 1200,
+}) {
+  const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showCursor, setShowCursor] = useState(true);
 
+  const currentWord = words[wordIndex];
+
+  /* ===== Typing logic ===== */
   useEffect(() => {
-    const currentWord = words[wordIndex];
+    let timeout;
 
-    const handleTyping = () => {
-      if (!isDeleting && charIndex < currentWord.length) {
-        setDisplayedText((prev) => prev + currentWord[charIndex]);
+    if (!isDeleting && charIndex < currentWord.length) {
+      // typing
+      timeout = setTimeout(() => {
+        setText((prev) => prev + currentWord[charIndex]);
         setCharIndex((i) => i + 1);
-      } else if (isDeleting && charIndex > 0) {
-        setDisplayedText((prev) => prev.slice(0, -1));
+      }, speed);
+
+    } else if (!isDeleting && charIndex === currentWord.length) {
+      // pause at full word
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pause);
+
+    } else if (isDeleting && charIndex > 0) {
+      // deleting
+      timeout = setTimeout(() => {
+        setText((prev) => prev.slice(0, -1));
         setCharIndex((i) => i - 1);
-      } else if (!isDeleting && charIndex === currentWord.length) {
-        setTimeout(() => setIsDeleting(true), pause);
-      } else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false);
-        setWordIndex((i) => (i + 1) % words.length);
-      }
-    };
+      }, speed / 1.6);
 
-    const typingInterval = setInterval(handleTyping, speed);
+    } else if (isDeleting && charIndex === 0) {
+      // next word
+      setIsDeleting(false);
+      setWordIndex((i) => (i + 1) % words.length);
+    }
 
-    return () => clearInterval(typingInterval);
-  }, [charIndex, isDeleting, pause, speed, wordIndex, words]);
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, currentWord, pause, speed, words.length]);
 
-  /* Cursor */
+  /* ===== Cursor blink ===== */
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
+      setShowCursor((v) => !v);
     }, 500);
 
     return () => clearInterval(cursorInterval);
@@ -51,7 +67,7 @@ export default function TypingWords({ words, speed = 90, pause = 1200 }) {
         minHeight: "1.4em",
       }}
     >
-      {displayedText}
+      {text}
       {showCursor && (
         <Box
           sx={{
@@ -65,3 +81,4 @@ export default function TypingWords({ words, speed = 90, pause = 1200 }) {
     </Box>
   );
 }
+
