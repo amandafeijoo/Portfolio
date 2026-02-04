@@ -48,8 +48,6 @@ const TechStack = () => {
             mb: 2,
             mt: 4,
             px: 3,
-
-            /* halo sutil */
             position: "relative",
             "&::before": {
               content: '""',
@@ -100,51 +98,64 @@ const TechStack = () => {
           <GridItem span={2} large>
             <div
               style={{
+                maxWidth: "260px",
+                width: "100%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "6px",
-                width: "100%",
+                gap: "8px",
+                textAlign: "center",
               }}
             >
+              {/* HEADER */}
               <span
                 style={{
-                  fontSize: "0.95rem",
-                  letterSpacing: "0.18em",
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.28em",
                   textTransform: "uppercase",
                   color: "#B8B4AA",
-                  textShadow: "0 0 12px rgba(201,184,138,0.25)",
+                  textAlign: "center",
                 }}
               >
                 Technologies
               </span>
 
+              {/* SUBTITLE (NO SE MUEVE) */}
               <span
                 style={{
-                  fontSize: "0.8rem",
+                  fontSize: "0.85rem",
                   fontWeight: 500,
                   color: "#F4F2ED",
                   textShadow: "0 0 18px rgba(201,184,138,0.35)",
+                  textAlign: "center",
                 }}
               >
                 Behind Webcode-Art
               </span>
 
-              <Divider />
+              {/* DIVIDER */}
+              <Divider style={{ margin: "6px auto 8px" }} />
 
-              {techName && (
+              {/* HOVER SLOT (ALTURA FIJA) */}
+              <div
+                style={{
+                  minHeight: "22px",
+                  marginTop: "6px",
+                  textAlign: "center",
+                }}
+              >
                 <span
                   style={{
-                    marginTop: "12px",
+                    opacity: techName ? 1 : 0,
+                    transition: "opacity 0.25s ease",
+                    fontSize: "0.75rem",
                     color: "#F4F2ED",
-                    fontSize: "0.85rem",
                     letterSpacing: "0.06em",
-                    textShadow: "0 0 12px rgba(201,184,138,0.35)",
                   }}
                 >
-                  {techName}
+                  {techName || " "}
                 </span>
-              )}
+              </div>
             </div>
           </GridItem>
         )}
@@ -167,6 +178,9 @@ const TechStack = () => {
                 "EXPRESS.JS",
                 "GITHUB",
                 "IOS SIMULATOR",
+                "ILLUSTRATOR",
+                "PHOTOSHOP",
+                "THREE.JS",
               ].includes(tech.name)}
               invertColor={["EXPRESS.JS", "GITHUB", "IOS SIMULATOR"].includes(
                 tech.name

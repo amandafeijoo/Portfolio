@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const KnowledgeBar = styled.div`
   width: 90%;
   height: 6px;
-  background-color: rgba(201, 184, 138, 0.15);
+  background-color: rgba(222, 203, 149, 0.15);
   margin-top: 12px;
   position: relative;
   border-radius: 4px;
@@ -50,7 +50,7 @@ export const GridItem = styled.div`
   justify-content: center;
 
   background-color: rgba(18, 19, 20, 0.6);
-  border: 1px solid rgba(201, 184, 138, 0.25);
+  border: 1px solid rgba(248, 220, 141, 0.32);
   border-radius: 12px;
 
   cursor: pointer;
@@ -78,8 +78,8 @@ export const GridItem = styled.div`
 `;
 
 export const TechLogo = styled.img`
-  width: ${(props) => (props.needsBackground ? "50px" : "60px")};
-  height: ${(props) => (props.needsBackground ? "50px" : "60px")};
+  width: ${(props) => (props.needsBackground ? "60px" : "70px")};
+  height: ${(props) => (props.needsBackground ? "60px" : "70px")};
   padding: 10px;
   background-color: ${(props) =>
     props.needsBackground ? "#FFFFFF" : "transparent"};
