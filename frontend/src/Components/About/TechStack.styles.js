@@ -102,9 +102,28 @@ export const TechLogo = styled.img`
     height: ${(props) => (props.needsBackground ? "40px" : "50px")};
   }
 
+  /* 📱 MOBILE */
   @media (max-width: 768px) {
-    width: ${(props) => (props.needsBackground ? "30px" : "40px")};
-    height: ${(props) => (props.needsBackground ? "30px" : "40px")};
+    width: ${(props) =>
+      props.alt === "THREE.JS"
+        ? "36px"
+        : props.needsBackground
+        ? "44px"
+        : "48px"};
+
+    height: ${(props) =>
+      props.alt === "THREE.JS"
+        ? "36px"
+        : props.needsBackground
+        ? "44px"
+        : "48px"};
+    ${(props) =>
+      props.alt === "THREE.JS" &&
+      `
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+      `}
   }
 `;
 

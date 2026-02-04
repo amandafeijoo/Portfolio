@@ -4,12 +4,18 @@ import * as THREE from "three";
 
 export default function AboutVisualScene() {
   const group = useRef();
-  const points = useRef();
   const { mouse } = useThree();
 
-  // 🎯 targets suaves
-  const targetRotation = useRef(new THREE.Vector2(0, 0));
-  const currentRotation = useRef(new THREE.Vector2(0, 0));
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(pointer: coarse)").matches;
+
+  /* 🎯 base rotation (shared) */
+  const baseRotation = useRef({ x: 0, y: 0 });
+
+  /* 🖱️ mouse influence (desktop only) */
+  const mouseTarget = useRef(new THREE.Vector2(0, 0));
+  const mouseCurrent = useRef(new THREE.Vector2(0, 0));
 
   /* ======================
      PARTICLES GEOMETRY
@@ -43,25 +49,35 @@ export default function AboutVisualScene() {
     const scale = 1 + Math.sin(t * 1.1) * 0.03;
     group.current.scale.setScalar(scale);
 
-    /* 🧲 mouse → target (NO directo) */
-    targetRotation.current.x = mouse.y * 0.45;
-    targetRotation.current.y = mouse.x * 0.45;
+    /* 🔁 BASE ROTATION (SAME SPEED EVERYWHERE) */
+    baseRotation.current.y += 0.0012;
+    baseRotation.current.x += 0.0006;
 
-    /* 🫧 damping / inertia */
-    currentRotation.current.lerp(targetRotation.current, 0.06);
+    /* 🖱️ desktop mouse = OFFSET, not speed */
+    let offsetX = 0;
+    let offsetY = 0;
 
-    group.current.rotation.x = currentRotation.current.x;
-    group.current.rotation.y = currentRotation.current.y;
+    if (!isMobile) {
+      mouseTarget.current.x = mouse.y * 0.25;
+      mouseTarget.current.y = mouse.x * 0.25;
 
-    /* 🌀 micro drift (vida propia) */
+      mouseCurrent.current.lerp(mouseTarget.current, 0.06);
+
+      offsetX = mouseCurrent.current.x;
+      offsetY = mouseCurrent.current.y;
+    }
+
+    /* 🎯 APPLY FINAL ROTATION */
+    group.current.rotation.x = baseRotation.current.x + offsetX;
+    group.current.rotation.y = baseRotation.current.y + offsetY;
     group.current.rotation.z =
       Math.sin(t * 0.4) * 0.02 + Math.cos(t * 0.6) * 0.015;
   });
 
   return (
     <group ref={group}>
-      {/* ✨ POINTS CORE */}
-      <points ref={points}>
+      {/* ✨ PARTICLES */}
+      <points>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
@@ -72,25 +88,48 @@ export default function AboutVisualScene() {
         </bufferGeometry>
 
         <pointsMaterial
-          size={0.035}
-          color="#d6c3a1"
+          size={0.025}
+          color="#e6d3a8"
           transparent
-          opacity={0.9}
+          opacity={0.95}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
       </points>
 
-      {/* ✨ WIREFRAME SOUL */}
+      {/* ✨ WIREFRAME */}
       <mesh>
         <icosahedronGeometry args={[1.38, 1]} />
         <meshBasicMaterial
-          color="#bfa57a"
+          color="#c8a46a"
           wireframe
           transparent
-          opacity={0.18}
+          opacity={0.38}
+        />
+      </mesh>
+
+      {/* ✨ HALO */}
+      <mesh>
+        <icosahedronGeometry args={[1.42, 1]} />
+        <meshBasicMaterial
+          color="#e6d3a8"
+          wireframe
+          transparent
+          opacity={0.14}
+        />
+      </mesh>
+
+      {/* ✨ ATMOSPHERE */}
+      <mesh>
+        <icosahedronGeometry args={[1.48, 0]} />
+        <meshBasicMaterial
+          color="#fdf9f0"
+          wireframe
+          transparent
+          opacity={0.06}
         />
       </mesh>
     </group>
   );
 }
+

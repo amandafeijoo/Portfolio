@@ -178,8 +178,6 @@ const TechStack = () => {
                 "EXPRESS.JS",
                 "GITHUB",
                 "IOS SIMULATOR",
-                "ILLUSTRATOR",
-                "PHOTOSHOP",
                 "THREE.JS",
               ].includes(tech.name)}
               invertColor={["EXPRESS.JS", "GITHUB", "IOS SIMULATOR"].includes(
