@@ -59,6 +59,7 @@ export const Video = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  box-sizing: border-box;
 
   transform: scale(1.02);
   transition: transform 0.55s ease, filter 0.55s ease;
@@ -67,6 +68,11 @@ export const Video = styled.video`
   ${CardWrap}:hover & {
     transform: scale(1.05);
     filter: contrast(1.08) saturate(1) brightness(1);
+  }
+   /* 📱 Mobile override */
+   @media (max-width: 768px) {
+    transform: none !important;
+    filter: contrast(1) saturate(0.95) brightness(0.95);
   }
 `;
 

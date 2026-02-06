@@ -15,7 +15,6 @@ export default function ProcessHero() {
       <ThreeWrapper>
         <ProcessHeroBackground />
       </ThreeWrapper>
-
       <HeroInner>
         <Kicker>Process</Kicker>
         <Headline>How I work</Headline>
@@ -26,4 +25,3 @@ export default function ProcessHero() {
     </HeroWrap>
   );
 }
-

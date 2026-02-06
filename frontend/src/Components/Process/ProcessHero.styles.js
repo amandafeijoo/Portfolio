@@ -15,7 +15,7 @@ export const HeroWrap = styled.section`
     min-height: 100vh;
     margin-bottom: -20px;
     margin-top: -60px;
-    margin-bottom: -190px; 
+    margin-bottom: -190px;
   }
 `;
 
@@ -36,12 +36,19 @@ export const HeroInner = styled.div`
 `;
 
 export const Kicker = styled.div`
-  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   font-size: 0.8rem;
   color: rgba(201, 184, 138, 0.9);
-  margin-bottom: 18px;
+
+  margin-top: -100px;
+  margin-bottom: 120px;
+
+  /* 📱 Mobile */
+  @media (max-width: 768px) {
+    margin-top: -40px; /* 🔥 menos negativo = baja el kicker */
+    margin-bottom: 60px;
+  }
 `;
 
 export const Headline = styled.h2`
@@ -50,7 +57,7 @@ export const Headline = styled.h2`
   font-weight: 400;
   color: #f4f2ed;
   line-height: 1.08;
-  margin-bottom: 22px;
+  margin-top: 200;
 
   text-shadow: 0 0 34px rgba(201, 184, 138, 0.18);
 `;
@@ -73,4 +80,10 @@ export const Subline = styled.p`
   font-size: 1rem;
   line-height: 1.65;
   color: rgba(244, 242, 237, 0.78);
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 500;
+  }
 `;
