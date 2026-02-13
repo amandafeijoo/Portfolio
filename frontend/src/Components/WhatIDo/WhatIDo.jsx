@@ -60,85 +60,6 @@ const items = [
   },
 ];
 
-/* ===============================
-   MOBILE STACK
-================================ */
-function MobileStack({ items }) {
-  return (
-    <div
-      style={{
-        height: "100vh",
-        overflowY: "scroll",
-        scrollSnapType: "y mandatory",
-      }}
-    >
-      {items.map((item, i) => (
-        <div
-          style={{
-            width: "100%",
-            maxWidth: 420,
-            marginBottom: "32px",
-            background: "rgba(18,19,20,0.7)",
-            border: "1px solid rgba(201,184,138,0.28)",
-            borderRadius: 22,
-            padding: 22,
-            boxShadow: `
-      0 0 30px rgba(201,184,138,0.18),
-      0 0 90px rgba(201,184,138,0.08)
-    `,
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              maxWidth: 420,
-              background: "rgba(18,19,20,0.7)",
-              border: "1px solid rgba(201,184,138,0.28)",
-              borderRadius: 22,
-              padding: 22,
-              boxShadow: `
-                0 0 30px rgba(201,184,138,0.18),
-                0 0 90px rgba(201,184,138,0.08)
-              `,
-            }}
-          >
-            <img
-              src={item.src}
-              alt={item.title}
-              style={{
-                width: "100%",
-                borderRadius: 16,
-                marginBottom: 18,
-              }}
-            />
-
-            <h3
-              style={{
-                color: "#F4F2ED",
-                marginBottom: 8,
-              }}
-            >
-              {item.title}
-            </h3>
-
-            <Divider />
-
-            <p
-              style={{
-                color: "rgba(244,242,237,0.75)",
-                lineHeight: 1.5,
-                marginTop: 10,
-              }}
-            >
-              {item.text}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function WhatIDo() {
   /* ===============================
      BREAKPOINT
@@ -234,7 +155,7 @@ export default function WhatIDo() {
   ================================ */
   return (
     <Section ref={sectionRef}>
-      {/* FLOATING CARD – DESKTOP */}
+      {/* ================= FLOATING CARD (DESKTOP ONLY) ================= */}
       {!isMobile && (
         <StickyLayer>
           <FloatingCard ref={floatingRef} style={{ x, y, scale }}>
@@ -244,7 +165,7 @@ export default function WhatIDo() {
         </StickyLayer>
       )}
 
-      {/* INTRO */}
+      {/* ================= INTRO ================= */}
       <IntroHero>
         <IntroTextWrap>
           <Kicker>{introCopy.kicker}</Kicker>
@@ -275,38 +196,45 @@ export default function WhatIDo() {
 
       <ScrollSpace />
 
-      {/* MOBILE vs DESKTOP */}
-      {isMobile ? (
-        <MobileStack items={items} />
-      ) : (
-        <CardsSection>
-          <Grid>
-            <Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-              <CardImg ref={targetRef}>
+      {/* ================= GRID ================= */}
+      <CardsSection>
+        <Grid>
+          {/* ===== CARD 1 (INTEGRATED ON MOBILE) ===== */}
+          <Card
+            onMouseMove={!isMobile ? handleMouseMove : undefined}
+            onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+          >
+            <CardImg ref={!isMobile ? targetRef : null}>
+              {isMobile ? (
+                <img src={items[0].src} alt={items[0].title} />
+              ) : (
                 <PlaceholderMedia />
-              </CardImg>
-              <CardTitle>{items[0].title}</CardTitle>
-              <Divider />
-              <CardText>{items[0].text}</CardText>
-            </Card>
+              )}
+            </CardImg>
 
-            {items.slice(1).map((item, i) => (
-              <Card
-                key={i}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                <CardImg>
-                  <img src={item.src} alt={item.title} />
-                </CardImg>
-                <CardTitle>{item.title}</CardTitle>
-                <Divider />
-                <CardText>{item.text}</CardText>
-              </Card>
-            ))}
-          </Grid>
-        </CardsSection>
-      )}
+            <CardTitle>{items[0].title}</CardTitle>
+            <Divider />
+            <CardText>{items[0].text}</CardText>
+          </Card>
+
+          {/* ===== REST OF CARDS ===== */}
+          {items.slice(1).map((item, i) => (
+            <Card
+              key={i}
+              onMouseMove={!isMobile ? handleMouseMove : undefined}
+              onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+            >
+              <CardImg>
+                <img src={item.src} alt={item.title} />
+              </CardImg>
+
+              <CardTitle>{item.title}</CardTitle>
+              <Divider />
+              <CardText>{item.text}</CardText>
+            </Card>
+          ))}
+        </Grid>
+      </CardsSection>
     </Section>
   );
 }

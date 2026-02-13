@@ -58,6 +58,7 @@ export default function TypingWords({
 
   return (
     <Box
+      component="span"   // 👈 MUY IMPORTANTE
       sx={{
         display: "inline-flex",
         alignItems: "center",
@@ -70,15 +71,18 @@ export default function TypingWords({
       {text}
       {showCursor && (
         <Box
+          component="span"  
           sx={{
             ml: "4px",
             width: "2px",
             height: "1.1em",
             backgroundColor: "#f5e2ce",
+            display: "inline-block",
           }}
         />
       )}
     </Box>
   );
+  
 }
 

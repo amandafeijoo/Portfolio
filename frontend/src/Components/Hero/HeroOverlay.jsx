@@ -6,17 +6,14 @@ import TypingWords from "../Hero/TypingWords";
 ========================= */
 
 const sideStyle = {
-  fontFamily: "Source Code Pro, monospace",
   letterSpacing: "0.35em",
   textTransform: "uppercase",
   color: "rgba(214, 211, 204, 0.75)",
   lineHeight: 1.8,
-  textShadow: "0 2px 8px rgba(0,0,0,0.3)",
 };
 
 const bodyStyle = {
-  fontFamily: "Source Code Pro, monospace",
-  letterSpacing: "0.08em",
+  letterSpacing: "0.10em",
   color: "rgba(220,215,205,0.7)",
   lineHeight: 2.1,
 };
@@ -25,302 +22,279 @@ const bodyStyle = {
    COMPONENT
 ========================= */
 
-export default function HeroOverlay({ onEnter }) {
+export default function HeroOverlay({ onEnter, enter }) {
   return (
-    <Box
-      sx={{
-        position: "absolute",
-        inset: 0,
-        zIndex: 10,
-        pointerEvents: "none",
-      }}
-    >
-      {/* ======================================================
-          MOBILE — TOP CENTER (above sphere)
-      ====================================================== */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: { xs: 24, sm: "auto" },
-          left: 0,
-          right: 0,
-          display: { xs: "flex", sm: "none" },
-          justifyContent: "center",
-          textAlign: "center",
-          px: 3,
-        }}
-      >
-        <Typography
-          sx={{
-            ...bodyStyle,
-            fontSize: "0.8rem",
-            maxWidth: 300,
-            mt: 10,
-          }}
-        >
-          I design and build websites for{" "}
-          <Box component="span" sx={{ display: "inline-block", minWidth: 90 }}>
-            <TypingWords
-              words={["brands", "startups", "founders", "businesses"]}
-              speed={85}
-              pause={1200}
-            />
-          </Box>
-        </Typography>
-      </Box>
-
-      {/* ======================================================
-          DESKTOP / TABLET — TOP LEFT
-      ====================================================== */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: { sm: 80, md: 120 },
-          left: { sm: 36, md: 48 },
-          display: { xs: "none", sm: "block" },
-          maxWidth: { sm: 220, md: 260 },
-        }}
-      >
-        <Typography
-          sx={{
-            ...bodyStyle,
-            fontSize: { sm: "0.85rem", md: "0.95rem" },
-          }}
-        >
-          I design and build websites for{" "}
-          <Box component="span" sx={{ display: "inline-block", minWidth: 90 }}>
-            <TypingWords
-              words={["brands", "startups", "founders", "businesses"]}
-              speed={85}
-              pause={1200}
-            />
-          </Box>
-        </Typography>
-      </Box>
-
-      {/* ======================================================
-          CENTER — TITLE + CTA (ALL DEVICES)
-      ====================================================== */}
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+    <>
+      {/* ================= PORTAL MODE ================= */}
+      {enter && (
         <Box
           sx={{
-            textAlign: "center",
-            maxWidth: 720,
-            px: { xs: 2, sm: 0 },
-            mt: { xs: 6, sm: 0 },
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 50,
+            pointerEvents: "none",
           }}
         >
           <Typography
             sx={{
               fontFamily: "Playfair Display, serif",
               fontSize: {
-                xs: "clamp(2.1rem, 8vw, 2.6rem)",
-                sm: "clamp(2.8rem, 6vw, 3.4rem)",
-                md: "clamp(3rem, 6vw, 4.2rem)",
+                xs: "clamp(2rem, 10vw, 4rem)",
+                sm: "clamp(4rem, 8vw, 5rem)",
               },
-              color: "rgba(241, 238, 232, 0.75)",
-              mb: 2,
-              position: "relative",
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                inset: "-60%",
-                background:
-                  "radial-gradient(circle, rgba(201,184,138,0.15), transparent 70%)",
-                filter: "blur(60px)",
-                zIndex: -1,
-              },
+              letterSpacing: "0.08em",
+              color: "#e6d3a8",
+              textShadow:
+                "0 0 10px rgba(200,164,106,0.35), 0 0 30px rgba(200,164,106,0.25)",
+              textTransform: "uppercase",
+              textAlign: "center",
             }}
           >
             Webcode-Art
           </Typography>
-
-          <Typography
-            sx={{
-              color: "rgba(214, 211, 204, 0.75)",
-              fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
-              mb: { xs: 3, md: 4 },
-              maxWidth: { xs: 280, sm: 360, md: 520 },
-              mx: "auto",
-            }}
-          >
-            Design & development for web experiences that feel alive.
-          </Typography>
-
-          <Button
-            onClick={onEnter}
-            sx={{
-              position: "relative",
-              isolation: "isolate",
-              pointerEvents: "auto",
-              overflow: "visible",
-
-              /* 📐 SIZE */
-              px: { xs: 3.2, sm: 3.6, md: 4.2 },
-              py: { xs: 1.1, sm: 1.2, md: 1.4 },
-
-              /* 🔤 TEXT */
-              fontSize: { xs: "0.68rem", sm: "0.72rem", md: "0.8rem" },
-              letterSpacing: { xs: "0.12em", md: "0.14em" },
-              textTransform: "uppercase",
-              fontFamily: '"Source Code Pro", monospace',
-
-              /* 🎨 COLORS */
-              color: "#f5f0e8",
-              borderRadius: "999px",
-              border: "1px solid rgba(200,164,106,0.6)",
-
-              background: "rgba(18,19,20,0.55)",
-              backdropFilter: "blur(10px)",
-
-              /* 🌕 DEPTH */
-              boxShadow: `
-      0 0 14px rgba(200,164,106,0.25),
-      0 0 40px rgba(200,164,106,0.15)
-    `,
-
-              cursor: "pointer",
-
-              transition:
-                "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
-
-              /* 🌕 HALO EXTERNO */
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                inset: { xs: -8, md: -12 },
-                borderRadius: "999px",
-                background:
-                  "radial-gradient(circle, rgba(200,164,106,0.35), transparent 70%)",
-                filter: { xs: "blur(16px)", md: "blur(24px)" },
-                opacity: 0.85,
-                zIndex: -1,
-                pointerEvents: "none",
-                transition: "opacity 0.35s ease, filter 0.35s ease",
-              },
-
-              /* ✨ HALO INTERNO */
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                inset: 0,
-                borderRadius: "999px",
-                background:
-                  "radial-gradient(60% 60% at 50% 0%, rgba(200,164,106,0.22), transparent 70%)",
-                opacity: 0.6,
-                pointerEvents: "none",
-              },
-
-              /* ✨ HOVER */
-              "&:hover": {
-                transform: "translateY(-2px)",
-                background: "rgba(200,164,106,0.18)",
-                border: "1px solid rgba(200,164,106,0.75)",
-                color: "#fdf9f0",
-
-                boxShadow: `
-        0 0 26px rgba(200,164,106,0.45),
-        0 0 70px rgba(200,164,106,0.25)
-      `,
-
-                "&::before": {
-                  opacity: 1,
-                  filter: { xs: "blur(20px)", md: "blur(28px)" },
-                },
-              },
-
-              /* 🖱 ACTIVE */
-              "&:active": {
-                transform: "translateY(0)",
-              },
-
-              /* 🚫 QUITAR BORDE AZUL iOS */
-              "&:focus": {
-                outline: "none",
-                boxShadow: "none",
-              },
-              "&:focus-visible": {
-                outline: "none",
-                boxShadow: "none",
-              },
-              "&:active:focus": {
-                outline: "none",
-              },
-              WebkitTapHighlightColor: "transparent",
-
-              /* 📱 MOBILE – botón más corto */
-              "@media (max-width: 520px)": {
-                width: "auto",
-                maxWidth: 220,
-                px: 2.6,
-                fontSize: "0.68rem",
-                letterSpacing: "0.12em",
-              },
-            }}
-          >
-            LET’S CREATE
-          </Button>
         </Box>
-      </Box>
+      )}
 
-      {/* ======================================================
-          MOBILE — BOTTOM CENTER (below sphere)
-      ====================================================== */}
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: { xs: 94, sm: "auto" },
-          left: 0,
-          right: 0,
-          display: { xs: "flex", sm: "none" },
-          justifyContent: "center",
-          textAlign: "center",
-        }}
-      >
-        <Typography
+      {/* ================= NORMAL HERO ================= */}
+      {!enter && (
+        <Box
           sx={{
-            ...sideStyle,
-            fontSize: "0.6rem",
-            lineHeight: 1.9,
+            position: "absolute",
+            inset: 0,
+            zIndex: 20,
+            pointerEvents: "none",
           }}
         >
-          STRATEGY · DESIGN · DEVELOPMENT
-        </Typography>
-      </Box>
+          {/* MOBILE TOP */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: { xs: 24 },
+              left: { xs: "7%" },
+              right: 0,
+              display: { xs: "flex", sm: "none" },
+              justifyContent: "center",
+              textAlign: "center",
+              px: 3,
+              zIndex: 30,
+            }}
+          >
+            <Typography
+              sx={{
+                ...bodyStyle,
+                fontSize: "0.8rem",
+                maxWidth: 300,
+                mt: 10,
+              }}
+            >
+              I design and build websites for{" "}
+              <Box
+                component="span"
+                sx={{ display: "inline-block", minWidth: 90 }}
+              >
+                <TypingWords
+                  words={["brands", "startups", "founders", "businesses"]}
+                  speed={85}
+                  pause={1200}
+                />
+              </Box>
+            </Typography>
+          </Box>
 
-      {/* ======================================================
-          DESKTOP / TABLET — BOTTOM RIGHT
-      ====================================================== */}
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: { sm: 60, md: 80 },
-          right: { sm: 36, md: 48 },
-          display: { xs: "none", sm: "block" },
-          textAlign: "right",
-        }}
-      >
-        <Typography
-          sx={{
-            ...sideStyle,
-            fontSize: { sm: "0.65rem", md: "0.7rem" },
-          }}
-        >
-          STRATEGY.
-          <br />
-          DESIGN.
-          <br />
-          DEVELOPMENT.
-        </Typography>
-      </Box>
-    </Box>
+          {/* DESKTOP TOP LEFT */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: { sm: 80, md: 50 },
+              left: { sm: 36, md: 48 },
+              display: { xs: "none", sm: "block" },
+              maxWidth: { sm: 220, md: 260 },
+            }}
+          >
+            <Typography
+              sx={{
+                ...bodyStyle,
+                fontSize: { sm: "0.85rem", md: "0.92rem" },
+              }}
+            >
+              I design and build websites for{" "}
+              <Box
+                component="span"
+                sx={{ display: "inline-block", minWidth: 90 }}
+              >
+                <TypingWords
+                  words={["brands", "startups", "founders", "businesses"]}
+                  speed={85}
+                  pause={1200}
+                />
+              </Box>
+            </Typography>
+          </Box>
+
+          {/* CENTER CONTENT */}
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box sx={{ textAlign: "center" }}>
+              <Typography
+                sx={{
+                  fontFamily: "Playfair Display, serif",
+                  fontSize: {
+                    xs: "clamp(2.1rem, 8vw, 2.6rem)",
+                    sm: "clamp(2.8rem, 6vw, 3.4rem)",
+                    md: "clamp(3rem, 6vw, 4.2rem)",
+                  },
+                  color: "#e6d3a8",
+                  mb: 2,
+                  position: "relative",
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    inset: "-60%",
+                    background:
+                      "radial-gradient(circle, rgba(201,184,138,0.15), transparent 70%)",
+                    filter: "blur(60px)",
+                    zIndex: -1,
+                  },
+                }}
+              >
+                Webcode-Art
+              </Typography>
+
+              <Typography
+                sx={{
+                  color: "#f4e6d2",
+                  fontSize: { xs: "0.83rem", sm: "0.95rem", md: "1rem" },
+                  mt: { xs: 3, md: 5 },
+                  mb: { xs: 3, md: 4 },
+                  maxWidth: { xs: 280, sm: 360, md: 520 },
+                  mx: "auto",
+                }}
+              >
+                Design & development for web experiences that feel alive.
+              </Typography>
+
+              {/* 🔴 TU BOTÓN — EXACTAMENTE IGUAL */}
+              <Button
+                onClick={onEnter}
+                sx={{
+                  pointerEvents: "auto",
+                  /* 🔹 MOBILE más pequeño */
+                  px: { xs: 2.6, sm: 4 },
+                  py: { xs: 0.9, sm: 1.4 },
+
+                  fontSize: { xs: "0.68rem", sm: "0.8rem" },
+                  letterSpacing: { xs: "0.11em", sm: "0.14em" },
+                  textTransform: "uppercase",
+                  color: "#f5f0e8",
+                  borderRadius: "999px",
+                  border: "1px solid rgba(200,164,106,0.6)",
+                  background: "rgba(18,19,20,0.55)",
+                  backdropFilter: "blur(10px)",
+                  boxShadow:
+                    "0 0 18px rgba(200,164,106,0.25), 0 0 40px rgba(200,164,106,0.15)",
+                  cursor: "pointer",
+                  transition:
+                    "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease, border 0.35s ease",
+                  position: "relative",
+                  isolation: "isolate",
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    inset: -10,
+                    borderRadius: "999px",
+                    background:
+                      "radial-gradient(circle, rgba(200,164,106,0.35), transparent 70%)",
+                    filter: "blur(20px)",
+                    opacity: 0.6,
+                    zIndex: -1,
+                    transition: "opacity 0.35s ease, filter 0.35s ease",
+                  },
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    background: "rgba(200,164,106,0.18)",
+                    border: "1px solid rgba(200,164,106,0.85)",
+                    color: "#ffffff",
+                    boxShadow:
+                      "0 0 28px rgba(200,164,106,0.45), 0 0 80px rgba(200,164,106,0.3)",
+                    "&::before": {
+                      opacity: 1,
+                      filter: "blur(28px)",
+                    },
+                  },
+                  "&:active": {
+                    transform: "translateY(0px) scale(0.98)",
+                  },
+                  "&:focus": { outline: "none" },
+                  "&:focus-visible": { outline: "none" },
+                }}
+              >
+                LET’S CREATE
+              </Button>
+            </Box>
+          </Box>
+
+          {/* MOBILE BOTTOM CENTER — FUERA DEL DESKTOP BOX */}
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: { xs: "clamp(40px, 12vh, 100px)" },
+              left: 0,
+              right: 0,
+              display: { xs: "flex", sm: "none" },
+              justifyContent: "center",
+              textAlign: "center",
+              zIndex: 40,
+              pointerEvents: "none",
+            }}
+          >
+            <Typography
+              sx={{
+                ...sideStyle,
+                fontSize: "0.6rem",
+                opacity: 0.9,
+              }}
+            >
+              STRATEGY · DESIGN · DEVELOPMENT
+            </Typography>
+          </Box>
+
+          {/* DESKTOP BOTTOM RIGHT */}
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: { sm: 60, md: 90 },
+              right: { sm: 40, md: 30 },
+              display: { xs: "none", sm: "block" },
+              textAlign: "right",
+              zIndex: 40,
+              pointerEvents: "none",
+            }}
+          >
+            <Typography
+              sx={{
+                ...sideStyle,
+                fontSize: { sm: "0.65rem", md: "0.7rem" },
+              }}
+            >
+              STRATEGY.
+              <br />
+              DESIGN.
+              <br />
+              DEVELOPMENT.
+            </Typography>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 }

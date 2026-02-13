@@ -39,11 +39,9 @@ function Particles() {
           size={0.012}
           sizeAttenuation
           depthWrite={false}
-          opacity={0.55}
+          opacity={1}
         />
       </Points>
-
-      {/* halo central (mesh muy barato) */}
       <mesh position={[0, 0.7, -2.2]}>
         <sphereGeometry args={[1.6, 32, 32]} />
         <meshBasicMaterial transparent opacity={0.07} color="#c9b88a" />

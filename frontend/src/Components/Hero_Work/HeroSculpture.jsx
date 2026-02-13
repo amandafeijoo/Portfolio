@@ -17,28 +17,27 @@ export default function HeroSculpture({ enter, onProgress }) {
   const config = useMemo(() => {
     if (isMobile) {
       return {
-        baseScale: 1.3,
+        baseScale: 1.2,
         idleCameraZ: 6.2,
         offsetX: 0,
-        radii: [1.35, 1.15, 0.95],
+        radii: [1.1, 0.9, 0.7],
       };
     }
 
     if (isTablet) {
       return {
-        baseScale: 1.15,
+        baseScale: 1.05,
         idleCameraZ: 5.4,
         offsetX: -0.4,
-        radii: [1.6, 1.35, 1.1],
+        radii: [1.3, 1.05, 0.85],
       };
     }
 
-    // 💻 Desktop
     return {
-      baseScale: 1.03,
+      baseScale: 1.2,
       idleCameraZ: 4.8,
-      offsetX: -0.95,
-      radii: [1.8, 1.5, 1.2],
+      offsetX: -0.75,
+      radii: [1.3, 1.08, 0.8],
     };
   }, [isMobile, isTablet]);
 

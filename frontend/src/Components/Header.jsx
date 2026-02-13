@@ -47,8 +47,9 @@ export default function Header() {
             mx: "auto",
             px: { xs: 2, sm: 3 },
             py: { xs: 0.6, md: 0.2 },
+
             display: "grid",
-            gridTemplateColumns: "auto 1fr auto",
+            gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
           }}
         >
@@ -139,28 +140,27 @@ export default function Header() {
                 justifyContent: "center",
 
                 /* 📐 SIZE */
-                px: { xs: 2.2, sm: 2.6, md: 3.2 },
-                py: { xs: 0.65, sm: 0.85, md: 1.05 },
+                px: { xs: 2.4, sm: 2.8, md: 3.2 },
+                py: { xs: 0.75, sm: 0.9, md: 1.05 },
 
                 /* 🔤 TEXT */
                 fontSize: { xs: "0.6rem", sm: "0.66rem", md: "0.7rem" },
-                letterSpacing: { xs: "0.16em", sm: "0.18em", md: "0.2em" },
+                letterSpacing: { xs: "0.16em", sm: "0.18em", md: "0.22em" },
                 fontWeight: 600,
                 textTransform: "uppercase",
-                fontFamily: '"Source Code Pro", monospace',
-
-                /* 🎨 COLORS – CREMA */
-                color: "#fbf7ef",
+                
+                /* 🎨 COLORS – UNIFICADO */
+                color: "#e6d5bc",
                 borderRadius: "999px",
-                border: "1px solid rgba(235,220,190,0.6)",
+                border: "1px solid rgba(230,213,188,0.45)",
 
-                background: "rgba(90,85,75,0.55)",
+                background: "rgba(18,19,20,0.55)",
                 backdropFilter: "blur(10px)",
 
-                /* 🌕 DEPTH */
+                /* 🌕 DEPTH (más suave que primary) */
                 boxShadow: `
-      0 0 10px rgba(235,220,190,0.28),
-      0 0 26px rgba(235,220,190,0.18)
+      0 0 12px rgba(230,213,188,0.22),
+      0 0 32px rgba(230,213,188,0.14)
     `,
 
                 cursor: "pointer",
@@ -168,16 +168,16 @@ export default function Header() {
                 transition:
                   "transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
 
-                /* 🌕 HALO EXTERNO – MÁS LUMINOSO */
+                /* 🌕 HALO EXTERNO */
                 "&::before": {
                   content: '""',
                   position: "absolute",
-                  inset: { xs: -6, md: -8 },
+                  inset: { xs: -8, md: -10 },
                   borderRadius: "999px",
                   background:
-                    "radial-gradient(circle, rgba(235,210,160,0.4), transparent 70%)",
-                  filter: { xs: "blur(12px)", md: "blur(18px)" },
-                  opacity: 0.85,
+                    "radial-gradient(circle, rgba(230,213,188,0.35), transparent 70%)",
+                  filter: { xs: "blur(14px)", md: "blur(20px)" },
+                  opacity: 0.8,
                   zIndex: -1,
                   pointerEvents: "none",
                   transition: "opacity 0.3s ease, filter 0.3s ease",
@@ -190,25 +190,25 @@ export default function Header() {
                   inset: 0,
                   borderRadius: "999px",
                   background:
-                    "radial-gradient(60% 60% at 50% 0%, rgba(235,210,160,0.28), transparent 70%)",
-                  opacity: 0.65,
+                    "radial-gradient(60% 60% at 50% 0%, rgba(230,213,188,0.22), transparent 70%)",
+                  opacity: 0.6,
                   pointerEvents: "none",
                 },
 
                 /* ✨ HOVER */
                 "&:hover": {
                   transform: { sm: "translateY(-1px)" },
-                  background: "rgba(235,210,160,0.22)",
-                  color: "#f7f3ea",
+                  background: "rgba(230,213,188,0.18)",
+                  color: "#e6d5bc",
 
                   boxShadow: `
-        0 0 18px rgba(235,210,160,0.45),
-        0 0 46px rgba(235,210,160,0.28)
+        0 0 22px rgba(230,213,188,0.4),
+        0 0 56px rgba(230,213,188,0.22)
       `,
 
                   "&::before": {
                     opacity: 1,
-                    filter: { xs: "blur(14px)", md: "blur(22px)" },
+                    filter: { xs: "blur(18px)", md: "blur(24px)" },
                   },
                 },
 

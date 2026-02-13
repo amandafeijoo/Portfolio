@@ -15,7 +15,6 @@ export const HeroWrap = styled.section`
     min-height: 100vh;
     margin-bottom: -20px;
     margin-top: -60px;
-    margin-bottom: -190px;
   }
 `;
 

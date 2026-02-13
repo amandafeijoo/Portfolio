@@ -7,7 +7,7 @@ export const InviteWrap = styled.section`
   position: relative;
   padding: 180px 20px;
   overflow: hidden;
-  margin-top: 200px;
+  margin-top: 150px;
 
   ${tablet} {
     padding: 140px 18px;
@@ -16,7 +16,7 @@ export const InviteWrap = styled.section`
 
   ${mobile} {
     padding: 100px 16px;
-    margin-top: 90px;
+    margin-top: 30px;
   }
 
   ${smallMobile} {
@@ -88,29 +88,33 @@ export const InviteLine = styled.div`
 `;
 export const InviteCTA = styled.button`
   position: relative;
-  background: rgba(18, 19, 20, 0.55);
-  border: 1px solid rgba(201, 184, 138, 0.45);
-  color: #f4f2ed;
+  isolation: isolate;
+  overflow: visible;
 
-  padding: 16px 22px;
+  /* 📐 SIZE (equivalente a sx responsive) */
+  padding: 18px 27px;
+
+  /* 🔤 TEXT */
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  /* 🎨 COLORS */
+  color: #e6d5bc;
+  border: 1px solid rgba(230, 213, 188, 0.45);
   border-radius: 999px;
 
-  font-family: "Source Code Pro", monospace;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-
-  cursor: pointer;
-  isolation: isolate;
-  overflow: hidden;
-
+  background: rgba(18, 19, 20, 0.55);
   backdrop-filter: blur(10px);
 
-  box-shadow: 0 0 18px rgba(201, 184, 138, 0.25),
-    0 0 48px rgba(201, 184, 138, 0.12);
+  /* 🌕 DEPTH */
+  box-shadow: 0 0 16px rgba(230, 213, 188, 0.25),
+    0 0 48px rgba(230, 213, 188, 0.15);
 
-  transition: transform 0.35s ease, box-shadow 0.35s ease,
-    border-color 0.35s ease, background 0.35s ease;
+  cursor: pointer;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 
   /* 🌕 HALO EXTERNO */
   &::before {
@@ -120,10 +124,10 @@ export const InviteCTA = styled.button`
     border-radius: 999px;
     background: radial-gradient(
       circle,
-      rgba(201, 184, 138, 0.35),
+      rgba(230, 213, 188, 0.35),
       transparent 70%
     );
-    filter: blur(22px);
+    filter: blur(26px);
     opacity: 0.85;
     z-index: -1;
     pointer-events: none;
@@ -138,7 +142,7 @@ export const InviteCTA = styled.button`
     border-radius: 999px;
     background: radial-gradient(
       60% 60% at 50% 0%,
-      rgba(201, 184, 138, 0.22),
+      rgba(230, 213, 188, 0.22),
       transparent 70%
     );
     opacity: 0.6;
@@ -147,15 +151,15 @@ export const InviteCTA = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    background: rgba(201, 184, 138, 0.18);
-    border-color: rgba(201, 184, 138, 0.7);
+    background: rgba(230, 213, 188, 0.18);
+    border: 1px solid rgba(230, 213, 188, 0.45);
 
-    box-shadow: 0 0 28px rgba(201, 184, 138, 0.45),
-      0 0 80px rgba(201, 184, 138, 0.25);
+    box-shadow: 0 0 28px rgba(230, 213, 188, 0.45),
+      0 0 80px rgba(230, 213, 188, 0.25);
 
     &::before {
       opacity: 1;
-      filter: blur(28px);
+      filter: blur(30px);
     }
   }
 
@@ -163,22 +167,33 @@ export const InviteCTA = styled.button`
     transform: translateY(0);
   }
 
+  /* 🚫 DISABLED (si usas disabled prop) */
+  &:disabled {
+    opacity: 0.4;
+    box-shadow: none;
+    cursor: default;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    padding: 14px 32px;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    padding: 10px 24px;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
 
     &::before {
       inset: -10px;
-      filter: blur(20px);
+      filter: blur(22px);
     }
   }
 
   /* 📱 SMALL MOBILE */
   @media (max-width: 520px) {
-    padding: 16px 22px;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
+    padding: 9px 20px;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
   }
 `;

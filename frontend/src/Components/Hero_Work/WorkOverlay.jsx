@@ -75,7 +75,6 @@ export default function WorkOverlay({ onEnter, enter }) {
             fontSize: { xs: "0.62rem", sm: "0.66rem", md: "0.7rem" },
             letterSpacing: { xs: "0.18em", md: "0.25em" },
             textTransform: "uppercase",
-            fontFamily: '"Source Code Pro", monospace',
 
             /* 🎨 COLORS */
             color: "#e6d5bc",

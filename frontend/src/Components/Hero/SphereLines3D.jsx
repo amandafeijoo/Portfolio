@@ -9,7 +9,7 @@ export default function SphereLines3D({
   const lines = [];
 
   const material = new THREE.LineBasicMaterial({
-    color: new THREE.Color("rgb(255, 250, 250)"),
+    color: new THREE.Color("#e6d3a8"),
     transparent: true,
     opacity: 0.18,
     depthWrite: false,

@@ -65,6 +65,23 @@ const GlobalStyle = createGlobalStyle`
   input, textarea, button, select {
     cursor: auto;
   }
+
+  @keyframes portalTitle {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(12px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 `;
 
 const AppContainer = styled.div`

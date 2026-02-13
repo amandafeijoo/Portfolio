@@ -65,7 +65,7 @@ export default function OctagonWire({
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[radius * 0.95, 64]} />
         <meshBasicMaterial
-          color="#e6d5bc"
+          color="#c9b07a"
           transparent
           opacity={0.22}
           depthWrite={false}
@@ -77,7 +77,7 @@ export default function OctagonWire({
 
       {/* OUTLINE */}
       <lineSegments geometry={new THREE.EdgesGeometry(geometry)}>
-        <lineBasicMaterial color="#e6d5bc" transparent opacity={opacity} />
+        <lineBasicMaterial color="#c9b07a" transparent opacity={opacity} />
       </lineSegments>
     </group>
   );
