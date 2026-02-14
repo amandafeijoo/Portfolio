@@ -122,7 +122,7 @@ export const HeroTitle = styled.h2`
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     line-height: 1.25;
     max-width: 360px;
   }

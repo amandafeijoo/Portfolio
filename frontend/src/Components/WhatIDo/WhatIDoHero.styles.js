@@ -66,7 +66,6 @@ export const HeroWrap = styled.section`
     /* 🌟 HALO LIMPIO COMO BACKGROUND */
     background: radial-gradient(
         120% 80% at 50% 50%,
-        /* 👈 CENTRO REAL */ rgba(255, 220, 180, 0.11) 0%,
         rgba(255, 220, 180, 0.06) 35%,
         rgba(0, 0, 0, 0.96) 72%
       ),

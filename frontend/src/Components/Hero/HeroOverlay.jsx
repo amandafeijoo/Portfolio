@@ -247,7 +247,8 @@ export default function HeroOverlay({ onEnter, enter }) {
           <Box
             sx={{
               position: "absolute",
-              bottom: { xs: "clamp(40px, 12vh, 100px)" },
+              bottom: { xs: "14vh" },
+              transform: "translateY(-30%)",
               left: 0,
               right: 0,
               display: { xs: "flex", sm: "none" },

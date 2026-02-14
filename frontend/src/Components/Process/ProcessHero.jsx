@@ -15,8 +15,8 @@ export default function ProcessHero() {
       <ThreeWrapper>
         <ProcessHeroBackground />
       </ThreeWrapper>
+      <Kicker>Process</Kicker>
       <HeroInner>
-        <Kicker>Process</Kicker>
         <Headline>How I work</Headline>
         <Subline>
           A clear and thoughtful process — from first idea to final launch.

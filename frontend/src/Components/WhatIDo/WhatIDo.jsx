@@ -30,7 +30,6 @@ import FloatingHintMenu from "./FloatingHintMenu";
    DATA
 ================================ */
 const introCopy = {
-  kicker: "WHAT I DO",
   meta: "Design · Code · Motion",
   title: "Designing digital experiences\nthat feel intentional",
   text: `I combine design, code, and animation to build websites

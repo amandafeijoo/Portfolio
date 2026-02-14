@@ -64,7 +64,8 @@ export default function ProcessCards() {
       sx={{
         width: "100%",
         py: { xs: 6, md: 10 },
-        mb: { xs: 8, md: 10 },
+        mb: { xs: 8, md: 25 },
+        mt: { xs: 18, md: 16 },
         display: "flex",
         justifyContent: "center",
         overflow: "hidden",
