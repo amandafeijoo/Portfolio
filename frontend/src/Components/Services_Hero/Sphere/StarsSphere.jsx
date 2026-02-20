@@ -47,7 +47,7 @@ export default function StarsSphere({ impulseRef }) {
         color: "#fff6dc",
         size: isMobile ? 0.012 : 0.015, // 🔥 MÁS GRANDES
         transparent: true,
-        opacity: isMobile ? 1 : 0.6, // 🔥 más visibles
+        opacity: isMobile ? 1 : 1.6, // 🔥 más visibles
         depthWrite: false,
         blending: THREE.AdditiveBlending,
       }),
