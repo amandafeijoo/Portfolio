@@ -56,7 +56,7 @@ export const InviteKicker = styled.div`
 `;
 
 export const InviteTitle = styled.h2`
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 500;
   color: rgba(247, 236, 205, 0.9);
   line-height: 1.15;

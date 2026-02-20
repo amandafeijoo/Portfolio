@@ -21,7 +21,7 @@ import MainLayout from "./Components/Layout/MainLayout";
    PAGES
 ========================= */
 import Home from "./Components/Home";
-import OrbitPage from "./Components/Services/OrbitPage";
+import OrbitPage from "./Components/Services_Hero/OrbitPage";
 import ProcessSection from "./Components/Process/ProcessSection";
 import AboutMe from "./Components/About/AboutMe";
 import TechStack from "./Components/About/TechStack";

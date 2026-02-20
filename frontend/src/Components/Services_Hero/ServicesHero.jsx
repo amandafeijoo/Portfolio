@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-import SwipeIcon from "@mui/icons-material/Swipe";
 
 export default function ServicesHero() {
   return (
@@ -11,7 +10,7 @@ export default function ServicesHero() {
         maxWidth: "720px",
         mx: "auto",
         px: { xs: 2, md: 3 },
-        mt: { xs: -18, md: -10 },
+        mt: { xs: -22, md: -10 },
       }}
     >
       {/* ===== KICKER ===== */}
@@ -40,7 +39,7 @@ export default function ServicesHero() {
             md: "2.6rem",
           },
           letterSpacing: { xs: "0.04em", md: "0.08em" },
-          color: "rgba(237,231,217,0.96)",
+          color: "rgba(243, 226, 179, 0.9)",
           textShadow: `
             0 0 1px rgba(255,255,255,0.4),
             0 0 10px rgba(255,255,255,0.25),
@@ -124,16 +123,16 @@ export default function ServicesHero() {
       <Box
         sx={{
           mt: { xs: 2, md: 4.5 },
-          px: 1.5,
-          py: 0.75,
+          px: 1.2,
+          py: 0.65,
           borderRadius: "999px",
-          fontSize: { xs: "0.6rem", md: "0.60rem" },
+          fontSize: { xs: "0.6rem", md: "0.50rem" },
           letterSpacing: { xs: "0.19em", md: "0.16em" },
           textTransform: "uppercase",
           color: "rgba(255,255,255,0.4)",
-          border: "1px dashed rgba(255,255,255,0.18)",
+          border: "1px dashed rgba(253, 237, 192, 0.9)",
           pointerEvents: "none",
-          display: "inline-flex",
+          display: { xs: "none", md: "inline-flex" },
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -147,21 +146,9 @@ export default function ServicesHero() {
           }}
         >
           <SwapHorizIcon
-            sx={{ fontSize: 26, color: "rgba(247,227,188,0.35)" }}
+            sx={{ fontSize: 26, color: "rgba(238, 218, 163, 0.9)" }}
           />
           Drag to explore
-        </Box>
-
-        {/* ===== MOBILE ===== */}
-        <Box
-          sx={{
-            display: { xs: "inline-flex", md: "none" },
-            alignItems: "center",
-            gap: 0.75,
-          }}
-        >
-          <SwipeIcon sx={{ fontSize: 22, color: "rgba(247,227,188,0.35)" }} />
-          Swipe
         </Box>
       </Box>
     </Box>

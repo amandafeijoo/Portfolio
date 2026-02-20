@@ -2,29 +2,29 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import StarsSphere from "./StarsSphere";
 
-export default function OrbitThree({ impulseRef }) {
+export default function OrbitThree({ impulseRef, rotationRef }) {
   return (
     <Canvas
       camera={{ position: [0, 0, 6], fov: 55 }}
       style={{
         position: "absolute",
-        height: { xs: "120vh", md: "100vh" }, 
-        overflow: "visible",
         inset: 0,
+        height: "100%",
+        width: "100%",
+        overflow: "visible",
         zIndex: 1,
         pointerEvents: "none",
-        opacity: { xs: "0.95", md: "0.55" },
+        opacity: 0.95,
       }}
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.6} />
 
       <Suspense fallback={null}>
-        <group position={[0, -0.15, 0]}>
-          <StarsSphere impulseRef={impulseRef} />
+        <group position={[0, -0.38, 0]}>
+          <StarsSphere impulseRef={impulseRef} rotationRef={rotationRef} />
         </group>
       </Suspense>
     </Canvas>
   );
 }
-

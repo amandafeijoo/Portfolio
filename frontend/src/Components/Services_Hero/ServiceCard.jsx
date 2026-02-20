@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import SwipeIcon from "@mui/icons-material/Swipe";
 
 export default function ServiceCard({
   title,
@@ -18,10 +19,11 @@ export default function ServiceCard({
 
         width: "100%",
         maxWidth: { xs: "90%", sm: 360, md: 370 },
-        minHeight: { xs: 400, sm: 560, md: 400 },
+        minHeight: { xs: 420, sm: 560, md: 400 },
 
         mx: "auto",
-        mt: { xs: 20, md: 28 },
+        mt: { xs: 45, md: 28 },
+        mb: { xs: 12, md: 8 },
 
         px: { xs: 2.5, md: 3.5 },
         py: { xs: 3.5, md: 4.5 },
@@ -48,11 +50,41 @@ export default function ServiceCard({
           : "0 40px 90px rgba(0,0,0,0.55)",
 
         textAlign: "center",
-        color: "rgba(255,255,255,0.92)",
+        color: "rgba(247, 233, 195, 0.9)",
 
         transition: "all .45s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
+      {/* ===== DRAG / SWIPE HINT ===== */}
+      <Box
+        sx={{
+          display: { xs: "inline-flex", md: "none" },
+          mt: { xs: 0, md: 4.5 },
+          mb: { xs: 2.5 },
+          px: 1.5,
+          py: 0.75,
+          borderRadius: "999px",
+          fontSize: { xs: "0.6rem", md: "0.60rem" },
+          letterSpacing: { xs: "0.19em", md: "0.16em" },
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.4)",
+          border: "1px dashed rgba(253, 237, 192, 0.9)",
+          pointerEvents: "none",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            display: { xs: "inline-flex", md: "none" },
+            alignItems: "center",
+            gap: 0.75,
+          }}
+        >
+          <SwipeIcon sx={{ fontSize: 22, color: "rgba(247,227,188,0.35)" }} />
+          Swipe
+        </Box>
+      </Box>
       {/* ===== TITLE ===== */}
       <Typography
         sx={{

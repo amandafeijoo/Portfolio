@@ -15,11 +15,15 @@ export default function HeroSection() {
     <Box
       sx={{
         position: "relative",
-        height: "100vh",
+        height: {
+          xs: "110svh",
+          sm: "110vh",
+          md: "120vh",
+        },
         width: "100%",
         overflow: "hidden",
-        marginTop: { xs: "-6vh", sm: 10 },
-        marginBottom: { xs: "-6vh", sm: 20 },  
+        marginTop: { xs: "-11vh", sm: 10 },
+        marginBottom: { xs: "-6vh", sm: 20 },
         background:
           "radial-gradient(circle at 50% 42%, rgba(231, 217, 188, 0.18), #000 70%)",
 

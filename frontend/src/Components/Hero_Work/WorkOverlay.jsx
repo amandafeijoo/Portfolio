@@ -33,7 +33,7 @@ export default function WorkOverlay({ onEnter, enter }) {
           sx={{
             fontFamily: "Playfair Display, serif",
             fontSize: {
-              xs: "clamp(2rem, 9vw, 2.6rem)",
+              xs: "clamp(1.6rem, 9vw, 2.5rem)",
               sm: "clamp(2.4rem, 7vw, 3.2rem)",
               md: "clamp(2.8rem, 6vw, 4rem)",
             },

@@ -73,7 +73,7 @@ export default function SoftParticles({ count = 800 }) {
     const t = clock.elapsedTime;
 
     // Rotación ultra suave
-    pointsRef.current.rotation.z = t * 0.02;
+    pointsRef.current.rotation.z = t * 0.18;
 
     // Inclinación fija elegante
     pointsRef.current.rotation.x = 0.25;

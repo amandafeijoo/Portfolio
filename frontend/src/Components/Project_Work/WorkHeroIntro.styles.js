@@ -1,10 +1,12 @@
-// WorkHeroIntro.styles.js
 import styled from "styled-components";
 
 export const HeroWrap = styled.section`
   position: relative;
   width: 100%;
-  padding: 120px 20px 80px;
+  min-height: 80vh;
+  padding: 120px 20px;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 
   background: radial-gradient(
