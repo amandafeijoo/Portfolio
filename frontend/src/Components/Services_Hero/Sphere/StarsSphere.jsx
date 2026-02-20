@@ -47,7 +47,7 @@ export default function StarsSphere({ impulseRef }) {
         color: "#fff6dc",
         size: isMobile ? 0.012 : 0.015, // 🔥 MÁS GRANDES
         transparent: true,
-        opacity: isMobile ? 1 : 1.6, // 🔥 más visibles
+        opacity: isMobile ? 3 : 1.6, // 🔥 más visibles
         depthWrite: false,
         blending: THREE.AdditiveBlending,
       }),
@@ -106,17 +106,17 @@ export default function StarsSphere({ impulseRef }) {
           color="rgba(248, 235, 210, 0.85)"
           wireframe
           transparent
-          opacity={0.2}
-        />
+          opacity={isMobile ? 0.45 : 0.3} // 🔥 más visible en móvil
+          />
       </mesh>
 
       {/* 🌀 ROTATING TORUS RING */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[isMobile ? 3.0 : 3.2, 0.01, 16, 200]} />
         <meshBasicMaterial
-          color="            rgba(244, 227, 192, 0.85)"
+          color="rgba(201,169,106,0.85),"
           transparent
-          opacity={0.2}
+          opacity={0.55}
         />
       </mesh>
     </group>
