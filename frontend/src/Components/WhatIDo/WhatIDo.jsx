@@ -1,7 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import { useTheme, useMediaQuery } from "@mui/material";
-
 import {
   Section,
   IntroHero,
@@ -24,7 +23,9 @@ import {
   Divider,
   TitleDivider,
 } from "./WhatIDo.styles";
+
 import FloatingHintMenu from "./FloatingHintMenu";
+import MobileStack from "./MobileStack";
 
 /* ===============================
    DATA
@@ -39,23 +40,70 @@ that communicate clearly, move naturally, and scale with your product.`,
 const items = [
   {
     title: "Bespoke websites",
+    intro: "Websites designed around your brand — never templates.",
     text: "I design unique websites tailored to your brand and goals, not templates.",
+    bullets: [
+      "Custom layout design",
+      "Brand-aligned typography",
+      "Strategic user flow",
+      "Conversion-focused sections",
+      "Responsive & fast",
+    ],
+    cta: "Explore real projects",
+    route: "/projects",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767053696/landingpage_zk0sea.png",
+    mobileSrc:
+      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771589275/besoke_mo_1_lppd9b.png",
   },
   {
     title: "Full-stack development",
+    intro: "Frontend + backend built together for performance.",
     text: "I build both what your visitors see and what they don’t see.",
+    bullets: [
+      "React frontend",
+      "Django backend",
+      "PostgreSQL database",
+      "Authentication & security",
+      "API integrations",
+    ],
+    cta: "Explore stack",
+    route: "/tech-stack",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054313/Beige_Grey_Neutral_Minimal_Paper_Daily_Motivation_Quote_Your_Story_v5mfn4.png",
+    mobileSrc:
+      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771589094/fullstack_mo_1_uucisx.png",
   },
   {
     title: "Booking & payments",
+    intro: "Booking systems + secure payments that run smoothly.",
     text: "I set up booking systems, contact forms, and secure online payments.",
+    bullets: [
+      "Booking calendar",
+      "Stripe payments",
+      "Confirmation emails",
+      "Admin dashboard",
+      "Smooth client flow",
+    ],
+    cta: "See booking systems in action",
+    route: "https://www.arrazolapsicologia.com/reserva",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054695/payment_c2tn0p.png",
+    mobileSrc:
+      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771588929/payments_fcoc29.png",
   },
   {
     title: "Designed for every screen",
+    intro: "Mobile-first, balanced, and beautifully responsive.",
     text: "From mobile to desktop, your site stays fast, readable, and beautifully balanced.",
+    bullets: [
+      "Mobile-first design",
+      "Tablet + desktop optimized",
+      "Performance tuning",
+      "Accessibility best practices",
+    ],
+    cta: "See responsive preview",
+    route: "/projects",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767050948/responsive_t95h1u.png",
+    mobileSrc:
+      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771588769/responsive_mo_1_x2e75f.png",
   },
 ];
 
@@ -119,15 +167,17 @@ export default function WhatIDo() {
   const x = isMobile
     ? 0
     : useTransform(scrollYProgress, [0, 0.45], [start.x, end.x]);
+
   const y = isMobile
     ? 0
     : useTransform(scrollYProgress, [0, 0.45], [start.y, end.y]);
+
   const scale = isMobile
     ? 1
     : useTransform(scrollYProgress, [0, 0.45], [1, endScale]);
 
   /* ===============================
-     INTERACTION (DESKTOP)
+     INTERACTION (DESKTOP ONLY)
   ================================ */
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -167,7 +217,6 @@ export default function WhatIDo() {
       {/* ================= INTRO ================= */}
       <IntroHero>
         <IntroTextWrap>
-          <Kicker>{introCopy.kicker}</Kicker>
           <MetaLine>{introCopy.meta}</MetaLine>
           <TitleDivider />
 
@@ -195,45 +244,40 @@ export default function WhatIDo() {
 
       <ScrollSpace />
 
-      {/* ================= GRID ================= */}
-      <CardsSection>
-        <Grid>
-          {/* ===== CARD 1 (INTEGRATED ON MOBILE) ===== */}
-          <Card
-            onMouseMove={!isMobile ? handleMouseMove : undefined}
-            onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-          >
-            <CardImg ref={!isMobile ? targetRef : null}>
-              {isMobile ? (
-                <img src={items[0].src} alt={items[0].title} />
-              ) : (
+      {/* ================= MOBILE / DESKTOP SWITCH ================= */}
+      {isMobile ? (
+        <MobileStack items={items} />
+      ) : (
+        <CardsSection>
+          <Grid>
+            {/* CARD 1 */}
+            <Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+              <CardImg ref={targetRef}>
                 <PlaceholderMedia />
-              )}
-            </CardImg>
-
-            <CardTitle>{items[0].title}</CardTitle>
-            <Divider />
-            <CardText>{items[0].text}</CardText>
-          </Card>
-
-          {/* ===== REST OF CARDS ===== */}
-          {items.slice(1).map((item, i) => (
-            <Card
-              key={i}
-              onMouseMove={!isMobile ? handleMouseMove : undefined}
-              onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-            >
-              <CardImg>
-                <img src={item.src} alt={item.title} />
               </CardImg>
-
-              <CardTitle>{item.title}</CardTitle>
+              <CardTitle>{items[0].title}</CardTitle>
               <Divider />
-              <CardText>{item.text}</CardText>
+              <CardText>{items[0].text}</CardText>
             </Card>
-          ))}
-        </Grid>
-      </CardsSection>
+
+            {/* REST */}
+            {items.slice(1).map((item, i) => (
+              <Card
+                key={i}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+              >
+                <CardImg>
+                  <img src={item.src} alt={item.title} />
+                </CardImg>
+                <CardTitle>{item.title}</CardTitle>
+                <Divider />
+                <CardText>{item.text}</CardText>
+              </Card>
+            ))}
+          </Grid>
+        </CardsSection>
+      )}
     </Section>
   );
 }

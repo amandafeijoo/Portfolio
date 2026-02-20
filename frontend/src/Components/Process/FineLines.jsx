@@ -90,11 +90,11 @@ export default function FineLines() {
     <group position={[0, 0, -0.4]} scale={0.8}>
       <primitive object={squares} />
 
-      <line geometry={spiralGeometry}>
+      <line geometry={spiralGeometry} scale={[0.72, 0.72, 0.72]}>
         <lineBasicMaterial
           color="#e8c98f"
           transparent
-          opacity={0.8}
+          opacity={0.45}
           blending={THREE.AdditiveBlending}
         />
       </line>

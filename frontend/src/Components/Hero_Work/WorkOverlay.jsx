@@ -13,7 +13,7 @@ export default function WorkOverlay({ onEnter, enter }) {
 
         px: { xs: 4, sm: 2, md: 2 },
         mt: { xs: -9, md: -9 },
-        mb: { xs: -20, md: -20 },
+        mb: { xs: 10, md: -20 },
       }}
     >
       <Box sx={{ textAlign: "center" }}>
@@ -37,7 +37,7 @@ export default function WorkOverlay({ onEnter, enter }) {
               sm: "clamp(2.4rem, 7vw, 3.2rem)",
               md: "clamp(2.8rem, 6vw, 4rem)",
             },
-            color: "#F4F2ED",
+            color: "rgba(247, 236, 205, 0.9)",
             lineHeight: { xs: 1.15, md: 1.1 },
           }}
         >

@@ -21,7 +21,7 @@ export const InviteWrap = styled.section`
 
   ${smallMobile} {
     padding: 80px 14px;
-    margin-top: 70px;
+    margin-top: -20px;
   }
 `;
 
@@ -58,7 +58,7 @@ export const InviteKicker = styled.div`
 export const InviteTitle = styled.h2`
   font-size: clamp(2.2rem, 5vw, 3.6rem);
   font-weight: 500;
-  color: #f4f2ed;
+  color: rgba(247, 236, 205, 0.9);
   line-height: 1.15;
   margin-bottom: 28px;
 

@@ -1,5 +1,6 @@
 import { Box, Typography, Button } from "@mui/material";
 import TypingWords from "../Hero/TypingWords";
+import { Color } from "three";
 
 /* =========================
    SHARED STYLES
@@ -8,13 +9,14 @@ import TypingWords from "../Hero/TypingWords";
 const sideStyle = {
   letterSpacing: "0.35em",
   textTransform: "uppercase",
-  color: "rgba(214, 211, 204, 0.75)",
+  color: "#e6d3a8",
+
   lineHeight: 1.8,
 };
 
 const bodyStyle = {
   letterSpacing: "0.10em",
-  color: "rgba(220,215,205,0.7)",
+  color: "#e6d3a8",
   lineHeight: 2.1,
 };
 
@@ -73,7 +75,7 @@ export default function HeroOverlay({ onEnter, enter }) {
             sx={{
               position: "absolute",
               top: { xs: 24 },
-              left: { xs: "7%" },
+              left: { xs: "4%" },
               right: 0,
               display: { xs: "flex", sm: "none" },
               justifyContent: "center",
@@ -90,15 +92,16 @@ export default function HeroOverlay({ onEnter, enter }) {
                 mt: 10,
               }}
             >
-              I design and build websites for{" "}
+              I DESIGN & BUILD WEBSITES FOR{" "}
               <Box
                 component="span"
                 sx={{ display: "inline-block", minWidth: 90 }}
               >
                 <TypingWords
-                  words={["brands", "startups", "founders", "businesses"]}
+                  words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
                   speed={85}
                   pause={1200}
+                  sx={{ Color: "#e6d3a8" }}
                 />
               </Box>
             </Typography>
@@ -117,16 +120,16 @@ export default function HeroOverlay({ onEnter, enter }) {
             <Typography
               sx={{
                 ...bodyStyle,
-                fontSize: { sm: "0.85rem", md: "0.92rem" },
+                fontSize: { sm: "0.85rem", md: "0.80rem" },
               }}
             >
-              I design and build websites for{" "}
+              I DESIGN & BUILD WEBSITES FOR{" "}
               <Box
                 component="span"
                 sx={{ display: "inline-block", minWidth: 90 }}
               >
                 <TypingWords
-                  words={["brands", "startups", "founders", "businesses"]}
+                  words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
                   speed={85}
                   pause={1200}
                 />

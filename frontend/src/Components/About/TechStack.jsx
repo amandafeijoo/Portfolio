@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useTheme, useMediaQuery, Typography, Box } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { useMediaQuery, Typography, Box } from "@mui/material";
 import {
   GridContainer,
   GridItem,
@@ -28,8 +28,12 @@ const TechName = styled.span`
 
 const TechStack = () => {
   const isMobile = useMediaQuery("(max-width:768px)");
-
   const [techName, setTechName] = useState("");
+
+  /* 🔥 SCROLL AL ENTRAR */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleMouseEnter = (name) => {
     if (!isMobile) setTechName(name);
@@ -60,12 +64,11 @@ const TechStack = () => {
             },
           }}
         >
-          {/* TITLE */}
           <Typography
             sx={{
               fontFamily: "Playfair Display, serif",
               fontSize: "clamp(2.1rem, 8vw, 2.6rem)",
-              color: "#F4F2ED",
+              color: "rgba(247, 236, 205, 0.9)",
               lineHeight: 1.15,
               mb: 1,
               textShadow: "0 0 24px rgba(201,184,138,0.25)",
@@ -74,7 +77,6 @@ const TechStack = () => {
             Technologies
           </Typography>
 
-          {/* SUBTITLE */}
           <Typography
             sx={{
               fontSize: "0.9rem",
@@ -91,9 +93,6 @@ const TechStack = () => {
       )}
 
       <GridContainer>
-        {/* =========================
-         HEADER CARD
-      ========================= */}
         {!isMobile && (
           <GridItem span={2} large>
             <div
@@ -107,43 +106,31 @@ const TechStack = () => {
                 textAlign: "center",
               }}
             >
-              {/* HEADER */}
               <span
                 style={{
                   fontSize: "0.85rem",
                   letterSpacing: "0.28em",
                   textTransform: "uppercase",
-                  color: "#B8B4AA",
-                  textAlign: "center",
+                  color: "rgba(247, 236, 205, 0.9)",
                 }}
               >
                 Technologies
               </span>
 
-              {/* SUBTITLE (NO SE MUEVE) */}
               <span
                 style={{
                   fontSize: "0.85rem",
                   fontWeight: 500,
-                  color: "#F4F2ED",
+                  color: "rgba(201,184,138,0.85)",
                   textShadow: "0 0 18px rgba(201,184,138,0.35)",
-                  textAlign: "center",
                 }}
               >
                 Behind Webcode-Art
               </span>
 
-              {/* DIVIDER */}
               <Divider style={{ margin: "6px auto 8px" }} />
 
-              {/* HOVER SLOT (ALTURA FIJA) */}
-              <div
-                style={{
-                  minHeight: "22px",
-                  marginTop: "6px",
-                  textAlign: "center",
-                }}
-              >
+              <div style={{ minHeight: "22px", marginTop: "6px" }}>
                 <span
                   style={{
                     opacity: techName ? 1 : 0,
@@ -160,9 +147,6 @@ const TechStack = () => {
           </GridItem>
         )}
 
-        {/* =========================
-         TECHNOLOGY CARDS
-      ========================= */}
         {technologies.map((tech, index) => (
           <GridItem
             key={index}
@@ -185,7 +169,6 @@ const TechStack = () => {
               )}
             />
 
-            {/* 👇 MOBILE NAME */}
             {isMobile && <TechName>{tech.name}</TechName>}
 
             <KnowledgeBar $knowledge={tech.knowledge} />

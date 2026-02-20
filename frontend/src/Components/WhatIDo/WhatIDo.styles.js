@@ -72,7 +72,6 @@ export const Kicker = styled.div`
   text-transform: uppercase;
   font-size: 0.8rem;
   text-align: center;
-  color: rgba(201, 184, 138, 0.9);
   margin-bottom: 18px;
 
   /* 📱 OCULTAR EN MÓVIL */
@@ -88,6 +87,8 @@ export const MetaLine = styled.div`
   opacity: 0.55;
   margin: 12px 0 22px;
   text-align: center;
+  color: rgba(247, 236, 205, 0.9);
+  ;
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
@@ -108,7 +109,8 @@ export const HeroTitle = styled.h2`
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: 0.2px;
-  color: rgba(237, 231, 217, 0.96);
+  color:rgba(247, 236, 205, 0.9);
+  text-shadow: 0 0 24px rgba(201, 184, 138, 0.25);
 
   word-break: normal;
   overflow-wrap: break-word;
@@ -125,6 +127,7 @@ export const HeroTitle = styled.h2`
     font-size: 1.6rem;
     line-height: 1.25;
     max-width: 360px;
+    margin-bottom: -38px;
   }
 `;
 
@@ -220,6 +223,11 @@ export const ScrollSpace = styled.div`
 
   @media (max-width: 1024px) {
     height: 0;
+  }
+
+  /* 📱 Mobile */
+  @media (max-width: 600px) {
+    height: -42vh;
   }
 `;
 

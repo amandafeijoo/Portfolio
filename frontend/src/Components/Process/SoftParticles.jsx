@@ -57,7 +57,7 @@ export default function SoftParticles({ count = 800 }) {
 
       arr[i * 3] = r * Math.cos(theta);
       arr[i * 3 + 1] = r * Math.sin(theta);
-      arr[i * 3 + 2] = -1.1; 
+      arr[i * 3 + 2] = -1.1;
     }
 
     return arr;
@@ -80,7 +80,7 @@ export default function SoftParticles({ count = 800 }) {
   });
 
   return (
-    <points ref={pointsRef} renderOrder={-1} position={[0, 1.0, 0]}>
+    <points ref={pointsRef} renderOrder={-1} position={[0, 1.6, 0]}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
@@ -92,7 +92,7 @@ export default function SoftParticles({ count = 800 }) {
 
       <pointsMaterial
         map={texture}
-        color="#f0d6a0" 
+        color="#f0d6a0"
         size={0.055}
         transparent
         depthWrite={false}

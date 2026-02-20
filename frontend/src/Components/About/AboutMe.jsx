@@ -63,7 +63,7 @@ const AboutMe = () => {
           style={{
             fontSize: "clamp(2.8rem, 6vw, 4.2rem)",
             fontWeight: 500,
-            color: "#F4F2ED",
+            color: "rgba(247, 236, 205, 0.9)",
             textShadow: "0 0 28px rgba(201,184,138,0.25)",
           }}
         >

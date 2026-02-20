@@ -20,6 +20,7 @@ export const HeroWrap = styled.section`
   padding: 10px;
   overflow: hidden;
   background: #000;
+  margin-bottom: 80px;
 
   display: flex;
   align-items: center;
@@ -33,21 +34,20 @@ export const HeroWrap = styled.section`
   &::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 0;
     pointer-events: none;
     z-index: 0;
 
-    width: 120vw;
-    height: 120vw;
-    filter: blur(200px);
     background: radial-gradient(
-      circle at center,
-      rgba(255, 220, 180, 0.1),
-      rgba(255, 220, 180, 0.04) 30%,
-      rgba(0, 0, 0, 0.95) 65%
+      circle at 50% 45%,
+      rgba(255, 220, 180, 0.18) 0%,
+      rgba(255, 220, 180, 0.12) 20%,
+      rgba(255, 220, 180, 0.06) 40%,
+      rgba(0, 0, 0, 0) 65%
     );
+
+    filter: blur(140px);
+    transform: scale(1.2);
   }
 
   /* ======================
@@ -59,11 +59,9 @@ export const HeroWrap = styled.section`
     margin-top: -50px;
     margin-bottom: 0px;
 
-    /* 🔥 APAGAMOS EL ::before */
     &::before {
       display: none;
     }
-    /* 🌟 HALO LIMPIO COMO BACKGROUND */
     background: radial-gradient(
         120% 80% at 50% 50%,
         rgba(255, 220, 180, 0.06) 35%,
@@ -109,7 +107,8 @@ export const Kicker = styled.div`
 
 export const Headline = styled.h2`
   font-family: "Playfair Display", serif;
-  color: #f4f2ed;
+  color: rgba(248, 241, 222, 0.9);
+
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 400;
   line-height: 1.08;

@@ -55,21 +55,21 @@ export const HeroInner = styled.div`
 
 export const Kicker = styled.div`
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 52%;
   transform: translateX(-50%);
 
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(246, 240, 226, 0.9);
+  color: rgb(252, 233, 188);
 
   z-index: 5;
   pointer-events: none;
 
   @media (max-width: 768px) {
-    top: 30%;
+    top: 25%;
     font-size: 0.7rem;
     left: 56%;
   }
