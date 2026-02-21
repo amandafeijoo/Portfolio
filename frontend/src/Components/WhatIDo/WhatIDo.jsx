@@ -87,7 +87,7 @@ const items = [
     route: "https://www.arrazolapsicologia.com/reserva",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054695/payment_c2tn0p.png",
     mobileSrc:
-      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771588929/payments_fcoc29.png",
+      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771663247/payments_bookimg_mo_x0obbu.png",
   },
   {
     title: "Designed for every screen",

@@ -1,6 +1,5 @@
 import { Box, Typography, Button } from "@mui/material";
 import TypingWords from "../Hero/TypingWords";
-import { Color } from "three";
 
 /* =========================
    SHARED STYLES
@@ -10,7 +9,6 @@ const sideStyle = {
   letterSpacing: "0.35em",
   textTransform: "uppercase",
   color: "#e6d3a8",
-
   lineHeight: 1.8,
 };
 
@@ -70,12 +68,12 @@ export default function HeroOverlay({ onEnter, enter }) {
             pointerEvents: "none",
           }}
         >
-          {/* MOBILE TOP */}
+          {/* MOBILE TOP (AHORA IGUAL QUE EL BOTTOM) */}
           <Box
             sx={{
               position: "absolute",
               top: { xs: 24 },
-              left: { xs: "4%" },
+              left: 0,
               right: 0,
               display: { xs: "flex", sm: "none" },
               justifyContent: "center",
@@ -86,22 +84,25 @@ export default function HeroOverlay({ onEnter, enter }) {
           >
             <Typography
               sx={{
-                ...bodyStyle,
-                fontSize: "0.8rem",
-                maxWidth: 300,
+                ...sideStyle,
+                fontSize: "0.6rem",
+                opacity: 0.9,
                 mt: 10,
               }}
             >
               I DESIGN & BUILD WEBSITES FOR{" "}
               <Box
                 component="span"
-                sx={{ display: "inline-block", minWidth: 90 }}
+                sx={{
+                  display: { xs: "block", sm: "inline-block" },
+                  minWidth: 90,
+                  mt: { xs: 1, sm: 0 },
+                }}
               >
                 <TypingWords
                   words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
                   speed={85}
                   pause={1200}
-                  sx={{ Color: "#e6d3a8" }}
                 />
               </Box>
             </Typography>
@@ -111,7 +112,7 @@ export default function HeroOverlay({ onEnter, enter }) {
           <Box
             sx={{
               position: "absolute",
-              top: { sm: 80, md: 50 },
+              top: { sm: 80, md: -5 },
               left: { sm: 36, md: 48 },
               display: { xs: "none", sm: "block" },
               maxWidth: { sm: 220, md: 260 },
@@ -186,12 +187,10 @@ export default function HeroOverlay({ onEnter, enter }) {
                 Design & development for web experiences that feel alive.
               </Typography>
 
-              {/* 🔴 TU BOTÓN — EXACTAMENTE IGUAL */}
               <Button
                 onClick={onEnter}
                 sx={{
                   pointerEvents: "auto",
-                  /* 🔹 MOBILE más pequeño */
                   px: { xs: 2.6, sm: 4 },
                   py: { xs: 0.9, sm: 1.4 },
 
@@ -246,7 +245,7 @@ export default function HeroOverlay({ onEnter, enter }) {
             </Box>
           </Box>
 
-          {/* MOBILE BOTTOM CENTER — FUERA DEL DESKTOP BOX */}
+          {/* MOBILE BOTTOM CENTER */}
           <Box
             sx={{
               position: "absolute",

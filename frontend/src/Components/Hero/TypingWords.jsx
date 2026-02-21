@@ -5,6 +5,7 @@ export default function TypingWords({
   words,
   speed = 90,
   pause = 1200,
+  sx = {},
 }) {
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -14,32 +15,27 @@ export default function TypingWords({
 
   const currentWord = words[wordIndex];
 
-  /* ===== Typing logic ===== */
+  /* =========================
+     ✍️ TYPING LOGIC
+  ========================= */
   useEffect(() => {
     let timeout;
 
     if (!isDeleting && charIndex < currentWord.length) {
-      // typing
       timeout = setTimeout(() => {
         setText((prev) => prev + currentWord[charIndex]);
         setCharIndex((i) => i + 1);
       }, speed);
-
     } else if (!isDeleting && charIndex === currentWord.length) {
-      // pause at full word
       timeout = setTimeout(() => {
         setIsDeleting(true);
       }, pause);
-
     } else if (isDeleting && charIndex > 0) {
-      // deleting
       timeout = setTimeout(() => {
         setText((prev) => prev.slice(0, -1));
         setCharIndex((i) => i - 1);
       }, speed / 1.6);
-
     } else if (isDeleting && charIndex === 0) {
-      // next word
       setIsDeleting(false);
       setWordIndex((i) => (i + 1) % words.length);
     }
@@ -47,7 +43,9 @@ export default function TypingWords({
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, currentWord, pause, speed, words.length]);
 
-  /* ===== Cursor blink ===== */
+  /* =========================
+     🖱️ CURSOR BLINK
+  ========================= */
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setShowCursor((v) => !v);
@@ -56,33 +54,33 @@ export default function TypingWords({
     return () => clearInterval(cursorInterval);
   }, []);
 
+  /* =========================
+     🎨 RENDER
+  ========================= */
   return (
     <Box
-      component="span"   // 👈 MUY IMPORTANTE
+      component="span"
       sx={{
         display: "inline-flex",
         alignItems: "center",
-        fontFamily: "Source Code Pro, monospace",
-        letterSpacing: "0.18em",
-        color: "#f5e2ce",
         minHeight: "1.4em",
+        ...sx,
       }}
     >
       {text}
+
       {showCursor && (
         <Box
-          component="span"  
+          component="span"
           sx={{
             ml: "4px",
             width: "2px",
             height: "1.1em",
-            backgroundColor: "#f5e2ce",
+            backgroundColor: "currentColor",
             display: "inline-block",
           }}
         />
       )}
     </Box>
   );
-  
 }
-

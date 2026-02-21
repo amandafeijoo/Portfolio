@@ -13,19 +13,26 @@ export default function ParticleSphere({ enter }) {
 
   const isMobile = size.width < 768;
 
-  const baseHaloScale = isMobile ? 2.5 : 2.6;
-  const baseGroupScale = isMobile ? 0.95 : 1;
+  /* =========================
+     🎯 ESCALA BASE (SOLO HALO)
+  ========================= */
+
+  const baseHaloScale = isMobile ? 2.4 : 2.6;
+
+  // 🔥 Partículas proporcionales al halo
+  const SPHERE_RADIUS = baseHaloScale * 0.92;
 
   const zoom = useRef(0);
   const insideTime = useRef(0);
-
-  // 🎯 NUEVO: rotación objetivo suave
   const targetRotation = useRef({ x: 0, y: 0 });
 
   const PARTICLE_COUNT = 1800;
-  const SPHERE_RADIUS = 2.4;
   const ZOOM_DURATION = 2.6;
   const INSIDE_DURATION = 4.0;
+
+  /* =========================
+     ✨ PARTICLES
+  ========================= */
 
   const positions = useMemo(() => {
     const arr = new Float32Array(PARTICLE_COUNT * 3);
@@ -33,27 +40,29 @@ export default function ParticleSphere({ enter }) {
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const v = new THREE.Vector3()
         .randomDirection()
-        .multiplyScalar(SPHERE_RADIUS + Math.random() * 0.1);
+        .multiplyScalar(SPHERE_RADIUS + Math.random() * 0.08);
 
       arr.set([v.x, v.y, v.z], i * 3);
     }
 
     return arr;
-  }, []);
+  }, [SPHERE_RADIUS]);
+
+  /* =========================
+     🎬 ANIMATION LOOP
+  ========================= */
 
   useFrame((_, delta) => {
     const t = performance.now() * 0.001;
 
-    /* ───────── FASE 0 · IDLE CINEMÁTICO ───────── */
+    /* ───────── IDLE ───────── */
     if (!enter) {
       zoom.current = 0;
       insideTime.current = 0;
 
-      // 🌊 Drift automático suave
       const autoDriftX = Math.sin(t * 0.3) * 0.15;
       const autoDriftY = Math.cos(t * 0.25) * 0.2;
 
-      // 🎯 Mouse influencia real 3D
       targetRotation.current.x = autoDriftX + mouse.y * 0.9;
       targetRotation.current.y = autoDriftY + mouse.x * 1.2;
 
@@ -86,11 +95,10 @@ export default function ParticleSphere({ enter }) {
       }
 
       camera.position.z = isMobile ? 6.8 : 6;
-
       return;
     }
 
-    /* ───────── FASE 1 · ZOOM ───────── */
+    /* ───────── ZOOM ───────── */
     if (zoom.current < 1) {
       zoom.current = Math.min(zoom.current + delta / ZOOM_DURATION, 1);
 
@@ -111,7 +119,8 @@ export default function ParticleSphere({ enter }) {
       return;
     }
 
-    /* ───────── FASE 2 · DENTRO ───────── */
+    /* ───────── INSIDE ───────── */
+
     insideTime.current += delta;
 
     if (pointsRef.current) {
@@ -128,15 +137,19 @@ export default function ParticleSphere({ enter }) {
     }
   });
 
+  /* =========================
+     🎨 RENDER
+  ========================= */
+
   return (
-    <group scale={baseGroupScale}>
+    <group>
       {!isMobile && (
         <group position={[0, 0, -0.6]}>
           <SphereLines3D />
         </group>
       )}
 
-      {/* 🔥 HALO */}
+      {/* HALO */}
       <mesh ref={haloRef} scale={baseHaloScale}>
         <sphereGeometry args={[1, 48, 48]} />
         <meshBasicMaterial
@@ -148,7 +161,7 @@ export default function ParticleSphere({ enter }) {
         />
       </mesh>
 
-      {/* ✨ PARTICULAS */}
+      {/* PARTICULAS */}
       <points ref={pointsRef}>
         <bufferGeometry>
           <bufferAttribute
