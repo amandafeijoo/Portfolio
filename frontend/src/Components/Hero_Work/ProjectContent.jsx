@@ -23,8 +23,8 @@ export default function ProjectContent({ project }) {
         gap: 2,
 
         borderRadius: {
-          xs: 0,  
-          md: 0, 
+          xs: 0,
+          md: 0,
         },
       }}
     >
@@ -113,11 +113,14 @@ export default function ProjectContent({ project }) {
               color: "#f5f0e8",
               border: "1px solid rgba(201,184,138,0.45)",
               background: "rgba(18,19,20,0.45)",
+
+              "&:hover": {
+                border: "1px solid #c9b88a",
+              },
             }}
           >
             {isLive ? "Website" : "View Case →"}
           </Button>
-
           {project.githubLink && (
             <Button
               onClick={(e) => {
@@ -133,6 +136,9 @@ export default function ProjectContent({ project }) {
                 background: "transparent",
                 color: "#e6d5bc",
                 border: "1px solid rgba(201,184,138,0.35)",
+                "&:hover": {
+                  border: "1px solid #c9b88a",
+                },
               }}
             >
               GitHub

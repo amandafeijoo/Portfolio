@@ -9,6 +9,8 @@ export default function HeroWorkSection() {
   const [enterWork, setEnterWork] = useState(false);
   const [workProgress, setWorkProgress] = useState(0);
 
+  const showProjects = enterWork && workProgress > 0.6; 
+
   // =========================
   //   BODY SCROLL LOCK
   // =========================
@@ -30,35 +32,30 @@ export default function HeroWorkSection() {
       sx={{
         position: "relative",
         width: "100%",
-        height: "100vh",
+        height: "100dvh",
         overflow: "hidden",
         background: "#000",
-        mt: -9,
+        mt: -12,
         mb: 0,
       }}
     >
       {/* 🌌 THREE SCENE */}
       <WorkHeroScene enter={enterWork} onProgress={setWorkProgress} />
-
       {/* 🧿 OVERLAY (ENTER PORTAL) */}
       <WorkOverlay onEnter={() => setEnterWork(true)} enter={enterWork} />
-
       {/* 🔙 EXIT PORTAL BUTTON */}
-      {enterWork && workProgress > 0.4 && (
+      {showProjects && ( 
         <Box
           sx={{
             position: "absolute",
-            top: 28,
-            left: 28,
-            zIndex: 40,
+            top: 10,
+            left: 98,
+            zIndex: 9999,
           }}
         >
           <Button
             onClick={() => setEnterWork(false)}
             sx={{
-              position: "relative",
-
-              /* 🔤 TEXTO */
               fontSize: {
                 xs: "0.6rem",
                 sm: "0.65rem",
@@ -68,25 +65,18 @@ export default function HeroWorkSection() {
               color: "#f4f2ed",
               textTransform: "uppercase",
               fontWeight: 500,
-
-              /* 📐 ESPACIADO */
               px: { xs: 3, sm: 2.3, md: 2.5 },
               py: { xs: 0.9, sm: 0.9, md: 1 },
-
-              /* ⬇️ MARGEN TOP RESPONSIVE */
-              mt: { xs: 0, sm: 10, md: 2 },
-
+              mt: { xs: -2, md: 0 },
+              ml: { xs: -8, md: 0 },
               borderRadius: 999,
               border: "1px solid rgba(201,184,138,0.45)",
               background: "rgba(18,19,20,0.55)",
               backdropFilter: "blur(8px)",
-
               boxShadow: `
-      0 0 14px rgba(201,184,138,0.18),
-      0 0 34px rgba(201,184,138,0.12)
-    `,
-
-              /* 🌕 HALO */
+                0 0 14px rgba(201,184,138,0.18),
+                0 0 34px rgba(201,184,138,0.12)
+              `,
               "&::before": {
                 content: '""',
                 position: "absolute",
@@ -99,15 +89,20 @@ export default function HeroWorkSection() {
                 zIndex: -1,
                 pointerEvents: "none",
               },
-
-              /* ✨ HOVER */
               "&:hover": {
                 background: "rgba(201,184,138,0.25)",
                 border: "1px solid rgba(201,184,138,0.6)",
                 boxShadow: `
-        0 0 22px rgba(201,184,138,0.35),
-        0 0 60px rgba(201,184,138,0.22)
-      `,
+                  0 0 22px rgba(201,184,138,0.35),
+                  0 0 60px rgba(201,184,138,0.22)
+                `,
+              },
+              // 🔥  BLUE FOCUS RING
+              "&:focus": {
+                outline: "none",
+              },
+              "&:focus-visible": {
+                outline: "none",
               },
             }}
           >
@@ -115,9 +110,8 @@ export default function HeroWorkSection() {
           </Button>
         </Box>
       )}
-
       {/* 🚀 PROJECTS PORTAL */}
-      {workProgress > 0.6 && <WorkProjectsLayer />}
+      {showProjects && <WorkProjectsLayer />} 
     </Box>
   );
 }

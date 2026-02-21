@@ -4,15 +4,15 @@ import * as THREE from "three";
 
 export default function StarsSphere({ impulseRef }) {
   const groupRef = useRef();
+  const coreRef = useRef();
+  const ringRef = useRef();
   const impulse = useRef(0);
 
   const { size } = useThree();
   const isMobile = size.width < 768;
 
-  const STAR_COUNT = 800;
-  const RADIUS = 2.3;
-
-  // 💎 Núcleo interno
+  const STAR_COUNT = isMobile ? 350 : 500;
+  const RADIUS = 2.4;
 
   const coreSpeedX = 0.08;
   const coreSpeedY = 0.05;
@@ -36,7 +36,7 @@ export default function StarsSphere({ impulseRef }) {
     }
 
     return positions;
-  }, []);
+  }, [STAR_COUNT]);
 
   /* ============================
      ✨ STAR MATERIAL
@@ -45,11 +45,10 @@ export default function StarsSphere({ impulseRef }) {
     () =>
       new THREE.PointsMaterial({
         color: "#fff6dc",
-        size: isMobile ? 0.012 : 0.015, // 🔥 MÁS GRANDES
+        size: isMobile ? 0.012 : 0.015,
         transparent: true,
-        opacity: isMobile ? 3 : 1.6, // 🔥 más visibles
+        opacity: 1,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
       }),
     [isMobile]
   );
@@ -60,33 +59,31 @@ export default function StarsSphere({ impulseRef }) {
   useFrame((_, delta) => {
     if (!groupRef.current) return;
 
-    // Inyectar impulso desde drag
     if (impulseRef?.current) {
       impulse.current += impulseRef.current;
       impulseRef.current = 0;
     }
 
-    // Fricción
-    impulse.current *= 0.69;
+    impulse.current *= 0.92;
 
-    const baseSpeed = 0.035 * delta;
+    const baseSpeed = 0.02 * delta;
     const speed = baseSpeed + impulse.current;
 
-    // 🌌 Esfera exterior
     groupRef.current.rotation.y += speed;
 
-    // 💎 Núcleo interno rota distinto
+    if (coreRef.current) {
+      coreRef.current.rotation.x += coreSpeedX * delta;
+      coreRef.current.rotation.y += coreSpeedY * delta;
+    }
 
-    groupRef.current.children[1].rotation.x += coreSpeedX * delta;
-    groupRef.current.children[1].rotation.y += coreSpeedY * delta;
-
-    // 🌀 Anillo rota en dirección opuesta
-    groupRef.current.children[2].rotation.z -= 0.5 * delta;
+    if (ringRef.current) {
+      ringRef.current.rotation.z -= 0.3 * delta;
+    }
   });
 
   return (
-    <group ref={groupRef} rotation={isMobile ? [0.4, 0.3, 0] : [0, 0, 0]}>
-      {/* ⭐ STARS */}
+    <group rotation={isMobile ? [0.4, 0.3, 0] : [0, 0, 0]}>
+      {/* ⭐ STARS (NO SE MUEVEN) */}
       <points>
         <bufferGeometry>
           <bufferAttribute
@@ -99,26 +96,25 @@ export default function StarsSphere({ impulseRef }) {
         <primitive object={starMaterial} />
       </points>
 
-      {/* 💎 INNER GEOMETRIC CORE */}
-      <mesh>
-        <icosahedronGeometry args={[isMobile ? 2.9 : 2.6, 1]} />
-        <meshBasicMaterial
-          color="rgba(248, 235, 210, 0.85)"
-          wireframe
-          transparent
-          opacity={isMobile ? 0.45 : 0.3} // 🔥 más visible en móvil
+      {/* 💫 CORE + RING GROUP (SI SE MUEVE) */}
+      <group ref={groupRef}>
+        {/* 💎 CORE */}
+        <mesh ref={coreRef}>
+          <sphereGeometry args={[isMobile ? 2.9 : 2.6, 24, 24]} />
+          <meshBasicMaterial
+            color="#f8ebd2"
+            wireframe
+            transparent
+            opacity={isMobile ? 0.18 : 0.3}
           />
-      </mesh>
+        </mesh>
 
-      {/* 🌀 ROTATING TORUS RING */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[isMobile ? 3.0 : 3.2, 0.01, 16, 200]} />
-        <meshBasicMaterial
-          color="rgba(201,169,106,0.85),"
-          transparent
-          opacity={0.55}
-        />
-      </mesh>
+        {/* 🌀 RING */}
+        <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[isMobile ? 3.0 : 3, 0.01, 8, 64]} />
+          <meshBasicMaterial color="#c9a96a" transparent opacity={0.55} />
+        </mesh>
+      </group>
     </group>
   );
 }

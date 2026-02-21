@@ -17,19 +17,19 @@ export default function HeroSculpture({ enter, onProgress }) {
   const config = useMemo(() => {
     if (isMobile) {
       return {
-        baseScale: 1.2,
-        idleCameraZ: 6.2,
+        baseScale: 1.15,
+        idleCameraZ: 5.6,
         offsetX: 0,
-        radii: [1.1, 0.9, 0.7],
+        radii: [1.5, 1.25, 1.0],
       };
     }
 
     if (isTablet) {
       return {
-        baseScale: 1.05,
-        idleCameraZ: 5.4,
+        baseScale: 1.1,
+        idleCameraZ: 5.2,
         offsetX: -0.4,
-        radii: [1.3, 1.05, 0.85],
+        radii: [1.35, 1.1, 0.9],
       };
     }
 
@@ -80,9 +80,26 @@ export default function HeroSculpture({ enter, onProgress }) {
       <FloatingParticles count={isMobile ? 160 : 260} />
 
       {/* 🔮 OCTÁGONOS */}
-      <OctagonWire radius={config.radii[0]} opacity={0.18} speed={0.05} />
-      <OctagonWire radius={config.radii[1]} opacity={0.35} speed={0.1} />
-      <OctagonWire radius={config.radii[2]} opacity={0.6} speed={0.18} />
+      <OctagonWire
+        radius={config.radii[0]}
+        opacity={isMobile ? 0.95 : 0.28}
+        speed={0.05}
+        isMobile={isMobile}
+      />
+
+      <OctagonWire
+        radius={config.radii[1]}
+        opacity={isMobile ? 0.5 : 0.35}
+        speed={0.1}
+        isMobile={isMobile}
+      />
+
+      <OctagonWire
+        radius={config.radii[2]}
+        opacity={isMobile ? 0.85 : 0.6}
+        speed={0.18}
+        isMobile={isMobile}
+      />
     </group>
   );
 }

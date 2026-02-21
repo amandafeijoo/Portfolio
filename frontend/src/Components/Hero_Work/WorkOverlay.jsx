@@ -23,7 +23,8 @@ export default function WorkOverlay({ onEnter, enter }) {
             letterSpacing: { xs: "0.32em", md: "0.45em" },
             textTransform: "uppercase",
             color: "rgba(240,201,123,0.9)",
-            mb: { xs: 1.5, md: 2 },
+            mb: { xs: 1, md: 2 },
+            mt: { xs: 6, md: -1 },
           }}
         >
           Work
@@ -39,6 +40,8 @@ export default function WorkOverlay({ onEnter, enter }) {
             },
             color: "rgba(247, 236, 205, 0.9)",
             lineHeight: { xs: 1.15, md: 1.1 },
+            mt: { xs: 3, md: 1 },
+            mb: { xs: 1.5, md: 2.5 },
           }}
         >
           Selected work
@@ -49,17 +52,16 @@ export default function WorkOverlay({ onEnter, enter }) {
             maxWidth: { xs: "100%", md: 570 },
             fontSize: { xs: "0.9rem", sm: "0.95rem", md: "1rem" },
             mx: "auto",
-            color: "rgba(220,215,205,0.65)",
+            color: "rgba(248, 225, 164, 0.9)",
             lineHeight: { xs: 1.6, md: 1.7 },
-            mt: { xs: 6, md: 5 },
-            mb: { xs: 4, md: 5 },
+            mt: { xs: 1, md: 5 },
+            mb: { xs: 4.2, md: 5 },
             textShadow: "0 0 8px rgba(220,215,205,0.25)",
           }}
         >
           A selection of projects where design, clarity and purpose come
           together.
         </Typography>
-
         <Button
           onClick={onEnter}
           disabled={enter}
@@ -67,16 +69,13 @@ export default function WorkOverlay({ onEnter, enter }) {
             position: "relative",
             isolation: "isolate",
 
-            /* 📐 SIZE */
             px: { xs: 3.2, sm: 4.2, md: 5 },
             py: { xs: 1.1, sm: 1.25, md: 1.4 },
 
-            /* 🔤 TEXT */
             fontSize: { xs: "0.62rem", sm: "0.66rem", md: "0.7rem" },
             letterSpacing: { xs: "0.18em", md: "0.25em" },
             textTransform: "uppercase",
 
-            /* 🎨 COLORS */
             color: "#e6d5bc",
             border: "1px solid rgba(230,213,188,0.45)",
             borderRadius: "999px",
@@ -84,7 +83,6 @@ export default function WorkOverlay({ onEnter, enter }) {
             background: "rgba(18,19,20,0.55)",
             backdropFilter: "blur(10px)",
 
-            /* 🌕 DEPTH */
             boxShadow: `
       0 0 16px rgba(230,213,188,0.25),
       0 0 48px rgba(230,213,188,0.15)
@@ -96,7 +94,6 @@ export default function WorkOverlay({ onEnter, enter }) {
             transition:
               "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
 
-            /* 🌕 HALO EXTERNO */
             "&::before": {
               content: '""',
               position: "absolute",
@@ -111,7 +108,6 @@ export default function WorkOverlay({ onEnter, enter }) {
               transition: "opacity 0.35s ease, filter 0.35s ease",
             },
 
-            /* ✨ HALO INTERNO */
             "&::after": {
               content: '""',
               position: "absolute",
@@ -128,12 +124,10 @@ export default function WorkOverlay({ onEnter, enter }) {
               background: "rgba(230,213,188,0.18)",
               border: "1px solid rgba(230,213,188,0.45)",
               color: "#e6d5bc",
-
               boxShadow: `
         0 0 28px rgba(230,213,188,0.45),
         0 0 80px rgba(230,213,188,0.25)
       `,
-
               "&::before": {
                 opacity: 1,
                 filter: { xs: "blur(22px)", md: "blur(30px)" },
@@ -144,14 +138,24 @@ export default function WorkOverlay({ onEnter, enter }) {
               transform: "translateY(0)",
             },
 
-            /* 🚫 DISABLED */
             "&.Mui-disabled": {
               opacity: 0.4,
               boxShadow: "none",
-
               "&::before": {
                 opacity: 0,
               },
+            },
+
+            /* 🔥 BLUE FOCUS */
+            "&:focus": {
+              outline: "none",
+            },
+            "&:focus-visible": {
+              outline: "none",
+            },
+            "&.Mui-focusVisible": {
+              outline: "none",
+              boxShadow: "none",
             },
           }}
         >

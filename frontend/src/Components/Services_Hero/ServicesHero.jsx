@@ -54,7 +54,7 @@ export default function ServicesHero() {
       </Typography>
 
       {/* ===== DIVIDER ===== */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: 64, md: 96 },
           height: "1px",
@@ -68,19 +68,20 @@ export default function ServicesHero() {
           )`,
           boxShadow: "0 0 14px rgba(201,169,106,0.55)",
         }}
-      />
+      /> */}
 
       {/* ===== SUBTITLE ===== */}
       <Typography
         sx={{
           maxWidth: "520px",
           mx: "auto",
+          mt: { xs: 2, md: 3 },
           mb: { xs: 3, md: 4 },
           fontSize: { xs: "0.5rem", md: "0.75rem" },
           letterSpacing: { xs: "0.12em", md: "0.14em" },
           lineHeight: 1.7,
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.5)",
+          color: "rgba(252, 228, 161, 0.9)",
         }}
       >
         I design and build fast, scalable and elegant web platforms — focused on
@@ -107,7 +108,7 @@ export default function ServicesHero() {
                 fontSize: "0.65rem",
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                color: "rgba(237,231,217,0.85)",
+                color: "rgba(249, 231, 189, 0.85)",
                 background: "rgba(15,15,15,0.55)",
                 border: "1px solid rgba(201,169,106,0.35)",
                 backdropFilter: "blur(8px)",
@@ -122,7 +123,7 @@ export default function ServicesHero() {
       {/* ===== DRAG / SWIPE HINT ===== */}
       <Box
         sx={{
-          mt: { xs: 2, md: 4.5 },
+          mt: { xs: 2, md: 8 },
           px: 1.2,
           py: 0.65,
           borderRadius: "999px",

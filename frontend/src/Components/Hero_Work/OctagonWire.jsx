@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 /* ───────── INNER LINES ───────── */
-function InnerLines({ radius }) {
+function InnerLines({ radius, isMobile }) {
   const geometry = useMemo(() => {
     const points = [];
     const sides = 8;
@@ -21,7 +21,11 @@ function InnerLines({ radius }) {
 
   return (
     <lineSegments geometry={geometry}>
-      <lineBasicMaterial color="#e6d5bc" transparent opacity={0.25} />
+      <lineBasicMaterial
+        color={isMobile ? "#e2cfa2" : "#e6d5bc"}
+        transparent
+        opacity={isMobile ? 0.4 : 0.25}
+      />
     </lineSegments>
   );
 }
@@ -31,6 +35,7 @@ export default function OctagonWire({
   radius = 1.8,
   opacity = 0.55,
   speed = 0.15,
+  isMobile = false,
 }) {
   const group = useRef();
 
@@ -61,23 +66,27 @@ export default function OctagonWire({
 
   return (
     <group ref={group}>
-      {/* HALO */}
+      {/* 🌕 HALO */}
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[radius * 0.95, 64]} />
         <meshBasicMaterial
-          color="#c9b07a"
+          color={isMobile ? "#d8c28f" : "#c9b07a"}
           transparent
-          opacity={0.22}
+          opacity={isMobile ? 0.35 : 0.22}
           depthWrite={false}
         />
       </mesh>
 
-      {/* INNER STRUCTURE */}
-      <InnerLines radius={radius * 0.95} />
+      {/* ✨ INNER STRUCTURE */}
+      <InnerLines radius={radius * 0.95} isMobile={isMobile} />
 
-      {/* OUTLINE */}
+      {/* 🔥 OUTLINE */}
       <lineSegments geometry={new THREE.EdgesGeometry(geometry)}>
-        <lineBasicMaterial color="#c9b07a" transparent opacity={opacity} />
+        <lineBasicMaterial
+          color={isMobile ? "#e2cfa2" : "#c9b07a"}
+          transparent
+          opacity={opacity}
+        />
       </lineSegments>
     </group>
   );

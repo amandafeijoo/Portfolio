@@ -29,9 +29,9 @@ export default function FineLines() {
       const line = new THREE.Line(
         geometry,
         new THREE.LineBasicMaterial({
-          color:"rgba(248, 235, 210, 0.85)",
+          color: "rgba(248, 235, 210, 0.85)",
           transparent: true,
-          opacity: 0.24,
+          opacity: 0.64,
         })
       );
 

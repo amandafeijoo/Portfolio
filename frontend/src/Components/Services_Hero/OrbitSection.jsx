@@ -54,8 +54,7 @@ export default function OrbitSection() {
         mt: { xs: 2, md: -2 },
         mb: { xs: 4, md: 12 },
 
-        touchAction: "none",
-
+        touchAction: "pan-y",
         cursor: isDragging.current ? "grabbing" : "grab",
       }}
     >
