@@ -29,7 +29,7 @@ export default function FineLines() {
       const line = new THREE.Line(
         geometry,
         new THREE.LineBasicMaterial({
-          color: "rgba(248, 235, 210, 0.85)",
+          color: "rgba(248, 217, 157, 0.85)",
           transparent: true,
           opacity: 0.64,
         })
@@ -92,9 +92,9 @@ export default function FineLines() {
 
       <line geometry={spiralGeometry} scale={[0.72, 0.72, 0.72]}>
         <lineBasicMaterial
-          color="#e8c98f"
+          color="rgba(249, 231, 196, 0.85)"
           transparent
-          opacity={0.45}
+          opacity={0.35}
           blending={THREE.AdditiveBlending}
         />
       </line>

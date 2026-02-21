@@ -37,6 +37,7 @@ export default function GoldenHalo() {
       <circleGeometry args={[4, 64]} />
       <meshBasicMaterial
         map={texture}
+        opacity={0.5}
         transparent
         depthWrite={false}
         blending={THREE.AdditiveBlending}

@@ -8,7 +8,7 @@ const HeroSection = lazy(() => import("./Hero/HeroSection"));
 const WhatIDoHero = lazy(() => import("./WhatIDo/WhatIDoHero"));
 const WhatIDo = lazy(() => import("./WhatIDo/WhatIDo"));
 const FloatingHintMenu = lazy(() => import("./WhatIDo/FloatingHintMenu"));
-const OrbitSection = lazy(() => import("./Services_Hero/OrbitSection"));
+import OrbitSection from "./Services_Hero/OrbitSection";
 const ProcessSection = lazy(() => import("./Process/ProcessSection"));
 const HeroWorkSection = lazy(() => import("./Hero_Work/HeroWorkSection"));
 const HomeContactInvite = lazy(() =>
