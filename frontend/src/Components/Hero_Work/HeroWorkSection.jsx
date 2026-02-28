@@ -9,7 +9,7 @@ export default function HeroWorkSection() {
   const [enterWork, setEnterWork] = useState(false);
   const [workProgress, setWorkProgress] = useState(0);
 
-  const showProjects = enterWork && workProgress > 0.6; 
+  const showProjects = enterWork && workProgress > 0.6;
 
   // =========================
   //   BODY SCROLL LOCK
@@ -35,8 +35,8 @@ export default function HeroWorkSection() {
         height: "100dvh",
         overflow: "hidden",
         background: "#000",
-        mt: -12,
-        mb: 0,
+        mt: -7,
+        mb: 14,
       }}
     >
       {/* 🌌 THREE SCENE */}
@@ -44,7 +44,7 @@ export default function HeroWorkSection() {
       {/* 🧿 OVERLAY (ENTER PORTAL) */}
       <WorkOverlay onEnter={() => setEnterWork(true)} enter={enterWork} />
       {/* 🔙 EXIT PORTAL BUTTON */}
-      {showProjects && ( 
+      {showProjects && (
         <Box
           sx={{
             position: "absolute",
@@ -97,7 +97,6 @@ export default function HeroWorkSection() {
                   0 0 60px rgba(201,184,138,0.22)
                 `,
               },
-              // 🔥  BLUE FOCUS RING
               "&:focus": {
                 outline: "none",
               },
@@ -111,7 +110,7 @@ export default function HeroWorkSection() {
         </Box>
       )}
       {/* 🚀 PROJECTS PORTAL */}
-      {showProjects && <WorkProjectsLayer />} 
+      {showProjects && <WorkProjectsLayer />}
     </Box>
   );
 }

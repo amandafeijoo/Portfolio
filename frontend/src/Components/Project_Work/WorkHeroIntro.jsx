@@ -17,7 +17,7 @@ export default function WorkHeroIntro() {
         <Kicker>Selected Work</Kicker>
 
         <Headline>
-          Projects built with purpose,
+          Projects built with <span className="highlight">purpose</span>,
           <br />
           clarity and care.
         </Headline>

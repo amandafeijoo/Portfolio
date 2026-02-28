@@ -19,14 +19,14 @@ export default function ServiceCard({
 
         width: "100%",
         maxWidth: { xs: "90%", sm: 360, md: 370 },
-        minHeight: { xs: 420, sm: 560, md: 400 },
+        minHeight: { xs: 460, sm: 560, md: 400 },
 
         mx: "auto",
-        mt: { xs: 45, md: 28 },
-        mb: { xs: 12, md: 8 },
+        mt: { xs: -14, md: 28 },
+        mb: { xs: 0, md: 8 },
 
         px: { xs: 2.5, md: 3.5 },
-        py: { xs: 3.5, md: 4.5 },
+        py: { xs: 3.8, md: 4.5 },
 
         borderRadius: "28px",
         border: "1px solid transparent",

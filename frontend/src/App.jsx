@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -65,23 +65,6 @@ const GlobalStyle = createGlobalStyle`
   input, textarea, button, select {
     cursor: auto;
   }
-
-  @keyframes portalTitle {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-    filter: blur(12px);
-  }
-  60% {
-    opacity: 1;
-    filter: blur(0px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 `;
 
 const AppContainer = styled.div`
@@ -96,20 +79,25 @@ const isLocalhost =
   window.location.hostname === "127.0.0.1";
 
 /* =========================
-   APP CONTENT (CON RUTA)
+   APP CONTENT
 ========================= */
 function AppContent() {
   const location = useLocation();
 
-  // const [showIntro, setShowIntro] = useState(location.pathname === "/");
+  // 🔥 Desactiva restauración automática del scroll del navegador
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  // 🔥 Siempre subir arriba al cambiar de ruta
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
-      {/* 🔥 INTRO LOADER SOLO EN HOME
-      {location.pathname === "/" && showIntro && (
-        <IntroLoader onFinish={() => setShowIntro(false)} />
-      )} */}
-
       <AppContainer>
         <Header />
         <MainLayout>

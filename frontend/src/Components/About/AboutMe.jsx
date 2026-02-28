@@ -59,16 +59,41 @@ const AboutMe = () => {
 
       {/* TITLE */}
       <StyledText as="div">
-        <span
-          style={{
-            fontSize: "clamp(2.8rem, 6vw, 4.2rem)",
+        <Box
+          sx={{
+            fontFamily: "Playfair Display, serif",
             fontWeight: 500,
-            color: "rgba(247, 236, 205, 0.9)",
-            textShadow: "0 0 28px rgba(201,184,138,0.25)",
+            fontSize: {
+              xs: "2.2rem",
+              sm: "2.8rem",
+              md: "3.6rem",
+              lg: "4.2rem",
+            },
+            lineHeight: 1.08,
+            letterSpacing: "-0.02em",
+            textAlign: "center",
           }}
         >
-          Webcode-Art
-        </span>
+          <Box
+            component="span"
+            sx={{
+              color: "rgba(247, 236, 205, 0.9)",
+              textShadow: "0 0 28px rgba(201,184,138,0.18)",
+            }}
+          >
+            Webcode
+          </Box>{" "}
+          <Box
+            component="span"
+            sx={{
+              color: "#e8c98f",
+              textShadow:
+                "0 0 12px rgba(201,184,138,0.35), 0 0 28px rgba(201,184,138,0.25)",
+            }}
+          >
+            -Art
+          </Box>
+        </Box>
       </StyledText>
       <Divider />
 

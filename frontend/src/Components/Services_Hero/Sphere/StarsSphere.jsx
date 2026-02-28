@@ -105,14 +105,8 @@ export default function StarsSphere({ impulseRef }) {
             color="#f8ebd2"
             wireframe
             transparent
-            opacity={isMobile ? 0.18 : 0.3}
+            opacity={isMobile ? 0.18 : 0.34}
           />
-        </mesh>
-
-        {/* 🌀 RING */}
-        <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[isMobile ? 3.0 : 3, 0.01, 8, 64]} />
-          <meshBasicMaterial color="#c9a96a" transparent opacity={0.55} />
         </mesh>
       </group>
     </group>

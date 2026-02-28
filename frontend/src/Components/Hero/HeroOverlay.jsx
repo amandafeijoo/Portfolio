@@ -21,12 +21,14 @@ const bodyStyle = {
 /* =========================
    COMPONENT
 ========================= */
+export default function HeroOverlay({ onEnter, enterStage }) {
+  const isZoom = enterStage === "zoom";
+  const isIdle = enterStage === "idle";
 
-export default function HeroOverlay({ onEnter, enter }) {
   return (
     <>
-      {/* ================= PORTAL MODE ================= */}
-      {enter && (
+      {/* ================= PORTAL MODE (solo durante zoom) ================= */}
+      {isZoom && (
         <Box
           sx={{
             position: "absolute",
@@ -59,7 +61,7 @@ export default function HeroOverlay({ onEnter, enter }) {
       )}
 
       {/* ================= NORMAL HERO ================= */}
-      {!enter && (
+      {isIdle && (
         <Box
           sx={{
             position: "absolute",
@@ -108,29 +110,32 @@ export default function HeroOverlay({ onEnter, enter }) {
             </Typography>
           </Box>
 
-          {/* DESKTOP TOP LEFT */}
+          {/* ================= DESKTOP SIDE TEXT ================= */}
           <Box
             sx={{
               position: "absolute",
-              top: { sm: 80, md: -5 },
-              left: { sm: 36, md: 48 },
+              top: { sm: 90 },
+              left: { sm: 48 },
               display: { xs: "none", sm: "block" },
-              maxWidth: { sm: 220, md: 260 },
+              maxWidth: 240,
+              opacity: 0.8,
             }}
           >
             <Typography
               sx={{
-                ...bodyStyle,
-                fontSize: { sm: "0.85rem", md: "0.80rem" },
+                fontSize: "0.8rem",
+                letterSpacing: "0.1em",
+                color: "#e6d3a8",
+                lineHeight: 2,
               }}
             >
-              I DESIGN & BUILD WEBSITES FOR{" "}
+              I design & build websites for{" "}
               <Box
                 component="span"
                 sx={{ display: "inline-block", minWidth: 90 }}
               >
                 <TypingWords
-                  words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
+                  words={["brands", "startups", "founders", "businesses"]}
                   speed={85}
                   pause={1200}
                 />
@@ -138,109 +143,179 @@ export default function HeroOverlay({ onEnter, enter }) {
             </Typography>
           </Box>
 
-          {/* CENTER CONTENT */}
+          {/* ================= CENTER CONTENT ================= */}
           <Box
             sx={{
               position: "absolute",
               inset: 0,
               display: "flex",
-              alignItems: "center",
+              alignItems: {
+                xs: "flex-start",
+                md: "center",
+              },
               justifyContent: "center",
+              pt: {
+                xs: "37vh",
+                sm: "18vh",
+                md: 0,
+              },
+              px: { xs: 3, sm: 4, md: 0 },
             }}
           >
-            <Box sx={{ textAlign: "center" }}>
+            <Box
+              sx={{
+                textAlign: "center",
+                width: "100%",
+                maxWidth: {
+                  xs: 320,
+                  sm: 480,
+                  md: 640,
+                },
+              }}
+            >
+              {/* KICKER */}
+              <Typography
+                sx={{
+                  letterSpacing: "0.35em",
+                  textTransform: "uppercase",
+                  fontSize: "0.65rem",
+                  color: "#c9b07a",
+                  opacity: 0.75,
+                  display: { xs: "none", sm: "block" },
+                  mb: 2,
+                }}
+              >
+                STRATEGY · DESIGN · DEVELOPMENT
+              </Typography>
+              {/* MAIN TITLE */}
               <Typography
                 sx={{
                   fontFamily: "Playfair Display, serif",
+                  fontWeight: 500,
                   fontSize: {
-                    xs: "clamp(2.1rem, 8vw, 2.6rem)",
-                    sm: "clamp(2.8rem, 6vw, 3.4rem)",
-                    md: "clamp(3rem, 6vw, 4.2rem)",
+                    xs: "clamp(2.4rem, 9vw, 3rem)",
+                    sm: "clamp(3.5rem, 6vw, 4.5rem)",
+                    md: "clamp(4rem, 5vw, 5.5rem)",
                   },
-                  color: "#e6d3a8",
-                  mb: 2,
-                  position: "relative",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    inset: "-60%",
-                    background:
-                      "radial-gradient(circle, rgba(201,184,138,0.15), transparent 70%)",
-                    filter: "blur(60px)",
-                    zIndex: -1,
-                  },
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.02em",
+                  color: "#f4f0e8",
+                  mb: 3,
                 }}
               >
-                Webcode-Art
+                <Box component="span" sx={{ opacity: 0.9 }}>
+                  Webcode
+                </Box>
+                <Box component="span" sx={{ color: "#e8c98f" }}>
+                  -Art
+                </Box>
               </Typography>
 
+              {/* SUBLINE */}
               <Typography
                 sx={{
-                  color: "#f4e6d2",
-                  fontSize: { xs: "0.83rem", sm: "0.95rem", md: "1rem" },
-                  mt: { xs: 3, md: 5 },
-                  mb: { xs: 3, md: 4 },
-                  maxWidth: { xs: 280, sm: 360, md: 520 },
+                  color: "rgba(255,255,255,0.75)",
+                  fontSize: { xs: "0.8rem", sm: "1rem", md: "1.1rem" },
+                  lineHeight: 1.7,
+                  maxWidth: 520,
                   mx: "auto",
+                  mt: { xs: 1, sm: 8 },
+                  mb: 4,
+                  letterSpacing: "0.02em",
                 }}
               >
-                Design & development for web experiences that feel alive.
+                Design & development for web experiences that feel intentional,
+                alive and precisely built.
               </Typography>
 
               <Button
                 onClick={onEnter}
                 sx={{
-                  pointerEvents: "auto",
-                  px: { xs: 2.6, sm: 4 },
-                  py: { xs: 0.9, sm: 1.4 },
-
-                  fontSize: { xs: "0.68rem", sm: "0.8rem" },
-                  letterSpacing: { xs: "0.11em", sm: "0.14em" },
-                  textTransform: "uppercase",
-                  color: "#f5f0e8",
-                  borderRadius: "999px",
-                  border: "1px solid rgba(200,164,106,0.6)",
-                  background: "rgba(18,19,20,0.55)",
-                  backdropFilter: "blur(10px)",
-                  boxShadow:
-                    "0 0 18px rgba(200,164,106,0.25), 0 0 40px rgba(200,164,106,0.15)",
-                  cursor: "pointer",
-                  transition:
-                    "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease, border 0.35s ease",
+                  pointerEvents: "auto", 
                   position: "relative",
                   isolation: "isolate",
+                  overflow: "visible",
+
+                  px: { xs: "24px", sm: "27px" },
+                  py: { xs: "10px", sm: "18px" },
+
+                  fontFamily: '"Source Code Pro", monospace',
+                  fontSize: { xs: "0.62rem", sm: "0.7rem" },
+                  letterSpacing: { xs: "0.16em", sm: "0.25em" },
+                  textTransform: "uppercase",
+
+                  color: "#e6d5bc",
+                  border: "1px solid rgba(230, 213, 188, 0.45)",
+                  borderRadius: "999px",
+
+                  background: "rgba(18, 19, 20, 0.55)",
+                  backdropFilter: "blur(10px)",
+
+                  boxShadow: `
+      0 0 16px rgba(230, 213, 188, 0.25),
+      0 0 48px rgba(230, 213, 188, 0.15)
+    `,
+
+                  cursor: "pointer",
+
+                  transition:
+                    "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
+
                   "&::before": {
                     content: '""',
                     position: "absolute",
-                    inset: -10,
+                    inset: { xs: -10, sm: -14 },
                     borderRadius: "999px",
                     background:
-                      "radial-gradient(circle, rgba(200,164,106,0.35), transparent 70%)",
-                    filter: "blur(20px)",
-                    opacity: 0.6,
+                      "radial-gradient(circle, rgba(230, 213, 188, 0.35), transparent 70%)",
+                    filter: { xs: "blur(22px)", sm: "blur(26px)" },
+                    opacity: 0.85,
                     zIndex: -1,
+                    pointerEvents: "none",
                     transition: "opacity 0.35s ease, filter 0.35s ease",
                   },
+
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    inset: 0,
+                    borderRadius: "999px",
+                    background:
+                      "radial-gradient(60% 60% at 50% 0%, rgba(230, 213, 188, 0.22), transparent 70%)",
+                    opacity: 0.6,
+                    pointerEvents: "none",
+                  },
+
                   "&:hover": {
-                    transform: "translateY(-3px)",
-                    background: "rgba(200,164,106,0.18)",
-                    border: "1px solid rgba(200,164,106,0.85)",
-                    color: "#ffffff",
-                    boxShadow:
-                      "0 0 28px rgba(200,164,106,0.45), 0 0 80px rgba(200,164,106,0.3)",
+                    transform: "translateY(-2px)",
+                    background: "rgba(230, 213, 188, 0.18)",
+                    border: "1px solid rgba(230, 213, 188, 0.45)",
+                    boxShadow: `
+        0 0 28px rgba(230, 213, 188, 0.45),
+        0 0 80px rgba(230, 213, 188, 0.25)
+      `,
                     "&::before": {
                       opacity: 1,
-                      filter: "blur(28px)",
+                      filter: { xs: "blur(26px)", sm: "blur(30px)" },
                     },
                   },
+
                   "&:active": {
-                    transform: "translateY(0px) scale(0.98)",
+                    transform: "translateY(0)",
                   },
+
                   "&:focus": { outline: "none" },
                   "&:focus-visible": { outline: "none" },
+                  "&.Mui-focusVisible": { outline: "none" },
+
+                  "&.Mui-disabled": {
+                    opacity: 0.4,
+                    boxShadow: "none",
+                    "&::before": { opacity: 0 },
+                  },
                 }}
               >
-                LET’S CREATE
+                ENTER THE PORTAL
               </Button>
             </Box>
           </Box>
@@ -289,11 +364,11 @@ export default function HeroOverlay({ onEnter, enter }) {
                 fontSize: { sm: "0.65rem", md: "0.7rem" },
               }}
             >
-              STRATEGY.
+              THINK.
               <br />
               DESIGN.
               <br />
-              DEVELOPMENT.
+              BUID.
             </Typography>
           </Box>
         </Box>

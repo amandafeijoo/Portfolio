@@ -3,15 +3,13 @@ const tablet = "@media (max-width: 1024px)";
 const mobile = "@media (max-width: 768px)";
 const smallMobile = "@media (max-width: 520px)";
 
-
-
 /* =========
    Palette
 ========= */
 const gold = "rgba(201, 184, 138, 0.95)";
 const goldSoft = "rgba(201, 184, 138, 0.22)";
 const ink = "rgba(18, 19, 20, 0.72)";
-const text = "#f4f2ed";
+const text = " #e6d5bc";
 
 /* =========
    Page
@@ -27,7 +25,6 @@ export const PageWrap = styled.main`
     min-height: 100svh;
   }
 `;
-
 
 export const MainInner = styled.div`
   max-width: 1040px;
@@ -75,7 +72,6 @@ export const BottomGlow = styled.div`
     opacity: 0.7;
   }
 `;
-
 
 /* =========
    Hero
@@ -132,36 +128,52 @@ export const HeroInner = styled.div`
   }
 `;
 
-
 export const Kicker = styled.div`
+  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  color: rgba(201, 184, 138, 0.9);
+  font-size: 0.65rem;
+  color: #c9b07a;
+  opacity: 0.8;
   margin-bottom: 18px;
 
   ${mobile} {
     font-size: 0.7rem;
     letter-spacing: 0.28em;
-    margin-bottom: 14px;
   }
 `;
 
-
 export const Headline = styled.h1`
-  color: ${text};
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-family: "Playfair Display", serif;
   font-weight: 500;
+
+  font-size: clamp(2.4rem, 5vw, 4rem);
   line-height: 1.08;
-  margin: 0 0 22px;
-  text-shadow: 0 0 34px rgba(201, 184, 138, 0.18);
+  letter-spacing: -0.02em;
+
+  margin: 0 0 26px;
+  text-align: center;
+
+  color: rgba(247, 236, 205, 0.92);
+
+  text-shadow: 0 0 12px rgba(201, 184, 138, 0.25),
+    0 0 34px rgba(201, 184, 138, 0.18);
+
+  @supports (text-wrap: balance) {
+    text-wrap: balance;
+  }
+
+  .highlight {
+    color: #e8c98f;
+    text-shadow: 0 0 14px rgba(201, 184, 138, 0.45),
+      0 0 30px rgba(201, 184, 138, 0.28);
+  }
 
   ${mobile} {
     line-height: 1.12;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 `;
-
 
 export const Divider = styled.div`
   margin: 0 auto 22px;
@@ -181,20 +193,18 @@ export const Divider = styled.div`
   }
 `;
 
-
 export const Subline = styled.p`
   max-width: 62ch;
   margin: 0 auto;
   font-size: 1rem;
   line-height: 1.65;
-  color: rgba(244, 242, 237, 0.78);
+  color: rgba(248, 236, 206, 0.78);
 
   ${mobile} {
     font-size: 0.92rem;
     line-height: 1.6;
   }
 `;
-
 
 export const HeroRow = styled.div`
   margin-top: 26px;
@@ -209,11 +219,10 @@ export const HeroRow = styled.div`
   }
 `;
 
-
 export const HeroPill = styled.div`
   font-size: 0.82rem;
   letter-spacing: 0.06em;
-  color: rgba(244, 242, 237, 0.88);
+  color: rgba(248, 236, 206, 0.78);
 
   padding: 10px 14px;
   border-radius: 999px;
@@ -227,7 +236,6 @@ export const HeroPill = styled.div`
   }
 `;
 
-
 /* =========
    Sections
 ========= */
@@ -236,12 +244,13 @@ export const Section = styled.section`
 
   ${mobile} {
     margin-top: 2px;
-
   }
 `;
 
 export const SectionTitle = styled.h2`
   color: ${text};
+  color: rgb(245, 235, 218);
+
   font-weight: 500;
   font-size: clamp(1.5rem, 2.4vw, 2rem);
   margin-bottom: 12px;
@@ -257,7 +266,7 @@ export const SectionTitle = styled.h2`
 export const SectionLead = styled.p`
   max-width: 100ch;
   margin: 0 0 22px;
-  color: rgba(244, 242, 237, 0.74);
+  color: rgba(248, 236, 206, 0.78);
   line-height: 1.65;
 
   ${mobile} {
@@ -284,8 +293,7 @@ export const FormCard = styled.div`
   border: 1px solid rgba(201, 184, 138, 0.22);
   overflow: hidden;
 
-  box-shadow:
-    0 0 34px rgba(201, 184, 138, 0.16),
+  box-shadow: 0 0 34px rgba(201, 184, 138, 0.16),
     0 0 120px rgba(201, 184, 138, 0.06);
 
   &::before {
@@ -338,12 +346,7 @@ export const FormCardTopGlow = styled.div`
   transform: translateX(-50%);
   width: 80%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    ${goldSoft},
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, ${goldSoft}, transparent);
   opacity: 0.9;
   pointer-events: none;
 
@@ -352,7 +355,6 @@ export const FormCardTopGlow = styled.div`
     opacity: 0.75;
   }
 `;
-
 
 /* =========
    Trust
@@ -369,7 +371,6 @@ export const TrustWrap = styled.section`
   }
 `;
 
-
 export const TrustTitle = styled.h3`
   color: ${text};
   font-weight: 500;
@@ -377,12 +378,14 @@ export const TrustTitle = styled.h3`
   margin-bottom: 18px;
   letter-spacing: 0.02em;
 
+  color: #e6d5bc;
+  text-shadow: 0 0 18px rgba(201, 184, 138, 0.12);
+
   ${mobile} {
     font-size: 1.1rem;
     margin-bottom: 14px;
   }
 `;
-
 
 export const TrustGrid = styled.div`
   display: grid;
@@ -394,7 +397,6 @@ export const TrustGrid = styled.div`
     gap: 12px;
   }
 `;
-
 
 export const TrustCard = styled.div`
   position: relative;
@@ -448,7 +450,6 @@ export const TrustKicker = styled.div`
   }
 `;
 
-
 export const TrustText = styled.p`
   margin: 0;
   color: rgba(244, 242, 237, 0.76);
@@ -464,4 +465,3 @@ export const TrustText = styled.p`
     line-height: 1.5;
   }
 `;
-

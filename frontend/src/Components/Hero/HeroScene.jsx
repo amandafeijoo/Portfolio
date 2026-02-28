@@ -13,7 +13,7 @@ function ResponsiveCamera() {
 
     if (isMobile) {
       camera.position.set(0, 0, 7.5);
-      camera.fov = 70; 
+      camera.fov = 70;
     } else {
       camera.position.set(0, 0, 6);
       camera.fov = 55;
@@ -25,8 +25,10 @@ function ResponsiveCamera() {
   return null;
 }
 
-export default function HeroScene({ enter }) {
+export default function HeroScene({ enter, enterStage, onArriveUniverse }) {
   const [ready, setReady] = useState(false);
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
     <Canvas
@@ -45,7 +47,11 @@ export default function HeroScene({ enter }) {
       }}
     >
       <ResponsiveCamera />
-      <ParticleSphere enter={enter} />
+      <ParticleSphere
+        enter={enter}
+        enterStage={enterStage}
+        onArriveUniverse={onArriveUniverse}
+      />
     </Canvas>
   );
 }

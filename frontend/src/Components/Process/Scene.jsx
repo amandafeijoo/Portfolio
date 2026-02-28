@@ -1,36 +1,28 @@
 import { useThree } from "@react-three/fiber";
 import { useMemo } from "react";
-import LinkedRelief from "./LinkedRelief";
-import FineLines from "./FineLines";
-import SoftParticles from "./SoftParticles";
-import GoldenHalo from "./GoldenHalo";
+import FibonacciPoster from "./FibonacciPoster"; 
+
 
 export default function Scene() {
   const { viewport } = useThree();
-
   const isMobile = viewport.width < 6;
 
   const scale = useMemo(() => {
-    if (isMobile) return 0.38; // móvil
-    return 0.45; // desktop
+    if (isMobile) return 0.45; 
+    return 0.85; 
   }, [isMobile]);
 
   const positionY = useMemo(() => {
-    if (isMobile) return -0.8; // móvil
-    return -1; // desktop
+    if (isMobile) return 0.8;
+    return -0.6;
   }, [isMobile]);
 
   return (
     <group scale={scale} position={[0, positionY, 0]}>
-      <ambientLight intensity={0.22} />
-
-      <directionalLight position={[4, 5, 6]} intensity={1.1} />
-      <directionalLight position={[-4, -3, 2]} intensity={0.55} />
-      <pointLight position={[0, 0, -4]} intensity={0.35} />
-
-      <GoldenHalo />
-      <SoftParticles />
-      <FineLines />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[4, 5, 6]} intensity={0.8} />
+      <directionalLight position={[-4, -3, 2]} intensity={0.4} />
+      <FibonacciPoster theme="light" />
     </group>
   );
 }

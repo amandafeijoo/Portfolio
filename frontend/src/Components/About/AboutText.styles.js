@@ -59,7 +59,7 @@ export const Divider = styled.div`
   margin: 0 auto 22px;
   width: 90px;
   height: 1px;
-  margin-top: 0px;
+  margin-top: 20px;
   background: linear-gradient(
     90deg,
     transparent,

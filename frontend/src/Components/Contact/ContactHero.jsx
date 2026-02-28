@@ -20,15 +20,16 @@ export default function ContactHero({ compact = false }) {
         <Kicker>Contact</Kicker>
 
         {/* 🟣 TÍTULO */}
-        <Headline>Let’s build something together.</Headline>
-
+        <Headline>
+          Let’s build something <span className="highlight">together</span>.
+        </Headline>
         <Divider />
 
         {/* 🟣 TEXTO */}
         <Subline>
-          Ready to start a project, or just exploring an idea? Tell me a bit
-          about what you’re looking for and I’ll get back to you with next
-          steps, availability, and an estimated timeline.
+          Starting a new project or refining an idea? Share a few details and
+          I’ll guide you through next steps, availability and a realistic
+          timeline.
         </Subline>
 
         <HeroRow>

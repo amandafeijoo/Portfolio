@@ -72,8 +72,9 @@ const baseInput = `
   border: none;
   border-bottom: 1px solid rgba(255,255,255,0.25);
   padding: 10px 0;
-  color: #f4f2ed;
+  color:rgb(247, 238, 215);
   font-size: 0.95rem;
+  font-family: "Inter", sans-serif;
 
   transition: border-color 0.3s ease;
 
@@ -96,15 +97,20 @@ const baseInput = `
   }
 `;
 
-export const Input = styled.input`${baseInput}`;
+export const Input = styled.input`
+  ${baseInput}
+`;
 
 export const Select = styled.select`
   ${baseInput}
   cursor: pointer;
 
+  color: ${({ value }) =>
+    value ? "rgb(247, 238, 215)" : "rgba(255,255,255,0.35)"};
+
   option {
     background: #0e0e0e;
-    color: #f4f2ed;
+    color: #e6d5bc;
   }
 `;
 
@@ -117,40 +123,120 @@ export const Textarea = styled.textarea`
    BUTTON & TEXT
 ========================= */
 export const SubmitButton = styled.button`
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+
   margin-top: 24px;
   align-self: flex-start;
-  padding: 12px 28px;
-  border-radius: 14px;
 
-  border: 1px solid rgba(201, 184, 138, 0.45);
-  background: rgba(201, 184, 138, 0.18);
+  padding: 10px 24px;
+  border-radius: 999px;
 
-  color: #f4f2ed;
   font-family: "Source Code Pro", monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 
-  cursor: pointer;
-  transition: all 0.35s ease;
+  color: #e6d5bc;
+  border: 1px solid rgba(230, 213, 188, 0.45);
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(201, 184, 138, 0.3);
-    background: rgba(201, 184, 138, 0.26);
+  background: rgba(18, 19, 20, 0.55);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 16px rgba(230, 213, 188, 0.25),
+    0 0 48px rgba(230, 213, 188, 0.15);
+
+  cursor: pointer;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+
+  /* 🌕 HALO EXTERNO */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 999px;
+    background: radial-gradient(
+      circle,
+      rgba(230, 213, 188, 0.35),
+      transparent 70%
+    );
+    filter: blur(22px);
+    opacity: 0.85;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.35s ease, filter 0.35s ease;
   }
 
-  &:disabled {
-    opacity: 0.5;
+  /* ✨ HALO INTERNO */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: radial-gradient(
+      60% 60% at 50% 0%,
+      rgba(230, 213, 188, 0.22),
+      transparent 70%
+    );
+    opacity: 0.6;
     pointer-events: none;
   }
 
-  ${mobile} {
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(230, 213, 188, 0.18);
+    border: 1px solid rgba(230, 213, 188, 0.45);
+
+    box-shadow: 0 0 28px rgba(230, 213, 188, 0.45),
+      0 0 80px rgba(230, 213, 188, 0.25);
+
+    &::before {
+      opacity: 1;
+      filter: blur(26px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    box-shadow: none;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  -webkit-tap-highlight-color: transparent;
+
+  /* 📱 SM */
+  @media (min-width: 600px) {
+    padding: 15px 35px;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+
+    &::before {
+      inset: -14px;
+      filter: blur(26px);
+    }
+
+    &:hover::before {
+      filter: blur(30px);
+    }
+  }
+
+  /* 📱 MOBILE CENTER */
+  @media (max-width: 520px) {
     align-self: center;
-    padding: 14px 32px;
-    margin-top: 18px;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
   }
 `;
 
@@ -159,7 +245,7 @@ export const PrivacyNote = styled.p`
   font-size: 0.7rem;
   opacity: 0.55;
   max-width: 420px;
-  color: #f4f2ed;
+  color: #e6d5bc;
 
   a {
     color: rgba(201, 184, 138, 0.9);
@@ -176,7 +262,7 @@ export const Hint = styled.p`
   margin-top: 8px;
   font-size: 0.75rem;
   opacity: 0.6;
-  color: #f4f2ed;
+  color: #e6d5bc;
 
   ${mobile} {
     font-size: 0.7rem;

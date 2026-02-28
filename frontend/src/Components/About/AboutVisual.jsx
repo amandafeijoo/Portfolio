@@ -20,7 +20,6 @@ export default function AboutVisual() {
 
         position: "relative",
 
-        /* 🎯 AJUSTE FINO DE POSICIÓN */
         transform: {
           xs: "translateX(28px)",
           sm: "translateX(12px)",
@@ -31,14 +30,11 @@ export default function AboutVisual() {
     >
       <Canvas
         camera={{ position: [0, 0, 3.6], fov: 48 }}
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
+        style={{ width: "100%", height: "100%" }}
       >
-        <ambientLight intensity={0.35} />
-        <directionalLight position={[5, 5, 5]} intensity={0.6} />
-        <AboutVisualScene />
+        <group position={[0, 0, 0]}>
+          <AboutVisualScene />
+        </group>
       </Canvas>
     </Box>
   );

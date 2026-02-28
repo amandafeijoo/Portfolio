@@ -1,14 +1,18 @@
 import { Box } from "@mui/material";
-import HeroScene from "./HeroScene";
 import { useState } from "react";
-import HeroOverlay from "./HeroOverlay";
-import { m } from "framer-motion";
 
+import HeroScene from "./HeroScene";
+import HeroOverlay from "./HeroOverlay";
+import UniverseOverlay from "./Portal/UniverseOverlay";
 export default function HeroSection() {
-  const [enterSphere, setEnterSphere] = useState(false);
+  const [enterStage, setEnterStage] = useState("idle");
 
   const handleEnter = () => {
-    setEnterSphere(true);
+    setEnterStage("zoom");
+  };
+
+  const handleArriveUniverse = () => {
+    setEnterStage("universe");
   };
 
   return (
@@ -26,19 +30,24 @@ export default function HeroSection() {
         marginBottom: { xs: "-6vh", sm: 20 },
         background:
           "radial-gradient(circle at 50% 42%, rgba(231, 217, 188, 0.18), #000 70%)",
-
-        /* SUBIR EN MOBILE */
         transform: {
           xs: "translateY(2vh)",
           sm: "none",
         },
       }}
     >
-      {/* THREE BACKGROUND */}
-      <HeroScene enter={enterSphere} />
+      {/* THREE */}
+      <HeroScene
+        enter={enterStage !== "idle"}
+        enterStage={enterStage}
+        onArriveUniverse={handleArriveUniverse}
+      />
 
-      {/* TEXT / CTA */}
-      <HeroOverlay onEnter={handleEnter} enter={enterSphere} />
+      {/* HERO UI (idle + zoom states) */}
+      <HeroOverlay onEnter={handleEnter} enterStage={enterStage} />
+
+      {/* UNIVERSE UI */}
+      <UniverseOverlay enterStage={enterStage} />
     </Box>
   );
 }

@@ -1,65 +1,73 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useNavigate } from "react-router-dom";
 import * as THREE from "three";
 import SphereLines3D from "./SphereLines3D";
+import UniverseVista from "./Portal/UniverseVista";
 
-export default function ParticleSphere({ enter }) {
+export default function ParticleSphere({ enter, onArriveUniverse }) {
   const pointsRef = useRef();
   const haloRef = useRef();
+  const zoomFinished = useRef(false);
 
   const { mouse, camera, size } = useThree();
-  const navigate = useNavigate();
-
   const isMobile = size.width < 768;
 
-  /* =========================
-     🎯 ESCALA BASE (SOLO HALO)
-  ========================= */
+  const [portalOpen, setPortalOpen] = useState(false);
 
-  const baseHaloScale = isMobile ? 2.4 : 2.6;
-
-  // 🔥 Partículas proporcionales al halo
-  const SPHERE_RADIUS = baseHaloScale * 0.92;
+  const baseHaloScale = isMobile ? 2.13 : 2.48;
+  const SPHERE_RADIUS = baseHaloScale * 0.96;
 
   const zoom = useRef(0);
-  const insideTime = useRef(0);
   const targetRotation = useRef({ x: 0, y: 0 });
 
-  const PARTICLE_COUNT = 1800;
-  const ZOOM_DURATION = 2.6;
-  const INSIDE_DURATION = 4.0;
+  const PARTICLE_COUNT = isMobile ? 1400 : 2200;
+  const ZOOM_DURATION = 5.0;
+
+  useEffect(() => {
+    if (!enter) {
+      setPortalOpen(false);
+      zoom.current = 0;
+      zoomFinished.current = false;
+      camera.position.x = 0;
+    }
+  }, [enter, camera]);
 
   /* =========================
-     ✨ PARTICLES
+     PARTICLES (MIXED SYSTEM)
   ========================= */
 
   const positions = useMemo(() => {
     const arr = new Float32Array(PARTICLE_COUNT * 3);
 
+    const maxRadius = baseHaloScale;
+
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const v = new THREE.Vector3()
-        .randomDirection()
-        .multiplyScalar(SPHERE_RADIUS + Math.random() * 0.08);
+      let radius;
+
+      if (Math.random() > 0.4) {
+        radius = maxRadius * Math.cbrt(Math.random());
+      } else {
+        radius = maxRadius * (0.85 + Math.random() * 0.15);
+      }
+
+      const dir = new THREE.Vector3().randomDirection();
+      const v = dir.multiplyScalar(radius);
 
       arr.set([v.x, v.y, v.z], i * 3);
     }
 
     return arr;
-  }, [SPHERE_RADIUS]);
+  }, [baseHaloScale, PARTICLE_COUNT]);
 
   /* =========================
-     🎬 ANIMATION LOOP
+     ANIMATION
   ========================= */
 
   useFrame((_, delta) => {
     const t = performance.now() * 0.001;
 
-    /* ───────── IDLE ───────── */
+    /* ================= IDLE ================= */
     if (!enter) {
-      zoom.current = 0;
-      insideTime.current = 0;
-
       const autoDriftX = Math.sin(t * 0.3) * 0.15;
       const autoDriftY = Math.cos(t * 0.25) * 0.2;
 
@@ -72,96 +80,97 @@ export default function ParticleSphere({ enter }) {
           targetRotation.current.x,
           0.06
         );
-
         pointsRef.current.rotation.y = THREE.MathUtils.lerp(
           pointsRef.current.rotation.y,
           targetRotation.current.y,
           0.06
         );
-      }
+        pointsRef.current.scale.setScalar(1);
 
-      if (haloRef.current) {
-        haloRef.current.rotation.x = THREE.MathUtils.lerp(
-          haloRef.current.rotation.x,
-          targetRotation.current.x * 0.6,
-          0.05
-        );
-
-        haloRef.current.rotation.y = THREE.MathUtils.lerp(
-          haloRef.current.rotation.y,
-          targetRotation.current.y * 0.6,
-          0.05
-        );
+        pointsRef.current.material.opacity = 0.6 + Math.sin(t * 1.2) * 0.08;
       }
 
       camera.position.z = isMobile ? 6.8 : 6;
+      camera.position.x = THREE.MathUtils.lerp(camera.position.x, 0, 0.08);
       return;
     }
 
-    /* ───────── ZOOM ───────── */
-    if (zoom.current < 1) {
-      zoom.current = Math.min(zoom.current + delta / ZOOM_DURATION, 1);
+    /* ================= ZOOM ================= */
+    if (!portalOpen) {
+      if (zoom.current < 1) {
+        zoom.current = Math.min(zoom.current + delta / ZOOM_DURATION, 1);
 
-      camera.position.z = THREE.MathUtils.lerp(
-        isMobile ? 6.8 : 6,
-        -1.6,
-        zoom.current
-      );
+        camera.position.z = THREE.MathUtils.lerp(
+          isMobile ? 6.8 : 6,
+          -1.8,
+          zoom.current
+        );
 
-      if (pointsRef.current) {
-        pointsRef.current.scale.setScalar(1 + zoom.current * 2.2);
+        camera.position.x = THREE.MathUtils.lerp(0, 1.4, zoom.current);
+
+        if (pointsRef.current) {
+          pointsRef.current.rotation.y += delta * 0.6;
+          pointsRef.current.rotation.x += delta * 0.15;
+
+          pointsRef.current.scale.setScalar(1 + zoom.current * 4.0);
+        }
+
+        if (haloRef.current) {
+          haloRef.current.scale.setScalar(baseHaloScale + zoom.current * 5.0);
+        }
+
+        return;
       }
 
-      if (haloRef.current) {
-        haloRef.current.scale.setScalar(baseHaloScale + zoom.current * 3.2);
+      if (!zoomFinished.current) {
+        zoomFinished.current = true;
+        setPortalOpen(true);
+        onArriveUniverse?.();
       }
 
       return;
     }
 
-    /* ───────── INSIDE ───────── */
-
-    insideTime.current += delta;
+    /* ================= UNIVERSE MODE ================= */
 
     if (pointsRef.current) {
-      pointsRef.current.rotation.y += delta * 0.7;
-      pointsRef.current.rotation.x += delta * 0.2;
+      pointsRef.current.rotation.y += delta * 0.15;
     }
 
     if (haloRef.current) {
-      haloRef.current.rotation.y += delta * 0.25;
-    }
-
-    if (insideTime.current >= INSIDE_DURATION) {
-      navigate("/contactpage");
+      haloRef.current.material.opacity = 0.02;
     }
   });
 
-  /* =========================
-     🎨 RENDER
-  ========================= */
-
   return (
     <group>
-      {!isMobile && (
+      {/* LÍNEAS ESFERA */}
+      {!isMobile && !portalOpen && (
         <group position={[0, 0, -0.6]}>
           <SphereLines3D />
         </group>
       )}
 
-      {/* HALO */}
-      <mesh ref={haloRef} scale={baseHaloScale}>
-        <sphereGeometry args={[1, 48, 48]} />
-        <meshBasicMaterial
-          color="#e6d5bc"
-          transparent
-          opacity={0.18}
-          side={THREE.BackSide}
-          depthWrite={false}
-        />
-      </mesh>
+      {/* UNIVERSE */}
+      <group position={[0, 0, -4]} visible={portalOpen}>
+        <UniverseVista isMobile={isMobile} />
+      </group>
 
-      {/* PARTICULAS */}
+      {/* HALO */}
+      {!portalOpen && (
+        <mesh ref={haloRef} scale={baseHaloScale}>
+          <sphereGeometry args={[1, 48, 48]} />
+          <meshBasicMaterial
+            color="#e6d5bc"
+            transparent
+            opacity={0.08}
+            side={THREE.BackSide}
+            depthWrite={false}
+          />
+        </mesh>
+      )}
+
+      {/* PARTICLES */}
       <points ref={pointsRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -174,10 +183,10 @@ export default function ParticleSphere({ enter }) {
 
         <pointsMaterial
           color="#e6d5bc"
-          size={isMobile ? 0.013 : 0.014}
+          size={isMobile ? 0.012 : 0.014}
           sizeAttenuation
           transparent
-          opacity={0.85}
+          opacity={1.2}
           depthWrite={false}
         />
       </points>

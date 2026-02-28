@@ -8,11 +8,7 @@ export default function ProcessSection() {
     <section style={{ background: "#000", overflow: "hidden" }}>
       <ProcessHero />
 
-      <Box
-        sx={{
-          mt: { xs: "-295px", md: "-120px" },
-        }}
-      >
+      <Box sx={{ pt: { xs: 8, md: 10 } }}>
         <ProcessCards />
       </Box>
     </section>

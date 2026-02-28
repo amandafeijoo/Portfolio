@@ -30,4 +30,8 @@ export const DragWrapper = styled(motion.div)`
   padding-bottom: 6vh;
 
   cursor: default;
+
+  @media (max-width: 768px) {
+    height: 780px;
+  }
 `;

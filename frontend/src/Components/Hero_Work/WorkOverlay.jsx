@@ -10,86 +10,88 @@ export default function WorkOverlay({ onEnter, enter }) {
         alignItems: "center",
         justifyContent: "center",
         zIndex: 10,
-
-        px: { xs: 4, sm: 2, md: 2 },
-        mt: { xs: -9, md: -9 },
-        mb: { xs: 10, md: -20 },
+        px: { xs: 3, sm: 3 },
       }}
     >
-      <Box sx={{ textAlign: "center" }}>
+      <Box sx={{ textAlign: "center", maxWidth: 760 }}>
+        {/* ===== KICKER ===== */}
         <Typography
           sx={{
-            fontSize: { xs: "0.65rem", sm: "0.72rem", md: "0.8rem" },
-            letterSpacing: { xs: "0.32em", md: "0.45em" },
+            mb: 2,
+            fontSize: "0.65rem",
+            letterSpacing: "0.32em",
             textTransform: "uppercase",
-            color: "rgba(240,201,123,0.9)",
-            mb: { xs: 1, md: 2 },
-            mt: { xs: 6, md: -1 },
+            color: "#c9b07a",
+            opacity: 0.8,
           }}
         >
           Work
         </Typography>
 
+        {/* ===== TITLE ===== */}
         <Typography
           sx={{
             fontFamily: "Playfair Display, serif",
+            fontWeight: 500,
+            lineHeight: 1.08,
             fontSize: {
-              xs: "clamp(1.6rem, 9vw, 2.5rem)",
-              sm: "clamp(2.4rem, 7vw, 3.2rem)",
-              md: "clamp(2.8rem, 6vw, 4rem)",
+              xs: "clamp(1.8rem, 12vw, 2.4rem)",
+              sm: "clamp(2.6rem, 6vw, 3.2rem)",
+              md: "clamp(3rem, 5vw, 6rem)",
             },
-            color: "rgba(247, 236, 205, 0.9)",
-            lineHeight: { xs: 1.15, md: 1.1 },
-            mt: { xs: 3, md: 1 },
-            mb: { xs: 1.5, md: 2.5 },
+            letterSpacing: "-0.02em",
+            color: "#f4f0e8",
+            mb: 3,
           }}
         >
-          Selected work
+          Selected{" "}
+          <Box component="span" sx={{ color: "#e8c98f" }}>
+            work
+          </Box>
         </Typography>
 
+        {/* ===== SUBLINE ===== */}
         <Typography
           sx={{
-            maxWidth: { xs: "100%", md: 570 },
-            fontSize: { xs: "0.9rem", sm: "0.95rem", md: "1rem" },
+            maxWidth: 540,
             mx: "auto",
-            color: "rgba(248, 225, 164, 0.9)",
-            lineHeight: { xs: 1.6, md: 1.7 },
-            mt: { xs: 1, md: 5 },
-            mb: { xs: 4.2, md: 5 },
-            textShadow: "0 0 8px rgba(220,215,205,0.25)",
+            mb: { xs: 3, md: 6 },
+            mt: { xs: 5, md: 1 },
+            fontSize: { xs: "0.9rem", md: "1.1rem" },
+            lineHeight: 1.75,
+            color: "rgba(255,255,255,0.7)",
           }}
         >
-          A selection of projects where design, clarity and purpose come
-          together.
+          Real projects built with clarity, strategy and measurable impact.
         </Typography>
+
         <Button
           onClick={onEnter}
           disabled={enter}
           sx={{
             position: "relative",
             isolation: "isolate",
+            overflow: "visible",
 
-            px: { xs: 3.2, sm: 4.2, md: 5 },
-            py: { xs: 1.1, sm: 1.25, md: 1.4 },
+            px: { xs: "24px", sm: "35px" },
+            py: { xs: "10px", sm: "15px" },
 
-            fontSize: { xs: "0.62rem", sm: "0.66rem", md: "0.7rem" },
-            letterSpacing: { xs: "0.18em", md: "0.25em" },
+            fontFamily: '"Source Code Pro", monospace',
+            fontSize: { xs: "0.62rem", sm: "0.7rem" },
+            letterSpacing: { xs: "0.16em", sm: "0.25em" },
             textTransform: "uppercase",
 
             color: "#e6d5bc",
-            border: "1px solid rgba(230,213,188,0.45)",
+            border: "1px solid rgba(230, 213, 188, 0.45)",
             borderRadius: "999px",
 
-            background: "rgba(18,19,20,0.55)",
+            background: "rgba(18, 19, 20, 0.55)",
             backdropFilter: "blur(10px)",
 
             boxShadow: `
-      0 0 16px rgba(230,213,188,0.25),
-      0 0 48px rgba(230,213,188,0.15)
+      0 0 16px rgba(230, 213, 188, 0.25),
+      0 0 48px rgba(230, 213, 188, 0.15)
     `,
-
-            cursor: enter ? "default" : "pointer",
-            overflow: "visible",
 
             transition:
               "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
@@ -97,11 +99,11 @@ export default function WorkOverlay({ onEnter, enter }) {
             "&::before": {
               content: '""',
               position: "absolute",
-              inset: { xs: -10, md: -14 },
+              inset: { xs: -10, sm: -14 },
               borderRadius: "999px",
               background:
-                "radial-gradient(circle, rgba(230,213,188,0.35), transparent 70%)",
-              filter: { xs: "blur(18px)", md: "blur(26px)" },
+                "radial-gradient(circle, rgba(230, 213, 188, 0.35), transparent 70%)",
+              filter: { xs: "blur(22px)", sm: "blur(26px)" },
               opacity: 0.85,
               zIndex: -1,
               pointerEvents: "none",
@@ -114,23 +116,22 @@ export default function WorkOverlay({ onEnter, enter }) {
               inset: 0,
               borderRadius: "999px",
               background:
-                "radial-gradient(60% 60% at 50% 0%, rgba(230,213,188,0.22), transparent 70%)",
+                "radial-gradient(60% 60% at 50% 0%, rgba(230, 213, 188, 0.22), transparent 70%)",
               opacity: 0.6,
               pointerEvents: "none",
             },
 
             "&:hover": {
-              transform: enter ? "none" : "translateY(-2px)",
-              background: "rgba(230,213,188,0.18)",
-              border: "1px solid rgba(230,213,188,0.45)",
-              color: "#e6d5bc",
+              transform: "translateY(-2px)",
+              background: "rgba(230, 213, 188, 0.18)",
+              border: "1px solid rgba(230, 213, 188, 0.45)",
               boxShadow: `
-        0 0 28px rgba(230,213,188,0.45),
-        0 0 80px rgba(230,213,188,0.25)
+        0 0 28px rgba(230, 213, 188, 0.45),
+        0 0 80px rgba(230, 213, 188, 0.25)
       `,
               "&::before": {
                 opacity: 1,
-                filter: { xs: "blur(22px)", md: "blur(30px)" },
+                filter: { xs: "blur(26px)", sm: "blur(30px)" },
               },
             },
 
@@ -138,28 +139,18 @@ export default function WorkOverlay({ onEnter, enter }) {
               transform: "translateY(0)",
             },
 
+            "&:focus": { outline: "none" },
+            "&:focus-visible": { outline: "none" },
+            "&.Mui-focusVisible": { outline: "none" },
+
             "&.Mui-disabled": {
               opacity: 0.4,
               boxShadow: "none",
-              "&::before": {
-                opacity: 0,
-              },
-            },
-
-            /* 🔥 BLUE FOCUS */
-            "&:focus": {
-              outline: "none",
-            },
-            "&:focus-visible": {
-              outline: "none",
-            },
-            "&.Mui-focusVisible": {
-              outline: "none",
-              boxShadow: "none",
+              "&::before": { opacity: 0 },
             },
           }}
         >
-          EXPLORE
+          Explore
         </Button>
       </Box>
     </Box>

@@ -81,52 +81,47 @@ export const Kicker = styled.div`
 `;
 
 export const MetaLine = styled.div`
-  font-size: 0.7rem;
-  letter-spacing: 0.28em;
+  font-size: 0.65rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  opacity: 0.55;
-  margin: 12px 0 22px;
+  opacity: 0.7;
+  margin: 12px 0 28px;
   text-align: center;
-  color: rgba(247, 236, 205, 0.9);
-  ;
+  color: #c9b07a;
 
-  /* 📱 MOBILE */
   @media (max-width: 768px) {
-    font-size: 0.76rem;
-    line-height: 1.25;
-    max-width: 360px;
+    font-size: 0.6rem;
   }
 `;
-
 export const HeroTitle = styled.h2`
-  position: relative;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
 
-  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
   text-align: center;
-  max-width: 520px;
-  margin: 0 auto 24px;
+  max-width: 560px;
+  margin: 0 auto 28px;
 
-  font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: 0.2px;
-  color:rgba(247, 236, 205, 0.9);
-  text-shadow: 0 0 24px rgba(201, 184, 138, 0.25);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 
-  word-break: normal;
-  overflow-wrap: break-word;
+  color: rgba(247, 236, 205, 0.9);
+  text-shadow: 0 0 34px rgba(201, 184, 138, 0.18);
 
   @supports (text-wrap: balance) {
     text-wrap: balance;
   }
 
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.22),
-    0 0 26px rgba(255, 255, 255, 0.12), 0 10px 32px rgba(0, 0, 0, 0.55);
+  /* 🔸 Highlight word */
+  .highlight {
+    color: #e8c98f;
+    text-shadow: 0 0 12px rgba(201, 184, 138, 0.4),
+      0 0 28px rgba(201, 184, 138, 0.25);
+  }
 
-  /* 📱 MOBILE */
   @media (max-width: 768px) {
-    font-size: 1.6rem;
-    line-height: 1.25;
-    max-width: 360px;
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    line-height: 1.2;
     margin-bottom: -38px;
   }
 `;

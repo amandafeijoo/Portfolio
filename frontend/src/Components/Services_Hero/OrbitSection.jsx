@@ -51,8 +51,8 @@ export default function OrbitSection() {
         minHeight: { xs: "125vh", md: "160vh" },
         overflow: "hidden",
         background: "#000",
-        mt: { xs: 2, md: -2 },
-        mb: { xs: 4, md: 12 },
+        mt: { xs: 7, md: -2 },
+        mb: { xs: -12, md: 12 },
 
         touchAction: "pan-y",
         cursor: isDragging.current ? "grabbing" : "grab",

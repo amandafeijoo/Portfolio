@@ -36,7 +36,6 @@ export const HeroInner = styled.div`
 `;
 
 export const Kicker = styled.div`
-  font-family: "Source Code Pro", monospace;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -45,13 +44,29 @@ export const Kicker = styled.div`
 `;
 
 export const Headline = styled.h2`
-  color: #f4f2ed;
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-family: "Playfair Display", serif;
   font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 24px;
 
-  text-shadow: 0 0 32px rgba(201, 184, 138, 0.18);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+
+  color: rgba(247, 236, 205, 0.92);
+  text-align: center;
+  margin-bottom: 28px;
+
+  text-shadow: 0 0 12px rgba(201, 184, 138, 0.25),
+    0 0 32px rgba(201, 184, 138, 0.18);
+
+  @supports (text-wrap: balance) {
+    text-wrap: balance;
+  }
+
+  .highlight {
+    color: #e8c98f;
+    text-shadow: 0 0 12px rgba(201, 184, 138, 0.45),
+      0 0 28px rgba(201, 184, 138, 0.28);
+  }
 `;
 
 export const Divider = styled.div`

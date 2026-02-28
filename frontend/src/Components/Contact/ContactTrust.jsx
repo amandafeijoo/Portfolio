@@ -17,29 +17,30 @@ export default function ContactTrust() {
         <TrustCard>
           <TrustKicker>Clarity</TrustKicker>
           <TrustText>
-            A clean plan, priorities, and structure — no chaos, no vague steps.
+            We start with a clear direction. You’ll always know what we’re
+            building and why.
           </TrustText>
         </TrustCard>
 
         <TrustCard>
-          <TrustKicker>Craft</TrustKicker>
+          <TrustKicker>Thoughtful work</TrustKicker>
           <TrustText>
-            Design + code aligned. Premium UI, micro-interactions and strong UX.
+            I care about how things look and how they work. Design and
+            development go hand in hand.
           </TrustText>
         </TrustCard>
 
         <TrustCard>
           <TrustKicker>Performance</TrustKicker>
           <TrustText>
-            Fast loading, optimized media, and careful choices (especially on
-            mobile).
+            Your website should feel fast and smooth — especially on mobile.
           </TrustText>
         </TrustCard>
 
         <TrustCard>
-          <TrustKicker>Delivery</TrustKicker>
+          <TrustKicker>Communication</TrustKicker>
           <TrustText>
-            Real deadlines, real progress. You’ll always know what’s next.
+            I keep things transparent. You’ll always know the next step.
           </TrustText>
         </TrustCard>
       </TrustGrid>

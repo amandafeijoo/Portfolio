@@ -167,7 +167,14 @@ export const InviteCTA = styled.button`
     transform: translateY(0);
   }
 
-  /* 🚫 DISABLED (si usas disabled prop) */
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
   &:disabled {
     opacity: 0.4;
     box-shadow: none;
@@ -177,7 +184,6 @@ export const InviteCTA = styled.button`
       opacity: 0;
     }
   }
-
   /* 📱 MOBILE */
   @media (max-width: 768px) {
     padding: 10px 24px;

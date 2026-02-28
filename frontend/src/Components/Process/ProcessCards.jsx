@@ -14,20 +14,20 @@ const steps = [
   {
     icon: faLightbulb,
     title: "Understanding your idea",
-    text: `We start by talking about your project and your ideas.
+    text: `We start with a conversation.
 
-You can share references, content, or simply explain what you want to improve.
+    You share your goals, ideas and references.
 
-I’ll listen, ask questions, and help you shape a clear structure for your website.`,
+    I help shape a clear structure for your website.`,
   },
   {
     icon: faPalette,
     title: "Structure & visual direction",
-    text: `Based on your input, I define the structure of your website and a visual direction.
-
-This includes layout, colors, typography, and the overall style.
-
-I share progress with you and adjust things together as the design evolves.`,
+    text: `I define the layout and visual system.
+    
+    Typography, colors and hierarchy are carefully crafted.
+    
+    We refine everything together.`,
   },
   {
     icon: faCode,
@@ -40,12 +40,13 @@ I make sure everything works properly across different devices.`,
   },
   {
     icon: faRocket,
-    title: "Launch & small improvements",
-    text: `Once everything feels right, your website goes live.
 
-After launch, I can help with small changes and fixes.
-
-I’m here to support you as your business grows.`,
+    title: "Launch & refinement",
+    text: `Your website goes live.
+    
+    After launch, I support you with updates and improvements.
+    
+    Your platform evolves as your business grows.`,
   },
 ];
 
@@ -64,8 +65,8 @@ export default function ProcessCards() {
       sx={{
         width: "100%",
         py: { xs: 6, md: 10 },
-        mb: { xs: 8, md: 25 },
-        mt: { xs: 18, md: 7 },
+        mb: { xs: 14, md: 25 },
+        mt: { xs: -33, md: -10 },
         display: "flex",
         justifyContent: "center",
         overflow: "hidden",

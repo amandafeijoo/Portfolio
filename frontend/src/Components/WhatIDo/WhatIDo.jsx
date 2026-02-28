@@ -32,9 +32,10 @@ import MobileStack from "./MobileStack";
 ================================ */
 const introCopy = {
   meta: "Design · Code · Motion",
-  title: "Designing digital experiences\nthat feel intentional",
-  text: `I combine design, code, and animation to build websites
-that communicate clearly, move naturally, and scale with your product.`,
+  titleLine1: "Designing digital experiences",
+  highlight: "intentional",
+  text: `I combine design, code and motion to build websites
+that communicate clearly, move naturally and grow your business.`,
 };
 
 const items = [
@@ -221,12 +222,9 @@ export default function WhatIDo() {
           <TitleDivider />
 
           <HeroTitle>
-            {introCopy.title.split("\n").map((line, i) => (
-              <span key={i}>
-                {line}
-                <br />
-              </span>
-            ))}
+            {introCopy.titleLine1}
+            <br />
+            that feel <span className="highlight">{introCopy.highlight}</span>
           </HeroTitle>
 
           <HeroText>
