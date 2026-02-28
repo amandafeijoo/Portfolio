@@ -8,7 +8,7 @@ export default function Scene() {
   const isMobile = viewport.width < 6;
 
   const scale = useMemo(() => {
-    if (isMobile) return 0.45; 
+    if (isMobile) return 0.40; 
     return 0.85; 
   }, [isMobile]);
 
