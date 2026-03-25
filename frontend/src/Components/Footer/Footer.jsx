@@ -159,7 +159,7 @@ export default function Footer() {
             }}
           >
             <Typography
-              onClick={() => navigate("/privacy-policy")}
+              onClick={() => navigate("/privacy")}
               sx={{
                 fontSize: "0.65rem",
                 color: "rgba(201,169,106,0.55)",
@@ -177,7 +177,7 @@ export default function Footer() {
             <Typography sx={{ color: "rgba(180,180,175,0.35)" }}>·</Typography>
 
             <Typography
-              onClick={() => navigate("/legal-notice")}
+              onClick={() => navigate("/legal")}
               sx={{
                 fontSize: "0.65rem",
                 color: "rgba(201,169,106,0.55)",

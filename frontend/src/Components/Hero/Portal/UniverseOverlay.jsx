@@ -63,7 +63,7 @@ export default function UniverseOverlay({ enterStage }) {
 
         <Button
   disableRipple
-  onClick={() => navigate("/contactpage")}
+  onClick={() => navigate("/contact")}
   sx={{
     position: "relative",
     isolation: "isolate",

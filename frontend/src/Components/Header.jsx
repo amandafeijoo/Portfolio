@@ -16,14 +16,14 @@ export default function Header() {
 
   const mainLinks = [
     { label: "Home", to: "/" },
-    { label: "Services", to: "/orbit-section" },
+    { label: "Services", to: "/services" },
     { label: "Work", to: "/projects" },
   ];
 
   const menuLinks = [
-    { label: "Process", to: "/process-section" },
-    { label: "About", to: "/aboutme" },
-    { label: "Contact", to: "/contactpage" },
+    { label: "Process", to: "/process" },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
   ];
 
   return (
@@ -129,7 +129,7 @@ export default function Header() {
           >
             <Button
               variant="outlined"
-              href="/contactpage"
+              href="/contact"
               sx={{
                 position: "relative",
                 isolation: "isolate",
