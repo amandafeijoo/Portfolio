@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 /* =========================
    MEDIA QUERIES
@@ -64,28 +64,47 @@ export const Label = styled.label`
 `;
 
 /* =========================
+   ERROR STYLE
+========================= */
+const errorState = css`
+  border-bottom-color: rgba(255, 92, 92, 0.95);
+  box-shadow: 0 10px 18px -16px rgba(255, 92, 92, 0.65);
+
+  &:focus {
+    border-bottom-color: rgba(255, 92, 92, 1);
+    box-shadow: 0 12px 20px -16px rgba(255, 92, 92, 0.9);
+  }
+`;
+
+/* =========================
    INPUT BASE
 ========================= */
-const baseInput = `
+const baseInput = css`
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 10px 0;
-  color:rgb(247, 238, 215);
+  color: rgb(247, 238, 215);
   font-size: 0.95rem;
   font-family: "Inter", sans-serif;
 
-  transition: border-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: rgba(201,184,138,0.9);
+    border-bottom-color: rgba(201, 184, 138, 0.9);
+    box-shadow: 0 10px 18px -16px rgba(201, 184, 138, 0.55);
   }
 
   &::placeholder {
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.35);
   }
+
+  ${({ $hasError }) => $hasError && errorState}
 
   ${mobile} {
     font-size: 0.9rem;
@@ -117,6 +136,19 @@ export const Select = styled.select`
 export const Textarea = styled.textarea`
   ${baseInput}
   resize: vertical;
+  min-height: 120px;
+`;
+
+export const ErrorText = styled.span`
+  margin-top: 4px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: rgba(255, 110, 110, 0.95);
+  letter-spacing: 0.02em;
+
+  ${mobile} {
+    font-size: 0.68rem;
+  }
 `;
 
 /* =========================
@@ -151,7 +183,6 @@ export const SubmitButton = styled.button`
 
   transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 
-  /* 🌕 HALO EXTERNO */
   &::before {
     content: "";
     position: absolute;
@@ -169,7 +200,6 @@ export const SubmitButton = styled.button`
     transition: opacity 0.35s ease, filter 0.35s ease;
   }
 
-  /* ✨ HALO INTERNO */
   &::after {
     content: "";
     position: absolute;
@@ -218,7 +248,6 @@ export const SubmitButton = styled.button`
 
   -webkit-tap-highlight-color: transparent;
 
-  /* 📱 SM */
   @media (min-width: 600px) {
     padding: 15px 35px;
     font-size: 0.7rem;
@@ -234,7 +263,6 @@ export const SubmitButton = styled.button`
     }
   }
 
-  /* 📱 MOBILE CENTER */
   @media (max-width: 520px) {
     align-self: center;
   }

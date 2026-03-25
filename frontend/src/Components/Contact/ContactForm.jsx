@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import Swal from "sweetalert2";
 import axios from "axios";
 import {
@@ -12,6 +11,7 @@ import {
   SubmitButton,
   PrivacyNote,
   Hint,
+  ErrorText,
 } from "./ContactForm.styles";
 
 /* =========================
@@ -42,37 +42,81 @@ export default function ContactForm() {
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const validateField = (name, value) => {
+    switch (name) {
+      case "name":
+        if (!value.trim()) return "Name is required.";
+        return "";
+
+      case "email":
+        if (!value.trim()) return "Email is required.";
+        if (!validateEmail(value)) return "Please enter a valid email address.";
+        return "";
+
+      case "projectType":
+        if (!value.trim()) return "Please select a project type.";
+        return "";
+
+      case "message":
+        if (!value.trim()) return "Project details are required.";
+        return "";
+
+      default:
+        return "";
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: validateField("name", formData.name),
+      email: validateField("email", formData.email),
+      projectType: validateField("projectType", formData.projectType),
+      message: validateField("message", formData.message),
+    };
+
+    setErrors(newErrors);
+
+    return !Object.values(newErrors).some((error) => error);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // valida en tiempo real mientras escribe / selecciona
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, value),
+    }));
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, value),
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    /* ---------- VALIDATION ---------- */
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.projectType ||
-      !formData.message
-    ) {
+    const isValid = validateForm();
+
+    if (!isValid) {
       Swal.fire(
-        "Missing information",
-        "Please fill in all required fields.",
+        "Missing or invalid fields",
+        "Please check the highlighted fields in the form.",
         "warning"
       );
       return;
     }
 
-    if (!validateEmail(formData.email)) {
-      Swal.fire("Invalid email", "Please use a valid email address.", "error");
-      return;
-    }
-
-    /* ---------- PAYLOAD CORRECTO PARA DJANGO ---------- */
     const payload = {
       name: formData.name,
       email: formData.email,
@@ -80,7 +124,6 @@ export default function ContactForm() {
       budget: formData.budget,
       message: formData.message,
     };
-    /* ---------- ENVÍO ---------- */
 
     setLoading(true);
 
@@ -97,7 +140,6 @@ export default function ContactForm() {
         "success"
       );
 
-      /* ---------- RESET ---------- */
       setFormData({
         name: "",
         email: "",
@@ -105,6 +147,8 @@ export default function ContactForm() {
         budget: "",
         message: "",
       });
+
+      setErrors({});
     } catch (error) {
       console.error("Contact form error:", error);
       Swal.fire(
@@ -118,7 +162,7 @@ export default function ContactForm() {
   };
 
   return (
-    <FormWrapper onSubmit={handleSubmit}>
+    <FormWrapper onSubmit={handleSubmit} noValidate>
       {/* NAME */}
       <Field>
         <Label>Name *</Label>
@@ -126,8 +170,12 @@ export default function ContactForm() {
           name="name"
           value={formData.name}
           onChange={handleChange}
+          onBlur={handleBlur}
           placeholder="Your name"
+          $hasError={!!errors.name}
+          aria-invalid={!!errors.name}
         />
+        {errors.name && <ErrorText>{errors.name}</ErrorText>}
       </Field>
 
       {/* EMAIL */}
@@ -135,10 +183,15 @@ export default function ContactForm() {
         <Label>Email *</Label>
         <Input
           name="email"
+          type="email"
           value={formData.email}
           onChange={handleChange}
+          onBlur={handleBlur}
           placeholder="you@email.com"
+          $hasError={!!errors.email}
+          aria-invalid={!!errors.email}
         />
+        {errors.email && <ErrorText>{errors.email}</ErrorText>}
       </Field>
 
       {/* PROJECT TYPE */}
@@ -148,6 +201,9 @@ export default function ContactForm() {
           name="projectType"
           value={formData.projectType}
           onChange={handleChange}
+          onBlur={handleBlur}
+          $hasError={!!errors.projectType}
+          aria-invalid={!!errors.projectType}
         >
           <option value="">Select an option</option>
           <option value="Essential Website">
@@ -157,12 +213,18 @@ export default function ContactForm() {
           <option value="Custom Web Application">Custom Web Application</option>
           <option value="Not sure yet">Not sure yet / Let’s discuss</option>
         </Select>
+        {errors.projectType && <ErrorText>{errors.projectType}</ErrorText>}
       </Field>
 
       {/* BUDGET */}
       <Field>
         <Label>Budget range (optional)</Label>
-        <Select name="budget" value={formData.budget} onChange={handleChange}>
+        <Select
+          name="budget"
+          value={formData.budget}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        >
           <option value="">Select a range</option>
           <option value="< 1.000 €">Under €1.000</option>
           <option value="1.000 – 2.000 €">€1.000 – €2.000</option>
@@ -180,8 +242,12 @@ export default function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
+          onBlur={handleBlur}
           placeholder="Tell me about your idea, goals, timeline, or anything important."
+          $hasError={!!errors.message}
+          aria-invalid={!!errors.message}
         />
+        {errors.message && <ErrorText>{errors.message}</ErrorText>}
       </Field>
 
       <SubmitButton disabled={loading}>
