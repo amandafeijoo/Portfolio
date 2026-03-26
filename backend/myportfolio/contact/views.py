@@ -25,10 +25,12 @@ class ContactCreateView(APIView):
         serializer.save()
         data = serializer.validated_data
 
+        # =====================
         # 1️⃣ EMAIL PARA TI
+        # =====================
         try:
             resend.Emails.send({
-                "from": "Amanda Flores <amandaflores@webcode-art.com>",
+                "from": "Webcode-Art <amandaflores@webcode-art.com>",
                 "to": ["amandaflores@webcode-art.com"],
                 "reply_to": data["email"],
                 "subject": f"New project inquiry from {data['name']}",
@@ -56,12 +58,14 @@ Message:
         except Exception as e:
             logger.error(f"Admin email failed: {e}")
 
+        # =====================
         # 2️⃣ CONFIRMACIÓN CLIENTE
+        # =====================
         try:
             resend.Emails.send({
-                "from": "Amanda Flores <amandaflores@webcode-art.com>",
+                "from": "Webcode-Art <amandaflores@webcode-art.com>",
                 "to": [data["email"]],
-                "subject": "Thank you for contacting Webcode-Art",
+                "subject": "Your message has been received — Webcode-Art",
                 "text": f"""
 Hello {data['name']},
 
@@ -99,9 +103,11 @@ www.webcode-art.com
 
                     <p style="margin-top:24px;">
                         Best regards,<br><br>
+
                         <strong style="letter-spacing:0.04em;">Amanda Flores</strong><br>
                         <span style="letter-spacing:0.12em; font-size:12px;">WEBCODE-ART</span><br>
                         <span style="color:#888;">Design · Development · Experience</span><br>
+
                         <a href="https://www.webcode-art.com" style="color:#000; text-decoration:none;">
                             www.webcode-art.com
                         </a>
@@ -118,9 +124,11 @@ www.webcode-art.com
 
                     <p style="margin-top:24px;">
                         Un saludo,<br><br>
+
                         <strong style="letter-spacing:0.04em;">Amanda Flores</strong><br>
                         <span style="letter-spacing:0.12em; font-size:12px;">WEBCODE-ART</span><br>
                         <span style="color:#888;">Design · Development · Experience</span><br>
+
                         <a href="https://www.webcode-art.com" style="color:#000; text-decoration:none;">
                             www.webcode-art.com
                         </a>
