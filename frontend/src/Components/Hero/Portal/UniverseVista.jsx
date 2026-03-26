@@ -82,190 +82,192 @@ export default function UniverseVista({ isMobile = false }) {
     return arr;
   }, [isMobile]);
 
-  /* =========================
-     🔥 NEBULA TEXTURE
-  ========================= */
+ /* =========================
+   🔥 NEBULA TEXTURE
+========================= */
 
-  const nebulaTexture = useMemo(() => {
-    const size = 512;
-    const canvas = document.createElement("canvas");
-    canvas.width = canvas.height = size;
-    const ctx = canvas.getContext("2d");
+const nebulaTexture = useMemo(() => {
+  const size = 512;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext("2d");
 
-    const gradient = ctx.createRadialGradient(
-      size / 2,
-      size / 2,
-      0,
-      size / 2,
-      size / 2,
-      size / 2
-    );
-
-    gradient.addColorStop(0, "rgba(169, 141, 95, 0.9)");
-    gradient.addColorStop(0.4, "rgba(200,164,106,0.3)");
-    gradient.addColorStop(1, "rgba(0,0,0,0)");
-
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, size, size);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.needsUpdate = true;
-    return texture;
-  }, []);
-
-  /* =========================
-     🎬 ANIMATION
-  ========================= */
-
-  useFrame((_, delta) => {
-    if (farRef.current) farRef.current.rotation.y += delta * 0.0015;
-    if (midRef.current) midRef.current.rotation.y += delta * 0.003;
-    if (nearRef.current) nearRef.current.rotation.y += delta * 0.005;
-
-    if (bandRef.current) bandRef.current.rotation.z += delta * 0.001;
-    if (darkDustRef.current) darkDustRef.current.rotation.z += delta * 0.001;
-
-    // Wire sphere rotation
-    if (wireSphereRef.current) {
-      wireSphereRef.current.rotation.y += 0.003;
-      wireSphereRef.current.rotation.x += 0.0015;
-    }
-
-    // Orbit ring rotation
-    if (orbitRingRef.current) {
-      orbitRingRef.current.rotation.z += 0.002;
-    }
-  });
-
-  return (
-    <group>
-      {/* 🔥 NEBULA BACKDROP */}
-      <mesh position={[0, 0, -180]}>
-        <planeGeometry args={[400, 250]} />
-        <meshBasicMaterial
-          map={nebulaTexture}
-          transparent
-          opacity={0.09}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
-      </mesh>
-
-      {/* 🌐 WIREFRAME SPHERE */}
-      <mesh ref={wireSphereRef} position={[0, 0, -190]}>
-        <sphereGeometry args={[65, 32, 32]} />
-        <meshBasicMaterial
-          color="#c8a46a"
-          wireframe
-          transparent
-          opacity={0.18}
-        />
-      </mesh>
-
-      {/* 🪐 ORBIT RING */}
-      <mesh
-        ref={orbitRingRef}
-        rotation={[Math.PI / 2.6, 0, 0.3]}
-        position={[0, 0, -190]}
-      >
-        <torusGeometry args={[80, 0.8, 16, 200]} />
-        <meshBasicMaterial color="#c8a46a" transparent opacity={0.15} />
-      </mesh>
-
-      {/* ⭐ FAR STARS */}
-      <points ref={farRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={farStars}
-            count={farStars.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#b8c0cc"
-          size={0.003}
-          transparent
-          opacity={0.5}
-          depthWrite={false}
-        />
-      </points>
-
-      {/* ⭐ MID STARS */}
-      <points ref={midRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={midStars}
-            count={midStars.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#e6e9ef"
-          size={0.006}
-          transparent
-          opacity={0.85}
-          depthWrite={false}
-        />
-      </points>
-
-      {/* ⭐ NEAR STARS */}
-      <points ref={nearRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={nearStars}
-            count={nearStars.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#f4d8a8"
-          size={0.015}
-          transparent
-          opacity={1}
-          depthWrite={false}
-        />
-      </points>
-
-      {/* 🌌 MILKY WAY BAND */}
-      <points ref={bandRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={bandStars}
-            count={bandStars.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#dfe6f5"
-          size={0.005}
-          transparent
-          opacity={0.6}
-          depthWrite={false}
-        />
-      </points>
-
-      {/* 🌑 DARK DUST */}
-      <points ref={darkDustRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={darkDust}
-            count={darkDust.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#000000"
-          size={0.08}
-          transparent
-          opacity={0.06}
-          depthWrite={false}
-        />
-      </points>
-    </group>
+  const gradient = ctx.createRadialGradient(
+    size / 2,
+    size / 2,
+    0,
+    size / 2,
+    size / 2,
+    size / 2
   );
+
+  gradient.addColorStop(0, "rgba(214,198,165,0.28)");
+  gradient.addColorStop(0.4, "rgba(214,198,165,0.10)");
+  gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+}, []);
+
+/* =========================
+   🎬 ANIMATION
+========================= */
+
+useFrame((_, delta) => {
+  if (farRef.current) farRef.current.rotation.y += delta * 0.0015;
+  if (midRef.current) midRef.current.rotation.y += delta * 0.003;
+  if (nearRef.current) nearRef.current.rotation.y += delta * 0.005;
+
+  if (bandRef.current) bandRef.current.rotation.z += delta * 0.001;
+  if (darkDustRef.current) darkDustRef.current.rotation.z += delta * 0.001;
+
+  if (wireSphereRef.current) {
+    wireSphereRef.current.rotation.y += 0.003;
+    wireSphereRef.current.rotation.x += 0.0015;
+  }
+
+  if (orbitRingRef.current) {
+    orbitRingRef.current.rotation.z += 0.002;
+  }
+});
+
+return (
+  <group>
+    {/* 🔥 NEBULA BACKDROP */}
+    <mesh position={[0, 0, -180]}>
+      <planeGeometry args={[400, 250]} />
+      <meshBasicMaterial
+        map={nebulaTexture}
+        transparent
+        opacity={0.06}
+        blending={THREE.AdditiveBlending}
+        depthWrite={false}
+      />
+    </mesh>
+
+    {/* 🌐 WIREFRAME SPHERE */}
+    <mesh ref={wireSphereRef} position={[0, 0, -190]}>
+      <sphereGeometry args={[65, 32, 32]} />
+      <meshBasicMaterial
+        color="#aab4c8"
+        wireframe
+        transparent
+        opacity={0.10}
+      />
+    </mesh>
+
+    {/* 🪐 ORBIT RING */}
+    <mesh
+      ref={orbitRingRef}
+      rotation={[Math.PI / 2.6, 0, 0.3]}
+      position={[0, 0, -190]}
+    >
+      <torusGeometry args={[80, 0.8, 16, 200]} />
+      <meshBasicMaterial
+        color="#d6c6a5"
+        transparent
+        opacity={0.15}
+      />
+    </mesh>
+
+    {/* ⭐ FAR STARS */}
+    <points ref={farRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={farStars}
+          count={farStars.length / 3}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#aeb8c6"
+        size={0.003}
+        transparent
+        opacity={0.45}
+        depthWrite={false}
+      />
+    </points>
+
+    {/* ⭐ MID STARS */}
+    <points ref={midRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={midStars}
+          count={midStars.length / 3}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#e7ebf2"
+        size={0.006}
+        transparent
+        opacity={0.8}
+        depthWrite={false}
+      />
+    </points>
+
+    {/* ⭐ NEAR STARS */}
+    <points ref={nearRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={nearStars}
+          count={nearStars.length / 3}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#eadfca"
+        size={0.015}
+        transparent
+        opacity={0.9}
+        depthWrite={false}
+      />
+    </points>
+
+    {/* 🌌 MILKY WAY BAND */}
+    <points ref={bandRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={bandStars}
+          count={bandStars.length / 3}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#d9e1ee"
+        size={0.005}
+        transparent
+        opacity={0.5}
+        depthWrite={false}
+      />
+    </points>
+
+    {/* 🌑 DARK DUST */}
+    <points ref={darkDustRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          array={darkDust}
+          count={darkDust.length / 3}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#000000"
+        size={0.08}
+        transparent
+        opacity={0.05}
+        depthWrite={false}
+      />
+    </points>
+  </group>
+);
 }

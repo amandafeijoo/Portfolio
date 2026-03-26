@@ -36,8 +36,10 @@ export default function UniverseOverlay({ enterStage }) {
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             fontSize: "0.68rem",
-            color: "rgba(244, 228, 186, 0.85)",
+            color: "rgba(241, 214, 145, 0.85)",
             mb: 1.5,
+            mt: { xs: 0, sm: 15 },
+
           }}
         >
           THE PORTAL
@@ -52,10 +54,11 @@ export default function UniverseOverlay({ enterStage }) {
               xs: "clamp(2rem, 8vw, 2.8rem)",
               sm: "clamp(2.8rem, 6vw, 3.9rem)",
             },
-            color: "rgba(247,236,205,0.92)",
+            color: "rgba(248, 230, 181, 0.92)",
             lineHeight: 1.05,
             textShadow: "0 0 28px rgba(201,184,138,0.22)",
-            mb: 2,
+            mb: 1,
+            mt: { xs: 0, sm: 1 },
           }}
         >
           Let’s build something together.
@@ -69,7 +72,7 @@ export default function UniverseOverlay({ enterStage }) {
     isolation: "isolate",
     overflow: "visible",
 
-    mt: 2,
+    mt: 5,
     px: { xs: "24px", sm: "35px" },
     py: { xs: "10px", sm: "15px" },
 
