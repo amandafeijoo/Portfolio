@@ -30,7 +30,7 @@ class ContactCreateView(APIView):
         # =====================
         try:
             resend.Emails.send({
-                "from": "Webcode-Art <amandaflores@webcode-art.com>",
+                "from": "Webcode-Art <contact@webcode-art.com>",
                 "to": ["amandaflores@webcode-art.com"],
                 "reply_to": data["email"],
                 "subject": f"New project inquiry from {data['name']}",
