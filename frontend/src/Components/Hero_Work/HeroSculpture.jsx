@@ -45,7 +45,8 @@ export default function HeroSculpture({ enter, onProgress }) {
     if (!group.current) return;
 
     // 🔄 PROGRESO AL ENTRAR Y SALIR DEL PORTAL
-    const enterSpeed = 0.0035;
+    const enterSpeed = 0.004
+    5;
     const exitSpeed = 0.02;
 
     const speed = enter
@@ -64,7 +65,7 @@ export default function HeroSculpture({ enter, onProgress }) {
     group.current.scale.setScalar(config.baseScale + progress.current * 2.2);
 
     group.current.rotation.y += progress.current * 0.02;
-    group.current.position.z = -progress.current * 4;
+    group.current.position.z = -progress.current * 8;
 
     // 🎥 CÁMARA
     camera.position.z = THREE.MathUtils.lerp(
@@ -82,23 +83,32 @@ export default function HeroSculpture({ enter, onProgress }) {
       {/* 🔮 OCTÁGONOS */}
       <OctagonWire
         radius={config.radii[0]}
-        opacity={isMobile ? 0.95 : 0.28}
+        opacity={isMobile ? 1 : 0.62}
         speed={0.05}
         isMobile={isMobile}
+        color="#8fa8c9"
+        innerColor="#7f96b4"
+        haloColor="#5c6f8f"
       />
 
       <OctagonWire
         radius={config.radii[1]}
-        opacity={isMobile ? 0.5 : 0.35}
+        opacity={isMobile ? 0.9 : 0.5}
         speed={0.1}
         isMobile={isMobile}
+        color="#e7a63c"
+        innerColor="#d99a38"
+        haloColor="#8f6a2a"
       />
 
       <OctagonWire
         radius={config.radii[2]}
-        opacity={isMobile ? 0.85 : 0.6}
+        opacity={isMobile ? 1 : 0.62}
         speed={0.18}
         isMobile={isMobile}
+        color="#e9c86a"
+        innerColor="#f0d892"
+        haloColor="#c9b07a"
       />
     </group>
   );

@@ -9,7 +9,10 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 
 const AboutButtons = ({ onContactClick }) => (
   <ButtonContainer>
-    <DownloadButton href="/CV_webdeveloper.pdf" download>
+    <DownloadButton
+      href="/static/CV_webdeveloper.pdf"
+      download="CV_webdeveloper.pdf"
+    >
       <span className="icon">
         <DownloadIcon />
       </span>

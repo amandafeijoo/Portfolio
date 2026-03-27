@@ -62,7 +62,7 @@ export default function HomeContactInvite() {
         </Typography>
 
         {/* CTA */}
-        <InviteCTA onClick={() => navigate("/contactpage")}>
+        <InviteCTA onClick={() => navigate("/contact")}>
           Start your project →
         </InviteCTA>
       </Box>

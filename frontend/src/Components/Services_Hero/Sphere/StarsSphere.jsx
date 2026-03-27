@@ -4,7 +4,9 @@ import * as THREE from "three";
 
 export default function StarsSphere({ impulseRef }) {
   const groupRef = useRef();
+  const starsRef = useRef();
   const coreRef = useRef();
+  const glowRef = useRef();
   const ringRef = useRef();
   const impulse = useRef(0);
 
@@ -18,7 +20,7 @@ export default function StarsSphere({ impulseRef }) {
   const coreSpeedY = 0.05;
 
   /* ============================
-     ⭐ STAR GEOMETRY
+     ⭐ STAR POSITIONS
   ============================ */
   const starPositions = useMemo(() => {
     const positions = new Float32Array(STAR_COUNT * 3);
@@ -39,25 +41,89 @@ export default function StarsSphere({ impulseRef }) {
   }, [STAR_COUNT]);
 
   /* ============================
-     ✨ STAR MATERIAL
+     🎨 STAR COLORS
   ============================ */
-  const starMaterial = useMemo(
-    () =>
-      new THREE.PointsMaterial({
-        color: "#fff6dc",
-        size: isMobile ? 0.012 : 0.015,
-        transparent: true,
-        opacity: 1,
-        depthWrite: false,
-      }),
-    [isMobile]
-  );
+  const starColors = useMemo(() => {
+    const palette = [
+      new THREE.Color("#fff6dc"), // warm white
+      new THREE.Color("#f0d892"), // soft gold
+      new THREE.Color("#d8dfeb"), // cool light
+      new THREE.Color("#8fa8c9"), // blue-gray
+    ];
+
+    const colors = new Float32Array(STAR_COUNT * 3);
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      const c = palette[Math.floor(Math.random() * palette.length)];
+      colors[i * 3] = c.r;
+      colors[i * 3 + 1] = c.g;
+      colors[i * 3 + 2] = c.b;
+    }
+
+    return colors;
+  }, [STAR_COUNT]);
 
   /* ============================
-     🌀 ROTATION + IMPULSE
+     ✨ STAR SIZES
   ============================ */
-  useFrame((_, delta) => {
-    if (!groupRef.current) return;
+  const starSizes = useMemo(() => {
+    const sizes = new Float32Array(STAR_COUNT);
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      sizes[i] = isMobile
+        ? 0.008 + Math.random() * 0.008
+        : 0.01 + Math.random() * 0.01;
+    }
+
+    return sizes;
+  }, [STAR_COUNT, isMobile]);
+
+  /* ============================
+     ⏱ TWINKLE OFFSETS
+  ============================ */
+  const twinkleOffsets = useMemo(() => {
+    const offsets = new Float32Array(STAR_COUNT);
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      offsets[i] = Math.random() * Math.PI * 2;
+    }
+
+    return offsets;
+  }, [STAR_COUNT]);
+
+  /* ============================
+     🧱 STAR GEOMETRY
+  ============================ */
+  const starGeometry = useMemo(() => {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(starPositions, 3)
+    );
+    geometry.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
+    geometry.setAttribute("size", new THREE.BufferAttribute(starSizes, 1));
+    return geometry;
+  }, [starPositions, starColors, starSizes]);
+
+  /* ============================
+     ✨ STAR MATERIAL
+  ============================ */
+  const starMaterial = useMemo(() => {
+    return new THREE.PointsMaterial({
+      size: isMobile ? 0.014 : 0.016,
+      transparent: true,
+      opacity: 0.95,
+      depthWrite: false,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+    });
+  }, [isMobile]);
+
+  /* ============================
+     🌀 ANIMATION
+  ============================ */
+  useFrame(({ clock }, delta) => {
+    const t = clock.elapsedTime;
 
     if (impulseRef?.current) {
       impulse.current += impulseRef.current;
@@ -69,43 +135,93 @@ export default function StarsSphere({ impulseRef }) {
     const baseSpeed = 0.02 * delta;
     const speed = baseSpeed + impulse.current;
 
-    groupRef.current.rotation.y += speed;
+    if (groupRef.current) {
+      groupRef.current.rotation.y += speed;
+    }
 
     if (coreRef.current) {
       coreRef.current.rotation.x += coreSpeedX * delta;
       coreRef.current.rotation.y += coreSpeedY * delta;
+
+      const pulse = 1 + Math.sin(t * 1.8) * 0.03 + Math.min(impulse.current * 2.5, 0.08);
+      coreRef.current.scale.setScalar(pulse);
+    }
+
+    if (glowRef.current) {
+      const glowPulse =
+        1 + Math.sin(t * 1.6 + 0.8) * 0.05 + Math.min(impulse.current * 3, 0.12);
+      glowRef.current.scale.setScalar(glowPulse);
     }
 
     if (ringRef.current) {
       ringRef.current.rotation.z -= 0.3 * delta;
+      ringRef.current.rotation.x = Math.sin(t * 0.4) * 0.08;
+    }
+
+    if (starsRef.current) {
+      const pulseOpacity =
+        0.82 + Math.sin(t * 1.4) * 0.08 + Math.min(impulse.current * 1.2, 0.12);
+      starsRef.current.material.opacity = THREE.MathUtils.clamp(
+        pulseOpacity,
+        0.72,
+        1
+      );
+
+      const starScale =
+        1 + Math.sin(t * 1.2) * 0.01 + Math.min(impulse.current * 0.5, 0.04);
+      starsRef.current.scale.setScalar(starScale);
     }
   });
 
   return (
     <group rotation={isMobile ? [0.4, 0.3, 0] : [0, 0, 0]}>
-      {/* ⭐ STARS (NO SE MUEVEN) */}
-      <points>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={starPositions}
-            count={starPositions.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <primitive object={starMaterial} />
-      </points>
+      {/* ⭐ STARS */}
+      <points ref={starsRef} geometry={starGeometry} material={starMaterial} />
 
-      {/* 💫 CORE + RING GROUP (SI SE MUEVE) */}
+      {/* 💫 CORE + RING */}
       <group ref={groupRef}>
-        {/* 💎 CORE */}
+        {/* 🌕 SOFT GLOW */}
+        <mesh ref={glowRef}>
+          <sphereGeometry args={[isMobile ? 3.15 : 2.85, 32, 32]} />
+          <meshBasicMaterial
+            color="#e9c86a"
+            transparent
+            opacity={0.06}
+            depthWrite={false}
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+
+        {/* 💎 INNER FILL */}
+        <mesh>
+          <sphereGeometry args={[isMobile ? 2.68 : 2.38, 24, 24]} />
+          <meshBasicMaterial
+            color="#8fa8c9"
+            transparent
+            opacity={0.08}
+            depthWrite={false}
+          />
+        </mesh>
+
+        {/* 💎 CORE WIREFRAME */}
         <mesh ref={coreRef}>
           <sphereGeometry args={[isMobile ? 2.9 : 2.6, 24, 24]} />
           <meshBasicMaterial
-            color="#f8ebd2"
+            color="#f0d892"
             wireframe
             transparent
-            opacity={isMobile ? 0.18 : 0.34}
+            opacity={isMobile ? 0.22 : 0.3}
+          />
+        </mesh>
+
+        {/* 🪐 RING */}
+        <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[isMobile ? 3.08 : 2.78, 0.018, 16, 140]} />
+          <meshBasicMaterial
+            color="#e7a63c"
+            transparent
+            opacity={0.32}
+            depthWrite={false}
           />
         </mesh>
       </group>

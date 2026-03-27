@@ -43,8 +43,8 @@ function Particles() {
         />
       </Points>
       <mesh position={[0, 0.7, -2.2]}>
-        <sphereGeometry args={[1.6, 32, 32]} />
-        <meshBasicMaterial transparent opacity={0.07} color="#c9b88a" />
+        <sphereGeometry args={[1.3, 32, 32]} />
+        <meshBasicMaterial transparent opacity={0.13} color="#c9b88a" />
       </mesh>
     </group>
   );

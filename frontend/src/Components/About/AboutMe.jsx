@@ -37,7 +37,7 @@ const AboutMe = () => {
   }, []);
 
   const handleContactClick = () => {
-    navigate("/contactpage");
+    navigate("/contact");
   };
 
   return (

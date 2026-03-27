@@ -125,7 +125,7 @@ export const InviteCTA = styled.button`
     background: radial-gradient(
       circle,
       rgba(230, 213, 188, 0.35),
-      transparent 70%
+      transparent 90%
     );
     filter: blur(26px);
     opacity: 0.85;
