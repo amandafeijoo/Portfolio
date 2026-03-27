@@ -10,13 +10,20 @@ export default function HomeContactInvite() {
     <Box
       sx={{
         position: "relative",
-        minHeight: "70vh",
+
+        /* 🌌 ALTURA RESPONSIVE */
+        minHeight: { xs: "70vh", md: "80vh", lg: "90vh" },
+
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
+
         px: 3,
-        mt: { xs: 7, md: 18 },
+
+        /* 🚀 ESPACIADO SUPERIOR */
+        mt: { xs: 7, md: 18, lg: 24 },
+
         background: "#000",
         overflow: "hidden",
       }}
@@ -48,6 +55,8 @@ export default function HomeContactInvite() {
               xs: "clamp(1.8rem, 7vw, 2.4rem)",
               sm: "clamp(2.6rem, 6vw, 3.2rem)",
               md: "clamp(3rem, 5vw, 3.8rem)",
+              lg: "clamp(3.6rem, 4.5vw, 4.6rem)",
+              xl: "clamp(4.2rem, 4vw, 5.2rem)",
             },
             letterSpacing: "-0.02em",
             color: "#f4f0e8",

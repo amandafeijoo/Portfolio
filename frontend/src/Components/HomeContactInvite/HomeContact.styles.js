@@ -202,4 +202,14 @@ export const InviteCTA = styled.button`
     font-size: 0.62rem;
     letter-spacing: 0.16em;
   }
+  @media (min-width: 1280px) {
+    padding: 20px 34px;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+
+    &::before {
+      inset: -16px;
+      filter: blur(32px);
+    }
+  }
 `;

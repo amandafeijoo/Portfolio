@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { ThreeWrap } from "./ThreeWrap.styles";
@@ -7,6 +7,9 @@ import { ThreeWrap } from "./ThreeWrap.styles";
 /* ---------- Particles ---------- */
 function Particles() {
   const ref = useRef();
+
+  const { size } = useThree();
+  const isMobile = size.width < 768;
 
   const positions = useMemo(() => {
     const count = 1400;
@@ -42,9 +45,14 @@ function Particles() {
           opacity={1}
         />
       </Points>
+
       <mesh position={[0, 0.7, -2.2]}>
-        <sphereGeometry args={[1.3, 32, 32]} />
-        <meshBasicMaterial transparent opacity={0.13} color="#c9b88a" />
+        <sphereGeometry args={[isMobile ? 0.85 : 1.3, 32, 32]} />
+        <meshBasicMaterial
+          transparent
+          opacity={isMobile ? 0.09 : 0.13}
+          color={isMobile ? "#a8925f" : "#c9b88a"}
+        />
       </mesh>
     </group>
   );

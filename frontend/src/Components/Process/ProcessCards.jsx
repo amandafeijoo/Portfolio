@@ -80,7 +80,7 @@ export default function ProcessCards() {
         onWheel={handleWheel}
         sx={{
           display: "flex",
-          gap: { xs: 3, md: 4 },
+          gap: { xs: 3, md: 4, lg: 5.5, xl: 7 },
           overflowX: "auto",
           overflowY: "hidden",
           px: { xs: 2, md: 4 },
