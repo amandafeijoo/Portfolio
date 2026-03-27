@@ -26,7 +26,7 @@ export default function HeroSection() {
         },
         width: "100%",
         overflow: "hidden",
-        marginTop: { xs: "-11vh", sm: -1 },
+        marginTop: { xs: "-11vh", sm: -7 },
         marginBottom: { xs: "-6vh", sm: 20 },
         background:
           "radial-gradient(circle at 50% 42%, rgba(231, 217, 188, 0.18), #000 70%)",

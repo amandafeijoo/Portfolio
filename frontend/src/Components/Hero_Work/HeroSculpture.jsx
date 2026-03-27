@@ -45,7 +45,7 @@ export default function HeroSculpture({ enter, onProgress }) {
     if (!group.current) return;
 
     // 🔄 PROGRESO AL ENTRAR Y SALIR DEL PORTAL
-    const enterSpeed = 0.004
+    const enterSpeed = 0.004;
     5;
     const exitSpeed = 0.02;
 

@@ -45,10 +45,10 @@ export default function StarsSphere({ impulseRef }) {
   ============================ */
   const starColors = useMemo(() => {
     const palette = [
-      new THREE.Color("#fff6dc"), // warm white
-      new THREE.Color("#f0d892"), // soft gold
-      new THREE.Color("#d8dfeb"), // cool light
-      new THREE.Color("#8fa8c9"), // blue-gray
+      new THREE.Color("#fff6dc"),
+      new THREE.Color("#f0d892"),
+      new THREE.Color("#d8dfeb"),
+      new THREE.Color("#8fa8c9"),
     ];
 
     const colors = new Float32Array(STAR_COUNT * 3);
@@ -143,13 +143,16 @@ export default function StarsSphere({ impulseRef }) {
       coreRef.current.rotation.x += coreSpeedX * delta;
       coreRef.current.rotation.y += coreSpeedY * delta;
 
-      const pulse = 1 + Math.sin(t * 1.8) * 0.03 + Math.min(impulse.current * 2.5, 0.08);
+      const pulse =
+        1 + Math.sin(t * 1.8) * 0.03 + Math.min(impulse.current * 2.5, 0.08);
       coreRef.current.scale.setScalar(pulse);
     }
 
     if (glowRef.current) {
       const glowPulse =
-        1 + Math.sin(t * 1.6 + 0.8) * 0.05 + Math.min(impulse.current * 3, 0.12);
+        1 +
+        Math.sin(t * 1.6 + 0.8) * 0.05 +
+        Math.min(impulse.current * 3, 0.12);
       glowRef.current.scale.setScalar(glowPulse);
     }
 
