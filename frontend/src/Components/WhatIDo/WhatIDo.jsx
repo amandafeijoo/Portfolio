@@ -156,7 +156,7 @@ export default function WhatIDo() {
 
     setEnd({
       x: t.left - f.left - 34,
-      y: t.top - f.top - 68,
+      y: t.top - f.top - 78,
     });
 
     setEndScale((t.width / f.width) * 0.9);

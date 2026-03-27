@@ -15,23 +15,23 @@ export const Section = styled.section`
    INTRO HERO
 ================================ */
 export const IntroHero = styled.div`
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1480px;
   margin: 0 auto;
-  padding: 120px 40px 140px;
+  padding: 120px clamp(32px, 4vw, 72px) 140px;
 
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: minmax(420px, 560px) minmax(360px, 460px);
+  justify-content: center;
   align-items: center;
-  gap: 82px;
+  gap: clamp(48px, 6vw, 96px);
 
-  margin-left: 100px;
-
-  /* ↓ Desktop medio */
   @media (max-width: 1280px) {
-    margin-left: 0;
+    max-width: 1320px;
+    grid-template-columns: minmax(380px, 1fr) minmax(320px, 420px);
+    gap: 56px;
   }
 
-  /* 📱 Tablet */
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 56px;
@@ -39,7 +39,6 @@ export const IntroHero = styled.div`
     text-align: center;
   }
 
-  /* 📱 Mobile */
   @media (max-width: 600px) {
     padding: 56px 20px 64px;
     gap: 36px;
@@ -48,13 +47,16 @@ export const IntroHero = styled.div`
 
 export const IntroTextWrap = styled.div`
   position: relative;
+  width: 100%;
   max-width: 580px;
-  margin-top: -50px;
+  margin-top: -20px;
+  justify-self: end;
   z-index: 1;
 
   @media (max-width: 1024px) {
     max-width: 520px;
     margin: 0 auto;
+    justify-self: center;
   }
 
   @media (max-width: 768px) {
@@ -96,15 +98,12 @@ export const MetaLine = styled.div`
 export const HeroTitle = styled.h2`
   font-family: "Playfair Display", serif;
   font-weight: 500;
-
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   text-align: center;
   max-width: 560px;
   margin: 0 auto 28px;
-
   line-height: 1.08;
   letter-spacing: -0.02em;
-
   color: rgba(247, 236, 205, 0.9);
   text-shadow: 0 0 34px rgba(201, 184, 138, 0.18);
 
@@ -112,11 +111,15 @@ export const HeroTitle = styled.h2`
     text-wrap: balance;
   }
 
-  /* 🔸 Highlight word */
   .highlight {
     color: #e8c98f;
     text-shadow: 0 0 12px rgba(201, 184, 138, 0.4),
       0 0 28px rgba(201, 184, 138, 0.25);
+  }
+
+  @media (min-width: 1440px) {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    max-width: 640px;
   }
 
   @media (max-width: 768px) {
@@ -135,11 +138,15 @@ export const HeroText = styled.p`
   color: #bdbdbd;
   opacity: 0.9;
 
+  @media (min-width: 1440px) {
+    font-size: 1.12rem;
+    max-width: 520px;
+  }
+
   @media (max-width: 768px) {
     display: none;
   }
 `;
-
 /* ===============================
    MEDIA SLOT (DESKTOP ONLY)
 ================================ */
@@ -147,8 +154,8 @@ export const HeroText = styled.p`
 export const IntroMediaSlot = styled.div`
   width: 360px;
   aspect-ratio: 9 / 16;
-  justify-self: start;
-  transform: translateY(-20px);
+  justify-self: center;
+  transform: translateY(-8px);
 
   /* 📱 Tablet y móvil */
   @media (max-width: 1024px) {
@@ -156,7 +163,9 @@ export const IntroMediaSlot = styled.div`
     margin: 0 auto;
     transform: none;
   }
-
+  @media (min-width: 1440px) {
+    width: 410px;
+  }
   @media (max-width: 600px) {
     width: 220px;
   }
@@ -251,6 +260,10 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 44px;
+
+  @media (min-width: 1440px) {
+    gap: 60px;
+  }
 
   @media (max-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);

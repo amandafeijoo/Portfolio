@@ -183,29 +183,27 @@ export default function StarsSphere({ impulseRef }) {
 
       {/* 💫 CORE + RING */}
       <group ref={groupRef}>
-        {/* 🌕 SOFT GLOW */}
+        {/* 🌕 SOFT GLOW */} // ring halo primero
         <mesh ref={glowRef}>
-          <sphereGeometry args={[isMobile ? 3.15 : 2.85, 32, 32]} />
+          <sphereGeometry args={[isMobile ? 2.86 : 2.58, 32, 32]} />
           <meshBasicMaterial
-            color="#e9c86a"
+            color="#d8dfeb"
             transparent
-            opacity={0.06}
+            opacity={0.12}
             depthWrite={false}
             blending={THREE.AdditiveBlending}
           />
         </mesh>
-
         {/* 💎 INNER FILL */}
         <mesh>
-          <sphereGeometry args={[isMobile ? 2.68 : 2.38, 24, 24]} />
+          <sphereGeometry args={[isMobile ? 2.68 : 2.42, 24, 24]} />
           <meshBasicMaterial
             color="#8fa8c9"
             transparent
-            opacity={0.08}
+            opacity={0.15}
             depthWrite={false}
           />
         </mesh>
-
         {/* 💎 CORE WIREFRAME */}
         <mesh ref={coreRef}>
           <sphereGeometry args={[isMobile ? 2.9 : 2.6, 24, 24]} />
@@ -213,10 +211,9 @@ export default function StarsSphere({ impulseRef }) {
             color="#f0d892"
             wireframe
             transparent
-            opacity={isMobile ? 0.22 : 0.3}
+            opacity={isMobile ? 0.18 : 0.3}
           />
         </mesh>
-
         {/* 🪐 RING */}
         <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[isMobile ? 3.08 : 2.78, 0.018, 16, 140]} />
