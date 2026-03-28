@@ -7,8 +7,8 @@ export default function AboutVisual() {
     <Box
       sx={{
         width: "100%",
-        maxWidth: { xs: 320, sm: 420, md: 560, lg: 680 },
-        height: { xs: 300, sm: 360, md: 460, lg: 520 },
+        maxWidth: { xs: 320, sm: 420, md: 560, lg: 680, xl: 680 },
+        height: { xs: 300, sm: 360, md: 460, lg: 520, xl: 520 },
 
         mx: "auto",
         my: { xs: 3, md: 5 },
@@ -20,11 +20,12 @@ export default function AboutVisual() {
 
         position: "relative",
 
-        transform: {
-          xs: "translateX(28px)",
-          sm: "translateX(12px)",
-          md: "translateX(0px)",
-          lg: "translateX(397px)",
+        left: {
+          xs: 20,
+          sm: 12,
+          md: 0,
+          lg: 390,
+          xl: 640,
         },
       }}
     >

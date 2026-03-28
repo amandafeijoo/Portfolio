@@ -46,9 +46,17 @@ export const Kicker = styled.div`
   margin-top: 10px;
   text-align: center;
 
+  /* 📱 MOBILE */
   @media (max-width: 480px) {
     font-size: 0.8em;
     margin-top: 10px;
+  }
+
+  /* 💻 PANTALLAS GRANDES */
+  @media (min-width: 1536px) {
+    font-size: 0.95rem;
+    letter-spacing: 0.38em;
+    margin-top: 18px;
   }
 `;
 /* =========

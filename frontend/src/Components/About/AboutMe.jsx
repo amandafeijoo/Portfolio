@@ -48,8 +48,8 @@ const AboutMe = () => {
           width: "100%",
           maxWidth: { xs: 360, sm: 480, md: 640, lg: 720 },
           height: { xs: 300, sm: 360, md: 460, lg: 520 },
-          mb: { xs: 1, md: 0 },
-          mt: { xs: 4, md: 4 },
+          mb: { xs: 4, md: 10 },
+          mt: { xs: 4, md: 4, lg: 8 },
         }}
       >
         <AboutVisual />
@@ -68,6 +68,7 @@ const AboutMe = () => {
               sm: "2.8rem",
               md: "3.6rem",
               lg: "4.2rem",
+              xl: "5.2rem",
             },
             lineHeight: 1.08,
             letterSpacing: "-0.02em",

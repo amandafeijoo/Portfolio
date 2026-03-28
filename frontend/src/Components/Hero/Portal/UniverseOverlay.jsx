@@ -80,9 +80,9 @@ export default function UniverseOverlay({ enterStage }) {
             isolation: "isolate",
             overflow: "visible",
 
-            mt: 9,
-            px: { xs: "24px", sm: "35px" },
-            py: { xs: "10px", sm: "15px" },
+            mt: 2,
+            px: { xs: "22px", sm: "28px" },
+            py: { xs: "7px", sm: "10px" },
 
             fontFamily: '"Source Code Pro", monospace',
             fontSize: { xs: "0.62rem", sm: "0.7rem" },
