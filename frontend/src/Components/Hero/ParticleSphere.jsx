@@ -51,7 +51,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
 
   const [portalOpen, setPortalOpen] = useState(false);
 
-  const baseHaloScale = isMobile ? 1.9 : 2.18;
+  const baseHaloScale = isMobile ? 1.8 : 2.18;
   const zoom = useRef(0);
   const targetRotation = useRef({ x: 0, y: 0 });
 
@@ -156,7 +156,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           0.42 + Math.sin(t * 0.95) * 0.035;
       }
 
-      camera.position.z = isMobile ? 6.8 : 6;
+      camera.position.z = isMobile ? 5.2 : 6;
       camera.position.x = THREE.MathUtils.lerp(camera.position.x, 0, 0.08);
       return;
     }

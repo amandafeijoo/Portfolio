@@ -66,7 +66,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           <Box
             sx={{
               position: "absolute",
-              top: { xs: 22, sm: 24 },
+              top: { xs: 25, sm: 24 },
               left: 0,
               right: 0,
               display: { xs: "flex", sm: "none" },
@@ -200,7 +200,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   color: "#d5ba86",
                   opacity: 0.92,
                   display: "block",
-                  mb: { xs: 1.25, sm: 2 },
+                  mb: { xs: 4, sm: 2 },
                   textShadow: "0 0 10px rgba(0,0,0,0.45)",
                   px: { xs: 1, sm: 0 },
                 }}
@@ -214,14 +214,14 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   fontFamily: "Playfair Display, serif",
                   fontWeight: 500,
                   fontSize: {
-                    xs: "clamp(2.5rem, 11vw, 3.15rem)",
+                    xs: "clamp(2.5rem, 1vw, 3.15rem)",
                     sm: "clamp(3.5rem, 6vw, 4.5rem)",
                     md: "clamp(4rem, 5vw, 5.5rem)",
                   },
                   lineHeight: { xs: 1.02, sm: 1.05 },
                   letterSpacing: "-0.03em",
                   color: "#f7f2ea",
-                  mb: { xs: 2, sm: 3 },
+                  mb: { xs: 5, sm: 3 },
                   mt: { xs: 0.5, sm: 6 },
 
                   textShadow: `
@@ -368,7 +368,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           <Box
             sx={{
               position: "absolute",
-              bottom: { xs: "10.5vh" },
+              bottom: { xs: "15vh" },
               left: 0,
               right: 0,
               display: { xs: "flex", sm: "none" },
