@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { AppBar, Box, Toolbar, Button, IconButton, Stack } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Button,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuDrawer from "./MenuDrawer/MenuDrawer";
 
@@ -37,10 +45,8 @@ export default function Header() {
             width: "100%",
             maxWidth: "100%",
             mx: 0,
-
             px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 },
             py: { xs: 0.6, md: 0.2 },
-
             display: "grid",
             gridTemplateColumns: {
               xs: "auto 1fr auto",
@@ -49,11 +55,15 @@ export default function Header() {
             alignItems: "center",
           }}
         >
-          {/* LOGO */}
+          {/* LOGO + BRAND */}
           <Box
             sx={{
               cursor: "pointer",
               justifySelf: "start",
+              display: "flex",
+              alignItems: "center",
+              gap: { xs: 0.8, sm: 1, md: 1.2 },
+              minWidth: 0,
             }}
             onClick={() => (window.location.href = "/")}
           >
@@ -64,8 +74,53 @@ export default function Header() {
               sx={{
                 height: { xs: 28, sm: 34, md: 36, xl: 38 },
                 display: "block",
+                flexShrink: 0,
               }}
             />
+
+            <Typography
+              sx={{
+                display: { xs: "block", sm: "block" },
+                fontFamily: "Playfair Display, serif",
+                fontWeight: 500,
+                fontSize: {
+                  xs: "1.20rem",
+                  sm: "1.45rem",
+                  md: "1.65rem",
+                  lg: "1.6rem",
+                  xl: "1.60rem",
+                },
+                lineHeight: 1,
+                letterSpacing: "-0.045em",
+                whiteSpace: "nowrap",
+                textShadow: `
+                  0 1px 0 rgba(0,0,0,0.35),
+                  0 0 10px rgba(0,0,0,0.22),
+                  0 0 18px rgba(0,0,0,0.18)
+                `,
+              }}
+            >
+              <Box
+                component="span"
+                sx={{
+                  color: "#f4efe6",
+                }}
+              >
+                Webcode
+              </Box>
+              <Box
+                component="span"
+                sx={{
+                  color: "#e7c98f",
+                  textShadow: `
+                    0 1px 0 rgba(0,0,0,0.28),
+                    0 0 10px rgba(20,20,20,0.22)
+                  `,
+                }}
+              >
+                -Art
+              </Box>
+            </Typography>
           </Box>
 
           {/* NAV CENTRO */}
@@ -132,90 +187,6 @@ export default function Header() {
               gap: { xs: 0.6, sm: 1, md: 1.2, xl: 1.6 },
             }}
           >
-            <Button
-              variant="outlined"
-              href="/contact"
-              sx={{
-                position: "relative",
-                isolation: "isolate",
-                overflow: "visible",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-
-                px: { xs: 2.2, sm: 2.8, md: 3.2, xl: 3.6 },
-                py: { xs: 0.72, sm: 0.9, md: 1.05 },
-
-                fontSize: { xs: "0.58rem", sm: "0.66rem", md: "0.7rem" },
-                letterSpacing: { xs: "0.14em", sm: "0.18em", md: "0.22em" },
-                fontWeight: 600,
-                textTransform: "uppercase",
-
-                color: "#e6d5bc",
-                borderRadius: "999px",
-                border: "1px solid rgba(230,213,188,0.45)",
-                background: "rgba(18,19,20,0.55)",
-                backdropFilter: "blur(10px)",
-
-                boxShadow: `
-                  0 0 12px rgba(230,213,188,0.22),
-                  0 0 32px rgba(230,213,188,0.14)
-                `,
-
-                transition:
-                  "transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
-
-                "&::before": {
-                  content: '""',
-                  position: "absolute",
-                  inset: { xs: -8, md: -10 },
-                  borderRadius: "999px",
-                  background:
-                    "radial-gradient(circle, rgba(230,213,188,0.35), transparent 70%)",
-                  filter: { xs: "blur(14px)", md: "blur(20px)" },
-                  opacity: 0.8,
-                  zIndex: -1,
-                  pointerEvents: "none",
-                  transition: "opacity 0.3s ease, filter 0.3s ease",
-                },
-
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  inset: 0,
-                  borderRadius: "999px",
-                  background:
-                    "radial-gradient(60% 60% at 50% 0%, rgba(230,213,188,0.22), transparent 70%)",
-                  opacity: 0.6,
-                  pointerEvents: "none",
-                },
-
-                "&:hover": {
-                  transform: { sm: "translateY(-1px)" },
-                  background: "rgba(230,213,188,0.18)",
-                  color: "#e6d5bc",
-                  boxShadow: `
-                    0 0 22px rgba(230,213,188,0.4),
-                    0 0 56px rgba(230,213,188,0.22)
-                  `,
-                  "&::before": {
-                    opacity: 1,
-                    filter: { xs: "blur(18px)", md: "blur(24px)" },
-                  },
-                },
-
-                "&:active": {
-                  transform: "translateY(0)",
-                },
-
-                "&:focus": { outline: "none" },
-                "&:focus-visible": { outline: "none" },
-                WebkitTapHighlightColor: "transparent",
-              }}
-            >
-              LET’S CREATE
-            </Button>
-
             <IconButton
               disableRipple
               disableFocusRipple
@@ -224,6 +195,8 @@ export default function Header() {
               sx={{
                 ml: { xs: 0, md: 0.4, xl: 0.8 },
                 color: "rgba(236,228,214,0.6)",
+                border: "1px solid rgba(236,228,214,0.3)",
+                boxShadow: "0 2px 8px rgba(255, 253, 253, 0.3)",
 
                 "&:hover": {
                   color: "#7e6a3f",

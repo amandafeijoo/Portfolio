@@ -1,5 +1,4 @@
 import { Box, Typography, Button } from "@mui/material";
-import TypingWords from "../Hero/TypingWords";
 
 /* =========================
    SHARED STYLES
@@ -66,7 +65,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           <Box
             sx={{
               position: "absolute",
-              top: { xs: 25, sm: 24 },
+              top: { xs: -20, sm: 24 },
               left: 0,
               right: 0,
               display: { xs: "flex", sm: "none" },
@@ -79,27 +78,13 @@ export default function HeroOverlay({ onEnter, enterStage }) {
             <Typography
               sx={{
                 ...sideStyle,
-                fontSize: "0.58rem",
+                fontSize: "0.56rem",
                 opacity: 0.92,
                 mt: 9,
                 textShadow: "0 0 10px rgba(0,0,0,0.38)",
               }}
             >
-              I DESIGN & BUILD WEBSITES FOR{" "}
-              <Box
-                component="span"
-                sx={{
-                  display: "block",
-                  minWidth: 90,
-                  mt: 1,
-                }}
-              >
-                <TypingWords
-                  words={["BRANDS", "STARTUPS", "FOUNDERS", "BUSINESSES"]}
-                  speed={85}
-                  pause={1200}
-                />
-              </Box>
+              WEB DESIGN · DEVELOPMENT · CREATIVE DIRECTION
             </Typography>
           </Box>
 
@@ -107,7 +92,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           <Box
             sx={{
               position: "absolute",
-              top: { sm: 90 },
+              top: { sm: 90, md: 50, xl: 40 },
               left: { sm: 48 },
               display: { xs: "none", sm: "block" },
               maxWidth: 240,
@@ -116,24 +101,19 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           >
             <Typography
               sx={{
-                fontSize: "0.8rem",
-                letterSpacing: "0.1em",
+                fontSize: "0.73rem",
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
                 color: "#e6d3a8",
-                lineHeight: 2,
+                lineHeight: 1.9,
                 textShadow: "0 0 10px rgba(0,0,0,0.32)",
               }}
             >
-              I design & build websites for{" "}
-              <Box
-                component="span"
-                sx={{ display: "inline-block", minWidth: 90 }}
-              >
-                <TypingWords
-                  words={["brands", "startups", "founders", "businesses"]}
-                  speed={85}
-                  pause={1200}
-                />
-              </Box>
+              Websites designed
+              <br />
+              to connect,
+              <br />
+              to engage and grow.
             </Typography>
           </Box>
 
@@ -162,8 +142,8 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                 width: "100%",
                 maxWidth: {
                   xs: 320,
-                  sm: 480,
-                  md: 640,
+                  sm: 520,
+                  md: 760,
                 },
                 position: "relative",
                 zIndex: 2,
@@ -199,8 +179,8 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   fontSize: { xs: "0.52rem", sm: "0.65rem" },
                   color: "#d5ba86",
                   opacity: 0.92,
-                  display: "block",
-                  mb: { xs: 4, sm: 2 },
+                  display: { xs: "none", sm: "block" },
+                  mb: { xs: 3.5, sm: 2 },
                   textShadow: "0 0 10px rgba(0,0,0,0.45)",
                   px: { xs: 1, sm: 0 },
                 }}
@@ -210,61 +190,81 @@ export default function HeroOverlay({ onEnter, enterStage }) {
 
               {/* MAIN TITLE */}
               <Typography
+                component="h1"
                 sx={{
                   fontFamily: "Playfair Display, serif",
                   fontWeight: 500,
                   fontSize: {
-                    xs: "clamp(2.5rem, 1vw, 3.15rem)",
-                    sm: "clamp(3.5rem, 6vw, 4.5rem)",
-                    md: "clamp(4rem, 5vw, 5.5rem)",
+                    xs: "1.7rem",
+                    sm: "3rem",
+                    lg: "3.2rem",
+                    xl: "4rem",
                   },
-                  lineHeight: { xs: 1.02, sm: 1.05 },
+                  lineHeight: {
+                    xs: 1.07,
+                    sm: 1.06,
+                    md: 1.04,
+                    lg: 1.02,
+                  },
                   letterSpacing: "-0.03em",
-                  color: "#f7f2ea",
-                  mb: { xs: 5, sm: 3 },
-                  mt: { xs: 0.5, sm: 6 },
-
+                  mb: { xs: 3, sm: 2.5, lg: 3 },
+                  mt: { xs: 1, sm: 5, lg: 6 },
                   textShadow: `
-                    0 1px 0 rgba(0,0,0,0.35),
-                    0 0 12px rgba(0,0,0,0.28),
-                    0 0 26px rgba(0,0,0,0.22)
-                  `,
+      0 1px 0 rgba(0,0,0,0.35),
+      0 0 12px rgba(0,0,0,0.28),
+      0 0 26px rgba(0,0,0,0.22)
+    `,
+                  px: { xs: 0.5, sm: 0 },
+                  textAlign: "center",
                 }}
               >
-                <Box component="span" sx={{ opacity: 0.98 }}>
-                  Webcode
-                </Box>
                 <Box
                   component="span"
                   sx={{
-                    color: "#e7c98f",
-                    textShadow: `
-                      0 1px 0 rgba(0,0,0,0.28),
-                      0 0 10px rgba(20,20,20,0.22)
-                    `,
+                    display: "block",
+                    color: "#f7f2ea",
                   }}
                 >
-                  -Art
+                  Bringing ideas to life through
+                </Box>
+
+                <Box
+                  component="span"
+                  sx={{
+                    display: "block",
+                    color: "#e7c98f",
+                    textShadow: `
+        0 1px 0 rgba(0,0,0,0.28),
+        0 0 10px rgba(20,20,20,0.22)
+      `,
+                  }}
+                >
+                  thoughtful design{" "}
+                  <Box
+                    component="br"
+                    sx={{
+                      display: { xs: "none", lg: "block", xl: "none" },
+                    }}
+                  />
+                  and development.
                 </Box>
               </Typography>
-
               {/* SUBLINE */}
               <Typography
                 sx={{
                   color: "rgba(255,255,255,0.9)",
-                  fontSize: { xs: "0.83rem", sm: "1rem", md: "1.08rem" },
-                  lineHeight: { xs: 1.65, sm: 1.75 },
-                  maxWidth: { xs: 300, sm: 540 },
+                  fontSize: { xs: "0.84rem", sm: "1rem", md: "1.08rem" },
+                  lineHeight: { xs: 1.7, sm: 1.8, md: 1.9, xl: 4.2 },
+                  maxWidth: { xs: 300, sm: 560 ,md: 660 },
                   mx: "auto",
-                  mt: { xs: 0.5, sm: 9 },
-                  mb: { xs: 3, sm: 4 },
-                  letterSpacing: "0.015em",
+                  mt: { xs: -1, sm: 5.5 },
+                  mb: { xs: 1, sm: 4 },
+                  letterSpacing: "0.01em",
                   textShadow: "0 0 12px rgba(0,0,0,0.38)",
-                  px: { xs: 0.5, sm: 0 },
+                  px: { xs: 0.3, sm: 0 },
                 }}
               >
-                Design & development for web experiences that feel intentional,
-                alive and precisely built.
+               I design and build websites that help brands connect with their audience and grow.
               </Typography>
 
               {/* BUTTON */}
@@ -276,11 +276,11 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   isolation: "isolate",
                   overflow: "visible",
 
-                  px: { xs: "22px", sm: "27px" },
-                  py: { xs: "10px", sm: "18px" },
+                  px: { xs: "12px", sm: "25px", xl: "32px" },
+                  py: { xs: "8px", sm: "16px", xl: "14px" },
 
                   fontFamily: '"Source Code Pro", monospace',
-                  fontSize: { xs: "0.62rem", sm: "0.7rem" },
+                  fontSize: { xs: "0.54rem", sm: "0.7rem" },
                   letterSpacing: { xs: "0.14em", sm: "0.25em" },
                   textTransform: "uppercase",
 
@@ -328,16 +328,12 @@ export default function HeroOverlay({ onEnter, enterStage }) {
 
                   "&:hover": {
                     transform: "translateY(-2px)",
-
                     background: "rgba(230, 213, 188, 0.10)",
-
                     border: "1px solid rgba(230, 213, 188, 0.55)",
-
                     boxShadow: `
-    0 0 14px rgba(230, 213, 188, 0.22),
-    0 0 34px rgba(230, 213, 188, 0.12)
-  `,
-
+                      0 0 14px rgba(230, 213, 188, 0.22),
+                      0 0 34px rgba(230, 213, 188, 0.12)
+                    `,
                     "&::before": {
                       opacity: 0.7,
                       filter: { xs: "blur(14px)", sm: "blur(16px)" },
@@ -359,7 +355,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   },
                 }}
               >
-                ENTER THE PORTAL
+                Let’s Create
               </Button>
             </Box>
           </Box>
@@ -395,7 +391,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           <Box
             sx={{
               position: "absolute",
-              bottom: { sm: 60, md: 120 },
+              bottom: { sm: 60, md: 120, xl: 165 },
               right: { sm: 40, md: 30 },
               display: { xs: "none", sm: "block" },
               textAlign: "right",
@@ -410,7 +406,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                 textShadow: "0 0 10px rgba(0,0,0,0.32)",
               }}
             >
-              THINK.
+              IDEA.
               <br />
               DESIGN.
               <br />

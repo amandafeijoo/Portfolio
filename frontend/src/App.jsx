@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,8 +14,6 @@ import { CursorProvider } from "./Context/CursorContext";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer/Footer";
 import CustomCursor from "./Components/CustomCursor/CustomCursor";
-import IntroLoader from "./Components/IntroLoader";
-import MainLayout from "./Components/Layout/MainLayout";
 
 /* =========================
    PAGES
@@ -44,9 +42,9 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden; 
     margin: 0;
     padding: 0;
+    overflow: hidden;
     background: #000;
     color-scheme: dark;
     font-family: "Inter", sans-serif;
@@ -58,8 +56,9 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     width: 100%;
+    height: 100vh;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   input, textarea, button, select {
@@ -67,11 +66,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const AppContainer = styled.div`
-  min-height: 100dvh;
+const HEADER_HEIGHT = 0;
+
+const AppShell = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   width: 100%;
-  position: relative;
+  overflow: hidden;
+  background: #000;
+`;
+
+const MainWrapper = styled.main`
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
   overflow-x: hidden;
+  background: #000;
+  padding-top: ${HEADER_HEIGHT}px;
+  scroll-behavior: auto;
 `;
 
 const isLocalhost =
@@ -84,23 +97,24 @@ const isLocalhost =
 function AppContent() {
   const location = useLocation();
 
-  // 🔥 Desactiva restauración automática del scroll del navegador
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
   }, []);
 
-  // 🔥 Siempre subir arriba al cambiar de ruta
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const main = document.getElementById("main-scroll-container");
+    if (main) {
+      main.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
   }, [location.pathname]);
 
   return (
-    <>
-      <AppContainer>
-        <Header />
-        <MainLayout>
+    <AppShell>
+      <Header />
+
+      <MainWrapper id="main-scroll-container">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<OrbitPage />} />
@@ -115,10 +129,10 @@ function AppContent() {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/legal" element={<LegalPage />} />
           </Routes>
-        </MainLayout>
+
         <Footer />
-      </AppContainer>
-    </>
+      </MainWrapper>
+    </AppShell>
   );
 }
 

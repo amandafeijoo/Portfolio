@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { useThree } from "@react-three/fiber";
 
 export default function SphereLines3D({
   radius = 3.2,
@@ -6,12 +7,21 @@ export default function SphereLines3D({
   spread = Math.PI * 0.18,
   length = 9,
 }) {
+  const { size } = useThree();
+
+  const isXL = size.width >= 1600;
+
+  const dynamicRadius = isXL ? 3.8 : radius;
+  const dynamicSpread = isXL ? Math.PI * 0.26 : spread;
+  const dynamicLength = isXL ? 14 : length;
+  const dynamicRibbonWidth = isXL ? 11.5 : 8.8;
+
   const elements = [];
 
   const accentMaterial = new THREE.LineBasicMaterial({
-    color: new THREE.Color("#d9e6f5"),
+    color: new THREE.Color("#9fb8ff"),
     transparent: true,
-    opacity: 0.3,
+    opacity: 0.4,
     depthWrite: false,
     depthTest: true,
   });
@@ -19,7 +29,7 @@ export default function SphereLines3D({
   const createSide = (direction) => {
     for (let i = 0; i < linesPerSide; i++) {
       const t = i / (linesPerSide - 1);
-      const angle = -spread / 2 + spread * t;
+      const angle = -dynamicSpread / 2 + dynamicSpread * t;
       const distanceFromCenter = Math.abs(t - 0.5);
       const opacity = 0.34 - distanceFromCenter * 0.14;
 
@@ -31,19 +41,18 @@ export default function SphereLines3D({
         depthTest: true,
       });
 
-      // evita la banda rectangular en el centro
       const centerYOffset = (t - 0.5) * 0.22;
 
       const points = [
         new THREE.Vector3(0, centerYOffset, -1.2),
         new THREE.Vector3(
-          Math.cos(angle) * radius * direction,
-          Math.sin(angle) * radius * 0.24,
+          Math.cos(angle) * dynamicRadius * direction,
+          Math.sin(angle) * dynamicRadius * 0.24,
           -1.2
         ),
         new THREE.Vector3(
-          Math.cos(angle) * length * direction,
-          Math.sin(angle) * length,
+          Math.cos(angle) * dynamicLength * direction,
+          Math.sin(angle) * dynamicLength,
           -2.5
         ),
       ];
@@ -64,25 +73,24 @@ export default function SphereLines3D({
   createSide(1);
   createSide(-1);
 
-  // ribbons suaves, más orgánicas, no rectangulares
   const ribbonTop = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-8.8, 1.8, -2.9),
+    new THREE.Vector3(-dynamicRibbonWidth, 1.8, -2.9),
     new THREE.Vector3(-5.2, 1.05, -2.2),
     new THREE.Vector3(-2.2, 0.45, -1.7),
     new THREE.Vector3(0, 0.2, -1.45),
     new THREE.Vector3(2.2, 0.45, -1.7),
     new THREE.Vector3(5.2, 1.05, -2.2),
-    new THREE.Vector3(8.8, 1.8, -2.9),
+    new THREE.Vector3(dynamicRibbonWidth, 1.8, -2.9),
   ]);
 
   const ribbonBottom = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-8.8, -1.8, -2.9),
+    new THREE.Vector3(-dynamicRibbonWidth, -1.8, -2.9),
     new THREE.Vector3(-5.2, -1.05, -2.2),
     new THREE.Vector3(-2.2, -0.45, -1.7),
     new THREE.Vector3(0, -0.2, -1.45),
     new THREE.Vector3(2.2, -0.45, -1.7),
     new THREE.Vector3(5.2, -1.05, -2.2),
-    new THREE.Vector3(8.8, -1.8, -2.9),
+    new THREE.Vector3(dynamicRibbonWidth, -1.8, -2.9),
   ]);
 
   const ribbonTopGeometry = new THREE.BufferGeometry().setFromPoints(
@@ -96,7 +104,6 @@ export default function SphereLines3D({
     <group>
       {elements}
 
-      {/* ribbons azules suaves */}
       <line
         geometry={ribbonTopGeometry}
         material={accentMaterial}

@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
+import styled from "styled-components";
 
 /* =========================
    LAZY SECTIONS
@@ -16,14 +16,45 @@ const HomeContactInvite = lazy(() =>
 );
 
 /* =========================
+   STICKY STACK
+========================= */
+const HEADER_HEIGHT = 0;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+
+const StickySection = styled.section`
+  position: sticky;
+  top: ${HEADER_HEIGHT}px;
+  width: 100%;
+  height: calc(100vh - ${HEADER_HEIGHT}px);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: #000;
+`;
+
+const NormalSection = styled.div`
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  background: #000;
+`;
+
+/* =========================
    HERO SKELETON
 ========================= */
 function HeroSkeleton() {
   return (
     <div
       style={{
-        height: "100vh",
         width: "100%",
+        minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
         background:
           "radial-gradient(circle at 50% 42%, rgba(201,169,106,0.14), #000 68%)",
       }}
@@ -33,42 +64,47 @@ function HeroSkeleton() {
 
 export default function Home() {
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    const main = document.getElementById("main-scroll-container");
+    if (main) {
+      main.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
   }, []);
 
   return (
     <>
-      {/* =========================
-          HERO (SIEMPRE PRESENTE)
-      ========================= */}
-      <Suspense fallback={<HeroSkeleton />}>
-        <HeroSection />
-      </Suspense>
+      <Container>
+        <StickySection style={{ zIndex: 1 }}>
+          <Suspense fallback={<HeroSkeleton />}>
+            <HeroSection />
+          </Suspense>
+        </StickySection>
 
-      {/* =========================
-          CONTENIDO
-      ========================= */}
-      <Suspense fallback={null}>
-        <WhatIDoHero />
-        <WhatIDo />
-        <FloatingHintMenu />
-      </Suspense>
+        <StickySection style={{ zIndex: 2 }}>
+          <Suspense fallback={null}>
+            <WhatIDoHero />
+          </Suspense>
+        </StickySection>
+      </Container>
 
-      <Suspense fallback={null}>
-        <OrbitSection />
-        <ProcessSection />
-      </Suspense>
+      <NormalSection>
+        <Suspense fallback={null}>
+          <WhatIDo />
+          <FloatingHintMenu />
+        </Suspense>
 
-      {/* =========================
-          WORK
-      ========================= */}
-      <Suspense fallback={null}>
-        <HeroWorkSection />
-      </Suspense>
+        <Suspense fallback={null}>
+          <OrbitSection />
+          <ProcessSection />
+        </Suspense>
 
-      <Suspense fallback={null}>
-        <HomeContactInvite />
-      </Suspense>
+        <Suspense fallback={null}>
+          <HeroWorkSection />
+        </Suspense>
+
+        <Suspense fallback={null}>
+          <HomeContactInvite />
+        </Suspense>
+      </NormalSection>
     </>
   );
 }

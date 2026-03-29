@@ -51,7 +51,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
 
   const [portalOpen, setPortalOpen] = useState(false);
 
-  const baseHaloScale = isMobile ? 1.8 : 2.18;
+  const baseHaloScale = isMobile ? 1.8 : 2.32;
   const zoom = useRef(0);
   const targetRotation = useRef({ x: 0, y: 0 });
 
@@ -156,7 +156,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           0.42 + Math.sin(t * 0.95) * 0.035;
       }
 
-      camera.position.z = isMobile ? 5.2 : 6;
+      camera.position.z = isMobile ? 5.2 : 5.5;
       camera.position.x = THREE.MathUtils.lerp(camera.position.x, 0, 0.08);
       return;
     }
@@ -229,19 +229,19 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
   });
 
   return (
-    <group>
+    <group position={[0, isMobile ? 0.45 : 0, 0]}>
       {/* LÍNEAS ESFERA */}
       {!isMobile && !portalOpen && (
         <group position={[0, 0, -0.6]}>
-          <SphereLines3D />
+          <SphereLines3D radius={3.55} length={11.5} />
         </group>
       )}
-
+  
       {/* UNIVERSO */}
       <group position={[0, 0, -4]} visible={portalOpen}>
         <UniverseVista isMobile={isMobile} />
       </group>
-
+  
       {/* HALO DIFUSO DETRÁS */}
       {!portalOpen && (
         <mesh
@@ -260,7 +260,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           />
         </mesh>
       )}
-
+  
       {/* HALO INTERNO MUY SUTIL */}
       {!portalOpen && (
         <mesh ref={haloRef} scale={baseHaloScale}>
@@ -275,7 +275,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           />
         </mesh>
       )}
-
+  
       {/* PARTÍCULAS */}
       <points ref={pointsRef}>
         <bufferGeometry>
@@ -292,7 +292,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
             itemSize={3}
           />
         </bufferGeometry>
-
+  
         <pointsMaterial
           vertexColors
           size={isMobile ? 0.01 : 0.012}

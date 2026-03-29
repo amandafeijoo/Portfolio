@@ -5,23 +5,26 @@ export default function WhatIDoHero() {
     <Box
       sx={{
         position: "relative",
-        minHeight: "100svh",
+        width: "100%",
+        height: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         background: "#000",
         px: 3,
-        mt: { xs: 7, md: -10 },
-        mb: { xs: 5, md: 25 },
       }}
     >
       <Container
         maxWidth="md"
         sx={{
           textAlign: "center",
+          transform: {
+            xs: "translateY(-20px)",
+            md: "translateY(-40px)",
+            lg: "translateY(-55px)",
+          },
         }}
       >
-        {/* KICKER */}
         <Typography
           sx={{
             letterSpacing: "0.35em",
@@ -35,7 +38,6 @@ export default function WhatIDoHero() {
           What I Do
         </Typography>
 
-        {/* HEADLINE */}
         <Typography
           component="h1"
           sx={{
@@ -59,7 +61,6 @@ export default function WhatIDoHero() {
           </Box>
         </Typography>
 
-        {/* DIVIDER */}
         <Box
           sx={{
             width: 60,
@@ -70,7 +71,6 @@ export default function WhatIDoHero() {
           }}
         />
 
-        {/* SUBLINE */}
         <Typography
           sx={{
             fontSize: { xs: "0.95rem", md: "1.1rem" },
@@ -82,7 +82,6 @@ export default function WhatIDoHero() {
           I design and build complete websites from start to finish.
         </Typography>
 
-        {/* STATEMENT */}
         <Typography
           sx={{
             fontSize: { xs: "0.9rem", md: "1rem" },
@@ -97,7 +96,6 @@ export default function WhatIDoHero() {
           how it helps you attract the right clients.
         </Typography>
 
-        {/* SUPPORTING */}
         <Typography
           sx={{
             fontSize: { xs: "0.85rem", md: "0.95rem" },
