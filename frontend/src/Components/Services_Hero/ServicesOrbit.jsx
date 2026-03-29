@@ -8,45 +8,52 @@ import ServiceCard from "./ServiceCard";
 ================================ */
 const services = [
   {
-    title: "Essential Website",
+    label: "For small businesses & personal brands",
+    title: "Starter Website",
     subtitle:
-      "A clear and elegant online presence for professionals and small businesses.",
+      "A refined online presence for professionals, personal brands and small businesses.",
     features: [
-      "1–3 pages (Home, About, Contact)",
-      "Custom design adapted to your brand",
-      "Responsive & mobile-friendly",
-      "Basic SEO & performance setup",
+      "1–3 core pages (Home, About, Contact)",
+      "Custom design aligned with your brand",
+      "Responsive and mobile-friendly",
+      "Basic SEO and performance setup",
       "Contact form connected to your email",
     ],
     price: "Starting at €700",
     timeline: "Approx. 2–3 weeks",
+    cta: "Start this project",
   },
   {
-    title: "Business Website",
+    label: "For growing businesses",
+    title: "Growth Website",
     subtitle:
-      "For growing businesses that need structure, clarity and flexibility.",
+      "For businesses that need more structure, flexibility and room to scale.",
     features: [
       "4–6 pages (Services, FAQ, Blog, Contact…)",
-      "Design system & visual consistency",
+      "Visual consistency and design system",
       "Optional blog or content section",
       "Integrations (booking, newsletter, etc.)",
-      "Performance & accessibility optimization",
+      "Performance and accessibility optimisation",
     ],
-    price: "Starting at €1.200",
+    price: "Starting at €1,200",
     timeline: "Approx. 4–5 weeks",
+    cta: "Start this project",
   },
   {
+    label: "For advanced or complex needs",
     title: "Custom Web Application",
-    subtitle: "For ideas that require logic, data or user interaction.",
+    subtitle:
+      "For projects that require logic, user interaction, data or more advanced functionality.",
     features: [
-      "Custom front-end (React)",
-      "Back-end with Django & PostgreSQL",
-      "User accounts or booking systems",
-      "Payments & integrations (Stripe)",
-      "Admin panel & scalable structure",
+      "Custom front-end development",
+      "Back-end with Django and PostgreSQL",
+      "User accounts, dashboards or booking systems",
+      "Payments and third-party integrations",
+      "Scalable structure built around your needs",
     ],
     price: "Custom quote",
     timeline: "Based on project scope",
+    cta: "Request a custom quote",
   },
 ];
 
@@ -54,7 +61,6 @@ const services = [
    HELPERS
 ================================ */
 const getLeftIndex = (index) => (index === 0 ? services.length - 1 : index - 1);
-
 const getRightIndex = (index) => (index + 1) % services.length;
 
 /* ===============================
@@ -64,25 +70,26 @@ const cardVariants = {
   center: {
     x: 0,
     y: 0,
-    scale: 1.03,
+    scale: 1,
     opacity: 1,
     zIndex: 3,
+    filter: "blur(0px)",
   },
   left: {
-    x: -460,
-    y: -100,
-    scale: 0.6,
-    opacity: 0.3,
+    x: -380,
+    y: 18,
+    scale: 0.82,
+    opacity: 0.22,
     zIndex: 1,
-    filter: "blur(0.5px)",
+    filter: "blur(1.2px)",
   },
   right: {
-    x: 460,
-    y: -100,
-    scale: 0.6,
-    opacity: 0.3,
+    x: 380,
+    y: 18,
+    scale: 0.82,
+    opacity: 0.22,
     zIndex: 1,
-    filter: "blur(0.8px)",
+    filter: "blur(1.2px)",
   },
 };
 
@@ -113,16 +120,16 @@ export default function ServicesOrbit({ impulseRef }) {
 
           return (
             <motion.div
-              key={index}
+              key={`${services[index].title}-${position}`}
               variants={cardVariants}
               animate={position}
               transition={{
-                duration: 0.6,
+                duration: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
               drag={position === "center" ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.25}
+              dragElastic={0.22}
               onDragEnd={(e, info) => {
                 if (info.offset.x < -90) {
                   impulseRef.current = 0.025;
@@ -142,7 +149,10 @@ export default function ServicesOrbit({ impulseRef }) {
                 cursor: "grabbing",
               }}
             >
-              <ServiceCard {...services[index]} />
+              <ServiceCard
+                {...services[index]}
+                isActive={position === "center"}
+              />
             </motion.div>
           );
         })}

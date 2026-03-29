@@ -1,27 +1,58 @@
 import { Box, Container, Typography } from "@mui/material";
 
+const items = [
+  {
+    title: "Attract the right clients",
+    text: "A strong digital presence that captures attention and makes the right first impression.",
+  },
+  {
+    title: "Build trust through design",
+    text: "Thoughtful, refined websites that make your brand feel professional, credible and memorable.",
+  },
+  {
+    title: "Turn visits into real interest",
+    text: "A clear experience designed to guide your audience and support the growth of your business.",
+  },
+];
+
 export default function WhatIDoHero() {
   return (
     <Box
       sx={{
         position: "relative",
         width: "100%",
-        height: "100%",
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#000",
         px: 3,
+        pt: { xs: 10, md: 14 },
+
+        background: `
+  radial-gradient(
+    circle at 50% 10%,
+    rgba(232, 201, 143, 0.16) 0%,
+    rgba(232, 201, 143, 0.10) 20%,
+    rgba(232, 201, 143, 0.04) 38%,
+    transparent 60%
+  ),
+  linear-gradient(
+    to bottom,
+    #060606 0%,
+    #0c0c0c 45%,
+    #121212 100%
+  )
+`,
       }}
     >
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={{
           textAlign: "center",
           transform: {
-            xs: "translateY(-20px)",
-            md: "translateY(-40px)",
-            lg: "translateY(-55px)",
+            xs: "translateY(-10px)",
+            md: "translateY(-20px)",
+            lg: "translateY(-30px)",
           },
         }}
       >
@@ -31,15 +62,15 @@ export default function WhatIDoHero() {
             textTransform: "uppercase",
             fontSize: "0.65rem",
             color: "#c9b07a",
-            opacity: 0.75,
+            opacity: 0.78,
             mb: 2,
           }}
         >
-          What I Do
+          What I help you achieve
         </Typography>
 
         <Typography
-          component="h1"
+          component="h2"
           sx={{
             fontFamily: "Playfair Display, serif",
             fontWeight: 500,
@@ -67,47 +98,55 @@ export default function WhatIDoHero() {
             height: 1,
             background: "rgba(232,201,143,0.4)",
             mx: "auto",
-            mb: 4,
+            mb: { xs: 5, md: 7 },
           }}
         />
 
-        <Typography
+        <Box
           sx={{
-            fontSize: { xs: "0.95rem", md: "1.1rem" },
-            color: "rgba(255,255,255,0.75)",
-            lineHeight: 1.7,
-            mb: 3,
-          }}
-        >
-          I design and build complete websites from start to finish.
-        </Typography>
-
-        <Typography
-          sx={{
-            fontSize: { xs: "0.9rem", md: "1rem" },
-            color: "rgba(255,255,255,0.6)",
-            lineHeight: 1.8,
-            maxWidth: 580,
-            mx: "auto",
-            mb: 2,
-          }}
-        >
-          From how your website looks, to how it works behind the scenes — and
-          how it helps you attract the right clients.
-        </Typography>
-
-        <Typography
-          sx={{
-            fontSize: { xs: "0.85rem", md: "0.95rem" },
-            color: "rgba(255,255,255,0.45)",
-            lineHeight: 1.8,
-            maxWidth: 520,
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              md: "repeat(3, 1fr)",
+            },
+            gap: { xs: 3, md: 4, lg: 5 },
+            maxWidth: 1100,
             mx: "auto",
           }}
         >
-          You don’t need to worry about the technical side. I take care of it,
-          so you can focus on your business.
-        </Typography>
+          {items.map((item) => (
+            <Box
+              key={item.title}
+              sx={{
+                px: { xs: 1, md: 2 },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Playfair Display, serif",
+                  fontSize: { xs: "1.2rem", md: "1.45rem" },
+                  color: "#f4f0e8",
+                  mb: 1.5,
+                  lineHeight: 1.25,
+                }}
+              >
+                {item.title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontSize: { xs: "0.92rem", md: "1rem" },
+                  color: "rgba(255,255,255,0.68)",
+                  lineHeight: 1.8,
+                  maxWidth: 320,
+                  mx: "auto",
+                }}
+              >
+                {item.text}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
       </Container>
     </Box>
   );

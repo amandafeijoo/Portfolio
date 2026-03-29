@@ -1,197 +1,238 @@
-import { Box, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import { Box, Typography, Button } from "@mui/material";
 import SwipeIcon from "@mui/icons-material/Swipe";
-
 export default function ServiceCard({
+  label,
   title,
   subtitle,
-  features,
+  features = [],
   price,
   timeline,
-  featured = false,
+  cta,
+  isActive = false,
+  showSwipeHint = true,
 }) {
   return (
     <Box
-      component={motion.div}
-      whileHover={{ y: -6, scale: featured ? 1.03 : 1.015 }}
       sx={{
-        position: "relative",
+        width: { xs: 325, sm: 340, md: 390 },
+        minHeight: { xs: 520, md: 500 },
+        borderRadius: "30px",
+        px: { xs: 3, md: 4 },
+        py: { xs: 3.5, md: 4.5 },
+        mt: { xs: -6, md: 30, xl: 28 },
+        
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
 
-        width: "100%",
-        maxWidth: { xs: "90%", sm: 360, md: 370 },
-        minHeight: { xs: 460, sm: 560, md: 400 },
+        background: isActive
+          ? `
+            radial-gradient(
+              circle at top center,
+              rgba(232, 201, 143, 0.16),
+              rgba(18, 19, 20, 0.96) 38%,
+              rgba(10, 10, 10, 0.98) 100%
+            )
+          `
+          : `
+            linear-gradient(
+              180deg,
+              rgba(22, 22, 22, 0.92) 0%,
+              rgba(10, 10, 10, 0.96) 100%
+            )
+          `,
 
-        mx: "auto",
-        mt: { xs: -14, md: 28 },
-        mb: { xs: 0, md: 8 },
+        border: isActive
+          ? "1px solid rgba(232, 201, 143, 0.34)"
+          : "1px solid rgba(255,255,255,0.08)",
 
-        px: { xs: 2.5, md: 3.5 },
-        py: { xs: 3.8, md: 4.5 },
+        boxShadow: isActive
+          ? `
+            0 24px 80px rgba(0,0,0,0.55),
+            0 0 0 1px rgba(232, 201, 143, 0.08),
+            0 0 38px rgba(232, 201, 143, 0.08)
+          `
+          : `
+            0 18px 48px rgba(0,0,0,0.42)
+          `,
 
-        borderRadius: "28px",
-        border: "1px solid transparent",
-
-        background: `
-          linear-gradient(rgba(15,15,15,0.92), rgba(15,15,15,0.92)) padding-box,
-          radial-gradient(
-            120% 140% at 50% 30%,
-            rgba(201,169,106,${featured ? 0.75 : 0.45}),
-            rgba(201,169,106,0.25) 40%,
-            rgba(255,255,255,0.14) 60%,
-            transparent 100%
-          ) border-box
-        `,
-
-        backdropFilter: "blur(18px)",
-        WebkitBackdropFilter: "blur(18px)",
-
-        boxShadow: featured
-          ? "0 60px 140px rgba(0,0,0,0.75)"
-          : "0 40px 90px rgba(0,0,0,0.55)",
-
-        textAlign: "center",
-        color: "rgba(247, 233, 195, 0.9)",
-
-        transition: "all .45s cubic-bezier(0.22,1,0.36,1)",
+        backdropFilter: "blur(12px)",
+        transition:
+          "transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease",
       }}
     >
-      {/* ===== DRAG / SWIPE HINT ===== */}
-      <Box
-        sx={{
-          display: { xs: "inline-flex", md: "none" },
-          mt: { xs: 0, md: 4.5 },
-          mb: { xs: 2.5 },
-          px: 1.5,
-          py: 0.75,
-          borderRadius: "999px",
-          fontSize: { xs: "0.6rem", md: "0.60rem" },
-          letterSpacing: { xs: "0.19em", md: "0.16em" },
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.4)",
-          border: "1px dashed rgba(253, 237, 192, 0.9)",
-          pointerEvents: "none",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            display: { xs: "inline-flex", md: "none" },
-            alignItems: "center",
-            gap: 0.75,
-          }}
-        >
-          <SwipeIcon sx={{ fontSize: 22, color: "rgba(247,227,188,0.35)" }} />
-          Swipe
-        </Box>
-      </Box>
-      {/* ===== TITLE ===== */}
-      <Typography
-        sx={{
-          fontFamily: `"Playfair Display", serif`,
-          fontSize: { xs: "1.2rem", md: "1.45rem" },
-          letterSpacing: "0.04em",
-          mb: 1.5,
-          textShadow: `
-            0 0 1px rgba(255,255,255,0.35),
-            0 0 14px rgba(201,169,106,0.25)
-          `,
-        }}
-      >
-        {title}
-      </Typography>
-
-      {/* ===== SUBTITLE ===== */}
-      <Typography
-        sx={{
-          fontSize: { xs: "0.78rem", md: "0.85rem" },
-          color: "rgba(255,255,255,0.55)",
-          lineHeight: 1.6,
-          mb: 3,
-        }}
-      >
-        {subtitle}
-      </Typography>
-
-      {/* ===== FEATURES ===== */}
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1.75 }}>
-        {features.map((feature, i) => (
-          <Typography
-            key={i}
+      {/* TOP */}
+      <Box>
+        {/* SWIPE HINT - SOLO MÓVIL Y SOLO SI VIENE ACTIVADO */}
+        {showSwipeHint && (
+          <Box
             sx={{
-              fontSize: "0.9rem",
-              color: "rgba(255,255,255,0.75)",
-              letterSpacing: "0.02em",
-              pb: 1.2,
-              borderBottom:
-                i === features.length - 1
-                  ? "none"
-                  : "1px solid rgba(255,255,255,0.08)",
+              display: { xs: "inline-flex", md: "none" },
+              mt: 0,
+              mb: 2.5,
+              px: 1.6,
+              py: 0.75,
+              borderRadius: "999px",
+              fontSize: "0.58rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.45)",
+              border: "1px dashed rgba(232, 201, 143, 0.72)",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 0.9,
+              pointerEvents: "none",
+              backdropFilter: "blur(6px)",
             }}
           >
-            {feature}
-          </Typography>
-        ))}
-      </Box>
+            <SwipeIcon
+              sx={{
+                fontSize: 12,
+                color: "rgba(232, 201, 143, 0.62)",
+              }}
+            />
+            Swipe to explore
+          </Box>
+        )}
 
-      {/* ===== PRICE DIVIDER ===== */}
-      <Box
-        sx={{
-          width: 48,
-          height: "1px",
-          mx: "auto",
-          my: 3,
-          background:
-            "linear-gradient(to right, transparent, rgba(201,169,106,0.65), transparent)",
-          boxShadow: "0 0 10px rgba(201,169,106,0.45)",
-        }}
-      />
-
-      {/* ===== PRICE ===== */}
-      <Box>
+        {/* LABEL */}
         <Typography
           sx={{
-            fontSize: "1rem",
-            fontWeight: 500,
-            mb: 0.5,
-          }}
-        >
-          {price}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "0.7rem",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.45)",
-          }}
-        >
-          {timeline}
-        </Typography>
-      </Box>
-
-      {/* ===== FEATURED BADGE ===== */}
-      {featured && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 14,
-            right: 14,
-            px: 1.5,
-            py: 0.5,
-            fontSize: "0.6rem",
+            fontSize: "0.62rem",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "rgba(255,255,255,0.9)",
-            borderRadius: "999px",
-            background:
-              "linear-gradient(135deg, rgba(201,169,106,0.85), rgba(255,236,190,0.85))",
-            boxShadow: "0 0 16px rgba(201,169,106,0.6)",
+            color: "rgba(201, 176, 122, 0.78)",
+            mb: 1.5,
+            minHeight: "1.2em",
           }}
         >
-          Most popular
+          {label}
+        </Typography>
+
+        {/* TITLE */}
+        <Typography
+          sx={{
+            fontFamily: '"Playfair Display", serif',
+            fontWeight: 500,
+            fontSize: { xs: "1.55rem", md: "1.85rem" },
+            lineHeight: 1.08,
+            letterSpacing: "-0.02em",
+            color: "#f4f0e8",
+            mb: 1.5,
+          }}
+        >
+          {title}
+        </Typography>
+
+        {/* SUBTITLE */}
+        <Typography
+          sx={{
+            fontSize: { xs: "0.92rem", md: "0.98rem" },
+            lineHeight: 1.75,
+            color: "rgba(255,255,255,0.72)",
+            mb: 3.2,
+            maxWidth: 300,
+          }}
+        >
+          {subtitle}
+        </Typography>
+
+        {/* FEATURES */}
+        <Box
+          component="ul"
+          sx={{
+            listStyle: "none",
+            p: 0,
+            m: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: 1.25,
+          }}
+        >
+          {features.map((feature) => (
+            <Box
+              component="li"
+              key={feature}
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 1.2,
+              }}
+            >
+              <Box
+                sx={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  mt: "0.55rem",
+                  flexShrink: 0,
+                  background: isActive
+                    ? "#e8c98f"
+                    : "rgba(232, 201, 143, 0.58)",
+                  boxShadow: isActive
+                    ? "0 0 10px rgba(232, 201, 143, 0.35)"
+                    : "none",
+                }}
+              />
+
+              <Typography
+                sx={{
+                  fontSize: { xs: "0.88rem", md: "0.94rem" },
+                  lineHeight: 1.7,
+                  color: "rgba(255,255,255,0.82)",
+                }}
+              >
+                {feature}
+              </Typography>
+            </Box>
+          ))}
         </Box>
-      )}
+      </Box>
+
+      {/* BOTTOM */}
+      <Box sx={{ mt: 4 }}>
+        {/* DIVIDER */}
+        <Box
+          sx={{
+            width: "100%",
+            height: "1px",
+            mb: 2.5,
+            background:
+              "linear-gradient(90deg, transparent, rgba(232,201,143,0.35), transparent)",
+          }}
+        />
+
+        {/* PRICE / TIMELINE */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 0.8,
+            mb: 2.8,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "0.78rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "rgba(201,176,122,0.72)",
+            }}
+          >
+            {price}
+          </Typography>
+
+          <Typography
+            sx={{
+              fontSize: "0.84rem",
+              color: "rgba(255,255,255,0.52)",
+              lineHeight: 1.6,
+            }}
+          >
+            {timeline}
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -96,6 +96,7 @@ const isLocalhost =
 ========================= */
 function AppContent() {
   const location = useLocation();
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -104,9 +105,12 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
-    const main = document.getElementById("main-scroll-container");
-    if (main) {
-      main.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
     }
   }, [location.pathname]);
 
@@ -114,9 +118,12 @@ function AppContent() {
     <AppShell>
       <Header />
 
-      <MainWrapper id="main-scroll-container">
+      <MainWrapper id="main-scroll-container" ref={scrollContainerRef}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home scrollContainerRef={scrollContainerRef} />}
+          />
           <Route path="/services" element={<OrbitPage />} />
           <Route path="/process" element={<ProcessSection />} />
           <Route path="/about" element={<AboutMe />} />

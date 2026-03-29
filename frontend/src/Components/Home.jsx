@@ -61,13 +61,16 @@ function HeroSkeleton() {
   );
 }
 
-export default function Home() {
+export default function Home({ scrollContainerRef }) {
   useEffect(() => {
-    const main = document.getElementById("main-scroll-container");
-    if (main) {
-      main.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (scrollContainerRef?.current) {
+      scrollContainerRef.current.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
     }
-  }, []);
+  }, [scrollContainerRef]);
 
   return (
     <>
@@ -87,12 +90,15 @@ export default function Home() {
 
       <NormalSection>
         <Suspense fallback={null}>
-          <WhatIDo />
+          <WhatIDo scrollContainerRef={scrollContainerRef} />{" "}
           <FloatingHintMenu />
         </Suspense>
 
         <Suspense fallback={null}>
-          <OrbitSection />
+        <OrbitSection />
+        </Suspense>
+
+        <Suspense fallback={null}>
           <ProcessSection />
         </Suspense>
 

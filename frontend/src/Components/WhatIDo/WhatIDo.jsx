@@ -18,10 +18,13 @@ import {
   CardTitle,
   CardText,
   PlaceholderMedia,
-  Kicker,
   MetaLine,
   Divider,
   TitleDivider,
+  CardIntro,
+  HoverContent,
+  CardBullets,
+  CardLink,
 } from "./WhatIDo.styles";
 
 import FloatingHintMenu from "./FloatingHintMenu";
@@ -31,76 +34,75 @@ import MobileStack from "./MobileStack";
    DATA
 ================================ */
 const introCopy = {
-  meta: "Design · Code · Motion",
-  titleLine1: "Designing digital experiences",
-  highlight: "intentional",
-  text: `I combine design, code and motion to build websites
-that communicate clearly, move naturally and grow your business.`,
+  meta: "Design · Code · Strategy",
+  titleLine1: "Digital experiences",
+  highlight: "built around your business",
+  text: `From elegant portfolio websites to more complex builds with bookings, payments, dashboards and custom features — each project is designed to fit your goals, your audience and the way your business works.`,
 };
 
 const items = [
   {
-    title: "Bespoke websites",
-    intro: "Websites designed around your brand — never templates.",
-    text: "I design unique websites tailored to your brand and goals, not templates.",
+    title: "Custom websites",
+    intro: "Tailored to your brand and goals.",
+    text: "Tailored to your brand, goals and audience — never built from generic templates.",
     bullets: [
       "Custom layout design",
-      "Brand-aligned typography",
-      "Strategic user flow",
+      "Brand-aligned visuals",
+      "Strategic content flow",
       "Conversion-focused sections",
-      "Responsive & fast",
+      "Responsive performance",
     ],
-    cta: "Explore real projects",
+    cta: "View website examples",
     route: "/projects",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767053696/landingpage_zk0sea.png",
     mobileSrc:
       "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771589275/besoke_mo_1_lppd9b.png",
   },
   {
-    title: "Full-stack development",
-    intro: "Frontend + backend built together for performance.",
-    text: "I build both what your visitors see and what they don’t see.",
+    title: "Full-stack systems",
+    intro: "Built from interface to logic.",
+    text: "Complete digital experiences built from the interface your audience sees to the systems working behind it.",
     bullets: [
-      "React frontend",
-      "Django backend",
-      "PostgreSQL database",
-      "Authentication & security",
-      "API integrations",
+      "Frontend development",
+      "Backend architecture",
+      "Database structure",
+      "Authentication flows",
+      "Custom integrations",
     ],
-    cta: "Explore stack",
+    cta: "Explore the stack",
     route: "/tech-stack",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054313/Beige_Grey_Neutral_Minimal_Paper_Daily_Motivation_Quote_Your_Story_v5mfn4.png",
     mobileSrc:
       "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771589094/fullstack_mo_1_uucisx.png",
   },
   {
-    title: "Booking & payments",
-    intro: "Booking systems + secure payments that run smoothly.",
-    text: "I set up booking systems, contact forms, and secure online payments.",
+    title: "Bookings & payments",
+    intro: "Designed around real client flows.",
+    text: "Seamless booking and payment flows designed around how your business actually works.",
     bullets: [
-      "Booking calendar",
-      "Stripe payments",
+      "Booking systems",
+      "Stripe integration",
       "Confirmation emails",
       "Admin dashboard",
-      "Smooth client flow",
+      "Custom client journeys",
     ],
-    cta: "See booking systems in action",
+    cta: "See booking example",
     route: "https://www.arrazolapsicologia.com/reserva",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054695/payment_c2tn0p.png",
     mobileSrc:
       "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771663247/payments_bookimg_mo_x0obbu.png",
   },
   {
-    title: "Designed for every screen",
-    intro: "Mobile-first, balanced, and beautifully responsive.",
-    text: "From mobile to desktop, your site stays fast, readable, and beautifully balanced.",
+    title: "Responsive experiences",
+    intro: "Balanced across every screen.",
+    text: "Designed to feel clear, balanced and consistent across every screen.",
     bullets: [
-      "Mobile-first design",
-      "Tablet + desktop optimized",
-      "Performance tuning",
-      "Accessibility best practices",
+      "Mobile-first thinking",
+      "Tablet and desktop layouts",
+      "Performance optimisation",
+      "Accessible interactions",
     ],
-    cta: "See responsive preview",
+    cta: "See responsive work",
     route: "/projects",
     src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767050948/responsive_t95h1u.png",
     mobileSrc:
@@ -108,7 +110,7 @@ const items = [
   },
 ];
 
-export default function WhatIDo() {
+export default function WhatIDo({ scrollContainerRef }) {
   /* ===============================
      BREAKPOINT
   ================================ */
@@ -134,6 +136,7 @@ export default function WhatIDo() {
      SCROLL
   ================================ */
   const { scrollYProgress } = useScroll({
+    container: scrollContainerRef,
     target: sectionRef,
     offset: ["start start", "end start"],
   });
@@ -149,14 +152,16 @@ export default function WhatIDo() {
     const f = floatingRef.current.getBoundingClientRect();
     const t = targetRef.current.getBoundingClientRect();
 
+    const offsetY = window.innerWidth > 1600 ? 60 : 40;
+
     setStart({
       x: s.left - f.left,
-      y: s.top - f.top,
+      y: s.top - f.top - offsetY,
     });
 
     setEnd({
-      x: t.left - f.left - 34,
-      y: t.top - f.top - 78,
+      x: t.left - f.left - 50,
+      y: t.top - f.top - 90 - offsetY * 0.3,
     });
 
     setEndScale((t.width / f.width) * 0.9);
@@ -182,17 +187,17 @@ export default function WhatIDo() {
   ================================ */
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-    const rotateX = (y / rect.height - 0.5) * -6;
-    const rotateY = (x / rect.width - 0.5) * 6;
+    const rotateX = (mouseY / rect.height - 0.5) * -4;
+    const rotateY = (mouseX / rect.width - 0.5) * 4;
 
     e.currentTarget.style.transform = `
       translateY(-14px)
       rotateX(${rotateX}deg)
       rotateY(${rotateY}deg)
-      scale(1.02)
+      scale(1.018)
     `;
   };
 
@@ -200,12 +205,9 @@ export default function WhatIDo() {
     e.currentTarget.style.transform = "";
   };
 
-  /* ===============================
-     RENDER
-  ================================ */
   return (
     <Section ref={sectionRef}>
-      {/* ================= FLOATING CARD (DESKTOP ONLY) ================= */}
+      {/* FLOATING CARD */}
       {!isMobile && (
         <StickyLayer>
           <FloatingCard ref={floatingRef} style={{ x, y, scale }}>
@@ -215,7 +217,7 @@ export default function WhatIDo() {
         </StickyLayer>
       )}
 
-      {/* ================= INTRO ================= */}
+      {/* INTRO */}
       <IntroHero>
         <IntroTextWrap>
           <MetaLine>{introCopy.meta}</MetaLine>
@@ -224,17 +226,10 @@ export default function WhatIDo() {
           <HeroTitle>
             {introCopy.titleLine1}
             <br />
-            that feel <span className="highlight">{introCopy.highlight}</span>
+            <span className="highlight">{introCopy.highlight}</span>
           </HeroTitle>
 
-          <HeroText>
-            {introCopy.text.split("\n").map((line, i) => (
-              <span key={i}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </HeroText>
+          <HeroText>{introCopy.text}</HeroText>
         </IntroTextWrap>
 
         {!isMobile && <IntroMediaSlot ref={startRef} />}
@@ -242,35 +237,70 @@ export default function WhatIDo() {
 
       <ScrollSpace />
 
-      {/* ================= MOBILE / DESKTOP SWITCH ================= */}
+      {/* MOBILE / DESKTOP */}
       {isMobile ? (
         <MobileStack items={items} />
       ) : (
         <CardsSection>
           <Grid>
-            {/* CARD 1 */}
             <Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
               <CardImg ref={targetRef}>
                 <PlaceholderMedia />
               </CardImg>
+
               <CardTitle>{items[0].title}</CardTitle>
+              <CardIntro>{items[0].intro}</CardIntro>
               <Divider />
-              <CardText>{items[0].text}</CardText>
+
+              <HoverContent className="hover-content">
+                <CardText>{items[0].text}</CardText>
+
+                <CardBullets>
+                  {items[0].bullets.slice(0, 2).map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </CardBullets>
+
+                <CardLink href={items[0].route}>{items[0].cta} →</CardLink>
+              </HoverContent>
             </Card>
 
-            {/* REST */}
-            {items.slice(1).map((item, i) => (
+            {/* RESTO */}
+            {items.slice(1).map((item) => (
               <Card
-                key={i}
+                key={item.title}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
               >
                 <CardImg>
                   <img src={item.src} alt={item.title} />
                 </CardImg>
+
                 <CardTitle>{item.title}</CardTitle>
+                <CardIntro>{item.intro}</CardIntro>
                 <Divider />
-                <CardText>{item.text}</CardText>
+
+                <HoverContent className="hover-content">
+                  <CardText>{item.text}</CardText>
+
+                  <CardBullets>
+                    {item.bullets.slice(0, 2).map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </CardBullets>
+
+                  <CardLink
+                    href={item.route}
+                    target={item.route.startsWith("http") ? "_blank" : "_self"}
+                    rel={
+                      item.route.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                  >
+                    {item.cta} →
+                  </CardLink>
+                </HoverContent>
               </Card>
             ))}
           </Grid>

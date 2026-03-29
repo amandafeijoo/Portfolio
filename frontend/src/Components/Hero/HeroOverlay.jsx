@@ -39,14 +39,28 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                 sm: "clamp(4rem, 8vw, 5rem)",
               },
               letterSpacing: "0.06em",
-              color: "#f4efe6",
-              textShadow:
-                "0 0 10px rgba(0,0,0,0.35), 0 0 22px rgba(200,164,106,0.18)",
               textTransform: "uppercase",
               textAlign: "center",
+              textShadow:
+                "0 0 10px rgba(0,0,0,0.35), 0 0 22px rgba(200,164,106,0.18)",
             }}
           >
-            Webcode-Art
+            <Box component="span" sx={{ color: "#f4efe6" }}>
+              Webcode-
+            </Box>
+
+            <Box
+              component="span"
+              sx={{
+                color: "#e7c98f",
+                textShadow: `
+        0 1px 0 rgba(0,0,0,0.28),
+        0 0 10px rgba(20,20,20,0.22)
+      `,
+              }}
+            >
+              Art
+            </Box>
           </Typography>
         </Box>
       )}
@@ -65,7 +79,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
           <Box
             sx={{
               position: "absolute",
-              top: { xs: -20, sm: 24 },
+              top: { xs: 0, sm: 24 },
               left: 0,
               right: 0,
               display: { xs: "flex", sm: "none" },
@@ -84,7 +98,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                 textShadow: "0 0 10px rgba(0,0,0,0.38)",
               }}
             >
-              WEB DESIGN · DEVELOPMENT · CREATIVE DIRECTION
+              WEB DESIGN · DEVELOPMENT · CREATIVE
             </Typography>
           </Box>
 
@@ -360,34 +374,6 @@ export default function HeroOverlay({ onEnter, enterStage }) {
               </Button>
             </Box>
           </Box>
-
-          {/* MOBILE BOTTOM CENTER */}
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: { xs: "15vh" },
-              left: 0,
-              right: 0,
-              display: { xs: "flex", sm: "none" },
-              justifyContent: "center",
-              textAlign: "center",
-              zIndex: 40,
-              pointerEvents: "none",
-              px: 3,
-            }}
-          >
-            <Typography
-              sx={{
-                ...sideStyle,
-                fontSize: "0.56rem",
-                opacity: 0.92,
-                textShadow: "0 0 10px rgba(0,0,0,0.38)",
-              }}
-            >
-              STRATEGY · DESIGN · DEVELOPMENT
-            </Typography>
-          </Box>
-
           {/* DESKTOP BOTTOM RIGHT */}
           <Box
             sx={{

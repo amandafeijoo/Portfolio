@@ -10,7 +10,7 @@ export default function ServicesHero() {
         maxWidth: 760,
         mx: "auto",
         px: { xs: 3, md: 3 },
-        mt: { xs: -10, md: -10 },
+        mt: { xs: -20, md: -10 },
       }}
     >
       {/* ===== KICKER ===== */}
@@ -24,7 +24,7 @@ export default function ServicesHero() {
           opacity: 0.8,
         }}
       >
-        Services
+        Website Solutions
       </Typography>
 
       {/* ===== TITLE ===== */}
@@ -44,17 +44,17 @@ export default function ServicesHero() {
           mb: 3,
         }}
       >
-        Websites designed
+        What I can build
         <br />
         <Box component="span" sx={{ color: "#e8c98f" }}>
-          to grow your business.
+          for your business.
         </Box>
       </Typography>
 
       {/* ===== SUBTITLE ===== */}
       <Typography
         sx={{
-          maxWidth: 540,
+          maxWidth: 600,
           mx: "auto",
           mb: 4,
           fontSize: { xs: "0.9rem", md: "1rem" },
@@ -62,8 +62,9 @@ export default function ServicesHero() {
           color: "rgba(255,255,255,0.7)",
         }}
       >
-        I design and develop elegant, high-performing websites that help you
-        attract the right clients and scale with confidence.
+        From elegant starter websites to more custom solutions, each build is
+        designed around your goals, your audience and the way your business
+        works.
       </Typography>
 
       {/* ===== PILLS (DESKTOP) ===== */}
@@ -73,42 +74,42 @@ export default function ServicesHero() {
           justifyContent: "center",
           gap: 1.5,
           mb: 6,
+          flexWrap: "wrap",
         }}
       >
-        {["Design & Development", "Custom Solutions", "Ongoing Support"].map(
-          (label) => (
-            <Box
-              key={label}
-              sx={{
-                px: 2.5,
-                py: 1,
-                borderRadius: "999px",
-                fontSize: "0.65rem",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "rgba(249, 231, 189, 0.85)",
-                background: "rgba(18,19,20,0.55)",
-                border: "1px solid rgba(201,169,106,0.35)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              {label}
-            </Box>
-          )
-        )}
+        {["Starter", "Growth", "Custom"].map((label) => (
+          <Box
+            key={label}
+            sx={{
+              px: 2.5,
+              py: 1,
+              borderRadius: "999px",
+              fontSize: "0.65rem",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "rgba(249, 231, 189, 0.85)",
+              background: "rgba(18,19,20,0.55)",
+              border: "1px solid rgba(201,169,106,0.35)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            {label}
+          </Box>
+        ))}
       </Box>
 
       {/* ===== DRAG HINT ===== */}
       <Box
         sx={{
-          mt: { xs: 2, md: 6 },
+          mt: { xs: 2, md: -1 },
           px: 1.5,
           py: 0.75,
           borderRadius: "999px",
           fontSize: "0.55rem",
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.45)",
+          opacity: { md: 2, xl: 2 },
+          color: "#f4efe6",
           border: "1px dashed rgba(253, 237, 192, 0.6)",
           display: { xs: "none", md: "inline-flex" },
           alignItems: "center",
@@ -116,7 +117,7 @@ export default function ServicesHero() {
         }}
       >
         <SwapHorizIcon sx={{ fontSize: 20, color: "#e8c98f" }} />
-        Drag to explore
+        Drag to explore packages
       </Box>
     </Box>
   );
