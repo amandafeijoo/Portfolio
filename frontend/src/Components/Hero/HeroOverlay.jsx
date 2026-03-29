@@ -255,7 +255,7 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   color: "rgba(255,255,255,0.9)",
                   fontSize: { xs: "0.84rem", sm: "1rem", md: "1.08rem" },
                   lineHeight: { xs: 1.7, sm: 1.8, md: 1.9, xl: 4.2 },
-                  maxWidth: { xs: 300, sm: 560 ,md: 660 },
+                  maxWidth: { xs: 300, sm: 560, md: 660 },
                   mx: "auto",
                   mt: { xs: -1, sm: 5.5 },
                   mb: { xs: 1, sm: 4 },
@@ -264,7 +264,8 @@ export default function HeroOverlay({ onEnter, enterStage }) {
                   px: { xs: 0.3, sm: 0 },
                 }}
               >
-               I design and build websites that help brands connect with their audience and grow.
+                I design and build websites that help brands connect with their
+                audience and grow.
               </Typography>
 
               {/* BUTTON */}

@@ -115,20 +115,20 @@ function AppContent() {
       <Header />
 
       <MainWrapper id="main-scroll-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<OrbitPage />} />
-            <Route path="/process" element={<ProcessSection />} />
-            <Route path="/about" element={<AboutMe />} />
-            <Route path="/tech-stack" element={<TechStack />} />
-            <Route path="/profile-info-box" element={<ProfileInfoBox />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contactform" element={<ContactForm />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/demopage/:projectId" element={<DemoPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/legal" element={<LegalPage />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<OrbitPage />} />
+          <Route path="/process" element={<ProcessSection />} />
+          <Route path="/about" element={<AboutMe />} />
+          <Route path="/tech-stack" element={<TechStack />} />
+          <Route path="/profile-info-box" element={<ProfileInfoBox />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contactform" element={<ContactForm />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/demopage/:projectId" element={<DemoPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/legal" element={<LegalPage />} />
+        </Routes>
 
         <Footer />
       </MainWrapper>

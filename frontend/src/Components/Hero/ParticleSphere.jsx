@@ -236,12 +236,12 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           <SphereLines3D radius={3.55} length={11.5} />
         </group>
       )}
-  
+
       {/* UNIVERSO */}
       <group position={[0, 0, -4]} visible={portalOpen}>
         <UniverseVista isMobile={isMobile} />
       </group>
-  
+
       {/* HALO DIFUSO DETRÁS */}
       {!portalOpen && (
         <mesh
@@ -260,7 +260,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           />
         </mesh>
       )}
-  
+
       {/* HALO INTERNO MUY SUTIL */}
       {!portalOpen && (
         <mesh ref={haloRef} scale={baseHaloScale}>
@@ -275,7 +275,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           />
         </mesh>
       )}
-  
+
       {/* PARTÍCULAS */}
       <points ref={pointsRef}>
         <bufferGeometry>
@@ -292,7 +292,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
             itemSize={3}
           />
         </bufferGeometry>
-  
+
         <pointsMaterial
           vertexColors
           size={isMobile ? 0.01 : 0.012}

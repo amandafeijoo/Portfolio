@@ -26,7 +26,6 @@ const Container = styled.div`
   width: 100%;
 `;
 
-
 const StickySection = styled.section`
   position: sticky;
   top: ${HEADER_HEIGHT}px;
