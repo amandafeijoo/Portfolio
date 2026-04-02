@@ -24,11 +24,36 @@ export default function HomeContactInvite() {
     >
       <ThreeContactBackground mode="ambient" />
 
+      {/* SOFT HALO */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      >
+        <Box
+          sx={{
+            width: { xs: 260, sm: 340, md: 420 },
+            height: { xs: 260, sm: 340, md: 420 },
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(232, 201, 143, 0.14), transparent 70%)",
+            filter: "blur(60px)",
+            opacity: 0.9,
+          }}
+        />
+      </Box>
+
       <Box
         sx={{
           position: "relative",
           zIndex: 2,
-          maxWidth: 800,
+          maxWidth: 860,
           width: "100%",
         }}
       >
@@ -42,7 +67,7 @@ export default function HomeContactInvite() {
             opacity: 0.8,
           }}
         >
-          Contact
+          Start your project
         </Typography>
 
         <Typography
@@ -51,22 +76,37 @@ export default function HomeContactInvite() {
             fontWeight: 500,
             lineHeight: 1.08,
             fontSize: {
-              xs: "clamp(1.8rem, 7vw, 2.4rem)",
-              sm: "clamp(2.6rem, 6vw, 3.2rem)",
-              md: "clamp(3rem, 5vw, 3.8rem)",
-              lg: "clamp(3.6rem, 4.5vw, 4.6rem)",
-              xl: "clamp(4.2rem, 4vw, 5.2rem)",
+              xs: "clamp(1.9rem, 8vw, 2.6rem)",
+              sm: "clamp(2.7rem, 6vw, 3.4rem)",
+              md: "clamp(3.2rem, 5vw, 4.2rem)",
+              lg: "clamp(3.8rem, 4.5vw, 4.9rem)",
+              xl: "clamp(4.3rem, 4vw, 5.4rem)",
             },
             letterSpacing: "-0.02em",
             color: "#f4f0e8",
-            mb: 4,
+            mb: 3,
           }}
         >
           Ready to{" "}
           <Box component="span" sx={{ color: "#e8c98f" }}>
             grow your business
-          </Box>{" "}
-          online?
+          </Box>
+          <br />
+          and turn visitors into real clients?
+        </Typography>
+
+        <Typography
+          sx={{
+            maxWidth: 680,
+            mx: "auto",
+            mb: { xs: 4, md: 5 },
+            fontSize: { xs: "0.95rem", md: "1.08rem" },
+            lineHeight: 1.8,
+            color: "rgba(255,255,255,0.72)",
+          }}
+        >
+          I design and build websites that attract, engage and convert — crafted
+          to support the way your business grows.
         </Typography>
 
         <InviteCTA onClick={() => navigate("/contact")}>

@@ -354,36 +354,54 @@ export default function HeroSculpture({ enter, onProgress }) {
     };
   }, [isMobile, isTablet]);
 
-  useFrame(() => {
+  useFrame((state) => {
     if (!wrapper.current) return;
-
-    const enterSpeed = 0.005; ///////////////////////// AQUI ENTRADA AL PORTAL
-    const exitSpeed = 0.08;
-    const cameraLerp = 0.085;
-
+  
+    const enterSpeed = 0.007;
+    const exitSpeed = 0.008;
+    const cameraLerp = 0.095;
+  
     progress.current = THREE.MathUtils.lerp(
       progress.current,
       enter ? 1 : 0,
       enter ? enterSpeed : exitSpeed
     );
-
+  
     onProgress?.(progress.current);
-
+  
+    const p = progress.current;
+    const t = state.clock.elapsedTime;
+  
     const scale = THREE.MathUtils.lerp(
       config.baseScale,
       config.activeScale,
-      progress.current
+      p
     );
-
+  
     wrapper.current.scale.setScalar(scale);
-    wrapper.current.position.z = -progress.current * 4.2;
-
+  
+    // profundidad
+    wrapper.current.position.z = -p * 4.2;
+  
+    // pequeño lift antes de entrar
+    wrapper.current.position.y =
+      Math.sin(t * 0.8) * 0.03 + p * 0.18;
+  
+    // WOW ROTATION
+    wrapper.current.rotation.y += 0.004 + p * 0.045;
+  
+    wrapper.current.rotation.x =
+      Math.sin(t * 0.4) * 0.06 + p * 0.35;
+  
+    wrapper.current.rotation.z =
+      Math.sin(t * 0.25) * 0.025 + p * 0.22;
+  
     camera.position.z = THREE.MathUtils.lerp(
       camera.position.z,
       THREE.MathUtils.lerp(
         config.idleCameraZ,
         config.activeCameraZ,
-        progress.current
+        p
       ),
       cameraLerp
     );

@@ -45,9 +45,9 @@ export default function StarsSphere({ impulseRef }) {
   ============================ */
   const starColors = useMemo(() => {
     const palette = [
-      new THREE.Color("#fff6dc"),
-      new THREE.Color("#f0d892"),
-      new THREE.Color("#d8dfeb"),
+      new THREE.Color("#f4efe6"),
+      new THREE.Color("#dfe6f0"),
+      new THREE.Color("#c7d3e3"),
       new THREE.Color("#8fa8c9"),
     ];
 
@@ -208,7 +208,7 @@ export default function StarsSphere({ impulseRef }) {
         <mesh ref={coreRef}>
           <sphereGeometry args={[isMobile ? 2.9 : 2.6, 24, 24]} />
           <meshBasicMaterial
-            color="#f0d892"
+            color="#8fa8c9"
             wireframe
             transparent
             opacity={isMobile ? 0.18 : 0.3}

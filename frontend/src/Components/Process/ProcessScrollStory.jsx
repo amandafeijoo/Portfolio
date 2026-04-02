@@ -58,11 +58,14 @@ export default function ProcessScrollStory({ scrollContainerRef }) {
   const isMobile = useMediaQuery("(max-width:768px)");
 
   const totalSlides = 1 + steps.length;
-
+  
+  console.log("scrollContainerRef prop:", scrollContainerRef);
+  console.log("scrollContainerRef current:", scrollContainerRef?.current);
   const { scrollYProgress } = useScroll({
     container: scrollContainerRef,
     target: sectionRef,
     offset: ["start start", "end end"],
+    layoutEffect: false,
   });
 
   const x = useTransform(
