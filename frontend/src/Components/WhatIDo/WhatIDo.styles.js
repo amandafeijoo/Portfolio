@@ -12,10 +12,10 @@ export const Section = styled.section`
   isolation: isolate;
 
   @media (max-width: 768px) {
-    top: 70px;
-    height: 280px;
-    width: 92vw;
-    opacity: 0.75;
+    width: 100%;
+    top: 0;
+    height: auto;
+    opacity: 1;
   }
 `;
 

@@ -113,6 +113,7 @@ const items = [
 export default function WhatIDo({ scrollContainerRef }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isDesktop = !isMobile;
 
   const sectionRef = useRef(null);
   const startRef = useRef(null);
@@ -130,7 +131,7 @@ export default function WhatIDo({ scrollContainerRef }) {
   });
 
   useLayoutEffect(() => {
-    if (isMobile) return;
+    if (!isDesktop) return;
     if (!startRef.current || !floatingRef.current || !targetRef.current) return;
 
     const s = startRef.current.getBoundingClientRect();
@@ -138,8 +139,7 @@ export default function WhatIDo({ scrollContainerRef }) {
     const t = targetRef.current.getBoundingClientRect();
 
     const offsetY = window.innerWidth > 1600 ? 60 : 40;
-
-    const extraOffset = 120; // 👈 ajusta (60–120 ideal)
+    const extraOffset = 120;
 
     setStart({
       x: s.left - f.left,
@@ -152,21 +152,29 @@ export default function WhatIDo({ scrollContainerRef }) {
     });
 
     setEndScale((t.width / f.width) * 0.9);
-  }, [isMobile]);
+  }, [isDesktop]);
 
-  const x = isMobile
-    ? 0
-    : useTransform(scrollYProgress, [0, 0.45], [start.x, end.x]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 0.45],
+    [start.x, end.x]
+  );
 
-  const y = isMobile
-    ? 0
-    : useTransform(scrollYProgress, [0, 0.45], [start.y, end.y]);
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.45],
+    [start.y, end.y]
+  );
 
-  const scale = isMobile
-    ? 1
-    : useTransform(scrollYProgress, [0, 0.45], [1, endScale]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.45],
+    [1, endScale]
+  );
 
   const handleMouseMove = (e) => {
+    if (!isDesktop) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
@@ -183,12 +191,13 @@ export default function WhatIDo({ scrollContainerRef }) {
   };
 
   const handleMouseLeave = (e) => {
+    if (!isDesktop) return;
     e.currentTarget.style.transform = "";
   };
 
   return (
     <Section ref={sectionRef}>
-      {!isMobile && (
+      {isDesktop && (
         <StickyLayer>
           <FloatingCard ref={floatingRef} style={{ x, y, scale }}>
             <img src={items[0].src} alt={items[0].title} />
@@ -197,9 +206,7 @@ export default function WhatIDo({ scrollContainerRef }) {
         </StickyLayer>
       )}
 
-      {/* INTRO */}
       <IntroHero style={{ position: "relative", overflow: "hidden" }}>
-        {/* TOP FLOATING LINE */}
         <Box
           sx={{
             position: "absolute",
@@ -216,7 +223,6 @@ export default function WhatIDo({ scrollContainerRef }) {
           }}
         />
 
-        {/* FLOATING TOP HALO */}
         <Box
           sx={{
             position: "absolute",
@@ -241,7 +247,6 @@ export default function WhatIDo({ scrollContainerRef }) {
           }}
         />
 
-        {/* SOFT LIGHT BEAM */}
         <Box
           sx={{
             position: "absolute",
@@ -267,7 +272,6 @@ export default function WhatIDo({ scrollContainerRef }) {
           }}
         />
 
-        {/* MAIN SOFT GLOW */}
         <Box
           sx={{
             position: "absolute",
@@ -306,14 +310,14 @@ export default function WhatIDo({ scrollContainerRef }) {
           <HeroText>{introCopy.text}</HeroText>
         </IntroTextWrap>
 
-        {!isMobile && (
+        {isDesktop && (
           <Box sx={{ position: "relative", zIndex: 1 }}>
             <IntroMediaSlot ref={startRef} />
           </Box>
         )}
       </IntroHero>
 
-      <ScrollSpace />
+      {isDesktop && <ScrollSpace />}
 
       {isMobile ? (
         <MobileStack items={items} />
