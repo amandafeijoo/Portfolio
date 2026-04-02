@@ -20,10 +20,11 @@ const HomeContactInvite = lazy(() =>
 ========================= */
 const HEADER_HEIGHT = 0;
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+const StickyGroup = styled.section`
+  position: relative;
   width: 100%;
+  height: 200vh;
+  background: #000;
 `;
 
 const StickySection = styled.section`
@@ -31,28 +32,28 @@ const StickySection = styled.section`
   top: ${HEADER_HEIGHT}px;
   width: 100%;
   height: calc(100vh - ${HEADER_HEIGHT}px);
-  overflow: hidden;
   display: flex;
   align-items: stretch;
   justify-content: center;
   background: #000;
 `;
 
-const NormalSection = styled.div`
-  width: 100%;
+const NormalSection = styled.section`
   position: relative;
+  width: 100%;
   z-index: 3;
   background: #000;
 `;
 
 /* =========================
-   HERO SKELETON
+   FALLBACKS
 ========================= */
 function HeroSkeleton() {
   return (
     <div
       style={{
         width: "100%",
+        height: `calc(100vh - ${HEADER_HEIGHT}px)`,
         minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
         background:
           "radial-gradient(circle at 50% 42%, rgba(201,169,106,0.14), #000 68%)",
@@ -61,13 +62,29 @@ function HeroSkeleton() {
   );
 }
 
+function SectionSkeleton() {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+        minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
+        background: "#000",
+      }}
+    />
+  );
+}
+
+/* =========================
+   HOME
+========================= */
 export default function Home({ scrollContainerRef }) {
   useEffect(() => {
     if (scrollContainerRef?.current) {
       scrollContainerRef.current.scrollTo({
         top: 0,
         left: 0,
-        behavior: "instant",
+        behavior: "auto",
       });
     }
   }, [scrollContainerRef]);
@@ -77,7 +94,7 @@ export default function Home({ scrollContainerRef }) {
       {/* =========================
           STICKY GROUP 1
       ========================= */}
-      <Container>
+      <StickyGroup>
         <StickySection style={{ zIndex: 1 }}>
           <Suspense fallback={<HeroSkeleton />}>
             <HeroSection />
@@ -85,26 +102,26 @@ export default function Home({ scrollContainerRef }) {
         </StickySection>
 
         <StickySection style={{ zIndex: 2 }}>
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton />}>
             <WhatIDoHero />
           </Suspense>
         </StickySection>
-      </Container>
+      </StickyGroup>
 
       {/* =========================
           NORMAL CONTENT
       ========================= */}
       <NormalSection>
-        <Suspense fallback={null}>
+        <Suspense fallback={<SectionSkeleton />}>
           <WhatIDo scrollContainerRef={scrollContainerRef} />
           <FloatingHintMenu />
         </Suspense>
 
-        <Suspense fallback={null}>
+        <Suspense fallback={<SectionSkeleton />}>
           <OrbitSection />
         </Suspense>
 
-        <Suspense fallback={null}>
+        <Suspense fallback={<SectionSkeleton />}>
           <ProcessScrollStory scrollContainerRef={scrollContainerRef} />
         </Suspense>
       </NormalSection>
@@ -112,19 +129,19 @@ export default function Home({ scrollContainerRef }) {
       {/* =========================
           STICKY GROUP 2
       ========================= */}
-      <Container>
+      <StickyGroup>
         <StickySection style={{ zIndex: 2 }}>
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton />}>
             <HeroWorkSection />
           </Suspense>
         </StickySection>
 
         <StickySection style={{ zIndex: 3 }}>
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton />}>
             <HomeContactInvite />
           </Suspense>
         </StickySection>
-      </Container>
+      </StickyGroup>
     </>
   );
 }

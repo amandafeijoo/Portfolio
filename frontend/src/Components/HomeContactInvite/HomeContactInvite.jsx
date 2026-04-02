@@ -10,28 +10,28 @@ export default function HomeContactInvite() {
     <Box
       sx={{
         position: "relative",
-
-        /* 🌌 ALTURA RESPONSIVE */
-        minHeight: { xs: "70vh", md: "80vh", lg: "90vh" },
-
+        width: "100%",
+        minHeight: "100vh",
+        height: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-
         px: 3,
-
-        /* 🚀 ESPACIADO SUPERIOR */
-        mt: { xs: 7, md: 18, lg: 24 },
-
         background: "#000",
         overflow: "hidden",
       }}
     >
       <ThreeContactBackground mode="ambient" />
 
-      <Box sx={{ position: "relative", zIndex: 2, maxWidth: 800 }}>
-        {/* KICKER */}
+      <Box
+        sx={{
+          position: "relative",
+          zIndex: 2,
+          maxWidth: 800,
+          width: "100%",
+        }}
+      >
         <Typography
           sx={{
             mb: 2,
@@ -45,7 +45,6 @@ export default function HomeContactInvite() {
           Contact
         </Typography>
 
-        {/* TITLE */}
         <Typography
           sx={{
             fontFamily: "Playfair Display, serif",
@@ -70,7 +69,6 @@ export default function HomeContactInvite() {
           online?
         </Typography>
 
-        {/* CTA */}
         <InviteCTA onClick={() => navigate("/contact")}>
           Start your project →
         </InviteCTA>
