@@ -40,7 +40,14 @@ export default function HeroWorkSection() {
         width: "100%",
         height: "100dvh",
         overflow: "hidden",
-        background: "#000",
+        background: `
+          linear-gradient(
+            to bottom,
+            #060606 0%,
+            #0b0b0b 42%,
+            #101010 100%
+          )
+        `,
         mt: -7,
         mb: 14,
       }}

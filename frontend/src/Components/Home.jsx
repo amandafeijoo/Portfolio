@@ -9,7 +9,7 @@ const WhatIDoHero = lazy(() => import("./WhatIDo/WhatIDoHero"));
 const WhatIDo = lazy(() => import("./WhatIDo/WhatIDo"));
 const FloatingHintMenu = lazy(() => import("./WhatIDo/FloatingHintMenu"));
 import OrbitSection from "./Services_Hero/OrbitSection";
-const ProcessSection = lazy(() => import("./Process/ProcessSection"));
+import ProcessScrollStory from "./Process/ProcessScrollStory";
 const HeroWorkSection = lazy(() => import("./Hero_Work/HeroWorkSection"));
 const HomeContactInvite = lazy(() =>
   import("./HomeContactInvite/HomeContactInvite")
@@ -74,6 +74,9 @@ export default function Home({ scrollContainerRef }) {
 
   return (
     <>
+      {/* =========================
+          STICKY GROUP 1
+      ========================= */}
       <Container>
         <StickySection style={{ zIndex: 1 }}>
           <Suspense fallback={<HeroSkeleton />}>
@@ -88,28 +91,40 @@ export default function Home({ scrollContainerRef }) {
         </StickySection>
       </Container>
 
+      {/* =========================
+          NORMAL CONTENT
+      ========================= */}
       <NormalSection>
         <Suspense fallback={null}>
-          <WhatIDo scrollContainerRef={scrollContainerRef} />{" "}
+          <WhatIDo scrollContainerRef={scrollContainerRef} />
           <FloatingHintMenu />
         </Suspense>
 
         <Suspense fallback={null}>
-        <OrbitSection />
+          <OrbitSection />
         </Suspense>
 
         <Suspense fallback={null}>
-          <ProcessSection />
-        </Suspense>
-
-        <Suspense fallback={null}>
-          <HeroWorkSection />
-        </Suspense>
-
-        <Suspense fallback={null}>
-          <HomeContactInvite />
+          <ProcessScrollStory scrollContainerRef={scrollContainerRef} />
         </Suspense>
       </NormalSection>
+
+      {/* =========================
+          STICKY GROUP 2
+      ========================= */}
+      <Container>
+        <StickySection style={{ zIndex: 2 }}>
+          <Suspense fallback={null}>
+            <HeroWorkSection />
+          </Suspense>
+        </StickySection>
+
+        <StickySection style={{ zIndex: 3 }}>
+          <Suspense fallback={null}>
+            <HomeContactInvite />
+          </Suspense>
+        </StickySection>
+      </Container>
     </>
   );
 }

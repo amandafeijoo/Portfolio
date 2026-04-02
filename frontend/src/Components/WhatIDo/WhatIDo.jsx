@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
-import { useTheme, useMediaQuery } from "@mui/material";
+import { useTheme, useMediaQuery, Box } from "@mui/material";
 import {
   Section,
   IntroHero,
@@ -111,39 +111,24 @@ const items = [
 ];
 
 export default function WhatIDo({ scrollContainerRef }) {
-  /* ===============================
-     BREAKPOINT
-  ================================ */
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  /* ===============================
-     REFS
-  ================================ */
   const sectionRef = useRef(null);
   const startRef = useRef(null);
   const floatingRef = useRef(null);
   const targetRef = useRef(null);
 
-  /* ===============================
-     STATE
-  ================================ */
   const [start, setStart] = useState({ x: 0, y: 0 });
   const [end, setEnd] = useState({ x: 0, y: 0 });
   const [endScale, setEndScale] = useState(1);
 
-  /* ===============================
-     SCROLL
-  ================================ */
   const { scrollYProgress } = useScroll({
     container: scrollContainerRef,
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  /* ===============================
-     MEASUREMENTS (DESKTOP ONLY)
-  ================================ */
   useLayoutEffect(() => {
     if (isMobile) return;
     if (!startRef.current || !floatingRef.current || !targetRef.current) return;
@@ -154,9 +139,11 @@ export default function WhatIDo({ scrollContainerRef }) {
 
     const offsetY = window.innerWidth > 1600 ? 60 : 40;
 
+    const extraOffset = 120; // 👈 ajusta (60–120 ideal)
+
     setStart({
       x: s.left - f.left,
-      y: s.top - f.top - offsetY,
+      y: s.top - f.top - offsetY + extraOffset,
     });
 
     setEnd({
@@ -167,9 +154,6 @@ export default function WhatIDo({ scrollContainerRef }) {
     setEndScale((t.width / f.width) * 0.9);
   }, [isMobile]);
 
-  /* ===============================
-     TRANSFORMS (DESKTOP ONLY)
-  ================================ */
   const x = isMobile
     ? 0
     : useTransform(scrollYProgress, [0, 0.45], [start.x, end.x]);
@@ -182,9 +166,6 @@ export default function WhatIDo({ scrollContainerRef }) {
     ? 1
     : useTransform(scrollYProgress, [0, 0.45], [1, endScale]);
 
-  /* ===============================
-     INTERACTION (DESKTOP ONLY)
-  ================================ */
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -207,7 +188,6 @@ export default function WhatIDo({ scrollContainerRef }) {
 
   return (
     <Section ref={sectionRef}>
-      {/* FLOATING CARD */}
       {!isMobile && (
         <StickyLayer>
           <FloatingCard ref={floatingRef} style={{ x, y, scale }}>
@@ -218,8 +198,102 @@ export default function WhatIDo({ scrollContainerRef }) {
       )}
 
       {/* INTRO */}
-      <IntroHero>
-        <IntroTextWrap>
+      <IntroHero style={{ position: "relative", overflow: "hidden" }}>
+        {/* TOP FLOATING LINE */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: { xs: "8%", md: "10%" },
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: { xs: "80%", sm: "70%", md: "58%" },
+            height: "1px",
+            background:
+              "linear-gradient(90deg, transparent, rgba(201,176,122,0.16), rgba(232,201,143,0.40), rgba(201,176,122,0.16), transparent)",
+            opacity: 0.9,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* FLOATING TOP HALO */}
+        <Box
+          sx={{
+            position: "absolute",
+            left: "50%",
+            top: { xs: "12%", md: "14%" },
+            transform: "translate(-50%, -50%)",
+            width: { xs: 260, sm: 360, md: 460, lg: 560 },
+            height: { xs: 100, sm: 120, md: 150, lg: 180 },
+            borderRadius: "50%",
+            background: `
+              radial-gradient(
+                ellipse at center,
+                rgba(232, 201, 143, 0.12) 0%,
+                rgba(201, 176, 122, 0.06) 34%,
+                rgba(0,0,0,0) 76%
+              )
+            `,
+            filter: "blur(28px)",
+            opacity: 0.95,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* SOFT LIGHT BEAM */}
+        <Box
+          sx={{
+            position: "absolute",
+            left: "50%",
+            top: { xs: "17%", md: "18%" },
+            transform: "translateX(-50%)",
+            width: { xs: 110, sm: 150, md: 190, lg: 220 },
+            height: { xs: 230, sm: 280, md: 340, lg: 400 },
+            borderRadius: "50%",
+            background: `
+              radial-gradient(
+                ellipse at center,
+                rgba(232, 201, 143, 0.08) 0%,
+                rgba(201, 176, 122, 0.035) 30%,
+                rgba(201, 176, 122, 0.012) 54%,
+                rgba(0,0,0,0) 76%
+              )
+            `,
+            filter: "blur(26px)",
+            opacity: 0.72,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* MAIN SOFT GLOW */}
+        <Box
+          sx={{
+            position: "absolute",
+            left: "50%",
+            top: { xs: "34%", md: "36%" },
+            transform: "translate(-50%, -50%)",
+            width: { xs: 420, sm: 620, md: 820, lg: 980 },
+            height: { xs: 320, sm: 380, md: 460, lg: 520 },
+            borderRadius: "50%",
+            background: `
+              radial-gradient(
+                ellipse at center,
+                rgba(232, 201, 143, 0.08) 0%,
+                rgba(232, 201, 143, 0.04) 24%,
+                rgba(232, 201, 143, 0.016) 42%,
+                rgba(0,0,0,0) 72%
+              )
+            `,
+            filter: "blur(58px)",
+            opacity: 0.82,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
+        <IntroTextWrap style={{ position: "relative", zIndex: 1 }}>
           <MetaLine>{introCopy.meta}</MetaLine>
           <TitleDivider />
 
@@ -232,12 +306,15 @@ export default function WhatIDo({ scrollContainerRef }) {
           <HeroText>{introCopy.text}</HeroText>
         </IntroTextWrap>
 
-        {!isMobile && <IntroMediaSlot ref={startRef} />}
+        {!isMobile && (
+          <Box sx={{ position: "relative", zIndex: 1 }}>
+            <IntroMediaSlot ref={startRef} />
+          </Box>
+        )}
       </IntroHero>
 
       <ScrollSpace />
 
-      {/* MOBILE / DESKTOP */}
       {isMobile ? (
         <MobileStack items={items} />
       ) : (
@@ -265,7 +342,6 @@ export default function WhatIDo({ scrollContainerRef }) {
               </HoverContent>
             </Card>
 
-            {/* RESTO */}
             {items.slice(1).map((item) => (
               <Card
                 key={item.title}

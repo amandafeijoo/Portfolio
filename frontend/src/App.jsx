@@ -45,7 +45,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: #000;
+    background: linear-gradient(
+      to bottom,
+      #060606 0%,
+      #0b0b0b 42%,
+      #101010 100%
+    );
     color-scheme: dark;
     font-family: "Inter", sans-serif;
   }
@@ -59,6 +64,12 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     max-width: 100%;
     overflow: hidden;
+    background: linear-gradient(
+      to bottom,
+      #060606 0%,
+      #0b0b0b 42%,
+      #101010 100%
+    );
   }
 
   input, textarea, button, select {
@@ -74,7 +85,7 @@ const AppShell = styled.div`
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: #000;
+  background: linear-gradient(to bottom, #060606 0%, #0b0b0b 42%, #101010 100%);
 `;
 
 const MainWrapper = styled.main`
@@ -82,7 +93,7 @@ const MainWrapper = styled.main`
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background: #000;
+  background: linear-gradient(to bottom, #060606 0%, #0b0b0b 42%, #101010 100%);
   padding-top: ${HEADER_HEIGHT}px;
   scroll-behavior: auto;
 `;

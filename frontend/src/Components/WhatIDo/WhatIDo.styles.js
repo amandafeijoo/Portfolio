@@ -11,53 +11,11 @@ export const Section = styled.section`
   overflow-x: hidden;
   isolation: isolate;
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at 50% 10%,
-        rgba(201, 184, 138, 0.1),
-        transparent 22%
-      ),
-      radial-gradient(
-        circle at 50% 38%,
-        rgba(201, 184, 138, 0.06),
-        transparent 32%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(10, 10, 10, 0.2) 0%,
-        rgba(0, 0, 0, 0) 28%,
-        rgba(0, 0, 0, 0.18) 100%
-      );
-    pointer-events: none;
-    z-index: -2;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 140px;
-    transform: translateX(-50%);
-    width: min(920px, 82vw);
-    height: 420px;
-    background: radial-gradient(
-      ellipse,
-      rgba(201, 184, 138, 0.08),
-      transparent 72%
-    );
-    filter: blur(42px);
-    pointer-events: none;
-    z-index: -1;
-
-    @media (max-width: 768px) {
-      top: 70px;
-      height: 280px;
-      width: 92vw;
-      opacity: 0.75;
-    }
+  @media (max-width: 768px) {
+    top: 70px;
+    height: 280px;
+    width: 92vw;
+    opacity: 0.75;
   }
 `;
 
@@ -104,20 +62,6 @@ export const IntroTextWrap = styled.div`
   margin-top: -20px;
   justify-self: end;
   z-index: 1;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -30px -40px;
-    background: radial-gradient(
-      circle at center,
-      rgba(201, 184, 138, 0.08),
-      transparent 70%
-    );
-    filter: blur(34px);
-    pointer-events: none;
-    z-index: -1;
-  }
 
   @media (max-width: 1024px) {
     max-width: 560px;
