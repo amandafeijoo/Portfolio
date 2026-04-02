@@ -53,18 +53,20 @@ export default function WorkOverlay({ onEnter, enter }) {
         {/* ===== SUBLINE ===== */}
         <Typography
           sx={{
-            maxWidth: 540,
+            maxWidth: 620,
             mx: "auto",
-            mb: { xs: 3, md: 6 },
-            mt: { xs: 5, md: 1 },
-            fontSize: { xs: "0.9rem", md: "1.1rem" },
-            lineHeight: 1.75,
-            color: "rgba(255,255,255,0.7)",
+            mb: { xs: 3, md: 5 },
+            mt: { xs: 3, md: 1 },
+            fontSize: { xs: "0.80rem", md: "1.08rem" },
+            lineHeight: 1.6,
+            color: "rgba(255,255,255,0.72)",
           }}
         >
-          Real projects built with clarity, strategy and measurable impact.
+          Real projects designed to attract clients, build trust and grow
+          businesses.
         </Typography>
 
+        {/* ===== CTA ===== */}
         <Button
           onClick={onEnter}
           disabled={enter}
@@ -89,9 +91,9 @@ export default function WorkOverlay({ onEnter, enter }) {
             backdropFilter: "blur(10px)",
 
             boxShadow: `
-      0 0 16px rgba(230, 213, 188, 0.25),
-      0 0 48px rgba(230, 213, 188, 0.15)
-    `,
+              0 0 16px rgba(230, 213, 188, 0.25),
+              0 0 48px rgba(230, 213, 188, 0.15)
+            `,
 
             transition:
               "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
@@ -126,9 +128,9 @@ export default function WorkOverlay({ onEnter, enter }) {
               background: "rgba(230, 213, 188, 0.18)",
               border: "1px solid rgba(230, 213, 188, 0.45)",
               boxShadow: `
-        0 0 28px rgba(230, 213, 188, 0.45),
-        0 0 80px rgba(230, 213, 188, 0.25)
-      `,
+                0 0 28px rgba(230, 213, 188, 0.45),
+                0 0 80px rgba(230, 213, 188, 0.25)
+              `,
               "&::before": {
                 opacity: 1,
                 filter: { xs: "blur(26px)", sm: "blur(30px)" },
@@ -150,8 +152,21 @@ export default function WorkOverlay({ onEnter, enter }) {
             },
           }}
         >
-          Explore
+          View my work
         </Button>
+
+        {/* ===== MICRO TEXT ===== */}
+        <Typography
+          sx={{
+            mt: 2.2,
+            fontSize: { xs: "0.50rem", md: "0.60rem" },
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.38)",
+          }}
+        >
+          Real projects • case studies • live work
+        </Typography>
       </Box>
     </Box>
   );
