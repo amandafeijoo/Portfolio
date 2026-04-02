@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     background: linear-gradient(
       to bottom,
       #060606 0%,
@@ -61,9 +61,8 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     max-width: 100%;
-    overflow: hidden;
     background: linear-gradient(
       to bottom,
       #060606 0%,
@@ -90,6 +89,7 @@ const AppShell = styled.div`
 
 const MainWrapper = styled.main`
   flex: 1;
+  min-height: 0;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -120,7 +120,7 @@ function AppContent() {
       scrollContainerRef.current.scrollTo({
         top: 0,
         left: 0,
-        behavior: "instant",
+        behavior: "auto",
       });
     }
   }, [location.pathname]);
