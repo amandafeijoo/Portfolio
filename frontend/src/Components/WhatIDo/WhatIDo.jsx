@@ -29,6 +29,10 @@ import {
 
 import FloatingHintMenu from "./FloatingHintMenu";
 import MobileStack from "./MobileStack";
+import BookingFlowPreview from "./Cards/BookingFlowPreview";
+import ResponsivePreview from "./Cards/ResponsivePreview";
+import TravelLuxuryPreview from "./Cards/CustomWeb/TravelLuxuryPreview";
+import FullStackPreview from "./Cards/FullStackPreview";
 
 /* ===============================
    DATA
@@ -154,23 +158,17 @@ export default function WhatIDo({ scrollContainerRef }) {
     setEndScale((t.width / f.width) * 0.9);
   }, [isDesktop]);
 
-  const x = useTransform(
-    scrollYProgress,
-    [0, 0.45],
-    [start.x, end.x]
-  );
+  const x = isDesktop
+    ? useTransform(scrollYProgress, [0, 0.45], [start.x, end.x])
+    : 0;
 
-  const y = useTransform(
-    scrollYProgress,
-    [0, 0.45],
-    [start.y, end.y]
-  );
+  const y = isDesktop
+    ? useTransform(scrollYProgress, [0, 0.45], [start.y, end.y])
+    : 0;
 
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.45],
-    [1, endScale]
-  );
+  const scale = isDesktop
+    ? useTransform(scrollYProgress, [0, 0.45], [1, endScale])
+    : 1;
 
   const handleMouseMove = (e) => {
     if (!isDesktop) return;
@@ -195,12 +193,48 @@ export default function WhatIDo({ scrollContainerRef }) {
     e.currentTarget.style.transform = "";
   };
 
+  /* ===============================
+     RENDER MEDIA HELPER
+     SOLO PARA CARDS 2, 3, 4
+  ================================ */
+  const renderCardMedia = (item, ref = null) => {
+    if (item.title === "Bookings & payments") {
+      return (
+        <CardImg ref={ref}>
+          <BookingFlowPreview />
+        </CardImg>
+      );
+    }
+
+    if (item.title === "Responsive experiences") {
+      return (
+        <CardImg ref={ref}>
+          <ResponsivePreview />
+        </CardImg>
+      );
+    }
+
+    if (item.title === "Full-stack systems") {
+      return (
+        <CardImg ref={ref}>
+          <FullStackPreview />
+        </CardImg>
+      );
+    }
+
+    return (
+      <CardImg ref={ref}>
+        <img src={item.src} alt={item.title} />
+      </CardImg>
+    );
+  };
+
   return (
     <Section ref={sectionRef}>
       {isDesktop && (
         <StickyLayer>
           <FloatingCard ref={floatingRef} style={{ x, y, scale }}>
-            <img src={items[0].src} alt={items[0].title} />
+            <TravelLuxuryPreview />
             <FloatingHintMenu scale={scale} />
           </FloatingCard>
         </StickyLayer>
@@ -324,6 +358,7 @@ export default function WhatIDo({ scrollContainerRef }) {
       ) : (
         <CardsSection>
           <Grid>
+            {/* CARD 1: destino vacío */}
             <Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
               <CardImg ref={targetRef}>
                 <PlaceholderMedia />
@@ -346,15 +381,14 @@ export default function WhatIDo({ scrollContainerRef }) {
               </HoverContent>
             </Card>
 
+            {/* RESTO DE CARDS */}
             {items.slice(1).map((item) => (
               <Card
                 key={item.title}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
               >
-                <CardImg>
-                  <img src={item.src} alt={item.title} />
-                </CardImg>
+                {renderCardMedia(item)}
 
                 <CardTitle>{item.title}</CardTitle>
                 <CardIntro>{item.intro}</CardIntro>

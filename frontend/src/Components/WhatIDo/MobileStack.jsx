@@ -4,11 +4,58 @@ import { useNavigate } from "react-router-dom";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Divider } from "./WhatIDo.styles";
 
+import BookingFlowPreviewMobile from "./Cards/Mobile/BookingFlowPreviewMobile";
+import ResponsivePreviewMobile from "./Cards/Mobile/ResponsivePreviewMobile";
+import FullStackPreviewMobile from "./Cards/Mobile/FullStackPreviewMobile";
+import TravelLuxuryPreviewMobile from "./Cards/Mobile/TravelLuxuryPreviewMobile";
+
 export default function MobileStack({ items }) {
   const [openIndex, setOpenIndex] = useState(null);
   const navigate = useNavigate();
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
+
+  const renderMobileMedia = (item) => {
+    if (item.title === "Custom websites") {
+      return <TravelLuxuryPreviewMobile />;
+    }
+
+    if (item.title === "Full-stack systems") {
+      return <FullStackPreviewMobile />;
+    }
+
+    if (item.title === "Bookings & payments") {
+      return <BookingFlowPreviewMobile />;
+    }
+
+    if (item.title === "Responsive experiences") {
+      return <ResponsivePreviewMobile />;
+    }
+
+    return (
+      <img
+        src={item.mobileSrc || item.src}
+        alt={item.title}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
+      />
+    );
+  };
+
+  const handleCtaClick = (item) => {
+    if (!item.route) return;
+
+    if (item.route.startsWith("http")) {
+      window.open(item.route, "_blank", "noopener,noreferrer");
+    } else {
+      navigate(item.route);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <div
@@ -35,19 +82,18 @@ export default function MobileStack({ items }) {
               boxShadow: "0 0 28px rgba(201,184,138,0.15)",
             }}
           >
-            {/* IMAGE */}
-            <img
-              src={item.mobileSrc || item.src}
-              alt={item.title}
+            <div
               style={{
                 width: "100%",
-                height: 210,
-                objectFit: "cover",
-                display: "block",
+                height: 240,
+                overflow: "hidden",
+                borderBottom: "1px solid rgba(201,184,138,0.14)",
+                background: "transparent",
               }}
-            />
+            >
+              {renderMobileMedia(item)}
+            </div>
 
-            {/* HEADER */}
             <div
               onClick={() => toggle(i)}
               style={{
@@ -92,7 +138,6 @@ export default function MobileStack({ items }) {
               </motion.div>
             </div>
 
-            {/* EXPANDABLE */}
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
@@ -129,27 +174,10 @@ export default function MobileStack({ items }) {
                     </ul>
                   )}
 
-                  {/* CTA con ruta dinámica */}
                   {item.cta && (
                     <motion.div
                       whileTap={{ scale: 0.96 }}
-                      onClick={() => {
-                        if (!item.route) return;
-
-                        // 👉 Ruta externa
-                        if (item.route.startsWith("http")) {
-                          window.open(
-                            item.route,
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
-                        }
-                        // 👉 Ruta interna
-                        else {
-                          navigate(item.route);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }
-                      }}
+                      onClick={() => handleCtaClick(item)}
                       style={{
                         marginTop: 20,
                         fontSize: "0.75rem",
