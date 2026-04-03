@@ -58,9 +58,6 @@ const items = [
     ],
     cta: "View website examples",
     route: "/projects",
-    src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767053696/landingpage_zk0sea.png",
-    mobileSrc:
-      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771589275/besoke_mo_1_lppd9b.png",
   },
   {
     title: "Full-stack systems",
@@ -75,9 +72,6 @@ const items = [
     ],
     cta: "Explore the stack",
     route: "/tech-stack",
-    src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054313/Beige_Grey_Neutral_Minimal_Paper_Daily_Motivation_Quote_Your_Story_v5mfn4.png",
-    mobileSrc:
-      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771589094/fullstack_mo_1_uucisx.png",
   },
   {
     title: "Bookings & payments",
@@ -92,9 +86,6 @@ const items = [
     ],
     cta: "See booking example",
     route: "https://www.arrazolapsicologia.com/reserva",
-    src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767054695/payment_c2tn0p.png",
-    mobileSrc:
-      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771663247/payments_bookimg_mo_x0obbu.png",
   },
   {
     title: "Responsive experiences",
@@ -108,9 +99,6 @@ const items = [
     ],
     cta: "See responsive work",
     route: "/projects",
-    src: "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1767050948/responsive_t95h1u.png",
-    mobileSrc:
-      "https://res.cloudinary.com/dp6jrgvoz/image/upload/v1771588769/responsive_mo_1_x2e75f.png",
   },
 ];
 
