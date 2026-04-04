@@ -53,7 +53,7 @@ export default function BookingFlowPreviewMobile() {
         sx={{
           px: 2,
           py: 0.9,
-          borderBottom: "1px solid rgba(0,0,0,0.06)",
+          borderBottom: "1px solid rgba(0, 0, 0, 0.24)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -79,7 +79,7 @@ export default function BookingFlowPreviewMobile() {
                 width: 5,
                 height: 5,
                 borderRadius: "50%",
-                background: dot === 0 ? "#d8bb82" : "rgba(0,0,0,0.15)",
+                background: dot === 0 ? "#d8bb82" : "rgba(0, 0, 0, 0.45)",
               }}
             />
           ))}

@@ -54,7 +54,7 @@ export default function BookingFlowPreview() {
         sx={{
           px: 4,
           py: 1.2,
-          borderBottom: "1px solid rgba(0,0,0,0.06)",
+          borderBottom: "1px solid rgba(0, 0, 0, 0.28)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -79,7 +79,7 @@ export default function BookingFlowPreview() {
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: dot === 0 ? "#d8bb82" : "rgba(0,0,0,0.15)",
+                background: dot === 0 ? "#d8bb82" : "rgba(0, 0, 0, 0.48)",
               }}
             />
           ))}
@@ -189,7 +189,7 @@ export default function BookingFlowPreview() {
             px: 1.6,
             py: 1.2,
             borderRadius: "16px",
-            background: "#f4efe6",
+            background: "#b89562",
             border: "1px solid rgba(0,0,0,0.06)",
             textAlign: "center",
           }}
@@ -199,7 +199,7 @@ export default function BookingFlowPreview() {
               fontSize: "0.72rem",
               letterSpacing: "0.16em",
               textTransform: "uppercase",
-              color: "#6b5634",
+              color: "#e7d8c3",
             }}
           >
             Smart booking journey

@@ -7,7 +7,9 @@ import styled from "styled-components";
 const HeroSection = lazy(() => import("./Hero/HeroSection"));
 const WhatIDoHero = lazy(() => import("./WhatIDo/WhatIDoHero"));
 const WhatIDo = lazy(() => import("./WhatIDo/WhatIDo"));
-const FloatingHintMenu = lazy(() => import("./WhatIDo/FloatingHintMenu"));
+const FloatingHintMenu = lazy(() =>
+  import("./WhatIDo/FloatingHintMenu/FloatingHintMenu")
+);
 import OrbitSection from "./Services_Hero/OrbitSection";
 import ProcessScrollStory from "./Process/ProcessScrollStory";
 const HeroWorkSection = lazy(() => import("./Hero_Work/HeroWorkSection"));

@@ -1,16 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { palette } from "../FullStack/FullStackPreview.constants";
-import { images } from "../FullStack/FullStackPreview.images";
+import { palette } from "./FullStackPreview.constants";
+import { images } from "./FullStackPreview.images";
 
 const MotionBox = motion(Box);
 
-function SiteTopBarMobile() {
+function SiteTopBar() {
   return (
     <Box
       sx={{
-        height: 14,
-        px: 0.6,
+        height: 18,
+        px: 0.8,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -20,18 +20,19 @@ function SiteTopBarMobile() {
     >
       <Box
         sx={{
-          width: 14,
-          height: 3,
+          width: 18,
+          height: 4,
           borderRadius: "999px",
           background: palette.siteNavLogo,
         }}
       />
-      <Box sx={{ display: "flex", gap: 0.25 }}>
+
+      <Box sx={{ display: "flex", gap: 0.4 }}>
         {["Home", "Work", "Contact"].map((item) => (
           <Typography
             key={item}
             sx={{
-              fontSize: "0.22rem",
+              fontSize: "0.26rem",
               color: palette.siteNavItem,
               fontWeight: 700,
             }}
@@ -44,24 +45,24 @@ function SiteTopBarMobile() {
   );
 }
 
-function FrontHeroMobile() {
+function FrontHero() {
   return (
     <Box
       sx={{
-        borderRadius: "8px",
+        borderRadius: "10px",
         background: palette.heroBg,
         border: `1px solid ${palette.heroBorder}`,
-        mb: 0.55,
-        p: 0.55,
+        mb: 0.7,
+        p: 0.7,
         display: "flex",
         justifyContent: "space-between",
-        gap: 0.55,
+        gap: 0.7,
       }}
     >
       <Box sx={{ flex: 1 }}>
         <Typography
           sx={{
-            fontSize: "0.34rem",
+            fontSize: "0.42rem",
             fontWeight: 700,
             color: palette.heroTitle,
             lineHeight: 1.2,
@@ -72,24 +73,24 @@ function FrontHeroMobile() {
 
         <Typography
           sx={{
-            mt: 0.18,
-            fontSize: "0.24rem",
+            mt: 0.28,
+            fontSize: "0.28rem",
             color: palette.heroText,
-            lineHeight: 1.28,
+            lineHeight: 1.3,
           }}
         >
-          Design and functionality together.
+          Design and functionality working together.
         </Typography>
 
         <Box
           sx={{
-            mt: 0.45,
-            px: 0.45,
-            py: 0.18,
+            mt: 0.6,
+            px: 0.55,
+            py: 0.22,
             borderRadius: "999px",
             background: palette.buttonBg,
             color: palette.buttonText,
-            fontSize: "0.22rem",
+            fontSize: "0.26rem",
             fontWeight: 700,
             width: "fit-content",
           }}
@@ -100,10 +101,10 @@ function FrontHeroMobile() {
 
       <Box
         sx={{
-          width: 20,
-          minWidth: 20,
-          height: 20,
-          borderRadius: "6px",
+          width: 26,
+          minWidth: 26,
+          height: 26,
+          borderRadius: "8px",
           overflow: "hidden",
           border: `1px solid ${palette.heroImageBorder}`,
         }}
@@ -124,11 +125,11 @@ function FrontHeroMobile() {
   );
 }
 
-function FrontCardMobile({ title, text, image, tone = "a" }) {
+function FrontCard({ title, text, image, tone = "a" }) {
   return (
     <Box
       sx={{
-        borderRadius: "7px",
+        borderRadius: "8px",
         overflow: "hidden",
         background: tone === "a" ? palette.cardA : palette.cardB,
         border: `1px solid ${
@@ -142,16 +143,16 @@ function FrontCardMobile({ title, text, image, tone = "a" }) {
         alt={title}
         sx={{
           width: "100%",
-          height: 16,
+          height: 20,
           objectFit: "cover",
           display: "block",
         }}
       />
 
-      <Box sx={{ p: 0.32 }}>
+      <Box sx={{ p: 0.4 }}>
         <Typography
           sx={{
-            fontSize: "0.24rem",
+            fontSize: "0.28rem",
             fontWeight: 700,
             color: palette.heroTitle,
             lineHeight: 1.2,
@@ -162,10 +163,10 @@ function FrontCardMobile({ title, text, image, tone = "a" }) {
 
         <Typography
           sx={{
-            mt: 0.12,
-            fontSize: "0.2rem",
+            mt: 0.2,
+            fontSize: "0.24rem",
             color: palette.heroText,
-            lineHeight: 1.25,
+            lineHeight: 1.3,
           }}
         >
           {text}
@@ -175,30 +176,30 @@ function FrontCardMobile({ title, text, image, tone = "a" }) {
   );
 }
 
-function FrontendPanelMobile() {
+export function FrontendPanel() {
   return (
     <MotionBox
-      animate={{ y: [0, -1.5, 0] }}
+      animate={{ y: [0, -2, 0] }}
       transition={{
         duration: 3.2,
         repeat: Infinity,
         ease: "easeInOut",
       }}
       sx={{
-        borderRadius: "14px",
+        borderRadius: "16px",
         background: palette.frontBg,
         border: `1px solid ${palette.frontBorder}`,
-        p: 0.75,
+        p: 1.1,
       }}
     >
       <Typography
         sx={{
-          fontSize: "0.5rem",
+          fontSize: "0.64rem",
           letterSpacing: "0.14em",
           textTransform: "uppercase",
           color: palette.frontTitle,
-          mb: 0.55,
-          fontWeight: 700,
+          mb: 0.8,
+          fontWeight: 600,
         }}
       >
         Front-end
@@ -206,33 +207,33 @@ function FrontendPanelMobile() {
 
       <Box
         sx={{
-          borderRadius: "10px",
+          borderRadius: "12px",
           overflow: "hidden",
           border: `1px solid ${palette.siteShellBorder}`,
           background: palette.siteShell,
         }}
       >
-        <SiteTopBarMobile />
+        <SiteTopBar />
 
-        <Box sx={{ p: 0.6 }}>
-          <FrontHeroMobile />
+        <Box sx={{ p: 0.8 }}>
+          <FrontHero />
 
           <Box
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: 0.4,
+              gap: 0.55,
             }}
           >
-            <FrontCardMobile
+            <FrontCard
               title="Booking flow"
-              text="Simple client journey."
+              text="Simple journey for your client."
               image={images.card1}
               tone="a"
             />
-            <FrontCardMobile
+            <FrontCard
               title="Secure payments"
-              text="Trusted checkout."
+              text="Clear and trusted checkout."
               image={images.card2}
               tone="b"
             />
@@ -242,24 +243,24 @@ function FrontendPanelMobile() {
 
       <Typography
         sx={{
-          mt: 0.55,
-          fontSize: "0.52rem",
+          mt: 0.8,
+          fontSize: "0.72rem",
           color: palette.frontText,
-          lineHeight: 1.35,
+          lineHeight: 1.45,
         }}
       >
-        What your clients see.
+        What your clients see and interact with.
       </Typography>
     </MotionBox>
   );
 }
 
-function ConnectorMobile() {
+export function Connector() {
   return (
     <Box
       sx={{
         position: "relative",
-        height: 18,
+        height: 24,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -267,36 +268,36 @@ function ConnectorMobile() {
     >
       <Box
         sx={{
-          width: "56%",
+          width: "68%",
           height: "2px",
           background: `linear-gradient(90deg, ${palette.connectorLineA}, ${palette.connectorLineB}, ${palette.connectorLineA})`,
         }}
       />
 
       <MotionBox
-        animate={{ x: ["-90%", "90%"] }}
+        animate={{ x: ["-140%", "140%"] }}
         transition={{
-          duration: 2.1,
+          duration: 2.2,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         sx={{
           position: "absolute",
-          width: 8,
-          height: 8,
+          width: 10,
+          height: 10,
           borderRadius: "50%",
           background: palette.connectorDot,
-          boxShadow: "0 0 0 2px rgba(143,168,201,0.18)",
+          boxShadow: "0 0 0 3px rgba(143,168,201,0.18)",
         }}
       />
     </Box>
   );
 }
 
-function BackendPanelMobile() {
+export function BackendPanel() {
   return (
     <MotionBox
-      animate={{ y: [0, -1.5, 0] }}
+      animate={{ y: [0, -2, 0] }}
       transition={{
         duration: 3.6,
         repeat: Infinity,
@@ -304,20 +305,20 @@ function BackendPanelMobile() {
         delay: 0.2,
       }}
       sx={{
-        borderRadius: "14px",
+        borderRadius: "16px",
         background: palette.backBg,
         border: `1px solid ${palette.backBorder}`,
-        p: 0.75,
+        p: 1.1,
       }}
     >
       <Typography
         sx={{
-          fontSize: "0.5rem",
+          fontSize: "0.64rem",
           letterSpacing: "0.14em",
           textTransform: "uppercase",
           color: palette.backTitle,
-          mb: 0.55,
-          fontWeight: 700,
+          mb: 0.8,
+          fontWeight: 600,
         }}
       >
         Back-end
@@ -325,14 +326,14 @@ function BackendPanelMobile() {
 
       <Box
         sx={{
-          borderRadius: "10px",
+          borderRadius: "12px",
           background: palette.codeBg,
           border: `1px solid ${palette.codeBorder}`,
-          px: 0.75,
-          py: 0.65,
+          px: 1,
+          py: 0.9,
           display: "flex",
           flexDirection: "column",
-          gap: 0.35,
+          gap: 0.55,
         }}
       >
         {["Forms & bookings", "Payments & logic", "Database & automation"].map(
@@ -342,13 +343,13 @@ function BackendPanelMobile() {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: 0.45,
+                gap: 0.55,
               }}
             >
               <Box
                 sx={{
-                  width: 5,
-                  height: 5,
+                  width: 6,
+                  height: 6,
                   borderRadius: "50%",
                   background: i === 1 ? palette.codeDotB : palette.codeDotA,
                   flexShrink: 0,
@@ -357,9 +358,9 @@ function BackendPanelMobile() {
               <Typography
                 sx={{
                   fontFamily: "Source Code Pro, monospace",
-                  fontSize: "0.5rem",
+                  fontSize: "0.72rem",
                   color: palette.codeText,
-                  lineHeight: 1.3,
+                  lineHeight: 1.4,
                 }}
               >
                 {line}
@@ -371,31 +372,14 @@ function BackendPanelMobile() {
 
       <Typography
         sx={{
-          mt: 0.55,
-          fontSize: "0.52rem",
+          mt: 0.8,
+          fontSize: "0.72rem",
           color: palette.backText,
-          lineHeight: 1.35,
+          lineHeight: 1.45,
         }}
       >
-        The system behind the experience.
+        The system that keeps everything running.
       </Typography>
     </MotionBox>
-  );
-}
-export default function FullStackPreviewMobile() {
-  return (
-    <Box
-      sx={{
-        p: 0.5,
-        display: "flex",
-        flexDirection: "column",
-        gap: 0.32,
-        height: "calc(100% - 15px)",
-      }}
-    >
-      <FrontendPanelMobile />
-      <ConnectorMobile />
-      <BackendPanelMobile />
-    </Box>
   );
 }
