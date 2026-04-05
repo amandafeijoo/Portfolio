@@ -15,6 +15,7 @@ export default function WhatIDoIntro({ introCopy, isDesktop, startRef }) {
     <IntroHero style={{ position: "relative", overflow: "hidden" }}>
       <Box
         sx={{
+          display: { xs: "none", md: "block" },
           position: "absolute",
           top: { xs: "8%", md: "10%" },
           left: "50%",

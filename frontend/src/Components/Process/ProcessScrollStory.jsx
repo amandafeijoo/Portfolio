@@ -58,7 +58,7 @@ export default function ProcessScrollStory({ scrollContainerRef }) {
   const isMobile = useMediaQuery("(max-width:768px)");
 
   const totalSlides = 1 + steps.length;
-  
+
   console.log("scrollContainerRef prop:", scrollContainerRef);
   console.log("scrollContainerRef current:", scrollContainerRef?.current);
   const { scrollYProgress } = useScroll({
@@ -124,8 +124,9 @@ export default function ProcessScrollStory({ scrollContainerRef }) {
                 height: "100vh",
                 flexShrink: 0,
                 display: "flex",
-                alignItems: "center",
+                alignItems: { xs: "flex-start", md: "center" },
                 justifyContent: "center",
+                pt: { xs: 14, sm: 16, md: 0 },
                 px: { xs: 3, md: 8, lg: 10 },
                 position: "relative",
                 overflow: "hidden",
@@ -205,7 +206,7 @@ export default function ProcessScrollStory({ scrollContainerRef }) {
 
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "center", // 🔥 CENTRADO REAL
+                  justifyContent: "center",
                   alignItems: "center",
                   gap: { xs: 1.2, md: 1.6 },
 
@@ -362,7 +363,7 @@ export default function ProcessScrollStory({ scrollContainerRef }) {
                     color: "rgba(255,255,255,0.72)",
                     whiteSpace: "pre-line",
                     maxWidth: { xs: "100%", md: "86%" },
-                    mb: 0.5, // 👈 pequeño empuje visual
+                    mb: 0.5,
                   }}
                 >
                   {step.text}

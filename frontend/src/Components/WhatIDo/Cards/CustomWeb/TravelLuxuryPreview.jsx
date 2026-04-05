@@ -35,7 +35,7 @@ export default function TravelLuxuryPreview() {
       <Box
         sx={{
           position: "absolute",
-          inset: "4.5% 4.5% 5.5% 4.5%",
+          inset: "3% 3% 3% 3%",
           borderRadius: "16px",
           background: `linear-gradient(180deg, ${palette.frameBgTop} 0%, ${palette.frameBgBottom} 100%)`,
           border: `1px solid ${palette.frameBorder}`,

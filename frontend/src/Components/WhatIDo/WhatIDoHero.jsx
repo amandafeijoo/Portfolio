@@ -32,7 +32,7 @@ export default function WhatIDoHero() {
         alignItems: "center",
         justifyContent: "center",
         px: 3,
-        pt: { xs: 10, md: 14 },
+        pt: { xs: 7, md: 14 },
         overflow: "hidden",
         background: `
           linear-gradient(
@@ -48,7 +48,8 @@ export default function WhatIDoHero() {
       <Box
         sx={{
           position: "absolute",
-          top: { xs: "9%", md: "10%" },
+          top: { xs: "8%", md: "10%" },
+          display: { xs: "none", md: "block" },
           left: "50%",
           transform: "translateX(-50%)",
           width: { xs: "78%", sm: "68%", md: "56%" },
@@ -145,7 +146,7 @@ export default function WhatIDoHero() {
           zIndex: 2,
           textAlign: "center",
           transform: {
-            xs: "translateY(-10px)",
+            xs: "translateY(-30px)",
             md: "translateY(-20px)",
             lg: "translateY(-30px)",
           },

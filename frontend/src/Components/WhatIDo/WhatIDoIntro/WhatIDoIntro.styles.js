@@ -33,6 +33,7 @@ export const IntroHero = styled.div`
   @media (max-width: 600px) {
     padding: 56px 20px 64px;
     gap: 36px;
+    margin-top: 0px;
   }
 `;
 
@@ -53,9 +54,9 @@ export const IntroTextWrap = styled.div`
   @media (max-width: 768px) {
     max-width: 420px;
     padding: 12px 8px;
+    margin-top: 30px;
   }
 `;
-
 
 export const MetaLine = styled.div`
   font-size: 0.65rem;
@@ -153,7 +154,6 @@ export const IntroMediaSlot = styled.div`
     width: 220px;
   }
 `;
-
 
 /* ===============================
    DIVIDERS

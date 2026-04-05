@@ -60,10 +60,11 @@ export default function MobileStack({ items }) {
   return (
     <div
       style={{
-        padding: "28px 18px 80px",
+        padding: "0px 18px 80px",
         display: "flex",
         flexDirection: "column",
         gap: 30,
+        marginTop: -30,
       }}
     >
       {items.map((item, i) => {
