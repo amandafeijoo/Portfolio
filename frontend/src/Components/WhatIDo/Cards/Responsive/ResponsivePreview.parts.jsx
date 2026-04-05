@@ -14,7 +14,7 @@ function MiniTopBar({ mobile = false }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        borderBottom: `2px solid ${palette.topBarBorder}`,
+        borderBottom: `1px solid ${palette.topBarBorder}`,
         background: palette.topBarBg,
       }}
     >
@@ -59,7 +59,7 @@ function MiniHero({ mobile = false }) {
       sx={{
         borderRadius: "10px",
         background: palette.heroBg,
-        border: `2px solid ${palette.heroBorder}`,
+        border: `1px solid ${palette.heroBorder}`,
         p: mobile ? 0.7 : 0.8,
         mb: mobile ? 0.7 : 0.8,
         display: "flex",
@@ -115,7 +115,7 @@ function MiniHero({ mobile = false }) {
           height: mobile ? 32 : 42,
           borderRadius: "10px",
           overflow: "hidden",
-          border: `2px solid ${palette.heroMediaBorder}`,
+          border: `1px solid ${palette.heroMediaBorder}`,
           background: palette.heroMedia,
         }}
       >
@@ -145,7 +145,7 @@ function MiniContentCard({ title, text, image, tone = "a" }) {
         borderRadius: "8px",
         overflow: "hidden",
         background: tone === "a" ? palette.contentCardA : palette.contentCardB,
-        border: `2px solid ${palette.contentBorder}`,
+        border: `1px solid ${palette.contentBorder}`,
       }}
     >
       <Box
@@ -157,7 +157,7 @@ function MiniContentCard({ title, text, image, tone = "a" }) {
           height: 26,
           objectFit: "cover",
           display: "block",
-          borderBottom: `2px solid ${palette.contentBorder}`,
+          borderBottom: `1px solid ${palette.contentBorder}`,
         }}
       />
 
@@ -200,7 +200,7 @@ export function DesktopMiniSite() {
         borderRadius: "14px",
         overflow: "hidden",
         background: palette.deviceBg,
-        border: `3px solid ${palette.deviceBorder}`,
+        border: `1px solid ${palette.deviceBorder}`,
         boxShadow: `0 18px 44px ${palette.shadow}`,
       }}
     >
@@ -211,7 +211,7 @@ export function DesktopMiniSite() {
           sx={{
             width: "24%",
             background: palette.navBg,
-            borderRight: `2px solid ${palette.deviceBorder}`,
+            borderRight: `1px solid ${palette.deviceBorder}`,
             p: 0.8,
             display: "flex",
             flexDirection: "column",
@@ -278,7 +278,7 @@ export function TabletMiniSite() {
         borderRadius: "18px",
         overflow: "hidden",
         background: palette.deviceBg,
-        border: `3px solid ${palette.deviceBorder}`,
+        border: `1px solid ${palette.deviceBorder}`,
         boxShadow: `0 14px 34px ${palette.shadow}`,
       }}
     >
@@ -318,7 +318,7 @@ export function MobileMiniSite() {
         borderRadius: "16px",
         overflow: "hidden",
         background: palette.deviceBg,
-        border: `3px solid ${palette.deviceBorder}`,
+        border: `1px solid ${palette.deviceBorder}`,
         boxShadow: `0 14px 34px ${palette.shadow}`,
       }}
     >

@@ -1,5 +1,5 @@
 import React from "react";
-import { CardsSection, Grid } from "./WhatIDoLayout.styles";
+import { CardsSection, CardsInner, Grid } from "./WhatIDoLayout.styles";
 import WhatIDoCard from "./WhatIDoCard/WhatIDoCard";
 
 export default function WhatIDoDesktopGrid({
@@ -10,24 +10,26 @@ export default function WhatIDoDesktopGrid({
 }) {
   return (
     <CardsSection>
-      <Grid>
-        <WhatIDoCard
-          item={items[0]}
-          isFirst
-          targetRef={targetRef}
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
-        />
-
-        {items.slice(1).map((item) => (
+      <CardsInner>
+        <Grid>
           <WhatIDoCard
-            key={item.title}
-            item={item}
+            item={items[0]}
+            isFirst
+            targetRef={targetRef}
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
           />
-        ))}
-      </Grid>
+
+          {items.slice(1).map((item) => (
+            <WhatIDoCard
+              key={item.title}
+              item={item}
+              onMouseMove={onMouseMove}
+              onMouseLeave={onMouseLeave}
+            />
+          ))}
+        </Grid>
+      </CardsInner>
     </CardsSection>
   );
 }

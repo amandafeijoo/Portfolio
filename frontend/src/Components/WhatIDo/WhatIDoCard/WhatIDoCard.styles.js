@@ -1,106 +1,76 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  text-align: center;
   position: relative;
-  transform-style: preserve-3d;
-  will-change: transform;
-  padding: 24px 18px 28px;
-  border-radius: 30px;
+  overflow: hidden;
+  box-sizing: border-box;
+  align-self: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  min-height: 100%;
+  border-radius: 28px;
+  padding: 24px 22px 26px;
+
+  border: 1px solid rgba(201, 169, 106, 0.16);
 
   background: linear-gradient(
-      180deg,
-      rgba(15, 15, 15, 0.9),
-      rgba(6, 6, 6, 0.97)
-    ),
-    radial-gradient(
-      circle at top center,
-      rgba(201, 184, 138, 0.08),
-      transparent 58%
-    );
+    180deg,
+    rgba(16, 16, 16, 0.96) 0%,
+    rgba(10, 10, 10, 0.985) 100%
+  );
 
-  border: 1px solid rgba(201, 184, 138, 0.14);
+  backdrop-filter: blur(16px);
 
-  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.46),
-    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease,
-    border-color 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 
   &::before {
     content: "";
     position: absolute;
-    inset: -14%;
-    background: radial-gradient(
-      circle,
-      rgba(201, 184, 138, 0.14),
-      transparent 68%
-    );
-    opacity: 0;
-    filter: blur(30px);
-    transition: opacity 0.5s ease;
+    inset: 0;
+    border-radius: inherit;
     pointer-events: none;
-    z-index: -1;
+    background: radial-gradient(
+      circle at 50% -8%,
+      rgba(201, 169, 106, 0.15),
+      rgba(201, 169, 106, 0.06) 28%,
+      transparent 64%
+    );
+    opacity: 0.95;
   }
 
   &::after {
     content: "";
     position: absolute;
-    left: 50%;
-    bottom: -14px;
-    transform: translateX(-50%);
-    width: 42%;
-    height: 22px;
-    background: radial-gradient(
-      ellipse,
-      rgba(201, 184, 138, 0.14),
-      transparent 72%
-    );
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.45s ease;
+    inset: 0;
+    border-radius: inherit;
     pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 18%,
+      transparent 78%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
   }
 
   &:hover {
-    transform: translateY(-14px) scale(1.018);
-    filter: brightness(1.05);
-    border-color: rgba(201, 184, 138, 0.32);
-    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.62),
-      0 0 40px rgba(201, 184, 138, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  }
-
-  &:hover::before,
-  &:hover::after {
-    opacity: 1;
-  }
-
-  &:hover .hover-content {
-    max-height: 260px;
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-8px);
+    border-color: rgba(201, 169, 106, 0.3);
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.64),
+      0 0 26px rgba(201, 169, 106, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 340px;
-    margin: 0 auto;
-    padding: 16px 14px 22px;
+    padding: 22px 18px 24px;
     border-radius: 24px;
-    background: linear-gradient(
-        180deg,
-        rgba(14, 14, 14, 0.96),
-        rgba(6, 6, 6, 0.98)
-      ),
-      radial-gradient(
-        circle at top center,
-        rgba(201, 184, 138, 0.11),
-        transparent 64%
-      );
-    border: 1px solid rgba(201, 184, 138, 0.18);
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.02) inset;
   }
 `;
 
@@ -176,52 +146,49 @@ export const CardIntro = styled.p`
 `;
 
 export const CardText = styled.p`
-  font-size: 0.92rem;
-  color: rgba(220, 220, 220, 0.8);
-  max-width: 280px;
   margin: 0 auto;
-  line-height: 1.75;
+  max-width: 300px;
+
+  font-size: 0.94rem;
+  line-height: 1.72;
+  color: rgba(222, 222, 222, 0.8);
 
   @media (max-width: 768px) {
-    max-width: 250px;
-    font-size: 0.86rem;
+    max-width: 255px;
+    font-size: 0.84rem;
     line-height: 1.55;
-    color: rgba(220, 220, 220, 0.76);
   }
 `;
 
-export const HoverContent = styled.div`
-  max-height: 0;
-  opacity: 0;
+export const PanelContent = styled.div`
+  width: 100%;
+  max-height: ${({ $open }) => ($open ? "320px" : "0px")};
+  opacity: ${({ $open }) => ($open ? 1 : 0)};
   overflow: hidden;
-  transform: translateY(12px);
-  transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.35s ease;
-  will-change: transform, opacity;
+  pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
+  transform: ${({ $open }) => ($open ? "translateY(0)" : "translateY(-8px)")};
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease,
+    transform 0.3s ease, margin-top 0.3s ease;
+  margin-top: ${({ $open }) => ($open ? "18px" : "0px")};
+`;
 
-  @media (max-width: 768px) {
-    max-height: none;
-    opacity: 1;
-    overflow: visible;
-    transform: none;
-    margin-top: 2px;
-  }
+export const PanelInner = styled.div`
+  width: 100%;
+  overflow: hidden;
 `;
 
 export const CardBullets = styled.ul`
-  margin: 18px auto 0;
-  padding-left: 18px;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.8;
-  font-size: 0.95rem;
-  text-align: left;
+  margin: 16px auto 0;
   max-width: 260px;
+  padding-left: 18px;
 
-  li {
-    position: relative;
-  }
+  text-align: left;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.92rem;
+  line-height: 1.72;
 
   li::marker {
-    color: rgba(216, 187, 130, 0.9);
+    color: rgba(231, 201, 143, 0.95);
   }
 
   li + li {
@@ -229,16 +196,15 @@ export const CardBullets = styled.ul`
   }
 
   @media (max-width: 768px) {
-    max-width: 225px;
-    margin-top: 12px;
+    max-width: 232px;
     padding-left: 0;
     list-style: none;
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 0.81rem;
+    line-height: 1.48;
 
     li {
+      position: relative;
       padding-left: 16px;
-      color: rgba(255, 255, 255, 0.74);
     }
 
     li::before {
@@ -249,8 +215,8 @@ export const CardBullets = styled.ul`
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: rgba(216, 187, 130, 0.9);
-      box-shadow: 0 0 8px rgba(216, 187, 130, 0.25);
+      background: rgba(231, 201, 143, 0.95);
+      box-shadow: 0 0 8px rgba(231, 201, 143, 0.25);
     }
 
     li + li {

@@ -23,24 +23,30 @@ export default function useWhatIDoFloatingCard({
     if (!isDesktop) return;
     if (!startRef.current || !floatingRef.current || !targetRef.current) return;
 
-    const s = startRef.current.getBoundingClientRect();
-    const f = floatingRef.current.getBoundingClientRect();
-    const t = targetRef.current.getBoundingClientRect();
+    const updatePositions = () => {
+      const s = startRef.current.getBoundingClientRect();
+      const f = floatingRef.current.getBoundingClientRect();
+      const t = targetRef.current.getBoundingClientRect();
 
-    const offsetY = window.innerWidth > 1600 ? 60 : 40;
-    const extraOffset = 120;
+      const startX = s.left + s.width / 2 - (f.left + f.width / 2);
+      const startY = s.top + s.height / 2 - (f.top + f.height / 2);
 
-    setStart({
-      x: s.left - f.left,
-      y: s.top - f.top - offsetY + extraOffset,
-    });
+      const endX = t.left + t.width / 2 - (f.left + f.width / 2);
+      const endY = t.top + t.height / 2 - (f.top + f.height / 2);
 
-    setEnd({
-      x: t.left - f.left - 50,
-      y: t.top - f.top - 90 - offsetY * 0.3,
-    });
+      const scaleX = t.width / f.width;
+      const scaleY = t.height / f.height;
+      const finalScale = Math.min(scaleX, scaleY);
 
-    setEndScale((t.width / f.width) * 0.9);
+      setStart({ x: startX, y: startY });
+      setEnd({ x: endX, y: endY });
+      setEndScale(finalScale);
+    };
+
+    updatePositions();
+    window.addEventListener("resize", updatePositions);
+
+    return () => window.removeEventListener("resize", updatePositions);
   }, [isDesktop, startRef, floatingRef, targetRef]);
 
   const x = isDesktop
