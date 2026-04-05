@@ -16,7 +16,7 @@ export default function ServicesPage() {
         backgroundColor: "#000",
         color: "#f4efe6",
         position: "relative",
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       <Box
@@ -25,7 +25,7 @@ export default function ServicesPage() {
           inset: 0,
           zIndex: 0,
           pointerEvents: "none",
-          opacity: { xs: 0.58, sm: 0.24, md: 0.3, lg: 0.54, xl: 0.34 },
+          opacity: { xs: 0.68, sm: 0.24, md: 0.3, lg: 0.54, xl: 0.34 },
           overflow: "hidden",
         }}
       >
@@ -33,32 +33,32 @@ export default function ServicesPage() {
           sx={{
             position: "absolute",
             width: {
-              xs: "90vw",
+              xs: "110vw",
               sm: "135vw",
               md: "110vw",
               lg: "60vw",
               xl: "100vw",
             },
             height: {
-              xs: "90vw",
+              xs: "110vw",
               sm: "135vw",
               md: "110vw",
               lg: "60vw",
               xl: "100vw",
             },
             top: {
-              xs: "32%",
+              xs: "38%",
               sm: "28%",
               md: "14%",
               lg: "12%",
               xl: "10%",
             },
-            left: {
-              xs: "22%",
-              sm: "50%",
-              md: "50%",
-              lg: "30%",
-              xl: "50%",
+            left: "50%",
+            transform: {
+              xs: "translate(-50%, 0)",
+              sm: "translate(-50%, 0)",
+              md: "translate(-50%, 0)",
+              lg: "translate(-50%, 0)",
             },
           }}
         >

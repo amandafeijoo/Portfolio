@@ -87,7 +87,7 @@ export default function ServicesOverview() {
                 sx={{
                   fontFamily: "Playfair Display, serif",
                   fontSize: { xs: "1.35rem", md: "1.55rem" },
-                  color: "#f4efe6",
+                  color: "#e7c98f",
                   mb: 1.4,
                 }}
               >
