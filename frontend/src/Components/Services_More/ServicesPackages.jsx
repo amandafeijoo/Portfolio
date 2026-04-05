@@ -1,7 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { services } from "./servicesData";
-import GlowButton from "../ui/GlowButton";
-
+import GlowButton from "../UI/GlowButton";
 const palette = {
   kicker: "#c9b07a",
   label: "#c9b07a",
