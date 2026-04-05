@@ -7,17 +7,20 @@ export default function OrbitPage() {
       component="main"
       sx={{
         width: "100%",
+        minHeight: "100vh",
+        backgroundColor: "#000",
         display: "flex",
         justifyContent: "center",
-        mt: { xs: 0, md: 6 },
-        mb: { xs: 0, md: 20 },
-        px: { xs: 0, md: 2 },
+        mt: 0,
+        mb: 0,
+        px: 0,
       }}
     >
       <Box
         sx={{
           width: "100%",
           maxWidth: "1400px",
+          backgroundColor: "#000",
         }}
       >
         <OrbitSection />

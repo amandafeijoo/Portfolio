@@ -30,6 +30,7 @@ import ContactForm from "./Components/Portfolio/ContactForm";
 import DemoPage from "./Components/DemoPage";
 import PrivacyPage from "./Components/Privacy_Terms/PrivacyPage";
 import LegalPage from "./Components/LegalNotice/LegalPage";
+import ServicesPage from "./Components/Services_More/ServicesPage";
 
 /* =========================
    GLOBAL STYLE
@@ -135,7 +136,7 @@ function AppContent() {
             path="/"
             element={<Home scrollContainerRef={scrollContainerRef} />}
           />
-          <Route path="/services" element={<OrbitPage />} />
+          <Route path="/services" element={<ServicesPage />} />
           <Route path="/process" element={<ProcessSection />} />
           <Route path="/about" element={<AboutMe />} />
           <Route path="/tech-stack" element={<TechStack />} />
