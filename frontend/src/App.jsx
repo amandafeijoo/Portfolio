@@ -20,7 +20,7 @@ import CustomCursor from "./Components/CustomCursor/CustomCursor";
 ========================= */
 import Home from "./Components/Home";
 import OrbitPage from "./Components/Services_Hero/OrbitPage";
-import ProcessSection from "./Components/Process/ProcessSection";
+import ProcessPage from "./Components/Process_Page/ProcessPage";
 import AboutMe from "./Components/About/AboutMe";
 import TechStack from "./Components/About/TechStack";
 import ProfileInfoBox from "./Components/About/ProfileInfoBox";
@@ -137,7 +137,7 @@ function AppContent() {
             element={<Home scrollContainerRef={scrollContainerRef} />}
           />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/process" element={<ProcessSection />} />
+          <Route path="/process" element={<ProcessPage />} />          
           <Route path="/about" element={<AboutMe />} />
           <Route path="/tech-stack" element={<TechStack />} />
           <Route path="/profile-info-box" element={<ProfileInfoBox />} />
