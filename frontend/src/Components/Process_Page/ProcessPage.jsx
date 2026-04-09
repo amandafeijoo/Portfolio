@@ -28,7 +28,7 @@ export default function ProcessPage() {
           inset: 0,
           zIndex: 0,
           pointerEvents: "none",
-          opacity: { xs: 0.18, sm: 0.22, md: 0.28, lg: 0.42, xl: 0.34 },
+          opacity: { xs: 0.68, sm: 0.22, md: 0.28, lg: 0.52, xl: 0.4 },
           overflow: "hidden",
         }}
       >
@@ -36,14 +36,14 @@ export default function ProcessPage() {
           sx={{
             position: "absolute",
             width: {
-              xs: "140vw",
+              xs: "170vw",
               sm: "120vw",
               md: "95vw",
               lg: "82vw",
               xl: "76vw",
             },
             height: {
-              xs: "140vw",
+              xs: "170vw",
               sm: "120vw",
               md: "95vw",
               lg: "82vw",

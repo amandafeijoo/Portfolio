@@ -72,14 +72,22 @@ export default function ProcessCTA() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               "&:hover": {
-                background: "#f0d8a7",
-                color: "#0b0b0b",
+          transform: "translateY(-2px)",
+          color: "#e6d5bc",
 
-                boxShadow: `
-          0 0 16px rgba(230, 213, 188, 0.25),
-          0 0 48px rgba(230, 213, 188, 0.15)
-        `,
-              },
+          background: "rgba(240, 208, 160, 0.18)",
+          border: "1px solid rgba(230, 213, 188, 0.45)",
+
+          boxShadow: `
+            0 0 28px rgba(230, 213, 188, 0.45),
+            0 0 80px rgba(230, 213, 188, 0.25)
+          `,
+
+          "&::before": {
+            opacity: 1,
+            filter: { xs: "blur(26px)", sm: "blur(30px)" },
+          },
+        },
             }}
           >
             Start a project
@@ -96,9 +104,24 @@ export default function ProcessCTA() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               "&:hover": {
-                background: "rgba(201,176,122,0.05)",
-                borderColor: "rgba(201,176,122,0.32)",
-                color: "#f4efe6",
+
+                "&:hover": {
+          transform: "translateY(-2px)",
+          color: "#e6d5bc",
+
+          background: "rgba(230, 213, 188, 0.18)",
+          border: "1px solid rgba(230, 213, 188, 0.45)",
+
+          boxShadow: `
+            0 0 28px rgba(230, 213, 188, 0.45),
+            0 0 80px rgba(230, 213, 188, 0.25)
+          `,
+
+          "&::before": {
+            opacity: 1,
+            filter: { xs: "blur(26px)", sm: "blur(30px)" },
+          },
+        },
               },
             }}
           >
