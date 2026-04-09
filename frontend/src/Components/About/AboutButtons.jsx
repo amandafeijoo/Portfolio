@@ -7,9 +7,15 @@ import {
 import DownloadIcon from "@mui/icons-material/Download";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 
+const cvUrl = `${import.meta.env.BASE_URL}CV_DEVELOPER.pdf`;
+
 const AboutButtons = ({ onContactClick }) => (
   <ButtonContainer>
-    <DownloadButton href="/static/CV_DEVELOPER.pdf" download="CV_DEVELOPER.pdf">
+    <DownloadButton
+      component="a"
+      href={cvUrl}
+      download="CV_DEVELOPER.pdf"
+    >
       <span className="icon">
         <DownloadIcon />
       </span>

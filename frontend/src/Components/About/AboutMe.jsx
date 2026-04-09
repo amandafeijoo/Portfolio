@@ -67,7 +67,7 @@ const AboutMe = () => {
               xs: "2.2rem",
               sm: "2.8rem",
               md: "3.6rem",
-              lg: "4.2rem",
+              lg: "6.2rem",
               xl: "5.2rem",
             },
             lineHeight: 1.08,
@@ -114,26 +114,26 @@ const AboutMe = () => {
             <br />
             <br />
             I design and develop custom platforms using modern technologies such
-            as React, Angular, Node.js, and Django, combining clean
+            as  <strong>React</strong>, <strong>Angular</strong>,<strong>Node.js</strong> , and <strong> Django</strong>, combining clean
             architecture, performance, and thoughtful user experience. Databases
-            like PostgreSQL, MongoDB, and MySQL are an integral part of the
+            like <strong>PostgreSQL</strong>, <strong>MongoDB</strong>, and <strong>MySQL</strong> are an integral part of the
             systems I build.
             <br />
             <br />
-            My background in graphic design allows me to bridge the gap between
+            My background in <strong>graphic design</strong> allows me to bridge the gap between
             aesthetics and functionality ensuring every project is not only
             technically solid but also visually intentional and user-centered.
             <br />
-            <br />I hold a Master’s Degree in Web Development and Applications
-            from Universidad Europea Madrid (GPA 9.04/10), with a thesis project
-            awarded a 10/10. I’ve built and deployed real-world platforms such
+            <br />I hold a <strong> Master’s Degree in Web Development and Applications
+            from Universidad Europea Madrid</strong> (GPA 9.04/10), with a thesis project
+            awarded a <strong>10/10</strong>. I’ve built and deployed real-world platforms such
             as <strong>Arrazola Psicología</strong>, a booking and payment
             system for a licensed therapist, as well as complete demo platforms
             like <strong>DineBooker</strong> and <strong>FitLife Gym</strong>.
             <br />
             <br />
             Originally from Honduras, after living 14 years in Barcelona, I’m
-            now based in Trondheim, Norway. This multicultural journey shapes
+            now based in  <strong>Trondheim, Norway</strong>. This multicultural journey shapes
             how I design, communicate, and collaborate with clients worldwide.
             <br />
             <br />
