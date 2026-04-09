@@ -45,8 +45,7 @@ COPY --from=frontend-build /app/frontend/dist/images/          ./static/images
 COPY --from=frontend-build /app/frontend/dist/*.png            ./static/
 COPY --from=frontend-build /app/frontend/dist/*.ico            ./static/
 COPY --from=frontend-build /app/frontend/dist/site.webmanifest ./static/
-COPY --from=frontend-build /app/frontend/dist/CV.pdf           ./static/
-
+COPY --from=frontend-build /app/frontend/dist/CV_DEVELOPER.pdf ./static/
 
 # Script de arranque: migrate + collectstatic + gunicorn
 COPY backend/entrypoint.sh /entrypoint.sh
