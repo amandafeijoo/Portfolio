@@ -102,7 +102,7 @@ export const FloatingCard = styled(motion.div)`
    SCROLL SPACE
 ================================ */
 export const ScrollSpace = styled.div`
-  height: 26vh;
+  height: 46vh;
 
   @media (max-width: 1024px) {
     height: 0;
