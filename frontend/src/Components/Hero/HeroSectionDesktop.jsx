@@ -40,9 +40,7 @@ export default function HeroSectionDesktop() {
 
       <HeroOverlay onEnter={handleEnter} enterStage={enterStage} />
 
-      {enterStage === "universe" && (
-        <UniverseOverlay enterStage={enterStage} />
-      )}
+      {enterStage === "universe" && <UniverseOverlay enterStage={enterStage} />}
     </Box>
   );
 }

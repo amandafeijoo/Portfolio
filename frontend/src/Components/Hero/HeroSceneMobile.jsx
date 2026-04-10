@@ -72,7 +72,7 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
       const p = zoomRef.current;
       const eased = 1 - Math.pow(1 - p, 3);
 
-      camera.position.z = THREE.MathUtils.lerp(5.2, 13.8, eased);  //**  tamano del zoom **//
+      camera.position.z = THREE.MathUtils.lerp(5.2, 13.8, eased); //**  tamano del zoom **//
       camera.position.y = THREE.MathUtils.lerp(0, 0.03, eased);
       camera.fov = THREE.MathUtils.lerp(42, 38, eased);
       camera.updateProjectionMatrix();
@@ -175,7 +175,7 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
           <meshBasicMaterial
             color="#f0dfb5"
             transparent
-            opacity={0.10}
+            opacity={0.1}
             depthWrite={false}
           />
         </mesh>
@@ -211,10 +211,7 @@ export default function HeroSceneMobile({ enter, onArriveUniverse }) {
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.7} />
-      <MobileOrbitalCore
-        enter={enter}
-        onArriveUniverse={onArriveUniverse}
-      />
+      <MobileOrbitalCore enter={enter} onArriveUniverse={onArriveUniverse} />
     </Canvas>
   );
 }

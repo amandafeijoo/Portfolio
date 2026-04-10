@@ -5,7 +5,7 @@ import {
   MenuItem,
   MenuDivider,
   MenuCTA,
-} from  "./FloatingHintMenu.styles";
+} from "./FloatingHintMenu.styles";
 import FakeCursor from "../../CustomCursor/FakeCursor";
 
 export default function FloatingHintMenu({ scale }) {
