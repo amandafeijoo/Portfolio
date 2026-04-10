@@ -23,7 +23,7 @@ export default function FloatingHintMenu({ scale }) {
   const opacityByScroll = useTransform(
     scale,
     [1.2, 0.99, 0.9, 0.82, 0.8],
-    [0.1, 0, 1, 0, 0]
+    [0.1, 0, 1.9, 1.9, 0.9]
   );
 
   const pointerEventsByScroll = useTransform(
