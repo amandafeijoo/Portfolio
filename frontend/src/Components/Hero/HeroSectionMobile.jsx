@@ -21,7 +21,7 @@ export default function HeroSectionMobile() {
 
     setTimeout(() => {
       navigate("/contact");
-    }, 900);
+    }, 20);
   };
 
   return (
