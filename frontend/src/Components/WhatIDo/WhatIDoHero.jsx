@@ -188,6 +188,7 @@ export default function WhatIDoHero() {
         >
           Websites designed
           <br />
+          to work for your
           <Box
             component="span"
             sx={{
@@ -198,7 +199,8 @@ export default function WhatIDoHero() {
               `,
             }}
           >
-            to work for your business.
+            <br />
+            business.
           </Box>
         </Typography>
 

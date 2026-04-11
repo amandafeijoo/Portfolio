@@ -56,7 +56,7 @@ function CoreParticles({ count = 390, spread = 2.2 }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#f4efe6"
+        color="#e7c98f"
         size={0.022}
         transparent
         opacity={0.32}
@@ -265,7 +265,7 @@ function DiamondWire3D({
       <group>
         <mesh>
           <sphereGeometry args={[0.075, 32, 32]} />
-          <meshBasicMaterial color="#f4efe6" />
+          <meshBasicMaterial color="#8fa8c9" opacity={0.52} />
         </mesh>
 
         <mesh scale={[1.8, 1.8, 1.8]}>
@@ -356,53 +356,42 @@ export default function HeroSculpture({ enter, onProgress }) {
 
   useFrame((state) => {
     if (!wrapper.current) return;
-  
+
     const enterSpeed = 0.007;
     const exitSpeed = 0.008;
     const cameraLerp = 0.095;
-  
+
     progress.current = THREE.MathUtils.lerp(
       progress.current,
       enter ? 1 : 0,
       enter ? enterSpeed : exitSpeed
     );
-  
+
     onProgress?.(progress.current);
-  
+
     const p = progress.current;
     const t = state.clock.elapsedTime;
-  
-    const scale = THREE.MathUtils.lerp(
-      config.baseScale,
-      config.activeScale,
-      p
-    );
-  
+
+    const scale = THREE.MathUtils.lerp(config.baseScale, config.activeScale, p);
+
     wrapper.current.scale.setScalar(scale);
-  
+
     // profundidad
     wrapper.current.position.z = -p * 4.2;
-  
+
     // pequeño lift antes de entrar
-    wrapper.current.position.y =
-      Math.sin(t * 0.8) * 0.03 + p * 0.18;
-  
+    wrapper.current.position.y = Math.sin(t * 0.8) * 0.03 + p * 0.18;
+
     // WOW ROTATION
     wrapper.current.rotation.y += 0.004 + p * 0.045;
-  
-    wrapper.current.rotation.x =
-      Math.sin(t * 0.4) * 0.06 + p * 0.35;
-  
-    wrapper.current.rotation.z =
-      Math.sin(t * 0.25) * 0.025 + p * 0.22;
-  
+
+    wrapper.current.rotation.x = Math.sin(t * 0.4) * 0.06 + p * 0.35;
+
+    wrapper.current.rotation.z = Math.sin(t * 0.25) * 0.025 + p * 0.22;
+
     camera.position.z = THREE.MathUtils.lerp(
       camera.position.z,
-      THREE.MathUtils.lerp(
-        config.idleCameraZ,
-        config.activeCameraZ,
-        p
-      ),
+      THREE.MathUtils.lerp(config.idleCameraZ, config.activeCameraZ, p),
       cameraLerp
     );
   });

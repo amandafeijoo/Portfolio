@@ -17,7 +17,7 @@ export default function WorkOverlay({ onEnter, enter }) {
         {/* ===== KICKER ===== */}
         <Typography
           sx={{
-            mb: 2,
+            mb: 14,
             fontSize: "0.65rem",
             letterSpacing: "0.32em",
             textTransform: "uppercase",
@@ -33,6 +33,8 @@ export default function WorkOverlay({ onEnter, enter }) {
           sx={{
             fontFamily: "Playfair Display, serif",
             fontWeight: 500,
+            mt: -12,
+            mb: -4,
             lineHeight: 1.08,
             fontSize: {
               xs: "clamp(1.8rem, 12vw, 2.4rem)",
@@ -41,7 +43,6 @@ export default function WorkOverlay({ onEnter, enter }) {
             },
             letterSpacing: "-0.02em",
             color: "#f4f0e8",
-            mb: 3,
           }}
         >
           Selected{" "}
@@ -55,8 +56,8 @@ export default function WorkOverlay({ onEnter, enter }) {
           sx={{
             maxWidth: 620,
             mx: "auto",
-            mb: { xs: 3, md: 5 },
-            mt: { xs: 3, md: 1 },
+            mb: { xs: -4, md: 2 },
+            mt: { xs: 16, md: 12 },
             fontSize: { xs: "0.80rem", md: "1.08rem" },
             lineHeight: 1.6,
             color: "rgba(255,255,255,0.72)",
@@ -77,7 +78,7 @@ export default function WorkOverlay({ onEnter, enter }) {
 
             px: { xs: "24px", sm: "35px" },
             py: { xs: "10px", sm: "15px" },
-
+            mt: { xs: "45px", sm: "-2px" },
             fontFamily: '"Source Code Pro", monospace',
             fontSize: { xs: "0.62rem", sm: "0.7rem" },
             letterSpacing: { xs: "0.16em", sm: "0.25em" },

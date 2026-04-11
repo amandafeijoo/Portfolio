@@ -118,13 +118,13 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
 
   return (
     <Float speed={1} rotationIntensity={0.05} floatIntensity={0.16}>
-      <group ref={groupRef} position={[0, -1.25, 0]}>
+      <group ref={groupRef} position={[0, -0.16, 0]}>
         <mesh position={[0, 0, -0.5]}>
           <circleGeometry args={[2.1, 64]} />
           <meshBasicMaterial
             color="#d8bf8a"
             transparent
-            opacity={0.055}
+            opacity={0.062}
             depthWrite={false}
           />
         </mesh>
@@ -145,7 +145,7 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
           <meshBasicMaterial
             color="#e2c991"
             transparent
-            opacity={0.04}
+            opacity={0.07}
             depthWrite={false}
           />
         </mesh>
@@ -155,7 +155,7 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
           <meshBasicMaterial
             color="#e8d7ad"
             transparent
-            opacity={0.29}
+            opacity={0.39}
             depthWrite={false}
           />
         </mesh>
@@ -165,7 +165,7 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
           <meshBasicMaterial
             color="#c8ab70"
             transparent
-            opacity={0.15}
+            opacity={0.19}
             depthWrite={false}
           />
         </mesh>

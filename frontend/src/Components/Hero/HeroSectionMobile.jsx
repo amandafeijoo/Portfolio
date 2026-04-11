@@ -98,6 +98,7 @@ export default function HeroSectionMobile() {
       >
         <Typography
           sx={{
+            mt: -6,
             mb: 2.5,
             color: "#c9b07a",
             fontSize: "0.62rem",
@@ -118,7 +119,7 @@ export default function HeroSectionMobile() {
               lineHeight: 1.04,
               letterSpacing: "-0.03em",
               color: "#f4f0e8",
-              mt: 4.5,
+              mt: 15.5,
             }}
           >
             Bringing ideas
@@ -138,7 +139,7 @@ export default function HeroSectionMobile() {
             color: "rgba(255,255,255,0.78)",
             fontSize: "1rem",
             lineHeight: 1.75,
-            mt: 2.5,
+            mt: 1.5,
             mb: 4.5,
           }}
         >

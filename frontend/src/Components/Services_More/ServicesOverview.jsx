@@ -34,7 +34,7 @@ export default function ServicesOverview() {
             fontSize: "0.76rem",
             letterSpacing: "0.28em",
             textTransform: "uppercase",
-            mb: 2,
+            mb: 10,
           }}
         >
           What you actually get
@@ -61,6 +61,7 @@ export default function ServicesOverview() {
             color: "rgba(244,239,230,0.72)",
             fontSize: { xs: "1rem", md: "1.08rem" },
             lineHeight: 1.8,
+            mt: 6,
           }}
         >
           Each project is built with strategy, custom design and development, so
