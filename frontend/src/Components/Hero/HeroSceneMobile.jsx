@@ -73,14 +73,14 @@ function MobileOrbitalCore({ enter, onArriveUniverse }) {
       const eased = 1 - Math.pow(1 - p, 3);
 
       camera.position.z = THREE.MathUtils.lerp(5.2, 13.8, eased); //**  tamano del zoom **//
-      camera.position.y = THREE.MathUtils.lerp(0, 0.03, eased);
+      camera.position.y = THREE.MathUtils.lerp(0, 0.065, eased);
       camera.fov = THREE.MathUtils.lerp(42, 38, eased);
       camera.updateProjectionMatrix();
 
       if (groupRef.current) {
         groupRef.current.rotation.y += delta * 0.45;
         groupRef.current.rotation.x += delta * 0.05;
-        groupRef.current.scale.setScalar(1 + eased * 0.35);
+        groupRef.current.scale.setScalar(1 + eased * 0.95); //// subir el zoom ///
       }
 
       if (ringARef.current) ringARef.current.rotation.z += delta * 0.5;
