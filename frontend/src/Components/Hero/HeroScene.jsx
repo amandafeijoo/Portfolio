@@ -34,9 +34,12 @@ export default function HeroScene({ enter, enterStage, onArriveUniverse }) {
     <Canvas
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 6], fov: 55 }}
-      gl={{ antialias: true, powerPreference: "high-performance" }}
+      gl={{
+        antialias: true,
+        powerPreference: "high-performance",
+      }}
       onCreated={({ gl }) => {
-        gl.setClearColor("#000000", 1);
+        gl.setClearColor("#050505", 0.4);
         setReady(true);
       }}
       style={{

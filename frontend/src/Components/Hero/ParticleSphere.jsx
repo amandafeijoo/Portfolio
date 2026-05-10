@@ -153,7 +153,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
 
       if (backGlowRef.current) {
         backGlowRef.current.material.opacity =
-          0.42 + Math.sin(t * 0.95) * 0.035;
+          0.52 + Math.sin(t * 0.95) * 0.035;
       }
 
       camera.position.z = isMobile ? 5.2 : 5.5;
@@ -253,7 +253,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           <meshBasicMaterial
             map={haloTexture}
             transparent
-            opacity={0.42}
+            opacity={0.62}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
             toneMapped={false}
@@ -268,7 +268,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           <meshBasicMaterial
             color="#e6d3a8"
             transparent
-            opacity={0.05}
+            opacity={0.075}
             side={THREE.BackSide}
             depthWrite={false}
             blending={THREE.AdditiveBlending}
@@ -298,7 +298,7 @@ export default function ParticleSphere({ enter, onArriveUniverse }) {
           size={isMobile ? 0.01 : 0.012}
           sizeAttenuation
           transparent
-          opacity={0.82}
+          opacity={0.9}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
         />
